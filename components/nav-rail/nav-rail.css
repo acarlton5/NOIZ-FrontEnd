@@ -1,0 +1,113 @@
+.nav-rail {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 5rem;
+  background: var(--bs-body-bg, #fff);
+  display: flex;
+  align-items: center;
+  border-top: 1px solid #dee2e6;
+  z-index: 1030;
+}
+
+.nav-rail .rail-item {
+  position: relative;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  margin: 0 0.5rem;
+  padding: 0;
+  flex: 0 0 auto;
+  cursor: pointer;
+}
+
+.nav-rail .rail-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.nav-rail .rail-item:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.nav-rail .rail-items {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.nav-rail .notification {
+  display: none;
+  position: absolute;
+  width: 0.5rem;
+  height: 0.5rem;
+  background: var(--bs-danger, #dc3545);
+  border-radius: 50%;
+}
+
+.nav-rail .rail-item.has-notification .notification {
+  display: block;
+}
+
+/* notification placement mobile */
+.nav-rail .rail-item .notification {
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* active indicator mobile */
+.nav-rail .rail-item.active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: -4px;
+  height: 4px;
+  width: 100%;
+  background: var(--bs-primary, #0d6efd);
+  border-radius: 2px;
+}
+
+@media (min-width: 768px) {
+  .nav-rail {
+    top: 0;
+    bottom: 0;
+    width: 5rem;
+    height: auto;
+    flex-direction: column;
+    border-top: none;
+    border-right: 1px solid #dee2e6;
+  }
+
+  .nav-rail .rail-items {
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .nav-rail .rail-item {
+    margin: 0.5rem 0;
+  }
+
+  /* notification placement desktop */
+  .nav-rail .rail-item .notification {
+    top: 50%;
+    left: auto;
+    right: 0;
+    transform: translate(50%, -50%);
+  }
+
+  /* active indicator desktop */
+  .nav-rail .rail-item.active::after {
+    left: auto;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    right: -4px;
+  }
+}
