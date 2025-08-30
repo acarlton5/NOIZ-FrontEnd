@@ -1,12 +1,92 @@
 /*---------------------
-    1. NAVIGATION
+    1. HEADER
+---------------------*/
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 80px;
+  background-color: #615dfa;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+}
+
+.header .header-actions {
+  display: flex;
+  align-items: center;
+}
+
+.header .header-actions.search-bar {
+  width: 30%;
+  position: relative;
+}
+
+.header .header-brand {
+  display: flex;
+  align-items: center;
+}
+
+.header .header-brand .logo {
+  margin-left: 26px;
+}
+
+.header .header-brand .header-brand-text {
+  margin-left: 26px;
+  color: #fff;
+  font-family: "Titillium Web", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.header .sidemenu-trigger,
+.header .mobilemenu-trigger {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+}
+
+.header .sidemenu-trigger .icon-grid {
+  fill: #8b88ff;
+  transition: fill .3s ease-in-out;
+}
+
+.header .sidemenu-trigger:hover .icon-grid,
+.header .sidemenu-trigger.active .icon-grid {
+  fill: #fff;
+}
+
+.header .mobilemenu-trigger {
+  display: none;
+}
+
+@media screen and (max-width: 1365px) {
+  .header .navigation {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .header .mobilemenu-trigger {
+    display: flex;
+  }
+}
+
+/*---------------------
+    2. NAVIGATION
 ---------------------*/
 .navigation {
   height: 80px;
 }
 
 /*---------------------
-    2. MENU MAIN
+    3. MENU MAIN
 ---------------------*/
 .menu-main {
   display: flex;
@@ -67,7 +147,7 @@
 }
 
 /*---------------
-    3. MENU
+    4. MENU
 ---------------*/
 .menu.small .menu-item.active .menu-item-link:hover {
   padding-left: 0;
@@ -140,7 +220,7 @@
 }
 
 /*-----------------------------
-    4. SECTION NAVIGATION
+    5. SECTION NAVIGATION
 -----------------------------*/
 .section-navigation {
   height: 80px;
@@ -167,7 +247,7 @@
 }
 
 /*----------------------
-    5. SECTION MENU
+    6. SECTION MENU
 ----------------------*/
 .section-menu {
   height: 80px;
@@ -261,4 +341,48 @@
   opacity: 0;
   visibility: hidden;
   transition: opacity .25s ease-in-out, visibility .25s ease-in-out, transform .25s ease-in-out;
+}
+
+/*-------------------------
+    7. INTERACTIVE INPUT
+-------------------------*/
+.header .interactive-input {
+  width: 100%;
+  height: 52px;
+  position: relative;
+}
+
+.header .interactive-input.dark input {
+  border: none;
+  background-color: #4e4ac8;
+  color: #fff;
+  height: 100%;
+  padding-right: 60px;
+}
+
+.header .interactive-input.dark input::placeholder {
+  color: #8b88ff;
+  opacity: .6;
+}
+
+.header .interactive-input .interactive-input-icon-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  pointer-events: none;
+}
+
+.header .interactive-input .interactive-input-icon-wrap .interactive-input-icon {
+  fill: #adafca;
+  opacity: .6;
+  transition: fill .2s ease-in-out, opacity .2s ease-in-out;
+}
+
+.header .interactive-input .interactive-input-action {
+  display: none;
 }
