@@ -1,13 +1,16 @@
+
+/* base rail – mobile first: bottom bar with horizontal scroll */
 .nav-rail {
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 5rem;
-  background: var(--bs-body-bg, #fff);
+  height: 4.5rem;
   display: flex;
   align-items: center;
-  border-top: 1px solid #dee2e6;
+  padding: 0.25rem;
+  background: #1b1b1b;
+  border-top: 1px solid #343a40;
   z-index: 1030;
 }
 
@@ -16,12 +19,13 @@
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
-  border: none;
+  border: 2px solid transparent;
   background: transparent;
   margin: 0 0.5rem;
   padding: 0;
   flex: 0 0 auto;
   cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
 }
 
 .nav-rail .rail-item img {
@@ -32,11 +36,13 @@
 }
 
 .nav-rail .rail-item:hover {
-  background: rgba(0, 0, 0, 0.05);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 .nav-rail .rail-items {
   display: flex;
+  flex: 1 1 auto;
   overflow-x: auto;
   overflow-y: hidden;
 }
@@ -70,22 +76,34 @@
   height: 4px;
   width: 100%;
   background: var(--bs-primary, #0d6efd);
-  border-radius: 2px;
+  border-radius: 2px 2px 0 0;
 }
 
 @media (min-width: 768px) {
+  .nav-rail::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 4px;
+    background: linear-gradient(180deg, #ff00ff, #ffe0ff);
+  }
   .nav-rail {
     top: 0;
     bottom: 0;
     width: 5rem;
-    height: auto;
+    height: 100vh;
     flex-direction: column;
+    align-items: center;
+    padding: 0.5rem 0;
     border-top: none;
-    border-right: 1px solid #dee2e6;
+    border-right: 1px solid #343a40;
   }
 
   .nav-rail .rail-items {
     flex-direction: column;
+    flex: 1 1 auto;
     overflow-y: auto;
     overflow-x: hidden;
   }
@@ -109,5 +127,6 @@
     width: 4px;
     height: 100%;
     right: -4px;
+    border-radius: 0 2px 2px 0;
   }
 }
