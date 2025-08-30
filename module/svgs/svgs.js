@@ -1,4 +1,5 @@
-const svgWrap = document.createElement('div'),
+
+    const svgWrap = document.createElement('div'),
       svgData = `
   <!-- SVG FACEBOOK -->
   <svg style="display: none;">
