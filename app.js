@@ -1,18 +1,18 @@
 export default {};
 
 async function load() {
-  const module = document.querySelectorAll('module');
-  for (const module of modules) {
-    const name = module.getAttribute('name');
+  const modules = document.querySelectorAll('module');
+  for (const moduleEl of modules) {
+    const name = moduleEl.getAttribute('data-module');
     if (!name) continue;
     const root = document.createElement('div');
-    comp.replaceWith(root);
-    const [module, html] = await Promise.all([
+    moduleEl.replaceWith(root);
+    const [moduleCode, html] = await Promise.all([
       import(`./module/${name}/${name}.js`),
       fetch(`./module/${name}/${name}.html`).then(r => r.text())
     ]);
     root.innerHTML = html;
-    await module.default({ root, props: {} });
+    await moduleCode.default({ root, props: {} });
   }
 }
 

@@ -1,14 +1,14 @@
 # NOIZ
 
-A modular, Bootstrap 5–powered starter for building responsive social/streaming UIs. Each feature is a small component that mounts into a `<comp>` tag.
+A modular, Bootstrap 5–powered starter for building responsive social/streaming UIs. Each feature is a small module that mounts into a `<module data-module="...">` tag.
 
 ## Project Structure
 ```
 .
-├── index.html      # Page skeleton with <comp> mount points
-├── app.js          # Component loader and event bus
-├── app.css         # Global styles + component imports
-├── components/     # One folder per component
+├── index.html      # Page skeleton with <module> mount points
+├── app.js          # Module loader and event bus
+├── app.css         # Global styles + module imports
+├── module/         # One folder per module
 ├── data/           # JSON fixtures that drive the UI
 ├── images/         # Static assets
 ├── scripts/        # Helper scripts for data generation
