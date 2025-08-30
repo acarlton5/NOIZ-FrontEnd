@@ -1,4 +1,96 @@
+@import url("https://fonts.googleapis.com/css?family=Titillium+Web:400,900&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Rajdhani:400,500,600,700&display=swap");
 @import url("module/header/header.css");
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+}
+
+*::before, *::after {
+  display: block;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+select {
+  appearance: none;
+}
+
+h1, h2, h3, h4,
+h5, h6, p,
+ol, ul,
+figure,
+.table,
+.form-row {
+  margin: 0;
+}
+
+.content-grid .section-banner + .section-filters-bar {
+  margin-top: 64px;
+}
+
+.section-banner {
+  min-height: 160px;
+  padding: 52px 60px 0 200px;
+  border-radius: 12px;
+  background: url("images/banners/banner-bg.png") no-repeat center;
+  position: relative;
+}
+
+.section-banner .section-banner-icon {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.section-banner .section-banner-title,
+.section-banner .section-banner-text {
+  color: #fff;
+}
+
+.section-banner .section-banner-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+}
+
+.section-banner .section-banner-text {
+  margin-top: 10px;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 960px) {
+  .section-banner {
+    height: 86px;
+    min-height: auto;
+    padding: 18px 28px 0 108px;
+  }
+
+  .section-banner .section-banner-icon {
+    width: 92px;
+    height: 86px;
+  }
+
+  .section-banner .section-banner-title {
+    font-size: 1.5rem;
+  }
+
+  .section-banner .section-banner-text {
+    margin-top: 6px;
+    font-size: 0.75rem;
+  }
+}
+
 body {
   font-family: system-ui, sans-serif;
   margin: 0;
