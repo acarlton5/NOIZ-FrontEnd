@@ -115,18 +115,18 @@
   /* notification placement desktop */
   .nav-rail .rail-item .notification {
     top: 50%;
-    left: auto;
-    right: 0;
-    transform: translate(50%, -50%);
+    left: 0;
+    right: auto;
+    transform: translate(-50%, -50%);
   }
 
   /* active indicator desktop */
   .nav-rail .rail-item.active::after {
-    left: auto;
+    left: -4px;
     top: 0;
     width: 4px;
     height: 100%;
-    right: -4px;
-    border-radius: 0 2px 2px 0;
+    right: auto;
+    border-radius: 2px 0 0 2px;
   }
 }
