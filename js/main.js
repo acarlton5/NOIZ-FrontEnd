@@ -182,9 +182,6 @@ const app = {
 };
 
 
-
-
-
 async function loadModules() {
   const modules = document.querySelectorAll('module[data-module]');
   await Promise.all(Array.from(modules).map(async (m) => {
@@ -204,4 +201,6 @@ async function loadModules() {
 
 
 
+
   loadModules();
+
