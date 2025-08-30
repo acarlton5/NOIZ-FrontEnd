@@ -89,19 +89,23 @@
   .nav-rail {
     top: 0;
     bottom: 0;
+    right: 0;
+    left: auto;
     width: 5rem;
     height: 100vh;
     flex-direction: column;
     align-items: center;
     padding: 0.5rem 0;
     border-top: none;
-    border-right: 1px solid #343a40;
+    border-left: 1px solid #343a40;
   }
   .nav-rail .rail-items {
     flex-direction: column;
     overflow-y: auto;
-    overflow-x: hidden;
-    /* reset mobile padding/margin adjustments */
+    overflow-x: visible;
+    /* reserve space on the right so indicators and frames aren't clipped */
+    padding-right: calc(var(--frame-bleed) + var(--indicator-gap) + var(--indicator-width));
+    margin-right: calc(-1 * (var(--frame-bleed) + var(--indicator-gap) + var(--indicator-width)));
     padding-top: 0;
     padding-bottom: 0;
     margin-top: 0;
@@ -109,14 +113,14 @@
   }
   .nav-rail .rail-item { margin: 0.5rem 0; }
 
-  /* indicator left bar on desktop */
+  /* indicator right bar on desktop */
   .nav-rail .rail-item::before {
     top: 50%;
-    left: calc(-1 * (var(--indicator-gap) + var(--indicator-width)));
+    right: calc(-1 * (var(--indicator-gap) + var(--indicator-width)));
     width: var(--indicator-width);
     height: 0;
     transform: translateY(-50%);
-    border-radius: 0 10px 10px 0;
+    border-radius: 10px 0 0 10px;
   }
   .nav-rail .rail-item:hover::before {
     height: var(--indicator-hover-h);
@@ -129,17 +133,17 @@
   .nav-rail .rail-item.notification::before {
     width: var(--dot-size);
     height: var(--dot-size);
-    left: calc(-1 * (var(--indicator-gap) + var(--dot-size)));
+    right: calc(-1 * (var(--indicator-gap) + var(--dot-size)));
     top: 50%;
     transform: translateY(-50%);
     border-radius: 50%;
   }
   .nav-rail .rail-item.notification:hover::before,
   .nav-rail .rail-item.notification.is-active::before {
-    left: calc(-1 * (var(--indicator-gap) + var(--indicator-width)));
+    right: calc(-1 * (var(--indicator-gap) + var(--indicator-width)));
     width: var(--indicator-width);
     height: var(--indicator-hover-h);
-    border-radius: 0 10px 10px 0;
+    border-radius: 10px 0 0 10px;
   }
   .nav-rail .rail-item.notification.is-active::before {
     height: var(--indicator-active-h);
