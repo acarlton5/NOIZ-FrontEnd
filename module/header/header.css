@@ -33,6 +33,10 @@
   margin-left: 26px;
 }
 
+.header .header-brand .logo img {
+  height: 2.5rem;
+}
+
 .header .header-brand .header-brand-text {
   margin-left: 26px;
   color: #fff;
