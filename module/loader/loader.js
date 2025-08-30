@@ -4,7 +4,12 @@ export default async function init({ root, props }) {
 
   const hidePageLoader = () => {
     pageLoader.classList.add('hidden');
+    window.removeEventListener('load', hidePageLoader);
   };
 
-  window.addEventListener('load', hidePageLoader);
+  if (document.readyState === 'complete') {
+    hidePageLoader();
+  } else {
+    window.addEventListener('load', hidePageLoader);
+  }
 }
