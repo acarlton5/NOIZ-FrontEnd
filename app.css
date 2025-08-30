@@ -1,6 +1,4 @@
-@import "./components/hello/hello.css";
-@import "./components/nav-rail/nav-rail.css";
-
+@import url("module/header/header.css");
 body {
   font-family: system-ui, sans-serif;
   margin: 0;

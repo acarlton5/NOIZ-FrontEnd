@@ -1,0 +1,105 @@
+/*-----------------
+    1. HEADER
+-----------------*/
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 80px;
+  background-color: #615dfa;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+}
+
+.header .header-actions {
+  display: flex;
+  align-items: center;
+}
+
+.header .header-actions.search-bar {
+  width: 30%;
+}
+
+.header .header-actions.search-bar .header-search-dropdown {
+  width: 100%;
+}
+
+.header .header-actions .progress-stat {
+  width: 110px;
+}
+
+.header .header-actions .register-button {
+  padding: 0 26px;
+  margin: 0 30px;
+}
+
+.header .header-actions .login-form {
+  margin: 0 14px 0 12px;
+}
+
+.header .header-actions .login-form .button {
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+}
+
+.header .header-brand {
+  display: flex;
+  align-items: center;
+}
+
+.header .header-brand .logo {
+  margin-left: 26px;
+}
+
+.header .header-brand .header-brand-text {
+  margin-left: 26px;
+  color: #fff;
+  font-family: "Titillium Web", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.header .sidemenu-trigger,
+.header .mobilemenu-trigger {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+}
+
+.header .sidemenu-trigger.active .icon-grid, .header .sidemenu-trigger:hover .icon-grid {
+  fill: #fff;
+}
+
+.header .sidemenu-trigger .icon-grid {
+  pointer-events: none;
+  transition: fill .3s ease-in-out;
+}
+
+.header .mobilemenu-trigger {
+  display: none;
+}
+
+.header .input-search {
+  width: 100%;
+}
+
+.header .action-list {
+  height: 80px;
+}
+
+.header .action-list::before, .header .action-list::after {
+  top: 24px;
+}
+
+.header .action-item {
+  width: 80px;
+  height: 80px;
+}
