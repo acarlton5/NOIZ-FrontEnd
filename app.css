@@ -1,4 +1,4 @@
-@import url("module/header/header.css");
+@import url("components/header/header.css");
 body {
   font-family: system-ui, sans-serif;
   margin: 0;

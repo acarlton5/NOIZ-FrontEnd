@@ -1,6 +1,6 @@
 # NOIZ
 
-A modular, Bootstrap 5–powered starter for building responsive social/streaming UIs. Each feature is a small component that mounts into a `<comp>` tag.
+A modular, Bootstrap 5–powered starter for building responsive social/streaming UIs. Each feature is a small component that mounts into a `<comp name="..."></comp>` tag.
 
 ## Project Structure
 ```

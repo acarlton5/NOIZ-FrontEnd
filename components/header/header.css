@@ -6,7 +6,7 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 80px;
+  height: 5rem;
   background-color: #615dfa;
   position: fixed;
   top: 0;
@@ -28,21 +28,21 @@
 }
 
 .header .header-actions .progress-stat {
-  width: 110px;
+  width: 6.875rem;
 }
 
 .header .header-actions .register-button {
-  padding: 0 26px;
-  margin: 0 30px;
+  padding: 0 1.625rem;
+  margin: 0 1.875rem;
 }
 
 .header .header-actions .login-form {
-  margin: 0 14px 0 12px;
+  margin: 0 0.875rem 0 0.75rem;
 }
 
 .header .header-actions .login-form .button {
-  width: 52px;
-  height: 52px;
+  width: 3.25rem;
+  height: 3.25rem;
   flex-shrink: 0;
 }
 
@@ -52,11 +52,11 @@
 }
 
 .header .header-brand .logo {
-  margin-left: 26px;
+  margin-left: 1.625rem;
 }
 
 .header .header-brand .header-brand-text {
-  margin-left: 26px;
+  margin-left: 1.625rem;
   color: #fff;
   font-family: "Titillium Web", sans-serif;
   font-size: 1.25rem;
@@ -69,8 +69,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 80px;
-  height: 80px;
+  width: 5rem;
+  height: 5rem;
   cursor: pointer;
 }
 
@@ -92,14 +92,20 @@
 }
 
 .header .action-list {
-  height: 80px;
+  height: 5rem;
 }
 
 .header .action-list::before, .header .action-list::after {
-  top: 24px;
+  top: 1.5rem;
 }
 
 .header .action-item {
-  width: 80px;
-  height: 80px;
+  width: 5rem;
+  height: 5rem;
+}
+
+@media (max-width: 48rem) {
+  .header .mobilemenu-trigger {
+    display: flex;
+  }
 }
