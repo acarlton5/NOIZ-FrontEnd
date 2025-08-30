@@ -3,7 +3,8 @@
   --aviSize: 3rem;
   --frame-bleed: calc(var(--aviSize) * 0.1);
   --indicator-width: 4px;
-  --indicator-gap: 4px;
+  --indicator-hover-w: 60%;
+  --indicator-active-w: 100%;
   --indicator-hover-h: 60%;
   --indicator-active-h: 100%;
   --dot-size: 8px;
@@ -14,8 +15,8 @@
   right: 0;
   height: 4.5rem;
   display: flex;
-  align-items: center;
-  padding: 0.25rem;
+  align-items: flex-start;
+  padding: 0 0.25rem 0.25rem;
   background: #1b1b1b;
   border-top: 1px solid #343a40;
   overflow: visible;
@@ -26,20 +27,12 @@
   display: flex;
   flex: 1 1 auto;
   overflow-x: auto;
-  overflow-y: hidden;
-  /* reserve space on the right so indicators and frames aren't clipped */
-  padding-right: calc(
-    var(--frame-bleed) + var(--indicator-gap) + var(--indicator-width)
-  );
-  margin-right: calc(
-    -1 * (var(--frame-bleed) + var(--indicator-gap) + var(--indicator-width))
-  );
-  padding-top: var(--frame-bleed);
+  overflow-y: visible;
+  padding-top: calc(var(--frame-bleed) + var(--dot-size) / 2);
+  margin-top: calc(-1 * (var(--frame-bleed) + var(--dot-size) / 2));
   padding-bottom: var(--frame-bleed);
-  margin-top: calc(-1 * var(--frame-bleed));
   margin-bottom: calc(-1 * var(--frame-bleed));
 }
-
 
 .nav-rail .rail-item {
   flex: 0 0 auto;
@@ -50,27 +43,29 @@
   cursor: pointer;
 }
 
-/* right-side indicator */
+/* top indicator */
 .nav-rail .rail-item::before {
   content: "";
   position: absolute;
-  top: 50%;
-  left: calc(100% + var(--indicator-gap));
-  width: var(--indicator-width);
-  height: 0;
+  left: 50%;
+  top: calc(-1 * var(--dot-size) / 2);
+  width: 0;
+  height: var(--indicator-width);
   background: var(--accent, #fff);
-  border-radius: 0 10px 10px 0;
-  transform: translateY(-50%);
+  border-radius: 0 0 10px 10px;
+  transform: translateX(-50%);
   opacity: 0;
-  transition: height .16s ease, width .16s ease, opacity .16s ease,
+  transition: width .16s ease, top .16s ease, opacity .16s ease,
     border-radius .16s ease;
 }
 .nav-rail .rail-item:hover::before {
-  height: var(--indicator-hover-h);
+  width: var(--indicator-hover-w);
+  top: 0;
   opacity: 1;
 }
 .nav-rail .rail-item.is-active::before {
-  height: var(--indicator-active-h);
+  width: var(--indicator-active-w);
+  top: 0;
   opacity: 1;
 }
 
@@ -78,29 +73,31 @@
 .nav-rail .rail-item.notification::before {
   width: var(--dot-size);
   height: var(--dot-size);
+  top: calc(-1 * var(--dot-size) / 2);
   border-radius: 50%;
   opacity: 1;
 }
 .nav-rail .rail-item.notification:hover::before,
 .nav-rail .rail-item.notification.is-active::before {
-  width: var(--indicator-width);
-  height: var(--indicator-hover-h);
-  border-radius: 0 10px 10px 0;
+  width: var(--indicator-hover-w);
+  height: var(--indicator-width);
+  top: 0;
+  border-radius: 0 0 10px 10px;
+  opacity: 1;
 }
 .nav-rail .rail-item.notification.is-active::before {
-  height: var(--indicator-active-h);
+  width: var(--indicator-active-w);
 }
 
 @media (min-width: 768px) {
   .nav-rail {
     top: 0;
     bottom: 0;
-    left: 0;
     right: auto;
     width: 5rem;
     height: 100vh;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     padding: 0.5rem 0;
     border-top: none;
     border-right: 1px solid #343a40;
@@ -109,16 +106,55 @@
     flex-direction: column;
     overflow-y: auto;
     overflow-x: visible;
-    padding-right: calc(
-      var(--frame-bleed) + var(--indicator-gap) + var(--indicator-width)
-    );
-    margin-right: calc(
-      -1 * (var(--frame-bleed) + var(--indicator-gap) + var(--indicator-width))
-    );
     padding-top: 0;
-    padding-bottom: 0;
     margin-top: 0;
+    padding-bottom: 0;
     margin-bottom: 0;
   }
   .nav-rail .rail-item { margin: 0.5rem 0; }
+
+  /* left indicator */
+  .nav-rail .rail-item::before {
+    left: calc(-1 * var(--dot-size) / 2);
+    top: 50%;
+    width: var(--indicator-width);
+    height: 0;
+    transform: translateY(-50%);
+    border-radius: 0 10px 10px 0;
+    opacity: 0;
+    transition: height .16s ease, opacity .16s ease, left .16s ease,
+      width .16s ease, border-radius .16s ease;
+  }
+  .nav-rail .rail-item:hover::before {
+    left: 0;
+    height: var(--indicator-hover-h);
+    opacity: 1;
+  }
+  .nav-rail .rail-item.is-active::before {
+    left: 0;
+    height: var(--indicator-active-h);
+    opacity: 1;
+  }
+
+  .nav-rail .rail-item.notification::before {
+    width: var(--dot-size);
+    height: var(--dot-size);
+    left: calc(-1 * var(--dot-size) / 2);
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    opacity: 1;
+    transition: width .16s ease, height .16s ease, left .16s ease,
+      border-radius .16s ease;
+  }
+  .nav-rail .rail-item.notification:hover::before,
+  .nav-rail .rail-item.notification.is-active::before {
+    width: var(--indicator-width);
+    height: var(--indicator-hover-h);
+    left: 0;
+    border-radius: 0 10px 10px 0;
+  }
+  .nav-rail .rail-item.notification.is-active::before {
+    height: var(--indicator-active-h);
+  }
 }
