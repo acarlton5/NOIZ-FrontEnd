@@ -16,10 +16,8 @@ A modular, Bootstrap 5–powered starter for building responsive social/streamin
 ```
 
 ## Getting Started
-1. Serve the project as static files:
-   - `npx serve .` or `npx http-server .`
-   - or run `npm start` to launch `node app.js`
-2. Open the printed URL (e.g., `http://localhost:5173/`).
+1. Run `npm start` to launch a local static server via [`live-server`](https://www.npmjs.com/package/live-server) on `http://127.0.0.1:5173/` without opening a browser.
+2. Open `http://127.0.0.1:5173/` in your browser to view `index.html`.
 
 ## Development Guidelines
 - Build layouts with Bootstrap's grid (`container[-fluid]`, `row`, `col-*`).
@@ -28,7 +26,7 @@ A modular, Bootstrap 5–powered starter for building responsive social/streamin
 - See [AGENTS.md](AGENTS.md) for complete contributing rules.
 
 ## Scripts
-- `npm start` – run the development server.
+- `npm start` – serve the project locally with `live-server` on port 5173.
 - `npm test` – placeholder tests; run before committing.
 
 Happy hacking!
