@@ -1,6 +1,7 @@
 /* responsive navigation rail */
 .nav-rail {
   --aviSize: 3rem;
+  --frame-bleed: calc(var(--aviSize) * 0.1);
   --indicator-width: 4px;
   --indicator-gap: 4px;
   --indicator-hover-h: 60%;
@@ -26,6 +27,11 @@
   flex: 1 1 auto;
   overflow-x: auto;
   overflow-y: hidden;
+  /* extra room so top indicators and frames aren't clipped */
+  padding-top: calc(var(--frame-bleed) + var(--indicator-gap) + var(--indicator-width));
+  padding-bottom: var(--frame-bleed);
+  margin-top: calc(-1 * (var(--frame-bleed) + var(--indicator-gap) + var(--indicator-width)));
+  margin-bottom: calc(-1 * var(--frame-bleed));
 }
 
 
@@ -95,6 +101,11 @@
     flex-direction: column;
     overflow-y: auto;
     overflow-x: hidden;
+    /* reset mobile padding/margin adjustments */
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
   }
   .nav-rail .rail-item { margin: 0.5rem 0; }
 
