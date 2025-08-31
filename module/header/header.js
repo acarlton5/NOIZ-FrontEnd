@@ -1,6 +1,6 @@
 // module/header/header.js
-// Bootstrap 5 header with navigation, dropdown and search.
-// Exposes a small API for setting the brand and adding utility buttons.
+// Bootstrap 5 header styled to match the provided purple design.
+// Provides a tiny API for setting the brand and adding utility buttons.
 // API:
 //   - setBrand({ text, href })
 //   - addButton({ id, label, onClick })
@@ -9,25 +9,31 @@
 export default async function init({ hub, root, utils }) {
   root.innerHTML = `
     <header data-role="header" class="header">
-      <nav class="navbar navbar-dark bg-dark navbar-expand-md border-bottom border-opacity-10">
+      <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
-          <a class="navbar-brand d-flex align-items-center gap-2" href="#" data-role="brand">
-            <span class="brand-mark">NOIZ</span>
+          <a class="navbar-brand d-flex align-items-center" href="#" data-role="brand">
+            <svg class="logo" width="40" height="40"><use xlink:href="#svg-logo-vikinger"></use></svg>
+            <span class="brand-text">Vikinger</span>
           </a>
 
-          <button class="navbar-toggler" type="button"
-                  data-bs-toggle="collapse" data-bs-target="#noizHeaderNav"
-                  aria-controls="noizHeaderNav" aria-expanded="false" aria-label="Toggle navigation">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#noizHeaderNav" aria-controls="noizHeaderNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
 
           <div class="collapse navbar-collapse" id="noizHeaderNav">
-            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <ul class="navbar-nav align-items-center mb-2 mb-lg-0">
+              <li class="nav-item">
+                <button class="btn p-0 sidemenu-trigger" type="button">
+                  <svg class="icon-grid" width="20" height="20"><use xlink:href="#svg-grid"></use></svg>
+                </button>
+              </li>
               <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
               <li class="nav-item"><a class="nav-link" href="#">Careers</a></li>
               <li class="nav-item"><a class="nav-link" href="#">Faqs</a></li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="headerMore" role="button" data-bs-toggle="dropdown" aria-expanded="false">More</a>
+                <a class="nav-link dropdown-toggle p-0" href="#" id="headerMore" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <svg class="icon-dots" width="20" height="20"><use xlink:href="#svg-dots"></use></svg>
+                </a>
                 <ul class="dropdown-menu" aria-labelledby="headerMore">
                   <li><a class="dropdown-item" href="#">About Us</a></li>
                   <li><a class="dropdown-item" href="#">Our Blog</a></li>
@@ -37,11 +43,22 @@ export default async function init({ hub, root, utils }) {
               </li>
             </ul>
 
-            <form class="d-flex me-3" role="search">
-              <input class="form-control form-control-sm bg-dark text-light border-secondary" type="search" placeholder="Search here for people or groups" aria-label="Search">
+            <form class="search-bar flex-grow-1 mx-lg-3 position-relative my-3 my-lg-0" role="search">
+              <input class="form-control" type="search" placeholder="Search here for people or groups" aria-label="Search">
+              <svg class="search-icon" width="20" height="20"><use xlink:href="#svg-magnifying-glass"></use></svg>
             </form>
 
-            <div class="d-flex align-items-center gap-2" data-slot="right" aria-label="Utility actions"></div>
+            <div class="action-list d-flex align-items-center gap-3" data-slot="right" aria-label="Utility actions">
+              <button class="btn p-0" type="button">
+                <svg class="icon" width="24" height="24"><use xlink:href="#svg-shopping-bag"></use></svg>
+              </button>
+              <button class="btn p-0" type="button">
+                <svg class="icon" width="24" height="24"><use xlink:href="#svg-comment"></use></svg>
+              </button>
+              <button class="btn p-0" type="button">
+                <svg class="icon" width="24" height="24"><use xlink:href="#svg-notification"></use></svg>
+              </button>
+            </div>
           </div>
         </div>
       </nav>
@@ -52,26 +69,23 @@ export default async function init({ hub, root, utils }) {
     right: root.querySelector('[data-slot="right"]')
   };
   const brand = root.querySelector('[data-role="brand"]');
-
-  const registry = new Map(); // id -> { onClick }
+  const registry = new Map();
 
   function renderButton({ id, label }) {
     const btnHtml = `<button class="btn btn-outline-light btn-sm" data-role="btn" data-id="${id}">${label}</button>`;
     slots.right.insertAdjacentHTML('beforeend', btnHtml);
   }
 
-  // Delegated clicks
   utils.delegate(root, 'click', '[data-role="btn"]', (e, el) => {
     const id = el.getAttribute('data-id');
     const rec = registry.get(id);
     if (rec?.onClick) rec.onClick(e);
   });
 
-  // Public API
   const api = {
-    setBrand({ text = 'NOIZ', href = '#' } = {}) {
+    setBrand({ text = 'Vikinger', href = '#' } = {}) {
       brand.setAttribute('href', href);
-      brand.querySelector('.brand-mark').textContent = text;
+      brand.querySelector('.brand-text').textContent = text;
     },
     addButton({ id, label, onClick } = {}) {
       if (!id || !label) return;
@@ -86,7 +100,6 @@ export default async function init({ hub, root, utils }) {
     }
   };
 
-  // Example: auto-wire messages button if module exists
   if (hub.isReady('messages')) {
     api.addButton({
       id: 'messages',
