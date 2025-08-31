@@ -1,7 +1,13 @@
-#chat-widget-messages .avatar-frame {
-  position: relative;
+#chat-widget-messages .user-status-avatar {
   width: var(--avatar-size);
   height: var(--avatar-size);
+  overflow: visible;
+}
+
+#chat-widget-messages .avatar-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
   overflow: visible;
 }
 
@@ -33,9 +39,12 @@
 }
 
 #chat-widget-messages .avatar-img {
+  display: block;
   width: 100%;
   height: 100%;
   border: none;
+  position: relative;
+  z-index: 0;
 }
 
 #chat-widget-messages .avatar-frame::after {
@@ -51,6 +60,7 @@
   background-size: contain;
   transform: translate(-50%, -50%);
   pointer-events: none;
+  z-index: 1;
   opacity: 0;
   transition: opacity 0.2s ease-in-out;
 }
