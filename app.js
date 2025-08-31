@@ -13,9 +13,9 @@ const app = {
       };
     },
   },
-  loadModules: {
+  async loadModules() {
     const modules = document.querySelectorAll('module[data-module]');
-    await Promise.all(Array.from(modules).map(async (m) => {
+    for (const m of modules) {
       const name = m.dataset.module;
       try {
         const response = await fetch(`module/${name}/${name}.html`);
@@ -23,11 +23,23 @@ const app = {
           throw new Error(`HTTP ${response.status}`);
         }
         const html = await response.text();
-        m.innerHTML = html;
+
+        // Inject the fetched markup directly before the placeholder so it becomes
+        // part of the surrounding document structure. Using a temporary container
+        // avoids leaving behind stray wrapper elements and ensures trailing nodes
+        // like the settings cog remain intact.
+        const tmp = document.createElement('div');
+        tmp.innerHTML = html;
+        const first = tmp.firstElementChild;
+        while (tmp.firstChild) {
+          m.parentNode.insertBefore(tmp.firstChild, m);
+        }
+        m.remove();
+
         try {
-          const module = await import(`../module/${name}/${name}.js`);
-          if (module.default) {
-            await module.default({ root: m, props: {} });
+          const mod = await import(`./module/${name}/${name}.js`);
+          if (mod.default) {
+            await mod.default({ root: first, props: {} });
           }
         } catch (e) {
           console.error(`Failed to load module ${name}`, e);
@@ -35,7 +47,7 @@ const app = {
       } catch (e) {
         console.error(`Failed to fetch module ${name}`, e);
       }
-    }));
+    }
   },
 
 };
