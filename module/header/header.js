@@ -64,15 +64,82 @@ export default async function init({ hub, root, utils }) {
               <a href="#" class="quest-link">Learn more</a>
             </div>
             <div class="quest-body p-3">
-              <div class="quest-thumb">
-                <img src="images/home-icon.svg" alt="Quest item">
+              <div class="quest-item">
+                <div class="quest-thumb">
+                  <img src="images/home-icon.svg" alt="Quest item">
+                </div>
+                <div class="quest-info flex-grow-1">
+                  <p class="quest-item-title">Obsidian Six Item Pack</p>
+                  <p class="quest-item-desc">Watch the completion of 30 Sea of Thieves Arena matches</p>
+                  <div class="quest-progress-wrap">
+                    <div class="quest-progress-bar"><div class="quest-progress" style="width:66%"></div></div>
+                    <div class="quest-progress-text">20 / 30</div>
+                  </div>
+                </div>
               </div>
-              <div class="quest-info flex-grow-1">
-                <p class="quest-item-title">Obsidian Six Item Pack</p>
-                <p class="quest-item-desc">Watch the completion of 30 Sea of Thieves Arena matches</p>
-                <div class="quest-progress-wrap">
-                  <div class="quest-progress-bar"><div class="quest-progress" style="width:66%"></div></div>
-                  <div class="quest-progress-text">20 / 30</div>
+              <div class="quest-item">
+                <div class="quest-thumb">
+                  <img src="images/home-icon.svg" alt="Quest item">
+                </div>
+                <div class="quest-info flex-grow-1">
+                  <p class="quest-item-title">Midnight Monkey Outfit</p>
+                  <p class="quest-item-desc">Complete 10 arena matches</p>
+                  <div class="quest-progress-wrap">
+                    <div class="quest-progress-bar"><div class="quest-progress" style="width:50%"></div></div>
+                    <div class="quest-progress-text">5 / 10</div>
+                  </div>
+                </div>
+              </div>
+              <div class="quest-item">
+                <div class="quest-thumb">
+                  <img src="images/home-icon.svg" alt="Quest item">
+                </div>
+                <div class="quest-info flex-grow-1">
+                  <p class="quest-item-title">Golden Sail Set</p>
+                  <p class="quest-item-desc">Win 12 adventure battles</p>
+                  <div class="quest-progress-wrap">
+                    <div class="quest-progress-bar"><div class="quest-progress" style="width:60%"></div></div>
+                    <div class="quest-progress-text">12 / 20</div>
+                  </div>
+                </div>
+              </div>
+              <div class="quest-item">
+                <div class="quest-thumb">
+                  <img src="images/home-icon.svg" alt="Quest item">
+                </div>
+                <div class="quest-info flex-grow-1">
+                  <p class="quest-item-title">Ruby Eye Parrot</p>
+                  <p class="quest-item-desc">Find 5 hidden treasures</p>
+                  <div class="quest-progress-wrap">
+                    <div class="quest-progress-bar"><div class="quest-progress" style="width:20%"></div></div>
+                    <div class="quest-progress-text">1 / 5</div>
+                  </div>
+                </div>
+              </div>
+              <div class="quest-item">
+                <div class="quest-thumb">
+                  <img src="images/home-icon.svg" alt="Quest item">
+                </div>
+                <div class="quest-info flex-grow-1">
+                  <p class="quest-item-title">Silver Compass</p>
+                  <p class="quest-item-desc">Collect 50 seashell tokens</p>
+                  <div class="quest-progress-wrap">
+                    <div class="quest-progress-bar"><div class="quest-progress" style="width:28%"></div></div>
+                    <div class="quest-progress-text">14 / 50</div>
+                  </div>
+                </div>
+              </div>
+              <div class="quest-item">
+                <div class="quest-thumb">
+                  <img src="images/home-icon.svg" alt="Quest item">
+                </div>
+                <div class="quest-info flex-grow-1">
+                  <p class="quest-item-title">Emerald Cutlass</p>
+                  <p class="quest-item-desc">Defeat 25 ghost ships</p>
+                  <div class="quest-progress-wrap">
+                    <div class="quest-progress-bar"><div class="quest-progress" style="width:0%"></div></div>
+                    <div class="quest-progress-text">0 / 25</div>
+                  </div>
                 </div>
               </div>
             </div>
