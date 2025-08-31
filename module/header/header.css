@@ -27,6 +27,7 @@
 [data-role="header"] .header-brand .logo {
   width: 40px;
   height: 40px;
+  fill: #fff;
 }
 
 [data-role="header"] .header-brand-text {
@@ -49,17 +50,32 @@
   fill: #fff;
 }
 
+[data-role="header"] .navigation .icon-dots {
+  fill: #fff;
+}
+
 [data-role="header"] .navigation .menu-main {
   display: flex;
   margin-left: 30px;
-  gap: 30px;
+  gap: 20px;
   align-items: center;
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
 }
 
 [data-role="header"] .menu-main-item-link {
   color: #fff;
   font-family: "Rajdhani", sans-serif;
   font-weight: 500;
+  background: none;
+  border: none;
+  padding: 0;
+  text-decoration: none;
+}
+
+[data-role="header"] .menu-main-item-link.dropdown-toggle::after {
+  display: none;
 }
 
 [data-role="header"] .menu-main-item-link:hover,

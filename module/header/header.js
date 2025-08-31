@@ -27,9 +27,9 @@ export default async function init({ hub, root, utils }) {
             <li class="menu-main-item"><a class="menu-main-item-link" href="#">News</a></li>
             <li class="menu-main-item"><a class="menu-main-item-link" href="#">Faqs</a></li>
             <li class="menu-main-item dropdown">
-              <button class="menu-main-item-link dropdown-toggle" id="headerMore" data-bs-toggle="dropdown" aria-expanded="false" type="button">
+              <a class="menu-main-item-link dropdown-toggle" id="headerMore" href="#" data-bs-toggle="dropdown" aria-expanded="false" role="button">
                 <svg class="icon-dots" width="20" height="20"><use xlink:href="#svg-dots"></use></svg>
-              </button>
+              </a>
               <ul class="dropdown-menu" aria-labelledby="headerMore">
                 <li><a class="dropdown-item" href="#">About Us</a></li>
                 <li><a class="dropdown-item" href="#">Our Blog</a></li>
@@ -62,6 +62,9 @@ export default async function init({ hub, root, utils }) {
 
       <div class="header-actions">
         <div class="action-list" data-slot="right" aria-label="Utility actions">
+          <button class="action-list-item" type="button">
+            <svg class="icon" width="24" height="24"><use xlink:href="#svg-settings"></use></svg>
+          </button>
           <button class="action-list-item" type="button">
             <svg class="icon" width="24" height="24"><use xlink:href="#svg-shopping-bag"></use></svg>
           </button>
