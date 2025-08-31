@@ -17,8 +17,8 @@ export default async function init({ hub, root, utils }) {
       </div>
 
       <div class="header-actions">
-        <button class="sidemenu-trigger" type="button">
-          <svg class="icon-grid" width="20" height="20"><use xlink:href="#svg-grid"></use></svg>
+        <button class="sidemenu-trigger" type="button" aria-label="Menu">
+          <svg class="icon-hamburger" width="20" height="20"><use xlink:href="#svg-hamburger"></use></svg>
         </button>
 
         <nav class="navigation">
@@ -43,7 +43,7 @@ export default async function init({ hub, root, utils }) {
 
       <div class="header-actions search-bar">
         <div class="interactive-input" data-role="search">
-          <input type="text" placeholder="Search for messages or groups" aria-label="Search">
+          <input type="text" placeholder="Search here for people or groups" aria-label="Search">
           <div class="interactive-input-icon-wrap">
             <svg class="interactive-input-icon" width="20" height="20"><use xlink:href="#svg-magnifying-glass"></use></svg>
           </div>

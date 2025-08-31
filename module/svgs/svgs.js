@@ -120,6 +120,14 @@ const SPRITE_RAW = `
   </svg>
   <!-- /SVG LOGO VIKINGER -->
 
+  <!-- SVG HAMBURGER -->
+  <svg style="display: none;">
+    <symbol id="svg-hamburger" viewBox="0 0 20 20" preserveAspectRatio="xMinYMin meet">
+      <path d="M2 4h16v2H2V4zm0 5h16v2H2V9zm0 5h16v2H2v-2z"/>
+    </symbol>
+  </svg>
+  <!-- /SVG HAMBURGER -->
+
   <!-- SVG GRID -->
   <svg style="display: none;">
     <symbol id="svg-grid" viewBox="0 0 20 20" preserveAspectRatio="xMinYMin meet">
