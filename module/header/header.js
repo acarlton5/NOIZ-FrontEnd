@@ -61,10 +61,10 @@ export default async function init({ hub, root, utils }) {
       </div>
 
       <div class="header-actions">
+        <button class="action-list-item settings-button" type="button">
+          <svg class="icon" width="24" height="24"><use xlink:href="#svg-settings"></use></svg>
+        </button>
         <div class="action-list" data-slot="right" aria-label="Utility actions">
-          <button class="action-list-item" type="button">
-            <svg class="icon" width="24" height="24"><use xlink:href="#svg-settings"></use></svg>
-          </button>
           <button class="action-list-item" type="button">
             <svg class="icon" width="24" height="24"><use xlink:href="#svg-shopping-bag"></use></svg>
           </button>

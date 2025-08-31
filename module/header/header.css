@@ -180,6 +180,9 @@
   padding: 0;
 }
 
-[data-role="header"] .action-list .icon {
+[data-role="header"] .settings-button {
+  margin-left: 30px;
+}
+[data-role="header"] .action-list-item .icon {
   fill: #fff;
 }
