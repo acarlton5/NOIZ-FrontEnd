@@ -1,0 +1,18 @@
+#chat-widget-messages .avatar-frame {
+  position: relative;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+#chat-widget-messages .avatar-img,
+#chat-widget-messages .avatar-frame-img {
+  width: 100%;
+  height: 100%;
+}
+
+#chat-widget-messages .avatar-frame-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
