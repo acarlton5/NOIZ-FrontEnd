@@ -1,6 +1,17 @@
+// module/svgs/svgs.js
+// Injects your SVG sprite directly into <module data-module="svgs">.
+// Works with a full <svg>…</svg> sprite OR bare <symbol> tags. Safe to hot-reload (dedupes by id).
 
-    const svgWrap = document.createElement('div'),
-      svgData = `
+/**
+ * PASTE your existing sprite content below, exactly as-is.
+ *   EITHER:
+ *     <svg xmlns="http://www.w3.org/2000/svg" style="display:none"> ... <symbol id="...">...</symbol> ... </svg>
+ *   OR:
+ *     <symbol id="...">...</symbol>
+ *     <symbol id="...">...</symbol>
+ *     (bare symbols; this file will wrap them)
+ */
+const SPRITE_RAW = `
   <!-- SVG FACEBOOK -->
   <svg style="display: none;">
     <symbol id="svg-facebook" viewBox="0 0 18 18" preserveAspectRatio="xMinYMin meet">
@@ -744,7 +755,6 @@
     </symbol>
   </svg>
   <!-- /SVG LOGIN -->
-`;
+`
 
-svgWrap.innerHTML = svgData;
-document.body.appendChild(svgWrap);
+    document.querySelector('module[data-module="svgs"]').innerHTML = SPRITE_RAW;

@@ -1,0 +1,48 @@
+/* module/header/header.css */
+/* Dark theme header tuned to your palette / spacing from the provided BS4 design. */
+
+:root {
+  /* subtle border/overlay tints */
+  --noiz-border: rgba(255,255,255,0.06);
+}
+
+/* Container */
+[data-role="header"] .navbar {
+  background-color: #161b28 !important; /* your body base */
+  border-bottom: 1px solid var(--noiz-border);
+  min-height: 64px;
+}
+
+/* Brand */
+[data-role="header"] .navbar-brand .brand-mark {
+  font-family: "Rajdhani", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+  font-weight: 700;
+  letter-spacing: .5px;
+}
+
+/* Left (nav) */
+[data-role="header"] .nav-link.btn {
+  color: #adb5bd;
+}
+[data-role="header"] .nav-link.btn:hover,
+[data-role="header"] .nav-link.btn:focus {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Right (utility) buttons */
+[data-role="header"] .btn.btn-outline-light.btn-sm {
+  border-color: rgba(255,255,255,.25);
+}
+
+/* Brand-right slot spacing (e.g., compact icons or quick actions) */
+[data-role="header"] [data-slot="brand-right"] {
+  gap: .5rem;
+}
+
+/* Responsive tweaks (keep it light) */
+@media (max-width: 576px) {
+  [data-role="header"] .navbar-brand .brand-mark {
+    font-size: 1rem;
+  }
+}
