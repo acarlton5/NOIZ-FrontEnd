@@ -60,9 +60,8 @@
   content: "";
   position: absolute;
   left: 0;
-  /* Offset by the chat widget's vertical padding so the marker aligns
-     with the avatar center instead of the message container */
-  top: calc(0.875rem + var(--avatar-size) / 2);
+  /* Center relative to message height so it lines up with the avatar */
+  top: 50%;
   width: var(--indicator-size);
   background-color: var(--accent);
   opacity: 0;
