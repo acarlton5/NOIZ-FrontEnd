@@ -100,16 +100,16 @@
 
 [data-role="header"] .search-bar .interactive-input input {
   width: 100%;
-  background-color: #fff;
-  color: #212529;
-  border: 1px solid #ced4da;
+  background-color: #1d2333;
+  color: #fff;
+  border: 1px solid #3f485f;
   border-radius: 50rem;
   padding-right: 3.75rem;
   padding-left: 3.75rem;
 }
 
 [data-role="header"] .search-bar .interactive-input input::placeholder {
-  color: #6c757d;
+  color: #9aa4bf;
 }
 
 [data-role="header"] .search-bar .interactive-input-icon-wrap,
