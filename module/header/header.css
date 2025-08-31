@@ -189,6 +189,24 @@
 
 [data-role="header"] .quest-header {
   border-bottom: 1px solid #e0e0e0;
+  position: relative;
+  overflow: hidden;
+}
+
+[data-role="header"] .quest-banner {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(8px);
+  transform: scale(1.1);
+  z-index: 0;
+}
+
+[data-role="header"] .quest-header > *:not(.quest-banner) {
+  position: relative;
+  z-index: 1;
 }
 
 [data-role="header"] .quest-title {

@@ -63,6 +63,7 @@ export default async function init({ hub, root, utils }) {
                 <h2 class="accordion-header" id="campaignOneHeading">
                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#campaignOne" aria-expanded="false" aria-controls="campaignOne">
                     <div class="quest-header p-3 w-100">
+                      <img class="quest-banner" src="https://images.igdb.com/igdb/image/upload/t_1080p/ar35sq.webp" alt="Sea of Thieves banner">
                       <p class="quest-title mb-1">Mixer Loot - Sea of Thieves</p>
                       <p class="quest-desc">Earn in-game content by watching exciting moments on Mixer.</p>
                       <a href="#" class="quest-link">Learn more</a>
@@ -120,6 +121,7 @@ export default async function init({ hub, root, utils }) {
                 <h2 class="accordion-header" id="campaignTwoHeading">
                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#campaignTwo" aria-expanded="false" aria-controls="campaignTwo">
                     <div class="quest-header p-3 w-100">
+                      <img class="quest-banner" src="https://images.igdb.com/igdb/image/upload/t_1080p/ar8eh.webp" alt="Dead by Daylight banner">
                       <p class="quest-title mb-1">Mixer Loot - Dead by Daylight</p>
                       <p class="quest-desc">Earn rewards by watching spine-chilling matches.</p>
                       <a href="#" class="quest-link">Learn more</a>
