@@ -63,15 +63,15 @@
   /* Center relative to message height so it lines up with the avatar */
   top: 50%;
   width: var(--indicator-size);
+  height: var(--indicator-size);
   background-color: var(--accent);
+  border-radius: 50%;
   opacity: 0;
   transform: translate(-50%, -50%);
   transition: all 0.2s ease-in-out;
 }
 
 #chat-widget-messages .chat-widget-message.has-notification::before {
-  height: var(--indicator-size);
-  border-radius: 50%;
   opacity: 1;
 }
 
@@ -79,7 +79,7 @@
 #chat-widget-messages .chat-widget-message.active::before {
   height: calc(var(--avatar-size) - 0.5rem);
   width: var(--indicator-bar-width);
-  border-radius: var(--indicator-size);
+  border-radius: var(--indicator-bar-width);
   opacity: 1;
-  transform: translate(0, -50%);
+  transform: translate(-50%, -50%);
 }
