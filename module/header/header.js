@@ -54,7 +54,7 @@ export default async function init({ hub, root, utils }) {
 
       <div class="header-actions">
         <div class="quest dropdown">
-          <button class="action-list-item quest-trigger" id="questDropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <button class="action-list-item quest-trigger" id="questDropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
             <svg class="icon" width="24" height="24"><use xlink:href="#svg-questbox"></use></svg>
           </button>
           <div class="dropdown-menu quest-menu" aria-labelledby="questDropdown">
