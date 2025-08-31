@@ -45,9 +45,19 @@
   left: 50%;
   width: var(--frame-size);
   height: var(--frame-size);
-  background: var(--frame) no-repeat center/contain;
+  background-image: var(--frame);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
   transform: translate(-50%, -50%);
   pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+#chat-widget-messages .chat-widget-message:hover .avatar-frame::after,
+#chat-widget-messages .chat-widget-message.active .avatar-frame::after {
+  opacity: 1;
 }
 
 #chat-widget-messages {
