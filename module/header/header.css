@@ -100,16 +100,16 @@
 
 [data-role="header"] .search-bar .interactive-input input {
   width: 100%;
-  background-color: #1d2333;
-  color: #fff;
-  border: 1px solid #3f485f;
+  background-color: #fff;
+  color: #212529;
+  border: 1px solid #d1d7e3;
   border-radius: 50rem;
   padding-right: 3.75rem;
   padding-left: 3.75rem;
 }
 
 [data-role="header"] .search-bar .interactive-input input::placeholder {
-  color: #9aa4bf;
+  color: #6c757d;
 }
 
 [data-role="header"] .search-bar .interactive-input-icon-wrap,
@@ -160,15 +160,15 @@
 
 [data-role="header"] .quest-menu {
   min-width: 360px;
-  background-color: #151822;
-  color: #fff;
-  border: none;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  background-color: #fff;
+  color: #212529;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   padding: 0;
 }
 
 [data-role="header"] .quest-header {
-  border-bottom: 1px solid #262b3f;
+  border-bottom: 1px solid #e0e0e0;
 }
 
 [data-role="header"] .quest-title {
@@ -186,7 +186,7 @@
   font-family: "Rajdhani", sans-serif;
   font-size: 0.75rem;
   font-weight: 600;
-  color: #00c6ff;
+  color: #6330f5;
   text-decoration: none;
   text-transform: uppercase;
 }
@@ -232,20 +232,21 @@
 [data-role="header"] .quest-progress-bar {
   flex-grow: 1;
   height: 4px;
-  background-color: #262b3f;
+  background-color: #e9ecef;
   border-radius: 50rem;
   overflow: hidden;
 }
 
 [data-role="header"] .quest-progress {
   height: 100%;
-  background-color: #00c6ff;
+  background-color: #6330f5;
 }
 
 [data-role="header"] .quest-progress-text {
   font-family: "Rajdhani", sans-serif;
   font-size: 0.75rem;
   font-weight: 600;
+  color: #212529;
 }
 
 [data-role="header"] .action-list {

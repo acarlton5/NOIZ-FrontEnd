@@ -461,7 +461,7 @@ button {
 label {
   display: block;
   margin: 0;
-  color: #fff;
+  color: #212529;
   line-height: 1em;
 }
 
@@ -480,9 +480,9 @@ input[type="text"],
 input[type="password"],
 textarea,
 select {
-  background-color: #1d2333;
-  border: 1px solid #3f485f;
-  color: #fff;
+  background-color: #fff;
+  border: 1px solid #d1d7e3;
+  color: #212529;
   transition: border-color .2s ease-in-out;
 }
 
@@ -490,7 +490,7 @@ input[type="text"]:focus,
 input[type="password"]:focus,
 textarea:focus,
 select:focus {
-  border-color: #7750f8;
+  border-color: #6330f5;
 }
 
 input[type="text"],
@@ -501,7 +501,7 @@ input[type="password"] {
 
 input[type="text"]::placeholder,
 input[type="password"]::placeholder {
-  color: #9aa4bf;
+  color: #6c757d;
   font-size: 0.875rem;
   font-weight: 500;
 }
