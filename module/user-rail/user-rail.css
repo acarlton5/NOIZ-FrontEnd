@@ -53,7 +53,7 @@
 #chat-widget-messages .chat-widget-message::before {
   content: "";
   position: absolute;
-  left: 16px;
+  left: 0;
   top: 0.25rem;
   bottom: 0.25rem;
   width: 0.5rem;
@@ -61,6 +61,7 @@
   border-radius: 0.25rem;
   opacity: 0;
   transition: all 0.2s ease-in-out;
+  transform: translateX(-50%);
 }
 
 #chat-widget-messages .chat-widget-message.has-notification::before {
@@ -68,7 +69,7 @@
   bottom: auto;
   height: 0.5rem;
   border-radius: 50%;
-  transform: translateY(-50%);
+  transform: translate(-50%, -50%);
   opacity: 1;
 }
 
