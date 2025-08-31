@@ -1,5 +1,5 @@
 // module/header/header.js
-// Bootstrap 5 header styled to match the provided purple design.
+// Bootstrap 5 header styled to mirror the original NOIZ layout.
 // Provides a tiny API for setting the brand and adding utility buttons.
 // API:
 //   - setBrand({ text, href })
@@ -9,63 +9,67 @@
 export default async function init({ hub, root, utils }) {
   root.innerHTML = `
     <header data-role="header" class="header">
-      <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container-fluid">
-          <a class="navbar-brand d-flex align-items-center" href="#" data-role="brand">
-            <svg class="logo" width="40" height="40"><use xlink:href="#svg-logo-vikinger"></use></svg>
-            <span class="brand-text">NOIZ</span>
-          </a>
+      <div class="header-actions">
+        <a class="header-brand" href="#" data-role="brand">
+          <svg class="logo" width="40" height="40"><use xlink:href="#svg-logo-vikinger"></use></svg>
+          <h1 class="header-brand-text">NOIZ</h1>
+        </a>
+      </div>
 
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#noizHeaderNav" aria-controls="noizHeaderNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
+      <div class="header-actions">
+        <button class="sidemenu-trigger" type="button">
+          <svg class="icon-grid" width="20" height="20"><use xlink:href="#svg-grid"></use></svg>
+        </button>
 
-          <div class="collapse navbar-collapse" id="noizHeaderNav">
-            <ul class="navbar-nav align-items-center mb-2 mb-lg-0">
-              <li class="nav-item">
-                <button class="btn p-0 sidemenu-trigger" type="button">
-                  <svg class="icon-grid" width="20" height="20"><use xlink:href="#svg-grid"></use></svg>
-                </button>
-              </li>
-              <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">News</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Faqs</a></li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle p-0" href="#" id="headerMore" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <svg class="icon-dots" width="20" height="20"><use xlink:href="#svg-dots"></use></svg>
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="headerMore">
-                  <li><a class="dropdown-item" href="#">About Us</a></li>
-                  <li><a class="dropdown-item" href="#">Our Blog</a></li>
-                  <li><a class="dropdown-item" href="#">Contact Us</a></li>
-                  <li><a class="dropdown-item" href="#">Privacy Policy</a></li>
-                </ul>
-              </li>
-            </ul>
-
-            <form class="search-bar flex-grow-1 mx-lg-3 my-3 my-lg-0" role="search">
-              <div class="interactive-input" data-role="search">
-                <input class="form-control" type="text" placeholder="Search for messages or groups" aria-label="Search">
-                <div class="interactive-input-icon-wrap">
-                  <svg class="interactive-input-icon" width="20" height="20"><use xlink:href="#svg-magnifying-glass"></use></svg>
-                </div>
-                <div class="interactive-input-action" data-role="clear">
-                  <svg class="interactive-input-action-icon" width="16" height="16"><use xlink:href="#svg-cross-thin"></use></svg>
-                </div>
-              </div>
-            </form>
-
-            <div class="action-list d-flex align-items-center gap-3" data-slot="right" aria-label="Utility actions">
-              <button class="btn p-0" type="button">
-                <svg class="icon" width="24" height="24"><use xlink:href="#svg-shopping-bag"></use></svg>
+        <nav class="navigation">
+          <ul class="menu-main">
+            <li class="menu-main-item"><a class="menu-main-item-link" href="#">Home</a></li>
+            <li class="menu-main-item"><a class="menu-main-item-link" href="#">News</a></li>
+            <li class="menu-main-item"><a class="menu-main-item-link" href="#">Faqs</a></li>
+            <li class="menu-main-item dropdown">
+              <button class="menu-main-item-link dropdown-toggle" id="headerMore" data-bs-toggle="dropdown" aria-expanded="false" type="button">
+                <svg class="icon-dots" width="20" height="20"><use xlink:href="#svg-dots"></use></svg>
               </button>
-              <button class="btn p-0" type="button">
-                <svg class="icon" width="24" height="24"><use xlink:href="#svg-notification"></use></svg>
-              </button>
-            </div>
+              <ul class="dropdown-menu" aria-labelledby="headerMore">
+                <li><a class="dropdown-item" href="#">About Us</a></li>
+                <li><a class="dropdown-item" href="#">Our Blog</a></li>
+                <li><a class="dropdown-item" href="#">Contact Us</a></li>
+                <li><a class="dropdown-item" href="#">Privacy Policy</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="header-actions search-bar">
+        <div class="interactive-input" data-role="search">
+          <input type="text" placeholder="Search for messages or groups" aria-label="Search">
+          <div class="interactive-input-icon-wrap">
+            <svg class="interactive-input-icon" width="20" height="20"><use xlink:href="#svg-magnifying-glass"></use></svg>
+          </div>
+          <div class="interactive-input-action" data-role="clear">
+            <svg class="interactive-input-action-icon" width="16" height="16"><use xlink:href="#svg-cross-thin"></use></svg>
           </div>
         </div>
-      </nav>
+      </div>
+
+      <div class="header-actions">
+        <div class="progress-stat">
+          <p class="bar-progress-info mb-0">Next: <span class="bar-progress-text">0<span class="bar-progress-unit">exp</span></span></p>
+          <div class="progress-stat-bar"><div class="bar-progress" style="width:0%"></div></div>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <div class="action-list" data-slot="right" aria-label="Utility actions">
+          <button class="action-list-item" type="button">
+            <svg class="icon" width="24" height="24"><use xlink:href="#svg-shopping-bag"></use></svg>
+          </button>
+          <button class="action-list-item" type="button">
+            <svg class="icon" width="24" height="24"><use xlink:href="#svg-notification"></use></svg>
+          </button>
+        </div>
+      </div>
     </header>
   `;
 
@@ -95,12 +99,12 @@ export default async function init({ hub, root, utils }) {
   function renderButton({ id, label, icon }) {
     let btnHtml;
     if (icon) {
-      btnHtml = `<button class="btn p-0" data-role="btn" data-id="${id}">
+      btnHtml = `<button class="action-list-item" data-role="btn" data-id="${id}">
   <svg class="icon" width="24" height="24"><use xlink:href="${icon}"></use></svg>
 </button>`;
       slots.right.insertAdjacentHTML('afterbegin', btnHtml);
     } else {
-      btnHtml = `<button class="btn btn-outline-light btn-sm" data-role="btn" data-id="${id}">${label}</button>`;
+      btnHtml = `<button class="action-list-item btn btn-outline-light btn-sm" data-role="btn" data-id="${id}">${label}</button>`;
       slots.right.insertAdjacentHTML('beforeend', btnHtml);
     }
   }
@@ -114,7 +118,7 @@ export default async function init({ hub, root, utils }) {
   const api = {
     setBrand({ text = 'NOIZ', href = '#' } = {}) {
       brand.setAttribute('href', href);
-      brand.querySelector('.brand-text').textContent = text;
+      brand.querySelector('.header-brand-text').textContent = text;
     },
     addButton({ id, label, icon, onClick } = {}) {
       if (!id || (!label && !icon)) return;

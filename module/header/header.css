@@ -1,25 +1,35 @@
 /* module/header/header.css */
-/* Bootstrap 5 header styled to match the original purple design */
+/* Bootstrap 5 header styled to mirror the original purple design */
 
 [data-role="header"] {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 1000;
-}
-
-[data-role="header"] .navbar {
-  background-color: #6330f5;
   height: 80px;
+  z-index: 1000;
+  background-color: #6330f5;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
 }
 
-[data-role="header"] .navbar-brand .logo {
+[data-role="header"] .header-actions {
+  display: flex;
+  align-items: center;
+}
+
+[data-role="header"] .header-brand {
+  display: flex;
+  align-items: center;
+}
+
+[data-role="header"] .header-brand .logo {
   width: 40px;
   height: 40px;
 }
 
-[data-role="header"] .navbar-brand .brand-text {
+[data-role="header"] .header-brand-text {
   margin-left: 26px;
   color: #fff;
   font-family: "Titillium Web", sans-serif;
@@ -28,32 +38,39 @@
   text-transform: uppercase;
 }
 
-[data-role="header"] .nav-link {
+[data-role="header"] .sidemenu-trigger {
+  background: none;
+  border: none;
+  padding: 0;
+  margin-left: 30px;
+}
+
+[data-role="header"] .sidemenu-trigger .icon-grid {
+  fill: #fff;
+}
+
+[data-role="header"] .navigation .menu-main {
+  display: flex;
+  margin-left: 30px;
+  gap: 30px;
+  align-items: center;
+}
+
+[data-role="header"] .menu-main-item-link {
   color: #fff;
   font-family: "Rajdhani", sans-serif;
   font-weight: 500;
 }
 
-[data-role="header"] .nav-link:hover,
-[data-role="header"] .nav-link:focus {
+[data-role="header"] .menu-main-item-link:hover,
+[data-role="header"] .menu-main-item-link:focus {
   color: #fff;
   opacity: 0.85;
 }
 
-[data-role="header"] .sidemenu-trigger,
-[data-role="header"] .action-list .btn {
-  background: none;
-  border: none;
-  padding: 0;
-}
-
-[data-role="header"] .sidemenu-trigger .icon-grid,
-[data-role="header"] .action-list .icon {
-  fill: #fff;
-}
-
 [data-role="header"] .search-bar {
-  width: 45%;
+  flex: 1;
+  padding: 0 40px;
 }
 
 [data-role="header"] .search-bar .interactive-input {
@@ -111,4 +128,42 @@
 
 [data-role="header"] .search-bar .interactive-input.active .interactive-input-icon-wrap {
   display: none;
+}
+
+[data-role="header"] .progress-stat {
+  color: #fff;
+  font-family: "Rajdhani", sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+[data-role="header"] .progress-stat-bar {
+  width: 110px;
+  height: 4px;
+  background-color: #4f27d7;
+  border-radius: 50rem;
+  overflow: hidden;
+}
+
+[data-role="header"] .progress-stat-bar .bar-progress {
+  height: 100%;
+  background-color: #00c6ff;
+}
+
+[data-role="header"] .action-list {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-left: 30px;
+}
+
+[data-role="header"] .action-list-item {
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+[data-role="header"] .action-list .icon {
+  fill: #fff;
 }
