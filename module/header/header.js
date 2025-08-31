@@ -13,7 +13,7 @@ export default async function init({ hub, root, utils }) {
         <div class="container-fluid">
           <a class="navbar-brand d-flex align-items-center" href="#" data-role="brand">
             <svg class="logo" width="40" height="40"><use xlink:href="#svg-logo-vikinger"></use></svg>
-            <span class="brand-text">Vikinger</span>
+            <span class="brand-text">NOIZ</span>
           </a>
 
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#noizHeaderNav" aria-controls="noizHeaderNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,7 +28,7 @@ export default async function init({ hub, root, utils }) {
                 </button>
               </li>
               <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Careers</a></li>
+              <li class="nav-item"><a class="nav-link" href="#">News</a></li>
               <li class="nav-item"><a class="nav-link" href="#">Faqs</a></li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle p-0" href="#" id="headerMore" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -45,7 +45,7 @@ export default async function init({ hub, root, utils }) {
 
             <form class="search-bar flex-grow-1 mx-lg-3 my-3 my-lg-0" role="search">
               <div class="interactive-input" data-role="search">
-                <input class="form-control" type="text" placeholder="Search here for people or groups" aria-label="Search">
+                <input class="form-control" type="text" placeholder="Search for messages or groups" aria-label="Search">
                 <div class="interactive-input-icon-wrap">
                   <svg class="interactive-input-icon" width="20" height="20"><use xlink:href="#svg-magnifying-glass"></use></svg>
                 </div>
@@ -112,7 +112,7 @@ export default async function init({ hub, root, utils }) {
   });
 
   const api = {
-    setBrand({ text = 'Vikinger', href = '#' } = {}) {
+    setBrand({ text = 'NOIZ', href = '#' } = {}) {
       brand.setAttribute('href', href);
       brand.querySelector('.brand-text').textContent = text;
     },
