@@ -14,13 +14,12 @@ export default async function init({ hub, root, utils }) {
           <svg class="logo" width="40" height="40"><use xlink:href="#svg-logo-vikinger"></use></svg>
           <h1 class="header-brand-text">NOIZ</h1>
         </a>
-      </div>
-
-      <div class="header-actions">
         <button class="sidemenu-trigger" type="button" aria-label="Menu">
           <svg class="icon-hamburger" width="20" height="20"><use xlink:href="#svg-hamburger"></use></svg>
         </button>
+      </div>
 
+      <div class="header-actions">
         <nav class="navigation">
           <ul class="menu-main">
             <li class="menu-main-item"><a class="menu-main-item-link" href="#">Home</a></li>

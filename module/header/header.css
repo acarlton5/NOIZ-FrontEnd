@@ -87,7 +87,7 @@
 
 [data-role="header"] .search-bar {
   flex: 1;
-  padding: 0 40px;
+  padding: 0 0 0 40px;
 }
 
 [data-role="header"] .search-bar .interactive-input {
@@ -199,6 +199,6 @@
     display: block;
   }
   [data-role="header"] .search-bar {
-    padding: 0 20px;
+    padding: 0 0 0 20px;
   }
 }
