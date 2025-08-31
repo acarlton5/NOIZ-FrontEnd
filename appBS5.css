@@ -480,9 +480,9 @@ input[type="text"],
 input[type="password"],
 textarea,
 select {
-  background-color: #1d2333;
-  border: 1px solid #3f485f;
-  color: #fff;
+  background-color: #fff;
+  border: 1px solid #ced4da;
+  color: #212529;
   transition: border-color .2s ease-in-out;
 }
 

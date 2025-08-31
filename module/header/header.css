@@ -100,16 +100,16 @@
 
 [data-role="header"] .search-bar .interactive-input input {
   width: 100%;
-  background-color: #4f27d7;
-  color: #fff;
-  border: none;
+  background-color: #fff;
+  color: #212529;
+  border: 1px solid #ced4da;
   border-radius: 50rem;
   padding-right: 3.75rem;
   padding-left: 3.75rem;
 }
 
 [data-role="header"] .search-bar .interactive-input input::placeholder {
-  color: #d6ccff;
+  color: #6c757d;
 }
 
 [data-role="header"] .search-bar .interactive-input-icon-wrap,
@@ -130,7 +130,7 @@
 }
 
 [data-role="header"] .search-bar .interactive-input-icon {
-  fill: #fff;
+  fill: #6330f5;
 }
 
 [data-role="header"] .search-bar .interactive-input-action {
@@ -140,7 +140,7 @@
 }
 
 [data-role="header"] .search-bar .interactive-input-action-icon {
-  fill: #fff;
+  fill: #6330f5;
 }
 
 [data-role="header"] .search-bar .interactive-input.active .interactive-input-action {
