@@ -1,7 +1,16 @@
+#chat-widget-messages {
+  --avatar-size: 3rem;
+  --frame-size: calc(var(--avatar-size) + 0.5rem);
+  --indicator-size: 0.5rem;
+  --indicator-bar-width: 0.625rem;
+  overflow: visible;
+}
+
 #chat-widget-messages .avatar-frame {
   position: relative;
-  width: 3rem;
-  height: 3rem;
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  overflow: visible;
 }
 
 #chat-widget-messages .avatar-frame.online::before,
@@ -31,8 +40,7 @@
   background-color: #adafca;
 }
 
-#chat-widget-messages .avatar-img,
-#chat-widget-messages .avatar-frame-img {
+#chat-widget-messages .avatar-img {
   width: 100%;
   height: 100%;
   border: none;
@@ -40,15 +48,12 @@
 
 #chat-widget-messages .avatar-frame-img {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 50%;
+  left: 50%;
+  width: var(--frame-size);
+  height: var(--frame-size);
+  transform: translate(-50%, -50%);
   pointer-events: none;
-}
-
-#chat-widget-messages {
-  --avatar-size: 3rem;
-  --indicator-size: 0.5rem;
-  --indicator-bar-width: 0.625rem;
 }
 
 #chat-widget-messages .chat-widget-message {
