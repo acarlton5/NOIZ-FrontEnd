@@ -48,6 +48,7 @@
 #chat-widget-messages {
   --avatar-size: 3rem;
   --indicator-size: 0.5rem;
+  --indicator-bar-width: 0.625rem;
 }
 
 #chat-widget-messages .chat-widget-message {
@@ -78,6 +79,8 @@
 #chat-widget-messages .chat-widget-message:hover::before,
 #chat-widget-messages .chat-widget-message.active::before {
   height: calc(var(--avatar-size) - 0.5rem);
+  width: var(--indicator-bar-width);
   border-radius: var(--indicator-size);
   opacity: 1;
+  transform: translate(0, -50%);
 }
