@@ -73,12 +73,20 @@
   opacity: 1;
 }
 
-#chat-widget-messages .chat-widget-message:hover::before,
-#chat-widget-messages .chat-widget-message.active::before {
+#chat-widget-messages .chat-widget-message:hover::before {
   top: 0.25rem;
   bottom: 0.25rem;
   height: auto;
   border-radius: 0.25rem;
   transform: none;
+  opacity: 1;
+}
+
+#chat-widget-messages .chat-widget-message.active::before {
+  top: 50%;
+  bottom: auto;
+  height: 50%;
+  border-radius: 0.25rem;
+  transform: translate(-50%, -50%);
   opacity: 1;
 }
