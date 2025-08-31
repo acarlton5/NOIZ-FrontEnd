@@ -14067,7 +14067,8 @@ figure > img {
 }
 
 .header .header-actions.search-bar {
-  width: 30%;
+  flex: 1 1 0;
+  min-width: 0;
 }
 
 .header .header-actions.search-bar .header-search-dropdown {
@@ -14230,7 +14231,8 @@ figure > img {
     margin-right: 28px;
   }
   .header .header-actions.search-bar {
-    width: 50%;
+    flex: 1 1 0;
+    min-width: 0;
     margin-right: 26px;
   }
 }
@@ -14253,7 +14255,8 @@ figure > img {
     display: none;
   }
   .header .header-actions.search-bar {
-    width: 80%;
+    flex: 1 1 0;
+    min-width: 0;
   }
   .floaty-bar.logged-out {
     display: flex;
