@@ -199,8 +199,8 @@
   [data-role="header"] .navigation {
     display: none;
   }
-  [data-role="header"] .sidemenu-trigger {
-    display: block;
+  [data-role="header"] .header-actions .sidemenu-trigger {
+    display: flex;
   }
   [data-role="header"] .search-bar {
     padding: 0 0 0 20px;
