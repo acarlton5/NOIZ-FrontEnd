@@ -1,31 +1,71 @@
 // module/header/header.js
-// Bootstrap 5 header (no dropdowns) with an API other modules can use.
+// Bootstrap 5 header styled to match the provided purple design.
+// Provides a tiny API for setting the brand and adding utility buttons.
 // API:
-//   - setTitle(text)
 //   - setBrand({ text, href })
-//   - addButton({ id, label, onClick, placement: 'left'|'right'|'brand-right' })
+//   - addButton({ id, label, onClick })
 //   - removeButton(id)
 
 export default async function init({ hub, root, utils }) {
   root.innerHTML = `
     <header data-role="header" class="header">
-      <nav class="navbar navbar-dark bg-dark navbar-expand-md border-bottom border-opacity-10">
+      <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
-          <a class="navbar-brand d-flex align-items-center gap-2" href="#" data-role="brand">
-            <span class="brand-mark">NOIZ</span>
+          <a class="navbar-brand d-flex align-items-center" href="#" data-role="brand">
+            <svg class="logo" width="40" height="40"><use xlink:href="#svg-logo-vikinger"></use></svg>
+            <span class="brand-text">Vikinger</span>
           </a>
 
-          <div class="d-flex align-items-center gap-2" data-slot="brand-right" aria-label="Brand actions"></div>
-
-          <button class="navbar-toggler" type="button"
-                  data-bs-toggle="collapse" data-bs-target="#noizHeaderNav"
-                  aria-controls="noizHeaderNav" aria-expanded="false" aria-label="Toggle navigation">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#noizHeaderNav" aria-controls="noizHeaderNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
 
           <div class="collapse navbar-collapse" id="noizHeaderNav">
-            <ul class="navbar-nav me-auto" data-slot="left" aria-label="Primary navigation"></ul>
-            <div class="d-flex align-items-center gap-2" data-slot="right" aria-label="Utility actions"></div>
+            <ul class="navbar-nav align-items-center mb-2 mb-lg-0">
+              <li class="nav-item">
+                <button class="btn p-0 sidemenu-trigger" type="button">
+                  <svg class="icon-grid" width="20" height="20"><use xlink:href="#svg-grid"></use></svg>
+                </button>
+              </li>
+              <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="#">Careers</a></li>
+              <li class="nav-item"><a class="nav-link" href="#">Faqs</a></li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle p-0" href="#" id="headerMore" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <svg class="icon-dots" width="20" height="20"><use xlink:href="#svg-dots"></use></svg>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="headerMore">
+                  <li><a class="dropdown-item" href="#">About Us</a></li>
+                  <li><a class="dropdown-item" href="#">Our Blog</a></li>
+                  <li><a class="dropdown-item" href="#">Contact Us</a></li>
+                  <li><a class="dropdown-item" href="#">Privacy Policy</a></li>
+                </ul>
+              </li>
+            </ul>
+
+            <form class="search-bar flex-grow-1 mx-lg-3 my-3 my-lg-0" role="search">
+              <div class="interactive-input" data-role="search">
+                <input class="form-control" type="text" placeholder="Search here for people or groups" aria-label="Search">
+                <div class="interactive-input-icon-wrap">
+                  <svg class="interactive-input-icon" width="20" height="20"><use xlink:href="#svg-magnifying-glass"></use></svg>
+                </div>
+                <div class="interactive-input-action" data-role="clear">
+                  <svg class="interactive-input-action-icon" width="16" height="16"><use xlink:href="#svg-cross-thin"></use></svg>
+                </div>
+              </div>
+            </form>
+
+            <div class="action-list d-flex align-items-center gap-3" data-slot="right" aria-label="Utility actions">
+              <button class="btn p-0" type="button">
+                <svg class="icon" width="24" height="24"><use xlink:href="#svg-shopping-bag"></use></svg>
+              </button>
+              <button class="btn p-0" type="button">
+                <svg class="icon" width="24" height="24"><use xlink:href="#svg-comment"></use></svg>
+              </button>
+              <button class="btn p-0" type="button">
+                <svg class="icon" width="24" height="24"><use xlink:href="#svg-notification"></use></svg>
+              </button>
+            </div>
           </div>
         </div>
       </nav>
@@ -33,49 +73,49 @@ export default async function init({ hub, root, utils }) {
   `;
 
   const slots = {
-    left: root.querySelector('[data-slot="left"]'),
-    right: root.querySelector('[data-slot="right"]'),
-    brandRight: root.querySelector('[data-slot="brand-right"]'),
+    right: root.querySelector('[data-slot="right"]')
   };
   const brand = root.querySelector('[data-role="brand"]');
+  const registry = new Map();
 
-  const registry = new Map(); // id -> { placement, onClick }
+  const searchWrap = root.querySelector('[data-role="search"]');
+  const searchInput = searchWrap?.querySelector('input');
+  const clearBtn = searchWrap?.querySelector('[data-role="clear"]');
 
-  function renderButton({ id, label, placement }) {
-    const leftHtml = `<li class="nav-item"><button class="nav-link btn btn-link px-0" data-role="btn" data-id="${id}">${label}</button></li>`;
-    const btnHtml  = `<button class="btn btn-outline-light btn-sm" data-role="btn" data-id="${id}">${label}</button>`;
-
-    if (placement === 'left') {
-      slots.left.insertAdjacentHTML('beforeend', leftHtml);
-    } else if (placement === 'brand-right') {
-      slots.brandRight.insertAdjacentHTML('beforeend', btnHtml);
-    } else {
-      slots.right.insertAdjacentHTML('beforeend', btnHtml);
-    }
+  function updateSearch() {
+    if (!searchWrap || !searchInput) return;
+    searchWrap.classList.toggle('active', searchInput.value.length > 0);
   }
 
-  // Delegated clicks
+  searchInput?.addEventListener('input', updateSearch);
+  clearBtn?.addEventListener('click', () => {
+    if (!searchInput) return;
+    searchInput.value = '';
+    updateSearch();
+    searchInput.focus();
+  });
+
+  function renderButton({ id, label }) {
+    const btnHtml = `<button class="btn btn-outline-light btn-sm" data-role="btn" data-id="${id}">${label}</button>`;
+    slots.right.insertAdjacentHTML('beforeend', btnHtml);
+  }
+
   utils.delegate(root, 'click', '[data-role="btn"]', (e, el) => {
     const id = el.getAttribute('data-id');
     const rec = registry.get(id);
     if (rec?.onClick) rec.onClick(e);
   });
 
-  // Public API
   const api = {
-    setTitle(text) {
-      // Keep brand element but replace text
-      brand.querySelector('.brand-mark').textContent = text ?? '';
-    },
-    setBrand({ text = 'NOIZ', href = '#' } = {}) {
+    setBrand({ text = 'Vikinger', href = '#' } = {}) {
       brand.setAttribute('href', href);
-      brand.querySelector('.brand-mark').textContent = text;
+      brand.querySelector('.brand-text').textContent = text;
     },
-    addButton({ id, label, onClick, placement = 'right' } = {}) {
+    addButton({ id, label, onClick } = {}) {
       if (!id || !label) return;
       api.removeButton(id);
-      renderButton({ id, label, placement });
-      registry.set(id, { placement, onClick });
+      renderButton({ id, label });
+      registry.set(id, { onClick });
     },
     removeButton(id) {
       if (!registry.has(id)) return;
@@ -84,21 +124,18 @@ export default async function init({ hub, root, utils }) {
     }
   };
 
-  // Example: auto-wire messages button if module exists
   if (hub.isReady('messages')) {
     api.addButton({
       id: 'messages',
       label: 'Messages',
-      onClick: async () => hub.api.messages.open?.(),
-      placement: 'right'
+      onClick: async () => hub.api.messages.open?.()
     });
   } else {
     const off = hub.once('module:ready:messages', () => {
       api.addButton({
         id: 'messages',
         label: 'Messages',
-        onClick: async () => hub.api.messages.open?.(),
-        placement: 'right'
+        onClick: async () => hub.api.messages.open?.()
       });
     });
     utils.onCleanup(off);

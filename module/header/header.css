@@ -1,48 +1,112 @@
 /* module/header/header.css */
-/* Dark theme header tuned to your palette / spacing from the provided BS4 design. */
+/* Bootstrap 5 header styled to match the original purple design */
 
-:root {
-  /* subtle border/overlay tints */
-  --noiz-border: rgba(255,255,255,0.06);
+[data-role="header"] {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
-/* Container */
 [data-role="header"] .navbar {
-  background-color: #161b28 !important; /* your body base */
-  border-bottom: 1px solid var(--noiz-border);
-  min-height: 64px;
+  background-color: #6330f5;
+  height: 80px;
 }
 
-/* Brand */
-[data-role="header"] .navbar-brand .brand-mark {
-  font-family: "Rajdhani", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
-  font-weight: 700;
-  letter-spacing: .5px;
+[data-role="header"] .navbar-brand .logo {
+  width: 40px;
+  height: 40px;
 }
 
-/* Left (nav) */
-[data-role="header"] .nav-link.btn {
-  color: #adb5bd;
-}
-[data-role="header"] .nav-link.btn:hover,
-[data-role="header"] .nav-link.btn:focus {
+[data-role="header"] .navbar-brand .brand-text {
+  margin-left: 26px;
   color: #fff;
-  text-decoration: none;
+  font-family: "Titillium Web", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 900;
+  text-transform: uppercase;
 }
 
-/* Right (utility) buttons */
-[data-role="header"] .btn.btn-outline-light.btn-sm {
-  border-color: rgba(255,255,255,.25);
+[data-role="header"] .nav-link {
+  color: #fff;
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 500;
 }
 
-/* Brand-right slot spacing (e.g., compact icons or quick actions) */
-[data-role="header"] [data-slot="brand-right"] {
-  gap: .5rem;
+[data-role="header"] .nav-link:hover,
+[data-role="header"] .nav-link:focus {
+  color: #fff;
+  opacity: 0.85;
 }
 
-/* Responsive tweaks (keep it light) */
-@media (max-width: 576px) {
-  [data-role="header"] .navbar-brand .brand-mark {
-    font-size: 1rem;
-  }
+[data-role="header"] .sidemenu-trigger,
+[data-role="header"] .action-list .btn {
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+[data-role="header"] .sidemenu-trigger .icon-grid,
+[data-role="header"] .action-list .icon {
+  fill: #fff;
+}
+
+[data-role="header"] .search-bar {
+  width: 45%;
+}
+
+[data-role="header"] .search-bar .interactive-input {
+  position: relative;
+}
+
+[data-role="header"] .search-bar .interactive-input input {
+  width: 100%;
+  background-color: #4f27d7;
+  color: #fff;
+  border: none;
+  border-radius: 50rem;
+  padding-right: 3.75rem;
+}
+
+[data-role="header"] .search-bar .interactive-input input::placeholder {
+  color: #d6ccff;
+}
+
+[data-role="header"] .search-bar .interactive-input-icon-wrap,
+[data-role="header"] .search-bar .interactive-input-action {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+[data-role="header"] .search-bar .interactive-input-icon-wrap {
+  pointer-events: none;
+}
+
+[data-role="header"] .search-bar .interactive-input-icon {
+  fill: #fff;
+}
+
+[data-role="header"] .search-bar .interactive-input-action {
+  cursor: pointer;
+  display: none;
+}
+
+[data-role="header"] .search-bar .interactive-input-action-icon {
+  fill: #fff;
+}
+
+[data-role="header"] .search-bar .interactive-input.active .interactive-input-action {
+  display: flex;
+}
+
+[data-role="header"] .search-bar .interactive-input.active .interactive-input-icon-wrap {
+  display: none;
 }
