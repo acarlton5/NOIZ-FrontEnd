@@ -4,6 +4,32 @@
   height: 2.5rem;
 }
 
+#chat-widget-messages .avatar-frame.online::before,
+#chat-widget-messages .avatar-frame.offline::before,
+#chat-widget-messages .avatar-frame.away::before {
+  content: "";
+  position: absolute;
+  top: 0.1875rem;
+  left: -0.125rem;
+  width: 0.75rem;
+  height: 0.75rem;
+  border: 0.1875rem solid #1d2333;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+#chat-widget-messages .avatar-frame.online::before {
+  background-color: #40d04f;
+}
+
+#chat-widget-messages .avatar-frame.offline::before {
+  background-color: #f9515c;
+}
+
+#chat-widget-messages .avatar-frame.away::before {
+  background-color: #adafca;
+}
+
 #chat-widget-messages .avatar-img,
 #chat-widget-messages .avatar-frame-img {
   width: 100%;
