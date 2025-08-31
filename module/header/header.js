@@ -58,10 +58,23 @@ export default async function init({ hub, root, utils }) {
             <svg class="icon" width="24" height="24"><use xlink:href="#svg-questbox"></use></svg>
           </button>
           <div class="dropdown-menu quest-menu" aria-labelledby="questDropdown">
-            <div class="quest-item p-3">
+            <div class="quest-header p-3">
               <p class="quest-title mb-1">Mixer Loot - Sea of Thieves</p>
-              <p class="quest-desc mb-2">Earn in-game content by watching exciting moments on Mixer.</p>
-              <div class="quest-progress-bar"><div class="quest-progress" style="width:0%"></div></div>
+              <p class="quest-desc">Earn in-game content by watching exciting moments on Mixer.</p>
+              <a href="#" class="quest-link">Learn more</a>
+            </div>
+            <div class="quest-body p-3">
+              <div class="quest-thumb">
+                <img src="images/home-icon.svg" alt="Quest item">
+              </div>
+              <div class="quest-info flex-grow-1">
+                <p class="quest-item-title">Obsidian Six Item Pack</p>
+                <p class="quest-item-desc">Watch the completion of 30 Sea of Thieves Arena matches</p>
+                <div class="quest-progress-wrap">
+                  <div class="quest-progress-bar"><div class="quest-progress" style="width:66%"></div></div>
+                  <div class="quest-progress-text">20 / 30</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
