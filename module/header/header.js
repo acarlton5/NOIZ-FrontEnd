@@ -53,9 +53,17 @@ export default async function init({ hub, root, utils }) {
       </div>
 
       <div class="header-actions">
-        <div class="progress-stat">
-          <p class="bar-progress-info mb-0">Next: <span class="bar-progress-text">0<span class="bar-progress-unit">exp</span></span></p>
-          <div class="progress-stat-bar"><div class="bar-progress" style="width:0%"></div></div>
+        <div class="quest dropdown">
+          <button class="action-list-item quest-trigger" id="questDropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <svg class="icon" width="24" height="24"><use xlink:href="#svg-questbox"></use></svg>
+          </button>
+          <div class="dropdown-menu quest-menu" aria-labelledby="questDropdown">
+            <div class="quest-item p-3">
+              <p class="quest-title mb-1">Mixer Loot - Sea of Thieves</p>
+              <p class="quest-desc mb-2">Earn in-game content by watching exciting moments on Mixer.</p>
+              <div class="quest-progress-bar"><div class="quest-progress" style="width:0%"></div></div>
+            </div>
+          </div>
         </div>
       </div>
 
