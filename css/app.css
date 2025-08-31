@@ -9749,7 +9749,7 @@ figure > img {
   padding: 11px 20px;
 }
 
-.chat-widget.closed .chat-widget-messages .chat-widget-message:first-child {
+.chat-widget.closed .chat-widget-messages .chat-widget-message {
   padding-top: 20px;
 }
 
