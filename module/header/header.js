@@ -43,9 +43,16 @@ export default async function init({ hub, root, utils }) {
               </li>
             </ul>
 
-            <form class="search-bar flex-grow-1 mx-lg-3 position-relative my-3 my-lg-0" role="search">
-              <input class="form-control" type="search" placeholder="Search here for people or groups" aria-label="Search">
-              <svg class="search-icon" width="20" height="20"><use xlink:href="#svg-magnifying-glass"></use></svg>
+            <form class="search-bar flex-grow-1 mx-lg-3 my-3 my-lg-0" role="search">
+              <div class="interactive-input dark" data-role="search">
+                <input class="form-control" type="text" placeholder="Search here for people or groups" aria-label="Search">
+                <div class="interactive-input-icon-wrap">
+                  <svg class="interactive-input-icon" width="20" height="20"><use xlink:href="#svg-magnifying-glass"></use></svg>
+                </div>
+                <div class="interactive-input-action" data-role="clear">
+                  <svg class="interactive-input-action-icon" width="16" height="16"><use xlink:href="#svg-cross-thin"></use></svg>
+                </div>
+              </div>
             </form>
 
             <div class="action-list d-flex align-items-center gap-3" data-slot="right" aria-label="Utility actions">
@@ -70,6 +77,23 @@ export default async function init({ hub, root, utils }) {
   };
   const brand = root.querySelector('[data-role="brand"]');
   const registry = new Map();
+
+  const searchWrap = root.querySelector('[data-role="search"]');
+  const searchInput = searchWrap?.querySelector('input');
+  const clearBtn = searchWrap?.querySelector('[data-role="clear"]');
+
+  function updateSearch() {
+    if (!searchWrap || !searchInput) return;
+    searchWrap.classList.toggle('active', searchInput.value.length > 0);
+  }
+
+  searchInput?.addEventListener('input', updateSearch);
+  clearBtn?.addEventListener('click', () => {
+    if (!searchInput) return;
+    searchInput.value = '';
+    updateSearch();
+    searchInput.focus();
+  });
 
   function renderButton({ id, label }) {
     const btnHtml = `<button class="btn btn-outline-light btn-sm" data-role="btn" data-id="${id}">${label}</button>`;
