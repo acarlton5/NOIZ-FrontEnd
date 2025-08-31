@@ -1,6 +1,7 @@
 @import "../module/landing/landing.css";
 @import "../module/loader/loader.css";
 @import "../module/header/header.css";
+@import "../module/user-rail/user-rail.css";
 
 /*------------
     RESET
@@ -9748,7 +9749,7 @@ figure > img {
   padding: 11px 20px;
 }
 
-.chat-widget.closed .chat-widget-messages .chat-widget-message:first-child {
+.chat-widget.closed .chat-widget-messages .chat-widget-message {
   padding-top: 20px;
 }
 
