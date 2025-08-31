@@ -38,20 +38,22 @@
   border: none;
 }
 
-#chat-widget-messages .avatar-frame-img {
-  width: var(--frame);
-  height: var(--frame);
-  border: none;
+#chat-widget-messages .avatar-frame::after {
+  content: "";
   position: absolute;
   top: 50%;
   left: 50%;
+  width: var(--frame-size);
+  height: var(--frame-size);
+  background: var(--frame) no-repeat center/contain;
   transform: translate(-50%, -50%);
   pointer-events: none;
 }
 
 #chat-widget-messages {
   --avatar-size: 3rem;
-  --frame: calc(var(--avatar-size) + 0.25rem);
+  --frame-size: calc(var(--avatar-size) + 0.25rem);
+  --frame: none;
   --indicator-size: 0.5rem;
   --indicator-bar-width: 0.625rem;
 }
