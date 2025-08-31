@@ -1,0 +1,9 @@
+{
+  "name": "noiz",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "npx live-server --port=5173 --no-browser .",
+    "test": "echo \"No tests configured\" && exit 0"
+  }
+}
