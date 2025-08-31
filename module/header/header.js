@@ -58,87 +58,117 @@ export default async function init({ hub, root, utils }) {
             <svg class="icon" width="24" height="24"><use xlink:href="#svg-questbox"></use></svg>
           </button>
           <div class="dropdown-menu quest-menu" aria-labelledby="questDropdown">
-            <div class="quest-header p-3">
-              <p class="quest-title mb-1">Mixer Loot - Sea of Thieves</p>
-              <p class="quest-desc">Earn in-game content by watching exciting moments on Mixer.</p>
-              <a href="#" class="quest-link">Learn more</a>
-            </div>
-            <div class="quest-body p-3">
-              <div class="quest-item">
-                <div class="quest-thumb">
-                  <img src="images/home-icon.svg" alt="Quest item">
-                </div>
-                <div class="quest-info flex-grow-1">
-                  <p class="quest-item-title">Obsidian Six Item Pack</p>
-                  <p class="quest-item-desc">Watch the completion of 30 Sea of Thieves Arena matches</p>
-                  <div class="quest-progress-wrap">
-                    <div class="quest-progress-bar"><div class="quest-progress" style="width:66%"></div></div>
-                    <div class="quest-progress-text">20 / 30</div>
+            <div class="quest-accordion accordion" id="questAccordion">
+              <div class="accordion-item quest-campaign">
+                <h2 class="accordion-header" id="campaignOneHeading">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#campaignOne" aria-expanded="false" aria-controls="campaignOne">
+                    <div class="quest-header p-3 w-100">
+                      <p class="quest-title mb-1">Mixer Loot - Sea of Thieves</p>
+                      <p class="quest-desc">Earn in-game content by watching exciting moments on Mixer.</p>
+                      <a href="#" class="quest-link">Learn more</a>
+                    </div>
+                  </button>
+                </h2>
+                <div id="campaignOne" class="accordion-collapse collapse" aria-labelledby="campaignOneHeading" data-bs-parent="#questAccordion">
+                  <div class="accordion-body p-0">
+                    <div class="quest-body p-3">
+                      <div class="quest-item">
+                        <div class="quest-thumb">
+                          <img src="images/home-icon.svg" alt="Quest item">
+                        </div>
+                        <div class="quest-info flex-grow-1">
+                          <p class="quest-item-title">Obsidian Six Item Pack</p>
+                          <p class="quest-item-desc">Watch the completion of 30 Sea of Thieves Arena matches</p>
+                          <div class="quest-progress-wrap">
+                            <div class="quest-progress-bar"><div class="quest-progress" style="width:66%"></div></div>
+                            <div class="quest-progress-text">20 / 30</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="quest-item">
+                        <div class="quest-thumb">
+                          <img src="images/home-icon.svg" alt="Quest item">
+                        </div>
+                        <div class="quest-info flex-grow-1">
+                          <p class="quest-item-title">Midnight Monkey Outfit</p>
+                          <p class="quest-item-desc">Complete 10 arena matches</p>
+                          <div class="quest-progress-wrap">
+                            <div class="quest-progress-bar"><div class="quest-progress" style="width:50%"></div></div>
+                            <div class="quest-progress-text">5 / 10</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="quest-item">
+                        <div class="quest-thumb">
+                          <img src="images/home-icon.svg" alt="Quest item">
+                        </div>
+                        <div class="quest-info flex-grow-1">
+                          <p class="quest-item-title">Golden Sail Set</p>
+                          <p class="quest-item-desc">Win 12 adventure battles</p>
+                          <div class="quest-progress-wrap">
+                            <div class="quest-progress-bar"><div class="quest-progress" style="width:60%"></div></div>
+                            <div class="quest-progress-text">12 / 20</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div class="quest-item">
-                <div class="quest-thumb">
-                  <img src="images/home-icon.svg" alt="Quest item">
-                </div>
-                <div class="quest-info flex-grow-1">
-                  <p class="quest-item-title">Midnight Monkey Outfit</p>
-                  <p class="quest-item-desc">Complete 10 arena matches</p>
-                  <div class="quest-progress-wrap">
-                    <div class="quest-progress-bar"><div class="quest-progress" style="width:50%"></div></div>
-                    <div class="quest-progress-text">5 / 10</div>
-                  </div>
-                </div>
-              </div>
-              <div class="quest-item">
-                <div class="quest-thumb">
-                  <img src="images/home-icon.svg" alt="Quest item">
-                </div>
-                <div class="quest-info flex-grow-1">
-                  <p class="quest-item-title">Golden Sail Set</p>
-                  <p class="quest-item-desc">Win 12 adventure battles</p>
-                  <div class="quest-progress-wrap">
-                    <div class="quest-progress-bar"><div class="quest-progress" style="width:60%"></div></div>
-                    <div class="quest-progress-text">12 / 20</div>
-                  </div>
-                </div>
-              </div>
-              <div class="quest-item">
-                <div class="quest-thumb">
-                  <img src="images/home-icon.svg" alt="Quest item">
-                </div>
-                <div class="quest-info flex-grow-1">
-                  <p class="quest-item-title">Ruby Eye Parrot</p>
-                  <p class="quest-item-desc">Find 5 hidden treasures</p>
-                  <div class="quest-progress-wrap">
-                    <div class="quest-progress-bar"><div class="quest-progress" style="width:20%"></div></div>
-                    <div class="quest-progress-text">1 / 5</div>
-                  </div>
-                </div>
-              </div>
-              <div class="quest-item">
-                <div class="quest-thumb">
-                  <img src="images/home-icon.svg" alt="Quest item">
-                </div>
-                <div class="quest-info flex-grow-1">
-                  <p class="quest-item-title">Silver Compass</p>
-                  <p class="quest-item-desc">Collect 50 seashell tokens</p>
-                  <div class="quest-progress-wrap">
-                    <div class="quest-progress-bar"><div class="quest-progress" style="width:28%"></div></div>
-                    <div class="quest-progress-text">14 / 50</div>
-                  </div>
-                </div>
-              </div>
-              <div class="quest-item">
-                <div class="quest-thumb">
-                  <img src="images/home-icon.svg" alt="Quest item">
-                </div>
-                <div class="quest-info flex-grow-1">
-                  <p class="quest-item-title">Emerald Cutlass</p>
-                  <p class="quest-item-desc">Defeat 25 ghost ships</p>
-                  <div class="quest-progress-wrap">
-                    <div class="quest-progress-bar"><div class="quest-progress" style="width:0%"></div></div>
-                    <div class="quest-progress-text">0 / 25</div>
+
+              <div class="accordion-item quest-campaign">
+                <h2 class="accordion-header" id="campaignTwoHeading">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#campaignTwo" aria-expanded="false" aria-controls="campaignTwo">
+                    <div class="quest-header p-3 w-100">
+                      <p class="quest-title mb-1">Mixer Loot - Dead by Daylight</p>
+                      <p class="quest-desc">Earn rewards by watching spine-chilling matches.</p>
+                      <a href="#" class="quest-link">Learn more</a>
+                    </div>
+                  </button>
+                </h2>
+                <div id="campaignTwo" class="accordion-collapse collapse" aria-labelledby="campaignTwoHeading" data-bs-parent="#questAccordion">
+                  <div class="accordion-body p-0">
+                    <div class="quest-body p-3">
+                      <div class="quest-item">
+                        <div class="quest-thumb">
+                          <img src="images/home-icon.svg" alt="Quest item">
+                        </div>
+                        <div class="quest-info flex-grow-1">
+                          <p class="quest-item-title">Escape Artist</p>
+                          <p class="quest-item-desc">Survive 15 trials</p>
+                          <div class="quest-progress-wrap">
+                            <div class="quest-progress-bar"><div class="quest-progress" style="width:40%"></div></div>
+                            <div class="quest-progress-text">6 / 15</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="quest-item">
+                        <div class="quest-thumb">
+                          <img src="images/home-icon.svg" alt="Quest item">
+                        </div>
+                        <div class="quest-info flex-grow-1">
+                          <p class="quest-item-title">Night Hunter</p>
+                          <p class="quest-item-desc">Hook 20 survivors</p>
+                          <div class="quest-progress-wrap">
+                            <div class="quest-progress-bar"><div class="quest-progress" style="width:25%"></div></div>
+                            <div class="quest-progress-text">5 / 20</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="quest-item">
+                        <div class="quest-thumb">
+                          <img src="images/home-icon.svg" alt="Quest item">
+                        </div>
+                        <div class="quest-info flex-grow-1">
+                          <p class="quest-item-title">Fog Explorer</p>
+                          <p class="quest-item-desc">Search 10 chests</p>
+                          <div class="quest-progress-wrap">
+                            <div class="quest-progress-bar"><div class="quest-progress" style="width:10%"></div></div>
+                            <div class="quest-progress-text">1 / 10</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

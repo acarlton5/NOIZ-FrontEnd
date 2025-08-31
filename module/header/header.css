@@ -167,6 +167,26 @@
   padding: 0;
 }
 
+[data-role="header"] .quest-accordion {
+  max-height: 360px;
+  overflow-y: auto;
+}
+
+[data-role="header"] .quest-campaign {
+  border: none;
+}
+
+[data-role="header"] .quest-campaign .accordion-button {
+  background-color: #fff;
+  color: #212529;
+  padding: 0;
+  box-shadow: none;
+}
+
+[data-role="header"] .quest-campaign .accordion-button::after {
+  display: none;
+}
+
 [data-role="header"] .quest-header {
   border-bottom: 1px solid #e0e0e0;
 }
@@ -192,7 +212,7 @@
 }
 
 [data-role="header"] .quest-body {
-  max-height: 300px;
+  max-height: 240px;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
