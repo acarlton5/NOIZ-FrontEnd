@@ -68,10 +68,10 @@
 
 #chat-widget-messages .chat-widget-message:hover::before,
 #chat-widget-messages .chat-widget-message.active::before {
-  top: 0;
+  top: 50%;
   left: 0;
   width: 0.25rem;
-  height: 100%;
-  border-radius: 0;
-  transform: none;
+  height: calc(100% - 0.5rem);
+  border-radius: 0.125rem;
+  transform: translate(-50%, -50%);
 }
