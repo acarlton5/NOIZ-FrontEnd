@@ -3,7 +3,7 @@
 // Provides a tiny API for setting the brand and adding utility buttons.
 // API:
 //   - setBrand({ text, href })
-//   - addButton({ id, label, onClick })
+//   - addButton({ id, label?, icon?, onClick })
 //   - removeButton(id)
 
 export default async function init({ hub, root, utils }) {
@@ -60,9 +60,6 @@ export default async function init({ hub, root, utils }) {
                 <svg class="icon" width="24" height="24"><use xlink:href="#svg-shopping-bag"></use></svg>
               </button>
               <button class="btn p-0" type="button">
-                <svg class="icon" width="24" height="24"><use xlink:href="#svg-comment"></use></svg>
-              </button>
-              <button class="btn p-0" type="button">
                 <svg class="icon" width="24" height="24"><use xlink:href="#svg-notification"></use></svg>
               </button>
             </div>
@@ -95,9 +92,17 @@ export default async function init({ hub, root, utils }) {
     searchInput.focus();
   });
 
-  function renderButton({ id, label }) {
-    const btnHtml = `<button class="btn btn-outline-light btn-sm" data-role="btn" data-id="${id}">${label}</button>`;
-    slots.right.insertAdjacentHTML('beforeend', btnHtml);
+  function renderButton({ id, label, icon }) {
+    let btnHtml;
+    if (icon) {
+      btnHtml = `<button class="btn p-0" data-role="btn" data-id="${id}">
+  <svg class="icon" width="24" height="24"><use xlink:href="${icon}"></use></svg>
+</button>`;
+      slots.right.insertAdjacentHTML('afterbegin', btnHtml);
+    } else {
+      btnHtml = `<button class="btn btn-outline-light btn-sm" data-role="btn" data-id="${id}">${label}</button>`;
+      slots.right.insertAdjacentHTML('beforeend', btnHtml);
+    }
   }
 
   utils.delegate(root, 'click', '[data-role="btn"]', (e, el) => {
@@ -111,10 +116,10 @@ export default async function init({ hub, root, utils }) {
       brand.setAttribute('href', href);
       brand.querySelector('.brand-text').textContent = text;
     },
-    addButton({ id, label, onClick } = {}) {
-      if (!id || !label) return;
+    addButton({ id, label, icon, onClick } = {}) {
+      if (!id || (!label && !icon)) return;
       api.removeButton(id);
-      renderButton({ id, label });
+      renderButton({ id, label, icon });
       registry.set(id, { onClick });
     },
     removeButton(id) {
@@ -127,14 +132,14 @@ export default async function init({ hub, root, utils }) {
   if (hub.isReady('messages')) {
     api.addButton({
       id: 'messages',
-      label: 'Messages',
+      icon: '#svg-messages',
       onClick: async () => hub.api.messages.open?.()
     });
   } else {
     const off = hub.once('module:ready:messages', () => {
       api.addButton({
         id: 'messages',
-        label: 'Messages',
+        icon: '#svg-messages',
         onClick: async () => hub.api.messages.open?.()
       });
     });
