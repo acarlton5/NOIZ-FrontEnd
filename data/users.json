@@ -1,0 +1,74 @@
+[
+  {
+    "name": "Marina Valentine",
+    "avatar": "https://odindesignthemes.com/vikinger/img/avatar/01.jpg",
+    "frame": "",
+    "hasNotification": true,
+    "accent": "#ff72b6",
+    "slug": "marina-valentine"
+  },
+  {
+    "name": "Neko Bebop",
+    "avatar": "https://odindesignthemes.com/vikinger/img/avatar/02.jpg",
+    "frame": "",
+    "hasNotification": false,
+    "accent": "#8ab4ff",
+    "slug": "neko-bebop"
+  },
+  {
+    "name": "Nick Grissom",
+    "avatar": "https://odindesignthemes.com/vikinger/img/avatar/03.jpg",
+    "frame": "",
+    "hasNotification": false,
+    "accent": "#ffd059",
+    "slug": "nick-grissom"
+  },
+  {
+    "name": "Sarah Diamond",
+    "avatar": "https://odindesignthemes.com/vikinger/img/avatar/04.jpg",
+    "frame": "",
+    "hasNotification": false,
+    "accent": "#b06dff",
+    "slug": "sarah-diamond"
+  },
+  {
+    "name": "John Viking",
+    "avatar": "https://odindesignthemes.com/vikinger/img/avatar/05.jpg",
+    "frame": "",
+    "hasNotification": false,
+    "accent": "#72ffb6",
+    "slug": "john-viking"
+  },
+  {
+    "name": "Roald Peterson",
+    "avatar": "https://odindesignthemes.com/vikinger/img/avatar/06.jpg",
+    "frame": "",
+    "hasNotification": false,
+    "accent": "#ff8a72",
+    "slug": "roald-peterson"
+  },
+  {
+    "name": "Kelly Ghost",
+    "avatar": "https://odindesignthemes.com/vikinger/img/avatar/07.jpg",
+    "frame": "",
+    "hasNotification": false,
+    "accent": "#72c2ff",
+    "slug": "kelly-ghost"
+  },
+  {
+    "name": "Brad Gibson",
+    "avatar": "https://odindesignthemes.com/vikinger/img/avatar/08.jpg",
+    "frame": "",
+    "hasNotification": false,
+    "accent": "#ffc072",
+    "slug": "brad-gibson"
+  },
+  {
+    "name": "Susie Swimmer",
+    "avatar": "https://odindesignthemes.com/vikinger/img/avatar/09.jpg",
+    "frame": "",
+    "hasNotification": false,
+    "accent": "#ff72f2",
+    "slug": "susie-swimmer"
+  }
+]

@@ -1,6 +1,7 @@
-import { users } from '../users.js';
+import { getUsers } from '../users.js';
 
 export default async function init({ root, utils }) {
+  const users = await getUsers();
 
   root.innerHTML = `
     <nav class="user-rail">

@@ -288,7 +288,7 @@ observer.observe(document.documentElement, { childList: true, subtree: true });
 
 mountAll();
 
-function handleRoute() {
+async function handleRoute() {
   const path = window.location.pathname;
   const hash = window.location.hash.slice(1); // remove leading '#'
   const route = hash || path;
@@ -297,15 +297,15 @@ function handleRoute() {
     const mod = match[1];
     const slug = match[2];
     if (mod === 'profile' && slug) {
-      const user = getUserBySlug(decodeURIComponent(slug));
+      const user = await getUserBySlug(decodeURIComponent(slug));
       LoadMainModule('profile', user ? { user } : {});
     } else {
       LoadMainModule(mod);
     }
   }
 }
-window.addEventListener("popstate", handleRoute);
-window.addEventListener("hashchange", handleRoute);
+window.addEventListener("popstate", () => { handleRoute(); });
+window.addEventListener("hashchange", () => { handleRoute(); });
 handleRoute();
 
 // Expose for debugging
