@@ -42,13 +42,13 @@ export default async function init({ hub, root }) {
     </nav>
     <nav class="navigation-large" data-role="large">
       <div class="navigation-large-profile">
+        <img
+          class="profile-banner"
+          src="https://raw.githubusercontent.com/ItsPi3141/discord-fake-avatar-decorations/refs/heads/main/public/nameplates/d20_roll.png"
+          alt=""
+          aria-hidden="true"
+        />
         <div class="avatar-wrap">
-          <img
-            class="avatar-banner"
-            src="https://raw.githubusercontent.com/ItsPi3141/discord-fake-avatar-decorations/refs/heads/main/public/nameplates/green_mana.png"
-            alt=""
-            aria-hidden="true"
-          />
           <img
             class="avatar-image"
             src="https://odindesignthemes.com/vikinger/img/avatar/01.jpg"

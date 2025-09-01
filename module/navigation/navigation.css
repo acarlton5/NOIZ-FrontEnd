@@ -105,15 +105,21 @@
 }
 
 .navigation-large-profile {
-  padding: 40px 20px 20px;
+  padding: 0 20px 20px;
   text-align: center;
+}
+
+.navigation-large-profile .profile-banner {
+  display: block;
+  width: 100%;
+  border-bottom: 1px solid #e5e7eb;
 }
 
 .navigation-large-profile .avatar-wrap {
   position: relative;
   width: 90px;
   height: 90px;
-  margin: 0 auto 20px;
+  margin: -45px auto 20px;
 }
 
 .navigation-large-profile .avatar-image {
@@ -133,15 +139,6 @@
   pointer-events: none;
 }
 
-.navigation-large-profile .avatar-banner {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 190px;
-  transform: translate(-20%, 0);
-  pointer-events: none;
-  z-index: -1;
-}
 
 .navigation-large-profile .user-name {
   font-family: "Rajdhani", sans-serif;
