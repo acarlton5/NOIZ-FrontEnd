@@ -11,6 +11,8 @@ module[data-module="user-rail"] {
   display: flex;
   --avi-width: 40px;
   --avi-height: 40px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 module[data-module="user-rail"] .user-rail {
