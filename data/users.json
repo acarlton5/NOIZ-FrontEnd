@@ -70,5 +70,93 @@
     "hasNotification": false,
     "accent": "#ff72f2",
     "slug": "susie-swimmer"
+  },
+  {
+    "name": "Clark Kent",
+    "avatar": "https://odindesignthemes.com/vikinger/img/avatar/10.jpg",
+    "frame": "",
+    "hasNotification": false,
+    "accent": "#72ff8a",
+    "slug": "clark-kent"
+  },
+  {
+    "name": "Diana Prince",
+    "avatar": "https://odindesignthemes.com/vikinger/img/avatar/11.jpg",
+    "frame": "",
+    "hasNotification": false,
+    "accent": "#ff7288",
+    "slug": "diana-prince"
+  },
+  {
+    "name": "Bruce Wayne",
+    "avatar": "https://odindesignthemes.com/vikinger/img/avatar/12.jpg",
+    "frame": "",
+    "hasNotification": false,
+    "accent": "#7288ff",
+    "slug": "bruce-wayne"
+  },
+  {
+    "name": "Peter Parker",
+    "avatar": "https://odindesignthemes.com/vikinger/img/avatar/13.jpg",
+    "frame": "",
+    "hasNotification": false,
+    "accent": "#ffb672",
+    "slug": "peter-parker"
+  },
+  {
+    "name": "Tony Stark",
+    "avatar": "https://odindesignthemes.com/vikinger/img/avatar/14.jpg",
+    "frame": "",
+    "hasNotification": false,
+    "accent": "#72ffc2",
+    "slug": "tony-stark"
+  },
+  {
+    "name": "Steve Rogers",
+    "avatar": "https://odindesignthemes.com/vikinger/img/avatar/15.jpg",
+    "frame": "",
+    "hasNotification": false,
+    "accent": "#c272ff",
+    "slug": "steve-rogers"
+  },
+  {
+    "name": "Natasha Romanoff",
+    "avatar": "https://odindesignthemes.com/vikinger/img/avatar/16.jpg",
+    "frame": "",
+    "hasNotification": false,
+    "accent": "#ff72a0",
+    "slug": "natasha-romanoff"
+  },
+  {
+    "name": "Wanda Maximoff",
+    "avatar": "https://odindesignthemes.com/vikinger/img/avatar/17.jpg",
+    "frame": "",
+    "hasNotification": false,
+    "accent": "#72ffd0",
+    "slug": "wanda-maximoff"
+  },
+  {
+    "name": "Thor Odinson",
+    "avatar": "https://odindesignthemes.com/vikinger/img/avatar/18.jpg",
+    "frame": "",
+    "hasNotification": false,
+    "accent": "#72f2ff",
+    "slug": "thor-odinson"
+  },
+  {
+    "name": "Loki Laufeyson",
+    "avatar": "https://odindesignthemes.com/vikinger/img/avatar/19.jpg",
+    "frame": "",
+    "hasNotification": false,
+    "accent": "#ffaa72",
+    "slug": "loki-laufeyson"
+  },
+  {
+    "name": "Carol Danvers",
+    "avatar": "https://odindesignthemes.com/vikinger/img/avatar/20.jpg",
+    "frame": "",
+    "hasNotification": false,
+    "accent": "#72a0ff",
+    "slug": "carol-danvers"
   }
 ]
