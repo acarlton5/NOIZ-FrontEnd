@@ -54,7 +54,6 @@ export default async function init({ hub, root }) {
             alt=""
             aria-hidden="true"
           />
-          <span class="avatar-badge">24</span>
         </div>
         <h3 class="user-name">Marina Valentine</h3>
         <p class="user-url">www.gamehuntress.com</p>
@@ -62,6 +61,13 @@ export default async function init({ hub, root }) {
           <li class="profile-stat"><span class="stat-value">930</span><span class="stat-label">Posts</span></li>
           <li class="profile-stat"><span class="stat-value">82</span><span class="stat-label">Friends</span></li>
           <li class="profile-stat"><span class="stat-value">5.7K</span><span class="stat-label">Visits</span></li>
+        </ul>
+        <ul class="user-badges">
+          <li><svg class="badge-icon" width="24" height="24"><use xlink:href="#svg-facebook"></use></svg></li>
+          <li><svg class="badge-icon" width="24" height="24"><use xlink:href="#svg-twitter"></use></svg></li>
+          <li><svg class="badge-icon" width="24" height="24"><use xlink:href="#svg-instagram"></use></svg></li>
+          <li><svg class="badge-icon" width="24" height="24"><use xlink:href="#svg-discord"></use></svg></li>
+          <li><svg class="badge-icon" width="24" height="24"><use xlink:href="#svg-google"></use></svg></li>
         </ul>
       </div>
       <ul class="navigation-large-menu">
