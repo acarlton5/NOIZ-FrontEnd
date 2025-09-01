@@ -145,7 +145,7 @@ const hub = new ModuleHub();
 let activeMainModule =
   document.querySelector('main module[data-module]')?.getAttribute('data-module') ||
   null;
-async function LoadMainModule(name) {
+async function LoadMainModule(name, props = {}) {
   if (!name || name === activeMainModule) return;
   const main = document.querySelector('main');
   if (activeMainModule) {
@@ -157,6 +157,9 @@ async function LoadMainModule(name) {
   const node = document.createElement('module');
   node.setAttribute('data-module', name);
   node.setAttribute('data-css', 'true');
+  if (props && Object.keys(props).length) {
+    node.setAttribute('data-props', JSON.stringify(props));
+  }
   main.appendChild(node);
   activeMainModule = name;
 }

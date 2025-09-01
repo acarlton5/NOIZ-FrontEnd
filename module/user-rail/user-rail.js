@@ -43,7 +43,8 @@ export default async function init({ root, utils }) {
     el.classList.add('active');
     el.classList.remove('has-notification');
     const u = users[parseInt(el.getAttribute('data-index'), 10)];
-    alert(`Open conversation with ${u.name}`);
+    window.LoadMainModule('profile', { user: u });
+    window.location.hash = '/profile';
   });
 
   return {};
