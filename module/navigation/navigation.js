@@ -15,7 +15,17 @@ export default async function init({ hub, root }) {
   root.innerHTML = `
     <nav class="navigation-small" data-role="small">
       <a href="#" class="navigation-avatar">
-        <img src="images/logo.png" alt="User avatar" />
+        <img
+          class="avatar-image"
+          src="https://odindesignthemes.com/vikinger/img/avatar/01.jpg"
+          alt="User avatar"
+        />
+        <img
+          class="avatar-frame"
+          src="https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/dragons_smile.png"
+          alt=""
+          aria-hidden="true"
+        />
       </a>
       <ul class="navigation-small-menu">
         ${links

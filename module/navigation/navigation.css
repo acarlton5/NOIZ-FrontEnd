@@ -13,16 +13,28 @@
   z-index: 1040;
 }
 .navigation-avatar {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 32px;
+}
+
+.navigation-avatar .avatar-image {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  overflow: hidden;
-  margin-bottom: 20px;
-}
-.navigation-avatar img {
-  width: 100%;
-  height: 100%;
   object-fit: cover;
+  display: block;
+}
+
+.navigation-avatar .avatar-frame {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 64px;
+  height: 64px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
 }
 .navigation-small-menu {
   list-style: none;
