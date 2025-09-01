@@ -156,6 +156,49 @@
   border: none;
   margin-left: 30px;
   padding: 0;
+  position: relative;
+}
+
+[data-role="header"] .quest-trigger .icon {
+  transition: transform 0.3s;
+}
+
+[data-role="header"] .quest-trigger .quest-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  pointer-events: none;
+  display: none;
+}
+
+[data-role="header"] .quest-trigger[aria-expanded="true"] .icon {
+  transform: scale(0.85);
+}
+
+[data-role="header"] .quest-trigger[aria-expanded="true"] .quest-ring {
+  display: block;
+}
+
+[data-role="header"] .quest-ring-seg {
+  opacity: 0;
+  animation: quest-ring-fade 1.5s infinite;
+}
+
+[data-role="header"] .quest-ring-seg.seg2 {
+  animation-delay: 0.5s;
+}
+
+[data-role="header"] .quest-ring-seg.seg3 {
+  animation-delay: 1s;
+}
+
+@keyframes quest-ring-fade {
+  0%, 40% { opacity: 0; }
+  50%, 80% { opacity: 1; }
+  100% { opacity: 0; }
 }
 
 [data-role="header"] .quest-menu {

@@ -56,6 +56,17 @@ export default async function init({ hub, root, utils }) {
         <div class="quest dropdown">
           <button class="action-list-item quest-trigger" id="questDropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
             <svg class="icon" width="24" height="24"><use xlink:href="#svg-quests"></use></svg>
+            <svg class="quest-ring" viewBox="0 0 40 40" width="40" height="40">
+              <defs>
+                <linearGradient id="questRingGradient" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#05D6D9"/>
+                  <stop offset="100%" stop-color="#F907FC"/>
+                </linearGradient>
+              </defs>
+              <circle class="quest-ring-seg seg1" cx="20" cy="20" r="18" fill="none" stroke="url(#questRingGradient)" stroke-width="2" stroke-linecap="round" stroke-dasharray="28 85" stroke-dashoffset="0"></circle>
+              <circle class="quest-ring-seg seg2" cx="20" cy="20" r="18" fill="none" stroke="url(#questRingGradient)" stroke-width="2" stroke-linecap="round" stroke-dasharray="28 85" stroke-dashoffset="38"></circle>
+              <circle class="quest-ring-seg seg3" cx="20" cy="20" r="18" fill="none" stroke="url(#questRingGradient)" stroke-width="2" stroke-linecap="round" stroke-dasharray="28 85" stroke-dashoffset="76"></circle>
+            </svg>
           </button>
           <div class="dropdown-menu quest-menu" aria-labelledby="questDropdown">
             <div class="quest-accordion accordion" id="questAccordion">
