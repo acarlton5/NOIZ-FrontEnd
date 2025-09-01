@@ -160,10 +160,10 @@
 
 [data-role="header"] .quest-menu {
   min-width: 360px;
-  background-color: rgba(255, 255, 255, 0.9);
-  color: #212529;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  background-color: #10161f;
+  color: #fff;
+  border: none;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
   padding: 0;
 }
 
@@ -177,8 +177,8 @@
 }
 
 [data-role="header"] .quest-campaign .accordion-button {
-  background-color: #fff;
-  color: #212529;
+  background-color: #1a2232;
+  color: #fff;
   padding: 0;
   box-shadow: none;
 }
@@ -188,7 +188,7 @@
 }
 
 [data-role="header"] .quest-header {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   position: relative;
   overflow: hidden;
 }
@@ -209,6 +209,14 @@
   z-index: 1;
 }
 
+[data-role="header"] .quest-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+}
+
 [data-role="header"] .quest-title {
   font-family: "Rajdhani", sans-serif;
   font-weight: 700;
@@ -226,7 +234,7 @@
   font-family: "Rajdhani", sans-serif;
   font-size: 0.75rem;
   font-weight: 600;
-  color: #6330f5;
+  color: #7f8eff;
   text-decoration: none;
   text-transform: uppercase;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
@@ -238,7 +246,7 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: #1a2232;
 }
 
 [data-role="header"] .quest-item {
@@ -265,6 +273,7 @@
   font-family: "Rajdhani", sans-serif;
   font-weight: 600;
   margin-bottom: 0.25rem;
+  color: #fff;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 }
 
@@ -272,6 +281,7 @@
   font-family: "Rajdhani", sans-serif;
   font-size: 0.875rem;
   margin-bottom: 0.5rem;
+  color: #d1d7e3;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 }
 
@@ -284,21 +294,35 @@
 [data-role="header"] .quest-progress-bar {
   flex-grow: 1;
   height: 4px;
-  background-color: #e9ecef;
+  background-color: rgba(255, 255, 255, 0.1);
   border-radius: 50rem;
-  overflow: hidden;
+  overflow: visible;
+  position: relative;
 }
 
 [data-role="header"] .quest-progress {
   height: 100%;
   background-color: #6330f5;
+  position: relative;
+}
+
+[data-role="header"] .quest-progress::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -8px;
+  width: 0;
+  height: 0;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  border-left: 8px solid #6330f5;
 }
 
 [data-role="header"] .quest-progress-text {
   font-family: "Rajdhani", sans-serif;
   font-size: 0.75rem;
   font-weight: 600;
-  color: #212529;
+  color: #fff;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 }
 
