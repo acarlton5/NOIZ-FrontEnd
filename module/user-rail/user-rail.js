@@ -4,17 +4,20 @@ export default async function init({ root, utils }) {
       name: 'Marina Valentine',
       avatar: 'https://odindesignthemes.com/vikinger/img/avatar/01.jpg',
       frame: 'https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/aim_for_love.png',
-      hasNotification: true
+      hasNotification: true,
+      accent: '#ff72b6'
     },
     {
       name: 'Neko Bebop',
       avatar: 'https://odindesignthemes.com/vikinger/img/avatar/02.jpg',
-      frame: 'https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/aurora.png'
+      frame: 'https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/aurora.png',
+      accent: '#8ab4ff'
     },
     {
       name: 'Nick Grissom',
       avatar: 'https://odindesignthemes.com/vikinger/img/avatar/03.jpg',
-      frame: 'https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/bf_soldier_helmet.png'
+      frame: 'https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/bf_soldier_helmet.png',
+      accent: '#ffd059'
     }
   ];
 
@@ -24,7 +27,7 @@ export default async function init({ root, utils }) {
         ${users
           .map(
             (u, i) => `
-        <li class="user-rail-item${u.hasNotification ? ' has-notification' : ''}" data-index="${i}">
+        <li class="user-rail-item${u.hasNotification ? ' has-notification' : ''}" data-index="${i}" style="--accent:${u.accent};">
           <div class="avatar-wrap" style="--frame:url('${u.frame}');">
             <img class="avatar-image" src="${u.avatar}" alt="${u.name}">
           </div>
