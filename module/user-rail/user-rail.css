@@ -1,9 +1,22 @@
 module[data-module="user-rail"] {
   position: fixed;
-  top: 50%;
-  right: 1rem;
-  transform: translateY(-50%);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 80px;
   z-index: 1080;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  padding: 16px 0;
+  display: flex;
+  justify-content: center;
+}
+
+module[data-module="user-rail"] .user-rail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
 module[data-module="user-rail"] .user-rail-list {
@@ -13,23 +26,23 @@ module[data-module="user-rail"] .user-rail-list {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
 }
 
 module[data-module="user-rail"] .user-rail-item {
-  width: 48px;
-  height: 48px;
+  width: 40px;
+  height: 40px;
 }
 
 module[data-module="user-rail"] .avatar-wrap {
   position: relative;
-  width: 48px;
-  height: 48px;
+  width: 40px;
+  height: 40px;
 }
 
 module[data-module="user-rail"] .avatar-image {
-  width: 48px;
-  height: 48px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   object-fit: cover;
   display: block;
@@ -39,8 +52,8 @@ module[data-module="user-rail"] .avatar-frame {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 60px;
-  height: 60px;
+  width: 52px;
+  height: 52px;
   transform: translate(-50%, -50%);
   pointer-events: none;
 }
