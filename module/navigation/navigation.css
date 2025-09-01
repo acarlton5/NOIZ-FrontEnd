@@ -1,0 +1,32 @@
+.navigation-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 260px;
+  padding-top: 80px; /* header height */
+  background-color: #1d2333;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: 1050;
+}
+.navigation-sidebar.open {
+  transform: translateX(0);
+}
+.navigation-menu {
+  list-style: none;
+  padding: 20px;
+  margin: 0;
+}
+.navigation-link {
+  display: block;
+  padding: 10px 0;
+  color: #fff;
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 500;
+  text-decoration: none;
+}
+.navigation-link:hover {
+  opacity: 0.85;
+  color: #fff;
+}

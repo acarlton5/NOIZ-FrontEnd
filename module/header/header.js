@@ -215,6 +215,11 @@ export default async function init({ hub, root, utils }) {
   const searchInput = searchWrap?.querySelector('input');
   const clearBtn = searchWrap?.querySelector('[data-role="clear"]');
 
+  const sidemenuBtn = root.querySelector('.sidemenu-trigger');
+  utils.listen(sidemenuBtn, 'click', async () => {
+    await hub.api.navigation.toggle?.();
+  });
+
   function updateSearch() {
     if (!searchWrap || !searchInput) return;
     searchWrap.classList.toggle('active', searchInput.value.length > 0);
