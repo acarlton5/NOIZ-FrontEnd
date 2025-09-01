@@ -24,9 +24,8 @@ export default async function init({ root, utils }) {
           .map(
             (u, i) => `
         <li class="user-rail-item" data-index="${i}">
-          <div class="avatar-wrap">
+          <div class="avatar-wrap" style="--frame:url('${u.frame}');">
             <img class="avatar-image" src="${u.avatar}" alt="${u.name}">
-            <img class="avatar-frame" src="${u.frame}" alt="" aria-hidden="true">
           </div>
         </li>`
           )
