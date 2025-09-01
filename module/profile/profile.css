@@ -1,0 +1,10 @@
+.profile {
+  padding: 1rem;
+}
+
+.profile-messages {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}

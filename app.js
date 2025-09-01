@@ -273,5 +273,14 @@ observer.observe(document.documentElement, { childList: true, subtree: true });
 
 mountAll();
 
+function handleRoute() {
+  const path = window.location.pathname;
+  if (path.startsWith("/profile")) {
+    LoadMainModule("profile");
+  }
+}
+window.addEventListener("popstate", handleRoute);
+handleRoute();
+
 // Expose for debugging
 window.NOIZ = { hub };
