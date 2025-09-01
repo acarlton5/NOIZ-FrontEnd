@@ -3,46 +3,44 @@ module[data-module="user-rail"] {
   top: 0;
   right: 0;
   bottom: 0;
-  width: 80px;
+  width: 72px;
   z-index: 1080;
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(4px);
+  background: #fff;
+  box-shadow: -4px 0 8px rgba(0, 0, 0, 0.1);
   padding: 16px 0;
   display: flex;
-  justify-content: center;
 }
 
 module[data-module="user-rail"] .user-rail {
   display: flex;
   flex-direction: column;
-  align-items: center;
   width: 100%;
 }
 
 module[data-module="user-rail"] .user-rail-list {
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 0 0 0 12px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 16px;
+  gap: 12px;
 }
 
 module[data-module="user-rail"] .user-rail-item {
-  width: 40px;
-  height: 40px;
+  width: 52px;
+  height: 52px;
 }
 
 module[data-module="user-rail"] .avatar-wrap {
   position: relative;
-  width: 40px;
-  height: 40px;
+  width: 52px;
+  height: 52px;
 }
 
 module[data-module="user-rail"] .avatar-image {
   width: 40px;
   height: 40px;
+  margin: 6px;
   border-radius: 50%;
   object-fit: cover;
   display: block;
@@ -50,10 +48,9 @@ module[data-module="user-rail"] .avatar-image {
 
 module[data-module="user-rail"] .avatar-frame {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 0;
+  left: 0;
   width: 52px;
   height: 52px;
-  transform: translate(-50%, -50%);
   pointer-events: none;
 }
