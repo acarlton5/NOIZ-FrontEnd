@@ -146,7 +146,14 @@ let activeMainModule =
   document.querySelector('main module[data-module]')?.getAttribute('data-module') ||
   null;
 async function LoadMainModule(name, props = {}) {
-  if (!name || name === activeMainModule) return;
+  if (!name) return;
+
+  const targetHash = `#/${name}`;
+  if (window.location.hash !== targetHash) {
+    window.history.pushState(null, '', targetHash);
+  }
+  if (name === activeMainModule) return;
+
   const main = document.querySelector('main');
   if (activeMainModule) {
     await hub.destroy(activeMainModule);
@@ -280,8 +287,9 @@ function handleRoute() {
   const path = window.location.pathname;
   const hash = window.location.hash.slice(1); // remove leading '#'
   const route = hash || path;
-  if (route.startsWith("/profile")) {
-    LoadMainModule("profile");
+  const match = route.match(/^\/([^/]+)/);
+  if (match) {
+    LoadMainModule(match[1]);
   }
 }
 window.addEventListener("popstate", handleRoute);
