@@ -3,17 +3,17 @@ export default async function init({ root, utils }) {
     {
       name: 'Marina Valentine',
       avatar: 'https://odindesignthemes.com/vikinger/img/avatar/01.jpg',
-      frame: 'https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/dragons_smile.png'
+      frame: 'https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/aim_for_love.png'
     },
     {
       name: 'Neko Bebop',
       avatar: 'https://odindesignthemes.com/vikinger/img/avatar/02.jpg',
-      frame: 'https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/dragons_smile.png'
+      frame: 'https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/aurora.png'
     },
     {
       name: 'Nick Grissom',
       avatar: 'https://odindesignthemes.com/vikinger/img/avatar/03.jpg',
-      frame: 'https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/dragons_smile.png'
+      frame: 'https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/bf_soldier_helmet.png'
     }
   ];
 
