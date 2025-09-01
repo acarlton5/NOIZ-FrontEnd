@@ -1,15 +1,16 @@
-export default async function init({ hub, root }) {
+
+export default async function init({ hub, root, utils }) {
   const links = [
-    { title: 'Newsfeed', href: '#', icon: '#svg-newsfeed' },
-    { title: 'Overview', href: '#', icon: '#svg-overview' },
-    { title: 'Groups', href: '#', icon: '#svg-group' },
-    { title: 'Members', href: '#', icon: '#svg-members' },
-    { title: 'Badges', href: '#', icon: '#svg-badges' },
-    { title: 'Quests', href: '#', icon: '#svg-quests' },
-    { title: 'Streams', href: '#', icon: '#svg-streams' },
-    { title: 'Events', href: '#', icon: '#svg-events' },
-    { title: 'Forums', href: '#', icon: '#svg-forums' },
-    { title: 'Marketplace', href: '#', icon: '#svg-marketplace' }
+    { title: 'Newsfeed', module: 'newsfeed', icon: '#svg-newsfeed' },
+    { title: 'Overview', module: 'overview', icon: '#svg-overview' },
+    { title: 'Groups', module: 'groups', icon: '#svg-group' },
+    { title: 'Members', module: 'members', icon: '#svg-members' },
+    { title: 'Badges', module: 'badges', icon: '#svg-badges' },
+    { title: 'Quests', module: 'quests', icon: '#svg-quests' },
+    { title: 'Streams', module: 'streams', icon: '#svg-streams' },
+    { title: 'Events', module: 'events', icon: '#svg-events' },
+    { title: 'Forums', module: 'forums', icon: '#svg-forums' },
+    { title: 'Marketplace', module: 'marketplace', icon: '#svg-marketplace' }
   ];
 
   root.innerHTML = `
@@ -32,7 +33,7 @@ export default async function init({ hub, root }) {
           .map(
             (l) => `
         <li class="navigation-small-item">
-          <a href="${l.href}" class="navigation-small-link" data-title="${l.title}">
+          <a href="#" class="navigation-small-link" data-title="${l.title}" data-module="${l.module}">
             <svg class="icon" width="20" height="20"><use xlink:href="${l.icon}"></use></svg>
           </a>
         </li>`
@@ -81,7 +82,7 @@ export default async function init({ hub, root }) {
           .map(
             (l) => `
         <li class="navigation-large-item">
-          <a href="${l.href}" class="navigation-large-link">
+          <a href="#" class="navigation-large-link" data-module="${l.module}">
             <svg class="icon" width="20" height="20"><use xlink:href="${l.icon}"></use></svg>
             <span>${l.title}</span>
           </a>
@@ -95,6 +96,11 @@ export default async function init({ hub, root }) {
   const small = root.querySelector('[data-role="small"]');
   const large = root.querySelector('[data-role="large"]');
 
+  utils.delegate(root, 'click', '.navigation-small-link, .navigation-large-link', (e, link) => {
+    e.preventDefault();
+    const mod = link.getAttribute('data-module');
+    if (mod) window.LoadMainModule(mod);
+  });
   const api = {
     showSmall() {
       large.classList.remove('mobile-open');

@@ -142,6 +142,26 @@ class ModuleHub {
 /* ---------- Loader ---------- */
 const hub = new ModuleHub();
 
+let activeMainModule =
+  document.querySelector('main module[data-module]')?.getAttribute('data-module') ||
+  null;
+async function LoadMainModule(name) {
+  if (!name || name === activeMainModule) return;
+  const main = document.querySelector('main');
+  if (activeMainModule) {
+    await hub.destroy(activeMainModule);
+    main
+      .querySelector(`module[data-module="${activeMainModule}"]`)
+      ?.remove();
+  }
+  const node = document.createElement('module');
+  node.setAttribute('data-module', name);
+  node.setAttribute('data-css', 'true');
+  main.appendChild(node);
+  activeMainModule = name;
+}
+window.LoadMainModule = LoadMainModule;
+
 function parseProps(node) {
   const raw = node.getAttribute('data-props');
   if (!raw) return {};
