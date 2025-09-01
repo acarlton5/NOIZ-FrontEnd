@@ -16,12 +16,6 @@ export default async function init({ hub, root }) {
     <nav class="navigation-small" data-role="small">
       <a href="#" class="navigation-avatar">
         <img
-          class="avatar-banner"
-          src="https://raw.githubusercontent.com/ItsPi3141/discord-fake-avatar-decorations/refs/heads/main/public/nameplates/green_mana.png"
-          alt=""
-          aria-hidden="true"
-        />
-        <img
           class="avatar-image"
           src="https://odindesignthemes.com/vikinger/img/avatar/01.jpg"
           alt="User avatar"
