@@ -39,10 +39,10 @@ module[data-module="user-rail"] .avatar-wrap {
 
 module[data-module="user-rail"] .avatar-image {
   position: absolute;
-  top: 8px;
-  left: 8px;
-  width: 36px;
-  height: 36px;
+  top: 0;
+  left: 0;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   object-fit: cover;
   display: block;
