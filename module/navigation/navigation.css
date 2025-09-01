@@ -160,24 +160,27 @@
   list-style: none;
   padding: 0;
   margin: 0 0 30px;
+  background-color: #1d2333;
+  border-radius: 12px;
+  overflow: hidden;
 }
 
 .profile-stat {
   flex: 1;
-  padding: 0 10px;
+  padding: 8px 0;
   text-align: center;
 }
 
 .profile-stat:not(:last-child) {
-  border-right: 1px solid #e5e7eb;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .profile-stat .stat-value {
   display: block;
   font-family: "Rajdhani", sans-serif;
   font-weight: 700;
-  font-size: 1rem;
-  color: #1f2937;
+  font-size: 0.875rem;
+  color: #e5e7eb;
 }
 
 .profile-stat .stat-label {
