@@ -1,6 +1,8 @@
 /* module/header/header.css */
 /* Bootstrap 5 header styled to mirror the original purple design */
-
+.header .header-brand .logo{
+  margin-left: 7px;
+}
 [data-role="header"] {
   position: fixed;
   top: 0;
