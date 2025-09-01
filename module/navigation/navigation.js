@@ -95,31 +95,39 @@ export default async function init({ hub, root, utils }) {
 
   const small = root.querySelector('[data-role="small"]');
   const large = root.querySelector('[data-role="large"]');
+  const main = document.querySelector('main');
+
 
   utils.delegate(root, 'click', '.navigation-small-link, .navigation-large-link', (e, link) => {
     e.preventDefault();
     const mod = link.getAttribute('data-module');
     if (mod) window.LoadMainModule(mod);
   });
+
   const api = {
     showSmall() {
       large.classList.remove('mobile-open');
+      const apply = () => {
+        small.classList.remove('hidden');
+        main.style.transform = 'translate(200.5px)';
+        main.style.transition = 'transform 0.4s ease-in-out';
+      };
       if (large.classList.contains('open')) {
         large.addEventListener(
           'transitionend',
-          () => {
-            small.classList.remove('hidden');
-          },
+          apply,
           { once: true }
         );
         large.classList.remove('open');
       } else {
-        small.classList.remove('hidden');
+        apply();
       }
     },
     showLarge() {
       small.classList.add('hidden');
       large.classList.remove('mobile-open');
+      main.style.transform = 'translate(300.5px)';
+      main.style.transition = 'transform 0.4s ease-in-out';
       requestAnimationFrame(() => {
         large.classList.add('open');
       });
@@ -127,6 +135,13 @@ export default async function init({ hub, root, utils }) {
     toggle() {
       if (window.innerWidth < 992) {
         large.classList.toggle('mobile-open');
+        if (large.classList.contains('mobile-open')) {
+          main.style.transform = 'translate(300.5px)';
+          main.style.transition = 'transform 0.4s ease-in-out';
+        } else {
+          main.style.transform = '';
+          main.style.transition = '';
+        }
       } else if (large.classList.contains('open')) {
         api.showSmall();
       } else {
