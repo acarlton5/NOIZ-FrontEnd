@@ -66,7 +66,7 @@ export default async function init({ hub, root, utils }) {
                       <img class="quest-banner" src="https://images.igdb.com/igdb/image/upload/t_1080p/ar35sq.webp" alt="Sea of Thieves banner">
                       <p class="quest-title mb-1">Mixer Loot - Sea of Thieves</p>
                       <p class="quest-desc">Earn in-game content by watching exciting moments on Mixer.</p>
-                      <a href="#" class="quest-link">Learn more</a>
+                      <a href="#" class="quest-link">View Quests</a>
                     </div>
                   </button>
                 </h2>
@@ -124,7 +124,7 @@ export default async function init({ hub, root, utils }) {
                       <img class="quest-banner" src="https://images.igdb.com/igdb/image/upload/t_1080p/ar8eh.webp" alt="Dead by Daylight banner">
                       <p class="quest-title mb-1">Mixer Loot - Dead by Daylight</p>
                       <p class="quest-desc">Earn rewards by watching spine-chilling matches.</p>
-                      <a href="#" class="quest-link">Learn more</a>
+                      <a href="#" class="quest-link">View Quests</a>
                     </div>
                   </button>
                 </h2>

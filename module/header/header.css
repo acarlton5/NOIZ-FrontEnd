@@ -301,26 +301,13 @@
   height: 4px;
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 50rem;
-  overflow: visible;
-  position: relative;
+  overflow: hidden;
 }
 
 [data-role="header"] .quest-progress {
   height: 100%;
   background-color: #6330f5;
-  position: relative;
-}
-
-[data-role="header"] .quest-progress::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: -8px;
-  width: 0;
-  height: 0;
-  border-top: 4px solid transparent;
-  border-bottom: 4px solid transparent;
-  border-left: 8px solid #6330f5;
+  border-radius: inherit;
 }
 
 [data-role="header"] .quest-progress-text {
