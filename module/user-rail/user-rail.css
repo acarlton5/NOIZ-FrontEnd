@@ -38,19 +38,23 @@ module[data-module="user-rail"] .avatar-wrap {
 }
 
 module[data-module="user-rail"] .avatar-image {
-  width: 40px;
-  height: 40px;
-  margin: 6px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   object-fit: cover;
+  transform: translate(-50%, -50%);
   display: block;
 }
 
 module[data-module="user-rail"] .avatar-frame {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 50%;
+  left: 50%;
   width: 52px;
   height: 52px;
+  transform: translate(-50%, -50%);
   pointer-events: none;
 }
