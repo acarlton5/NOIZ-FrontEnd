@@ -17,19 +17,19 @@ module[data-module="user-rail"] .user-rail-list {
 }
 
 module[data-module="user-rail"] .user-rail-item {
-  width: 64px;
-  height: 64px;
+  width: 48px;
+  height: 48px;
 }
 
 module[data-module="user-rail"] .avatar-wrap {
   position: relative;
-  width: 64px;
-  height: 64px;
+  width: 48px;
+  height: 48px;
 }
 
 module[data-module="user-rail"] .avatar-image {
-  width: 64px;
-  height: 64px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   object-fit: cover;
   display: block;
@@ -39,8 +39,8 @@ module[data-module="user-rail"] .avatar-frame {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   transform: translate(-50%, -50%);
   pointer-events: none;
 }
