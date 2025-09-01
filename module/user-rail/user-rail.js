@@ -3,7 +3,8 @@ export default async function init({ root, utils }) {
     {
       name: 'Marina Valentine',
       avatar: 'https://odindesignthemes.com/vikinger/img/avatar/01.jpg',
-      frame: 'https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/aim_for_love.png'
+      frame: 'https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/aim_for_love.png',
+      hasNotification: true
     },
     {
       name: 'Neko Bebop',
@@ -23,7 +24,7 @@ export default async function init({ root, utils }) {
         ${users
           .map(
             (u, i) => `
-        <li class="user-rail-item" data-index="${i}">
+        <li class="user-rail-item${u.hasNotification ? ' has-notification' : ''}" data-index="${i}">
           <div class="avatar-wrap" style="--frame:url('${u.frame}');">
             <img class="avatar-image" src="${u.avatar}" alt="${u.name}">
           </div>
@@ -35,6 +36,9 @@ export default async function init({ root, utils }) {
   `;
 
   utils.delegate(root, 'click', '.user-rail-item', (e, el) => {
+    root.querySelectorAll('.user-rail-item.active').forEach(item => item.classList.remove('active'));
+    el.classList.add('active');
+    el.classList.remove('has-notification');
     const u = users[parseInt(el.getAttribute('data-index'), 10)];
     alert(`Open conversation with ${u.name}`);
   });
