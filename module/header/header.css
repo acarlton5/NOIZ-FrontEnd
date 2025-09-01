@@ -174,11 +174,11 @@
   display: none;
 }
 
-[data-role="header"] .quest-trigger[aria-expanded="true"] .icon {
+[data-role="header"] .quest-trigger.active .icon {
   transform: scale(0.85);
 }
 
-[data-role="header"] .quest-trigger[aria-expanded="true"] .quest-ring {
+[data-role="header"] .quest-trigger.active .quest-ring {
   display: block;
 }
 
