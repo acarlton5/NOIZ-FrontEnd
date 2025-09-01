@@ -16,29 +16,12 @@
   display: none;
 }
 .navigation-avatar {
-  position: relative;
-  width: 48px;
-  height: 48px;
   margin-bottom: 32px;
+  --avi-width: 48px;
+  --avi-height: 48px;
 }
 
-.navigation-avatar .avatar-image {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  object-fit: cover;
-  display: block;
-}
 
-.navigation-avatar .avatar-frame {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 64px;
-  height: 64px;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-}
 .navigation-small-menu {
   list-style: none;
   margin: 0;
@@ -118,27 +101,9 @@
 }
 
 .navigation-large-profile .avatar-wrap {
-  position: relative;
-  width: 90px;
-  height: 90px;
   margin: -45px auto 20px;
-}
-
-.navigation-large-profile .avatar-image {
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.navigation-large-profile .avatar-frame {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 116px;
-  height: 116px;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
+  --avi-width: 90px;
+  --avi-height: 90px;
 }
 
 

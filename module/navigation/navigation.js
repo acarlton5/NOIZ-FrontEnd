@@ -15,17 +15,11 @@ export default async function init({ hub, root, utils }) {
 
   root.innerHTML = `
     <nav class="navigation-small" data-role="small">
-      <a href="#" class="navigation-avatar">
+      <a href="#" class="navigation-avatar avatar-wrap" style="--avi-width:48px; --avi-height:48px; --frame:url('https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/dragons_smile.png');">
         <img
           class="avatar-image"
           src="https://odindesignthemes.com/vikinger/img/avatar/01.jpg"
           alt="User avatar"
-        />
-        <img
-          class="avatar-frame"
-          src="https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/dragons_smile.png"
-          alt=""
-          aria-hidden="true"
         />
       </a>
       <ul class="navigation-small-menu">
@@ -49,17 +43,11 @@ export default async function init({ hub, root, utils }) {
           alt=""
           aria-hidden="true"
         />
-        <div class="avatar-wrap">
+        <div class="avatar-wrap" style="--avi-width:90px; --avi-height:90px; --frame:url('https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/dragons_smile.png');">
           <img
             class="avatar-image"
             src="https://odindesignthemes.com/vikinger/img/avatar/01.jpg"
             alt="User avatar"
-          />
-          <img
-            class="avatar-frame"
-            src="https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/dragons_smile.png"
-            alt=""
-            aria-hidden="true"
           />
         </div>
         <h3 class="user-name">Marina Valentine</h3>
