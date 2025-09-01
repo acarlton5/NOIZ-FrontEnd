@@ -1,0 +1,14 @@
+module[data-module="user-rail"] {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 320px;
+  margin: 1rem;
+  z-index: 1080;
+}
+
+module[data-module="user-rail"] .user-rail .list-group-item {
+  background-color: var(--bs-dark);
+  color: #fff;
+  border: 0;
+}
