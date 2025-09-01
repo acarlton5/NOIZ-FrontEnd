@@ -92,6 +92,35 @@ export default async function init({ hub, root, utils }) {
     if (mod) window.LoadMainModule(mod);
   });
 
+  // Tooltip handling for compact navigation
+  let tooltip;
+  const showTooltip = (e) => {
+    const link = e.currentTarget;
+    const title = link.getAttribute('data-title');
+    if (!title) return;
+    tooltip = document.createElement('div');
+    tooltip.className = 'navigation-small-tooltip';
+    tooltip.textContent = title;
+    document.body.appendChild(tooltip);
+    const rect = link.getBoundingClientRect();
+    tooltip.style.top = `${rect.top + rect.height / 2}px`;
+    tooltip.style.left = `${rect.right}px`;
+    requestAnimationFrame(() => tooltip.classList.add('visible'));
+  };
+
+  const hideTooltip = () => {
+    if (tooltip) {
+      tooltip.remove();
+      tooltip = null;
+    }
+  };
+
+  small.querySelectorAll('.navigation-small-link').forEach((link) => {
+    link.addEventListener('mouseenter', showTooltip);
+    link.addEventListener('mouseleave', hideTooltip);
+  });
+  small.addEventListener('scroll', hideTooltip);
+
   const api = {
     showSmall() {
       large.classList.remove('mobile-open');
