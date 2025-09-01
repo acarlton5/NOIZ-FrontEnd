@@ -112,11 +112,9 @@
 
 .navigation-large-profile .profile-banner {
   display: block;
-  width: calc(100% + 40px);
-  height: 120px;
-  margin: -60px -20px 0;
-  object-fit: cover;
-  border-bottom: 1px solid #e5e7eb;
+  width: calc(100% + 30px);
+  height: 80px;
+  margin: -80px -10px 0;
 }
 
 .navigation-large-profile .avatar-wrap {
@@ -159,23 +157,31 @@
 
 .profile-stats {
   display: flex;
-  justify-content: space-between;
   list-style: none;
   padding: 0;
   margin: 0 0 30px;
 }
 
 .profile-stat {
+  flex: 1;
+  padding: 0 10px;
   text-align: center;
 }
 
+.profile-stat:not(:last-child) {
+  border-right: 1px solid #e5e7eb;
+}
+
 .profile-stat .stat-value {
+  display: block;
   font-family: "Rajdhani", sans-serif;
   font-weight: 700;
+  font-size: 1rem;
   color: #1f2937;
 }
 
 .profile-stat .stat-label {
+  display: block;
   font-size: 0.75rem;
   color: #8b97b7;
   text-transform: uppercase;
