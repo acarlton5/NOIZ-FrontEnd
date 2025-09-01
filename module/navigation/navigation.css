@@ -50,11 +50,11 @@
   background-color: #f0f2f5;
   color: #1f2937;
 }
-.navigation-small-link::after {
-  content: attr(data-title);
-  position: absolute;
-  left: 60px;
-  top: 50%;
+/* Tooltip rendered via JavaScript */
+.navigation-small-tooltip {
+  position: fixed;
+  left: 0;
+  top: 0;
   transform: translateY(-50%) translateX(10px);
   background-color: #1d2333;
   color: #fff;
@@ -62,11 +62,13 @@
   border-radius: 12px;
   font-size: 14px;
   white-space: nowrap;
-  opacity: 0;
   pointer-events: none;
+  opacity: 0;
   transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 1050;
 }
-.navigation-small-link:hover::after {
+
+.navigation-small-tooltip.visible {
   opacity: 1;
   transform: translateY(-50%) translateX(0);
 }
