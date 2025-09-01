@@ -1,0 +1,59 @@
+module[data-module="user-rail"] {
+  position: fixed;
+  top: 80px;
+  right: 0;
+  height: calc(100vh - 80px);
+  width: 72px;
+  z-index: 1040;
+  background: #fff;
+  box-shadow: -4px 0 8px rgba(0, 0, 0, 0.1);
+  padding: 16px 0;
+  display: flex;
+}
+
+module[data-module="user-rail"] .user-rail {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+module[data-module="user-rail"] .user-rail-list {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+module[data-module="user-rail"] .user-rail-item {
+  width: 52px;
+  height: 52px;
+}
+
+module[data-module="user-rail"] .avatar-wrap {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+}
+
+module[data-module="user-rail"] .avatar-image,
+module[data-module="user-rail"] .avatar-frame {
+  grid-area: 1 / 1;
+}
+
+module[data-module="user-rail"] .avatar-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+module[data-module="user-rail"] .avatar-frame {
+  width: 52px;
+  height: 52px;
+  pointer-events: none;
+}
