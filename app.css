@@ -14359,6 +14359,7 @@ figure > img {
   fill: #fff;
 }
 
+
 /*---------------------
     3. FLOATY BAR
 ---------------------*/
@@ -14410,6 +14411,7 @@ figure > img {
 /*--------------------
     MEDIA QUERIES 
 --------------------*/
+
 @media screen and (max-width: 1500px) {
   .header .header-brand .header-brand-text {
     display: none;
@@ -14831,6 +14833,7 @@ figure > img {
 .sidebar.navigation-widget.hidden {
   transform: translate(-100%, 0);
 }
+
 
 .sidebar.chat-widget {
   height: 100%;

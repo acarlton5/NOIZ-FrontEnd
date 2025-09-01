@@ -1,3 +1,4 @@
+
 export default async function init({ hub, root, utils }) {
   const links = [
     { title: 'Newsfeed', module: 'newsfeed', icon: '#svg-newsfeed' },
@@ -95,6 +96,7 @@ export default async function init({ hub, root, utils }) {
   const small = root.querySelector('[data-role="small"]');
   const large = root.querySelector('[data-role="large"]');
   const main = document.querySelector('main');
+
 
   utils.delegate(root, 'click', '.navigation-small-link, .navigation-large-link', (e, link) => {
     e.preventDefault();
