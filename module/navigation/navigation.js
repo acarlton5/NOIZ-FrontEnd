@@ -40,29 +40,57 @@ export default async function init({ hub, root }) {
           .join('')}
       </ul>
     </nav>
-    <nav class="navigation-sidebar" data-role="sidebar">
-      <ul class="navigation-menu">
+    <nav class="navigation-large" data-role="large">
+      <div class="navigation-large-profile">
+        <div class="avatar-wrap">
+          <img
+            class="avatar-image"
+            src="https://odindesignthemes.com/vikinger/img/avatar/01.jpg"
+            alt="User avatar"
+          />
+          <img
+            class="avatar-frame"
+            src="https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/dragons_smile.png"
+            alt=""
+            aria-hidden="true"
+          />
+          <span class="avatar-badge">24</span>
+        </div>
+        <h3 class="user-name">Marina Valentine</h3>
+        <p class="user-url">www.gamehuntress.com</p>
+        <ul class="profile-stats">
+          <li class="profile-stat"><span class="stat-value">930</span><span class="stat-label">Posts</span></li>
+          <li class="profile-stat"><span class="stat-value">82</span><span class="stat-label">Friends</span></li>
+          <li class="profile-stat"><span class="stat-value">5.7K</span><span class="stat-label">Visits</span></li>
+        </ul>
+      </div>
+      <ul class="navigation-large-menu">
         ${links
           .map(
             (l) => `
-        <li class="navigation-item"><a href="${l.href}" class="navigation-link">${l.title}</a></li>`
+        <li class="navigation-large-item">
+          <a href="${l.href}" class="navigation-large-link">
+            <svg class="icon" width="20" height="20"><use xlink:href="${l.icon}"></use></svg>
+            <span>${l.title}</span>
+          </a>
+        </li>`
           )
           .join('')}
       </ul>
     </nav>
   `;
 
-  const sidebar = root.querySelector('[data-role="sidebar"]');
+  const large = root.querySelector('[data-role="large"]');
 
   const api = {
     open() {
-      sidebar.classList.add('open');
+      large.classList.add('open');
     },
     close() {
-      sidebar.classList.remove('open');
+      large.classList.remove('open');
     },
     toggle() {
-      sidebar.classList.toggle('open');
+      large.classList.toggle('open');
     }
   };
 

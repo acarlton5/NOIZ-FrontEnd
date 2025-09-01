@@ -48,7 +48,9 @@
   border: none;
   padding: 0;
   margin-left: 30px;
-  display: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 [data-role="header"] .sidemenu-trigger .icon-hamburger {
@@ -396,7 +398,7 @@
     display: none;
   }
   [data-role="header"] .header-actions .sidemenu-trigger {
-    display: flex;
+    display: none;
   }
   [data-role="header"] .search-bar {
     padding: 0 0 0 20px;
