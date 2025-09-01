@@ -10,13 +10,10 @@ export default async function init({ hub, root, utils }) {
   root.innerHTML = `
     <header data-role="header" class="header">
       <div class="header-actions brand-group">
-        <a class="header-brand" href="#" data-role="brand">
+        <a class="header-brand" href="#" data-role="brand" title="Navigation">
           <svg class="logo" width="40" height="40"><use xlink:href="#svg-logo-vikinger"></use></svg>
           <h1 class="header-brand-text">NOIZ</h1>
         </a>
-        <button class="sidemenu-trigger" type="button" aria-label="Menu">
-          <svg class="icon-hamburger" width="20" height="20"><use xlink:href="#svg-hamburger"></use></svg>
-        </button>
       </div>
 
       <div class="header-actions">
@@ -214,6 +211,11 @@ export default async function init({ hub, root, utils }) {
   const searchWrap = root.querySelector('[data-role="search"]');
   const searchInput = searchWrap?.querySelector('input');
   const clearBtn = searchWrap?.querySelector('[data-role="clear"]');
+
+  utils.listen(brand, 'click', async (e) => {
+    e.preventDefault();
+    await hub.api.navigation.toggle?.();
+  });
 
   function updateSearch() {
     if (!searchWrap || !searchInput) return;

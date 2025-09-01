@@ -1,0 +1,152 @@
+export default async function init({ hub, root, utils }) {
+  const links = [
+    { title: 'Newsfeed', module: 'newsfeed', icon: '#svg-newsfeed' },
+    { title: 'Overview', module: 'overview', icon: '#svg-overview' },
+    { title: 'Groups', module: 'groups', icon: '#svg-group' },
+    { title: 'Members', module: 'members', icon: '#svg-members' },
+    { title: 'Badges', module: 'badges', icon: '#svg-badges' },
+    { title: 'Quests', module: 'quests', icon: '#svg-quests' },
+    { title: 'Streams', module: 'streams', icon: '#svg-streams' },
+    { title: 'Events', module: 'events', icon: '#svg-events' },
+    { title: 'Forums', module: 'forums', icon: '#svg-forums' },
+    { title: 'Marketplace', module: 'marketplace', icon: '#svg-marketplace' }
+  ];
+
+  root.innerHTML = `
+    <nav class="navigation-small" data-role="small">
+      <a href="#" class="navigation-avatar">
+        <img
+          class="avatar-image"
+          src="https://odindesignthemes.com/vikinger/img/avatar/01.jpg"
+          alt="User avatar"
+        />
+        <img
+          class="avatar-frame"
+          src="https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/dragons_smile.png"
+          alt=""
+          aria-hidden="true"
+        />
+      </a>
+      <ul class="navigation-small-menu">
+        ${links
+          .map(
+            (l) => `
+        <li class="navigation-small-item">
+          <a href="#" class="navigation-small-link" data-title="${l.title}" data-module="${l.module}">
+            <svg class="icon" width="20" height="20"><use xlink:href="${l.icon}"></use></svg>
+          </a>
+        </li>`
+          )
+          .join('')}
+      </ul>
+    </nav>
+    <nav class="navigation-large" data-role="large">
+      <div class="navigation-large-profile">
+        <img
+          class="profile-banner"
+          src="https://raw.githubusercontent.com/ItsPi3141/discord-fake-avatar-decorations/refs/heads/main/public/nameplates/d20_roll.png"
+          alt=""
+          aria-hidden="true"
+        />
+        <div class="avatar-wrap">
+          <img
+            class="avatar-image"
+            src="https://odindesignthemes.com/vikinger/img/avatar/01.jpg"
+            alt="User avatar"
+          />
+          <img
+            class="avatar-frame"
+            src="https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/dragons_smile.png"
+            alt=""
+            aria-hidden="true"
+          />
+        </div>
+        <h3 class="user-name">Marina Valentine</h3>
+        <p class="user-url">www.gamehuntress.com</p>
+        <ul class="profile-stats">
+          <li class="profile-stat"><span class="stat-value">930</span><span class="stat-label">Posts</span></li>
+          <li class="profile-stat"><span class="stat-value">82</span><span class="stat-label">Friends</span></li>
+          <li class="profile-stat"><span class="stat-value">5.7K</span><span class="stat-label">Visits</span></li>
+        </ul>
+        <ul class="user-badges">
+          <li><svg class="badge-icon" width="24" height="24"><use xlink:href="#svg-facebook"></use></svg></li>
+          <li><svg class="badge-icon" width="24" height="24"><use xlink:href="#svg-twitter"></use></svg></li>
+          <li><svg class="badge-icon" width="24" height="24"><use xlink:href="#svg-instagram"></use></svg></li>
+          <li><svg class="badge-icon" width="24" height="24"><use xlink:href="#svg-discord"></use></svg></li>
+          <li><svg class="badge-icon" width="24" height="24"><use xlink:href="#svg-google"></use></svg></li>
+        </ul>
+      </div>
+      <ul class="navigation-large-menu">
+        ${links
+          .map(
+            (l) => `
+        <li class="navigation-large-item">
+          <a href="#" class="navigation-large-link" data-module="${l.module}">
+            <svg class="icon" width="20" height="20"><use xlink:href="${l.icon}"></use></svg>
+            <span>${l.title}</span>
+          </a>
+        </li>`
+          )
+          .join('')}
+      </ul>
+    </nav>
+  `;
+
+  const small = root.querySelector('[data-role="small"]');
+  const large = root.querySelector('[data-role="large"]');
+  const main = document.querySelector('main');
+
+  utils.delegate(root, 'click', '.navigation-small-link, .navigation-large-link', (e, link) => {
+    e.preventDefault();
+    const mod = link.getAttribute('data-module');
+    if (mod) window.LoadMainModule(mod);
+  });
+
+  const api = {
+    showSmall() {
+      large.classList.remove('mobile-open');
+      const apply = () => {
+        small.classList.remove('hidden');
+        main.style.transform = 'translate(200.5px)';
+        main.style.transition = 'transform 0.4s ease-in-out';
+      };
+      if (large.classList.contains('open')) {
+        large.addEventListener(
+          'transitionend',
+          apply,
+          { once: true }
+        );
+        large.classList.remove('open');
+      } else {
+        apply();
+      }
+    },
+    showLarge() {
+      small.classList.add('hidden');
+      large.classList.remove('mobile-open');
+      main.style.transform = 'translate(300.5px)';
+      main.style.transition = 'transform 0.4s ease-in-out';
+      requestAnimationFrame(() => {
+        large.classList.add('open');
+      });
+    },
+    toggle() {
+      if (window.innerWidth < 992) {
+        large.classList.toggle('mobile-open');
+        if (large.classList.contains('mobile-open')) {
+          main.style.transform = 'translate(300.5px)';
+          main.style.transition = 'transform 0.4s ease-in-out';
+        } else {
+          main.style.transform = '';
+          main.style.transition = '';
+        }
+      } else if (large.classList.contains('open')) {
+        api.showSmall();
+      } else {
+        api.showLarge();
+      }
+    }
+  };
+
+  return api;
+}
