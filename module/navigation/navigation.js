@@ -80,17 +80,26 @@ export default async function init({ hub, root }) {
     </nav>
   `;
 
+  const small = root.querySelector('[data-role="small"]');
   const large = root.querySelector('[data-role="large"]');
 
   const api = {
-    open() {
+    showSmall() {
+      small.classList.remove('hidden');
+      large.classList.remove('open', 'mobile-open');
+    },
+    showLarge() {
+      small.classList.add('hidden');
       large.classList.add('open');
     },
-    close() {
-      large.classList.remove('open');
-    },
     toggle() {
-      large.classList.toggle('open');
+      if (window.innerWidth < 992) {
+        large.classList.toggle('mobile-open');
+      } else if (large.classList.contains('open')) {
+        api.showSmall();
+      } else {
+        api.showLarge();
+      }
     }
   };
 

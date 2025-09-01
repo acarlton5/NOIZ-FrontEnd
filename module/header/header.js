@@ -14,9 +14,6 @@ export default async function init({ hub, root, utils }) {
           <svg class="logo" width="40" height="40"><use xlink:href="#svg-logo-vikinger"></use></svg>
           <h1 class="header-brand-text">NOIZ</h1>
         </a>
-        <button class="sidemenu-trigger" type="button" aria-label="Menu">
-          <svg class="icon-hamburger" width="20" height="20"><use xlink:href="#svg-hamburger"></use></svg>
-        </button>
       </div>
 
       <div class="header-actions">
@@ -215,8 +212,8 @@ export default async function init({ hub, root, utils }) {
   const searchInput = searchWrap?.querySelector('input');
   const clearBtn = searchWrap?.querySelector('[data-role="clear"]');
 
-  const sidemenuBtn = root.querySelector('.sidemenu-trigger');
-  utils.listen(sidemenuBtn, 'click', async () => {
+  utils.listen(brand, 'click', async (e) => {
+    e.preventDefault();
     await hub.api.navigation.toggle?.();
   });
 

@@ -12,6 +12,9 @@
   border-right: 1px solid #e5e7eb;
   z-index: 1040;
 }
+.navigation-small.hidden {
+  display: none;
+}
 .navigation-avatar {
   position: relative;
   width: 48px;
@@ -210,5 +213,10 @@
   .navigation-small,
   .navigation-large {
     display: none;
+  }
+  .navigation-large.mobile-open {
+    display: block;
+    left: 0;
+    transform: translateX(0);
   }
 }
