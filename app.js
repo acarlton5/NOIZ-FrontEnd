@@ -157,10 +157,15 @@ async function LoadMainModule(name, props = {}) {
   if (window.location.hash !== targetHash) {
     window.history.pushState(null, '', targetHash);
   }
-  if (name === activeMainModule) return;
-
   const main = document.querySelector('main');
-  if (activeMainModule) {
+  if (name === activeMainModule) {
+    const existing = main.querySelector(`module[data-module="${name}"]`);
+    const currentSlug = parseProps(existing).user?.slug;
+    const nextSlug = props?.user?.slug;
+    if (currentSlug === nextSlug) return;
+    await hub.destroy(name);
+    existing?.remove();
+  } else if (activeMainModule) {
     await hub.destroy(activeMainModule);
     main
       .querySelector(`module[data-module="${activeMainModule}"]`)
