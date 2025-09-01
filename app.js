@@ -275,11 +275,14 @@ mountAll();
 
 function handleRoute() {
   const path = window.location.pathname;
-  if (path.startsWith("/profile")) {
+  const hash = window.location.hash.slice(1); // remove leading '#'
+  const route = hash || path;
+  if (route.startsWith("/profile")) {
     LoadMainModule("profile");
   }
 }
 window.addEventListener("popstate", handleRoute);
+window.addEventListener("hashchange", handleRoute);
 handleRoute();
 
 // Expose for debugging
