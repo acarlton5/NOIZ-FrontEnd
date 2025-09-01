@@ -10,12 +10,7 @@ const tpl = (unread) => `
 `;
 
 export default async function init({ hub, root, utils }) {
-  let unread = 0;
-  try {
-    unread = await hub.api.messages.getUnread();
-  } catch {}
-
-  root.innerHTML = tpl(unread);
+  root.innerHTML = tpl(0);
 
   const badge = root.querySelector('[data-role="unread"]');
   const update = (n) => {
@@ -24,6 +19,7 @@ export default async function init({ hub, root, utils }) {
     badge.classList.toggle('bg-secondary', n <= 0);
   };
 
+  hub.api.messages.getUnread().then(update).catch(() => {});
   const off = hub.on('messages:unreadChanged', update);
   utils.onCleanup(off);
 
