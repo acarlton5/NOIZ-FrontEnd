@@ -61,7 +61,7 @@ export default async function init({ hub, root, utils }) {
             <div class="quest-accordion accordion" id="questAccordion">
               <div class="accordion-item quest-campaign">
                 <h2 class="accordion-header" id="campaignOneHeading">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#campaignOne" aria-expanded="false" aria-controls="campaignOne">
+                  <button class="quest-toggle collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#campaignOne" aria-expanded="false" aria-controls="campaignOne">
                     <div class="quest-header p-3 flex-grow-1 pe-5">
                       <img class="quest-banner" src="https://images.igdb.com/igdb/image/upload/t_1080p/ar35sq.webp" alt="Sea of Thieves banner">
                       <p class="quest-title mb-1">Mixer Loot - Sea of Thieves</p>
@@ -119,7 +119,7 @@ export default async function init({ hub, root, utils }) {
 
               <div class="accordion-item quest-campaign">
                 <h2 class="accordion-header" id="campaignTwoHeading">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#campaignTwo" aria-expanded="false" aria-controls="campaignTwo">
+                  <button class="quest-toggle collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#campaignTwo" aria-expanded="false" aria-controls="campaignTwo">
                     <div class="quest-header p-3 flex-grow-1 pe-5">
                       <img class="quest-banner" src="https://images.igdb.com/igdb/image/upload/t_1080p/ar8eh.webp" alt="Dead by Daylight banner">
                       <p class="quest-title mb-1">Mixer Loot - Dead by Daylight</p>
