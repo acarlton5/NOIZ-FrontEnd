@@ -1,5 +1,6 @@
 // app.js
 // NOIZ Hub + Loader with lifecycle-safe modules and optional per-module CSS loading.
+import { getUserBySlug } from './module/users.js';
 
 class ModuleHub {
   constructor() {
@@ -148,7 +149,11 @@ let activeMainModule =
 async function LoadMainModule(name, props = {}) {
   if (!name) return;
 
-  const targetHash = `#/${name}`;
+  let targetHash = `#/${name}`;
+  if (name === 'profile') {
+    const slug = props?.user?.slug;
+    if (slug) targetHash = `#/profile/${slug}`;
+  }
   if (window.location.hash !== targetHash) {
     window.history.pushState(null, '', targetHash);
   }
@@ -287,9 +292,16 @@ function handleRoute() {
   const path = window.location.pathname;
   const hash = window.location.hash.slice(1); // remove leading '#'
   const route = hash || path;
-  const match = route.match(/^\/([^/]+)/);
+  const match = route.match(/^\/([^/]+)(?:\/([^/]+))?/);
   if (match) {
-    LoadMainModule(match[1]);
+    const mod = match[1];
+    const slug = match[2];
+    if (mod === 'profile' && slug) {
+      const user = getUserBySlug(decodeURIComponent(slug));
+      LoadMainModule('profile', user ? { user } : {});
+    } else {
+      LoadMainModule(mod);
+    }
   }
 }
 window.addEventListener("popstate", handleRoute);
