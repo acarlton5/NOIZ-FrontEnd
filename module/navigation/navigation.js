@@ -3,7 +3,13 @@ export default async function init({ hub, root }) {
     { title: 'Newsfeed', href: '#', icon: '#svg-newsfeed' },
     { title: 'Overview', href: '#', icon: '#svg-overview' },
     { title: 'Groups', href: '#', icon: '#svg-group' },
-    { title: 'Members', href: '#', icon: '#svg-members' }
+    { title: 'Members', href: '#', icon: '#svg-members' },
+    { title: 'Badges', href: '#', icon: '#svg-badges' },
+    { title: 'Quests', href: '#', icon: '#svg-quests' },
+    { title: 'Streams', href: '#', icon: '#svg-streams' },
+    { title: 'Events', href: '#', icon: '#svg-events' },
+    { title: 'Forums', href: '#', icon: '#svg-forums' },
+    { title: 'Marketplace', href: '#', icon: '#svg-marketplace' }
   ];
 
   root.innerHTML = `
