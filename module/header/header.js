@@ -10,7 +10,7 @@ export default async function init({ hub, root, utils }) {
   root.innerHTML = `
     <header data-role="header" class="header">
       <div class="header-actions brand-group">
-        <a class="header-brand" href="#" data-role="brand">
+        <a class="header-brand" href="#" data-role="brand" title="Navigation">
           <svg class="logo" width="40" height="40"><use xlink:href="#svg-logo-vikinger"></use></svg>
           <h1 class="header-brand-text">NOIZ</h1>
         </a>

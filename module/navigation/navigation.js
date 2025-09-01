@@ -85,12 +85,26 @@ export default async function init({ hub, root }) {
 
   const api = {
     showSmall() {
-      small.classList.remove('hidden');
-      large.classList.remove('open', 'mobile-open');
+      large.classList.remove('mobile-open');
+      if (large.classList.contains('open')) {
+        large.addEventListener(
+          'transitionend',
+          () => {
+            small.classList.remove('hidden');
+          },
+          { once: true }
+        );
+        large.classList.remove('open');
+      } else {
+        small.classList.remove('hidden');
+      }
     },
     showLarge() {
       small.classList.add('hidden');
-      large.classList.add('open');
+      large.classList.remove('mobile-open');
+      requestAnimationFrame(() => {
+        large.classList.add('open');
+      });
     },
     toggle() {
       if (window.innerWidth < 992) {
