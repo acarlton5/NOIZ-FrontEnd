@@ -55,20 +55,18 @@ export default async function init({ hub, root, utils }) {
       <div class="header-actions">
         <div class="quest dropdown">
           <button class="action-list-item quest-trigger" id="questDropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
-            <svg class="icon" width="24" height="24"><use xlink:href="#svg-questbox"></use></svg>
+            <svg class="icon" width="24" height="24"><use xlink:href="#svg-quests"></use></svg>
           </button>
           <div class="dropdown-menu quest-menu" aria-labelledby="questDropdown">
             <div class="quest-accordion accordion" id="questAccordion">
               <div class="accordion-item quest-campaign">
                 <h2 class="accordion-header" id="campaignOneHeading">
-                  <button class="quest-toggle collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#campaignOne" aria-expanded="false" aria-controls="campaignOne">
-                    <div class="quest-header p-3 flex-grow-1 pe-5">
-                      <img class="quest-banner" src="https://images.igdb.com/igdb/image/upload/t_1080p/ar35sq.webp" alt="Sea of Thieves banner">
-                      <p class="quest-title mb-1">Mixer Loot - Sea of Thieves</p>
-                      <p class="quest-desc">Earn in-game content by watching exciting moments on Mixer.</p>
-                      <a href="#" class="quest-link">View Quests</a>
-                    </div>
-                  </button>
+                  <div class="quest-header p-3 flex-grow-1">
+                    <img class="quest-banner" src="https://images.igdb.com/igdb/image/upload/t_1080p/ar35sq.webp" alt="Sea of Thieves banner">
+                    <p class="quest-title mb-1">Mixer Loot - Sea of Thieves</p>
+                    <p class="quest-desc">Earn in-game content by watching exciting moments on Mixer.</p>
+                    <a class="quest-link quest-toggle collapsed" data-bs-toggle="collapse" href="#campaignOne" role="button" aria-expanded="false" aria-controls="campaignOne">View Quests</a>
+                  </div>
                 </h2>
                 <div id="campaignOne" class="accordion-collapse collapse" aria-labelledby="campaignOneHeading" data-bs-parent="#questAccordion">
                   <div class="accordion-body p-0">
@@ -119,14 +117,12 @@ export default async function init({ hub, root, utils }) {
 
               <div class="accordion-item quest-campaign">
                 <h2 class="accordion-header" id="campaignTwoHeading">
-                  <button class="quest-toggle collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#campaignTwo" aria-expanded="false" aria-controls="campaignTwo">
-                    <div class="quest-header p-3 flex-grow-1 pe-5">
-                      <img class="quest-banner" src="https://images.igdb.com/igdb/image/upload/t_1080p/ar8eh.webp" alt="Dead by Daylight banner">
-                      <p class="quest-title mb-1">Mixer Loot - Dead by Daylight</p>
-                      <p class="quest-desc">Earn rewards by watching spine-chilling matches.</p>
-                      <a href="#" class="quest-link">View Quests</a>
-                    </div>
-                  </button>
+                  <div class="quest-header p-3 flex-grow-1">
+                    <img class="quest-banner" src="https://images.igdb.com/igdb/image/upload/t_1080p/ar8eh.webp" alt="Dead by Daylight banner">
+                    <p class="quest-title mb-1">Mixer Loot - Dead by Daylight</p>
+                    <p class="quest-desc">Earn rewards by watching spine-chilling matches.</p>
+                    <a class="quest-link quest-toggle collapsed" data-bs-toggle="collapse" href="#campaignTwo" role="button" aria-expanded="false" aria-controls="campaignTwo">View Quests</a>
+                  </div>
                 </h2>
                 <div id="campaignTwo" class="accordion-collapse collapse" aria-labelledby="campaignTwoHeading" data-bs-parent="#questAccordion">
                   <div class="accordion-body p-0">
