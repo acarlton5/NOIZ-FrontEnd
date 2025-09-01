@@ -202,8 +202,8 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: blur(8px);
-  transform: scale(1.1);
+  /* Darken the banner image without blurring */
+  filter: brightness(0.4);
   z-index: 0;
 }
 
@@ -223,6 +223,7 @@
 [data-role="header"] .quest-title {
   font-family: "Rajdhani", sans-serif;
   font-weight: 700;
+  color: #f3f6fb;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 }
 
@@ -230,6 +231,7 @@
   font-family: "Rajdhani", sans-serif;
   font-size: 0.875rem;
   margin-bottom: 0.5rem;
+  color: #9dadc6;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 }
 
