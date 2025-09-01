@@ -11,6 +11,9 @@
   align-items: center;
   border-right: 1px solid #e5e7eb;
   z-index: 1040;
+  overflow-y: auto;
+  overflow-x: visible;
+  -webkit-overflow-scrolling: touch;
 }
 .navigation-small.hidden {
   display: none;
