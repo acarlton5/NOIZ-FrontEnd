@@ -74,9 +74,26 @@ export default async function init({ hub, root, utils }) {
                 <h2 class="accordion-header" id="campaignOneHeading">
                   <div class="quest-header p-3 flex-grow-1">
                     <img class="quest-banner" src="https://images.igdb.com/igdb/image/upload/t_1080p/ar35sq.webp" alt="Sea of Thieves banner">
+                    <span class="quest-tag">Active Quest</span>
                     <p class="quest-title mb-1">Mixer Loot - Sea of Thieves</p>
                     <p class="quest-desc">Earn in-game content by watching exciting moments on Mixer.</p>
-                    <a class="quest-link quest-toggle collapsed" data-bs-toggle="collapse" href="#campaignOne" role="button" aria-expanded="false" aria-controls="campaignOne">View Quests</a>
+                    <div class="quest-link-wrap">
+                      <span class="quest-active-icon">
+                        <svg class="icon" width="24" height="24"><use xlink:href="#svg-quests"></use></svg>
+                        <svg class="quest-ring" viewBox="0 0 40 40" width="40" height="40">
+                          <defs>
+                            <linearGradient id="questRingGradientActive" x1="0" y1="0" x2="1" y2="1">
+                              <stop offset="0%" stop-color="#05D6D9"/>
+                              <stop offset="100%" stop-color="#F907FC"/>
+                            </linearGradient>
+                          </defs>
+                          <circle class="quest-ring-seg seg1" cx="20" cy="20" r="18" fill="none" stroke="url(#questRingGradientActive)" stroke-width="2" stroke-linecap="round" stroke-dasharray="28 85" stroke-dashoffset="0"></circle>
+                          <circle class="quest-ring-seg seg2" cx="20" cy="20" r="18" fill="none" stroke="url(#questRingGradientActive)" stroke-width="2" stroke-linecap="round" stroke-dasharray="28 85" stroke-dashoffset="38"></circle>
+                          <circle class="quest-ring-seg seg3" cx="20" cy="20" r="18" fill="none" stroke="url(#questRingGradientActive)" stroke-width="2" stroke-linecap="round" stroke-dasharray="28 85" stroke-dashoffset="76"></circle>
+                        </svg>
+                      </span>
+                      <a class="quest-link quest-toggle collapsed" data-bs-toggle="collapse" href="#campaignOne" role="button" aria-expanded="false" aria-controls="campaignOne">View Quests</a>
+                    </div>
                   </div>
                 </h2>
                 <div id="campaignOne" class="accordion-collapse collapse" aria-labelledby="campaignOneHeading" data-bs-parent="#questAccordion">
