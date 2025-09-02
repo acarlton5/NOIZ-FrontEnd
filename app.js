@@ -293,6 +293,12 @@ observer.observe(document.documentElement, { childList: true, subtree: true });
 
 mountAll();
 
+// Disable native context menu and emit event for custom context modules
+document.addEventListener('contextmenu', (e) => {
+  e.preventDefault();
+  hub.emit('contextmenu', e);
+});
+
 async function handleRoute() {
   const path = window.location.pathname;
   const hash = window.location.hash.slice(1); // remove leading '#'
