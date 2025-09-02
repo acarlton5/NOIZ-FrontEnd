@@ -222,18 +222,7 @@ export default async function init({ hub, root, utils }) {
     await hub.api.navigation.toggle?.();
   });
 
-  function highlight(text, term) {
-    const idx = text.toLowerCase().indexOf(term.toLowerCase());
-    if (idx === -1) return text;
-    const end = idx + term.length;
-    return (
-      text.slice(0, idx) +
-      `<span class="header-search-highlight">${text.slice(idx, end)}</span>` +
-      text.slice(end)
-    );
-  }
-
-  function renderResults(results = {}, term = '') {
+  function renderResults(results = {}) {
     if (!searchDropdown) return;
     const { modules = [], members = [] } = results;
     if (!modules.length && !members.length) {
@@ -249,7 +238,7 @@ export default async function init({ hub, root, utils }) {
     <a class="dropdown-item header-search-item" href="#/${m.name}">
       <svg width="40" height="40"><use xlink:href="#svg-${m.icon}"></use></svg>
       <div class="info">
-        <div class="name">${highlight(m.name, term)}</div>
+        <div class="name">${m.name}</div>
       </div>
     </a>`
         )
@@ -265,7 +254,7 @@ export default async function init({ hub, root, utils }) {
     <a class="dropdown-item header-search-item" href="#/profile/${u.slug}">
       <img src="${u.avatar}" alt="${u.name}">
       <div class="info">
-        <div class="name">${highlight(u.name, term)}</div>
+        <div class="name">${u.name}</div>
         <div class="meta">${u.friendCount} friends in common</div>
       </div>
     </a>`
@@ -289,7 +278,7 @@ export default async function init({ hub, root, utils }) {
     }
     try {
       const results = await hub.call('header.search', term);
-      renderResults(results, term);
+      renderResults(results);
     } catch {
       renderResults({});
     }
