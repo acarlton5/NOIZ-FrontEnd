@@ -244,7 +244,7 @@ export default async function init({ hub, root, utils }) {
         )
         .join('');
       html += `
-    <div class="header-search-category">Modules</div>
+    <div class="header-search-category">Site</div>
     ${modItems}`;
     }
     if (members.length) {
