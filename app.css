@@ -14474,6 +14474,7 @@ figure > img {
     height: 100%;
   }
   .header .header-actions.search-bar .interactive-input input {
+    height: 100%;
     border-radius: 0;
   }
   .header .header-actions .header-brand .logo {
