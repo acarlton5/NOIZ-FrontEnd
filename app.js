@@ -1,5 +1,6 @@
 // app.js
 // NOIZ Hub + Loader with lifecycle-safe modules and optional per-module CSS loading.
+import { getUserBySlug } from './module/users.js';
 
 class ModuleHub {
   constructor() {
@@ -145,10 +146,26 @@ const hub = new ModuleHub();
 let activeMainModule =
   document.querySelector('main module[data-module]')?.getAttribute('data-module') ||
   null;
-async function LoadMainModule(name) {
-  if (!name || name === activeMainModule) return;
+async function LoadMainModule(name, props = {}) {
+  if (!name) return;
+
+  let targetHash = `#/${name}`;
+  if (name === 'profile') {
+    const slug = props?.user?.slug;
+    if (slug) targetHash = `#/profile/${slug}`;
+  }
+  if (window.location.hash !== targetHash) {
+    window.history.pushState(null, '', targetHash);
+  }
   const main = document.querySelector('main');
-  if (activeMainModule) {
+  if (name === activeMainModule) {
+    const existing = main.querySelector(`module[data-module="${name}"]`);
+    const currentSlug = parseProps(existing).user?.slug;
+    const nextSlug = props?.user?.slug;
+    if (currentSlug === nextSlug) return;
+    await hub.destroy(name);
+    existing?.remove();
+  } else if (activeMainModule) {
     await hub.destroy(activeMainModule);
     main
       .querySelector(`module[data-module="${activeMainModule}"]`)
@@ -157,6 +174,9 @@ async function LoadMainModule(name) {
   const node = document.createElement('module');
   node.setAttribute('data-module', name);
   node.setAttribute('data-css', 'true');
+  if (props && Object.keys(props).length) {
+    node.setAttribute('data-props', JSON.stringify(props));
+  }
   main.appendChild(node);
   activeMainModule = name;
 }
@@ -272,6 +292,32 @@ const observer = new MutationObserver(muts => {
 observer.observe(document.documentElement, { childList: true, subtree: true });
 
 mountAll();
+
+// Disable native context menu and emit event for custom context modules
+document.addEventListener('contextmenu', (e) => {
+  e.preventDefault();
+  hub.emit('contextmenu', e);
+});
+
+async function handleRoute() {
+  const path = window.location.pathname;
+  const hash = window.location.hash.slice(1); // remove leading '#'
+  const route = hash || path;
+  const match = route.match(/^\/([^/]+)(?:\/([^/]+))?/);
+  if (match) {
+    const mod = match[1];
+    const slug = match[2];
+    if (mod === 'profile' && slug) {
+      const user = await getUserBySlug(decodeURIComponent(slug));
+      LoadMainModule('profile', user ? { user } : {});
+    } else {
+      LoadMainModule(mod);
+    }
+  }
+}
+window.addEventListener("popstate", () => { handleRoute(); });
+window.addEventListener("hashchange", () => { handleRoute(); });
+handleRoute();
 
 // Expose for debugging
 window.NOIZ = { hub };
