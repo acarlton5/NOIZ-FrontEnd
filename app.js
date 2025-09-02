@@ -143,6 +143,33 @@ class ModuleHub {
 /* ---------- Loader ---------- */
 const hub = new ModuleHub();
 
+// Load service modules early so their APIs are available via hub.require()
+async function loadServices() {
+  let config = {};
+  try {
+    const res = await fetch('/modules-enabled.json');
+    config = await res.json();
+  } catch (err) {
+    console.error('[NOIZ] Failed to load modules-enabled.json', err);
+  }
+
+  const enabled = Object.values(config).filter(m => m?.status === 'enabled');
+  for (const { name } of enabled) {
+    try {
+      const svc = await import(`/module/${name}/${name}.service.js`);
+      if (typeof svc?.default === 'function') {
+        const api = await svc.default({ hub });
+        if (api) hub.register(name, api);
+      } else if (svc && typeof svc === 'object') {
+        hub.register(name, svc);
+      }
+    } catch (_err) {
+      // ignore missing or broken service modules
+    }
+  }
+}
+loadServices();
+
 let activeMainModule =
   document.querySelector('main module[data-module]')?.getAttribute('data-module') ||
   null;
