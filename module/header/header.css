@@ -21,6 +21,16 @@
   align-items: center;
 }
 
+[data-role="header"] .user-info {
+  gap: 8px;
+}
+
+[data-role="header"] .user-info .avatar-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
 [data-role="header"] .brand-group {
   flex-shrink: 0;
 }

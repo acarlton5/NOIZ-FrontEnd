@@ -1,7 +1,21 @@
 import { getUsers } from '../users.js';
 
 export default async function init({ root, utils }) {
-  const users = await getUsers();
+  const [allUsers, logged] = await Promise.all([
+    getUsers(),
+    // TODO: replace logged-in.json with real auth data
+    fetch('/data/logged-in.json').then(r => r.json())
+  ]);
+
+  const { subscribed = [], followed = [] } = logged;
+  const userMap = new Map(allUsers.map(u => [u.slug, u]));
+  const users = [
+    ...subscribed.map(slug => userMap.get(slug)).filter(Boolean),
+    ...followed
+      .filter(slug => !subscribed.includes(slug))
+      .map(slug => userMap.get(slug))
+      .filter(Boolean),
+  ];
 
   root.innerHTML = `
     <nav class="user-rail">
