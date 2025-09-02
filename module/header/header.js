@@ -267,21 +267,27 @@ export default async function init({ hub, root, utils }) {
     }
   };
 
-  if (hub.isReady('messages')) {
-    api.addButton({
-      id: 'messages',
-      icon: '#svg-messages',
-      onClick: async () => hub.api.messages.open?.()
-    });
-  } else {
-    const off = hub.once('module:ready:messages', () => {
+  if (!hub.api.modules.isEnabled?.('quests', 'header')) {
+    root.querySelector('.quest')?.remove();
+  }
+
+  if (hub.api.modules.isEnabled?.('messages', 'header')) {
+    if (hub.isReady('messages')) {
       api.addButton({
         id: 'messages',
         icon: '#svg-messages',
         onClick: async () => hub.api.messages.open?.()
       });
-    });
-    utils.onCleanup(off);
+    } else {
+      const off = hub.once('module:ready:messages', () => {
+        api.addButton({
+          id: 'messages',
+          icon: '#svg-messages',
+          onClick: async () => hub.api.messages.open?.()
+        });
+      });
+      utils.onCleanup(off);
+    }
   }
 
   return api;

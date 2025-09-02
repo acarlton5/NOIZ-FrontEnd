@@ -1,0 +1,6 @@
+[
+  { "name": "newsfeed", "title": "Newsfeed", "icon": "#svg-newsfeed", "nav": true, "main": true },
+  { "name": "overview", "title": "Overview", "icon": "#svg-overview", "nav": true, "main": true },
+  { "name": "quests", "title": "Quests", "icon": "#svg-quests", "nav": true, "header": true, "main": true },
+  { "name": "messages", "title": "Messages", "icon": "#svg-messages", "header": true }
+]

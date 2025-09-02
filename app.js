@@ -143,6 +143,26 @@ class ModuleHub {
 /* ---------- Loader ---------- */
 const hub = new ModuleHub();
 
+let enabledModules = [];
+async function loadEnabledModules() {
+  try {
+    const res = await fetch('/data/enabled-modules.json');
+    enabledModules = await res.json();
+  } catch {
+    enabledModules = [];
+  }
+  hub.extend('modules', {
+    list() {
+      return enabledModules;
+    },
+    isEnabled(name, area) {
+      const mod = enabledModules.find((m) => m.name === name);
+      if (!mod) return false;
+      return area ? !!mod[area] : true;
+    }
+  });
+}
+
 let activeMainModule =
   document.querySelector('main module[data-module]')?.getAttribute('data-module') ||
   null;
@@ -292,6 +312,7 @@ const observer = new MutationObserver(muts => {
 });
 observer.observe(document.documentElement, { childList: true, subtree: true });
 
+await loadEnabledModules();
 mountAll();
 
 // Disable native context menu and emit event for custom context modules
