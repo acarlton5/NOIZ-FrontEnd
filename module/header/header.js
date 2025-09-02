@@ -267,21 +267,13 @@ export default async function init({ hub, root, utils }) {
     (m) => m.status === 'enabled' && m.header
   );
 
-  headerMods.forEach((m) => {
-    const add = () =>
-      api.addButton({
-        id: m.name,
-        icon: `#svg-${m.icon}`,
-        onClick: async () => hub.api[m.name]?.open?.()
-      });
-
-    if (hub.isReady(m.name)) {
-      add();
-    } else {
-      const off = hub.once(`module:ready:${m.name}`, () => add());
-      utils.onCleanup(off);
-    }
-  });
+  headerMods.forEach((m) =>
+    api.addButton({
+      id: m.name,
+      icon: `#svg-${m.icon}`,
+      onClick: () => window.LoadMainModule(m.name)
+    })
+  );
 
   return api;
 }
