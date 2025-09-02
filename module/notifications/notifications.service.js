@@ -43,7 +43,7 @@ export default function ({ hub }) {
     close.className = 'notification-close';
     close.innerHTML = '&times;';
     close.addEventListener('click', () => popup.remove());
-    popup.appendChild(close);
+    main.appendChild(close);
 
     if (actions.length) {
       const actionsWrap = document.createElement('div');

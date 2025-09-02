@@ -54,14 +54,13 @@
 }
 
 .notification-close {
-  position: absolute;
-  top: 8px;
-  right: 8px;
+  margin-left: auto;
   background: none;
   border: none;
   font-size: 1rem;
   line-height: 1;
   cursor: pointer;
+  align-self: flex-start;
 }
 
 .notification-actions {
