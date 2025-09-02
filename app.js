@@ -198,6 +198,8 @@ async function LoadMainModule(name, props = {}) {
     node.setAttribute('data-props', JSON.stringify(props));
   }
   main.appendChild(node);
+  // Mount immediately so callers don't rely on the mutation observer
+  await mountNode(node);
   activeMainModule = name;
   hub.emit('route:change', { module: name, props });
 }
