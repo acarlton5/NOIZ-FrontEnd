@@ -89,7 +89,16 @@ export default async function init({ hub, root, utils }) {
   utils.delegate(root, 'click', '.navigation-small-link, .navigation-large-link', (e, link) => {
     e.preventDefault();
     const mod = link.getAttribute('data-module');
-    if (mod) window.LoadMainModule(mod);
+    if (mod === 'profile') {
+      window.LoadMainModule('profile', { user: currentUser });
+    } else if (mod) {
+      window.LoadMainModule(mod);
+    }
+  });
+
+  utils.delegate(root, 'click', '.navigation-avatar', (e) => {
+    e.preventDefault();
+    window.LoadMainModule('profile', { user: currentUser });
   });
 
   // Tooltip handling for compact navigation

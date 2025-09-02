@@ -335,9 +335,19 @@ async function handleRoute() {
   if (match) {
     const mod = match[1];
     const slug = match[2];
-    if (mod === 'profile' && slug) {
-      const user = await getUserBySlug(decodeURIComponent(slug));
-      LoadMainModule('profile', user ? { user } : {});
+    if (mod === 'profile') {
+      if (slug) {
+        const user = await getUserBySlug(decodeURIComponent(slug));
+        LoadMainModule('profile', user ? { user } : {});
+      } else {
+        try {
+          const loggedSlug = await fetch('/data/logged-in.json').then(r => r.json());
+          const user = loggedSlug ? await getUserBySlug(loggedSlug) : null;
+          LoadMainModule('profile', user ? { user } : {});
+        } catch {
+          LoadMainModule('profile');
+        }
+      }
     } else {
       LoadMainModule(mod);
     }
