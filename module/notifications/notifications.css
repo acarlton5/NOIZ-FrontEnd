@@ -1,0 +1,21 @@
+/* module/notifications/notifications.css */
+
+.notification-container {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1050;
+}
+
+.notification-popup {
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.notification-popup.fade-out {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
