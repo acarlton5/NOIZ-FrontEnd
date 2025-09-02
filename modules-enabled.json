@@ -4,62 +4,71 @@
     "icon": "bars",
     "status": "enabled",
     "navigation": false,
-    "header": false
+    "header": false,
+    "services": false
   },
   "header": {
     "name": "header",
     "icon": "home",
     "status": "enabled",
     "navigation": false,
-    "header": false
+    "header": false,
+    "services": false
   },
   "user-rail": {
     "name": "user-rail",
     "icon": "user-group",
     "status": "enabled",
     "navigation": false,
-    "header": false
+    "header": false,
+    "services": false
   },
   "svgs": {
     "name": "svgs",
     "icon": "images",
     "status": "enabled",
     "navigation": false,
-    "header": false
+    "header": false,
+    "services": false
   },
   "newsfeed": {
     "name": "newsfeed",
     "icon": "newsfeed",
     "status": "enabled",
     "navigation": true,
-    "header": false
+    "header": false,
+    "services": false
   },
   "messages": {
     "name": "messages",
     "icon": "messages",
     "status": "enabled",
     "navigation": true,
-    "header": true
+    "header": true,
+    "services": false
   },
   "profile": {
     "name": "profile",
     "icon": "profile",
     "status": "enabled",
     "navigation": true,
-    "header": false
+    "header": false,
+    "services": false
   },
   "overview": {
     "name": "overview",
     "icon": "overview",
     "status": "enabled",
     "navigation": true,
-    "header": false
+    "header": false,
+    "services": false
   },
   "notifications": {
     "name": "notifications",
     "icon": "notification",
     "status": "enabled",
     "navigation": false,
-    "header": true
+    "header": true,
+    "services": false
   }
 }

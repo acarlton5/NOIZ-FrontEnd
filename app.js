@@ -143,7 +143,8 @@ class ModuleHub {
 /* ---------- Loader ---------- */
 const hub = new ModuleHub();
 
-// Load service modules early so their APIs are available via hub.require()
+// Load service modules early so their APIs are available via hub.require().
+// Only modules with `services: true` in modules-enabled.json are loaded.
 async function loadServices() {
   let config = {};
   try {
@@ -153,7 +154,7 @@ async function loadServices() {
     console.error('[NOIZ] Failed to load modules-enabled.json', err);
   }
 
-  const enabled = Object.values(config).filter(m => m?.status === 'enabled');
+  const enabled = Object.values(config).filter(m => m?.status === 'enabled' && m?.services);
   for (const { name } of enabled) {
     try {
       const svc = await import(`/module/${name}/${name}.service.js`);
