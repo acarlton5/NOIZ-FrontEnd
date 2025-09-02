@@ -29,12 +29,14 @@ export default function ({ hub }) {
     if (icon) {
       let iconEl;
       if (icon.startsWith('#')) {
-        const svg = document.createElement('svg');
+        const SVG_NS = 'http://www.w3.org/2000/svg';
+        const XLINK_NS = 'http://www.w3.org/1999/xlink';
+        const svg = document.createElementNS(SVG_NS, 'svg');
         svg.className = 'notification-icon';
-        const use = document.createElement('use');
+        const use = document.createElementNS(SVG_NS, 'use');
         const ref = icon.startsWith('#svg-') ? icon : `#svg-${icon.slice(1)}`;
         use.setAttribute('href', ref);
-        use.setAttribute('xlink:href', ref);
+        use.setAttributeNS(XLINK_NS, 'xlink:href', ref);
         svg.appendChild(use);
         iconEl = svg;
       } else {
