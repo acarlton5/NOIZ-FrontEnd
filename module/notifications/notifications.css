@@ -49,18 +49,9 @@
   gap: 1rem;
 }
 
+
 .notification-content {
   flex: 1;
-}
-
-.notification-close {
-  margin-left: auto;
-  background: none;
-  border: none;
-  font-size: 1rem;
-  line-height: 1;
-  cursor: pointer;
-  align-self: flex-start;
 }
 
 .notification-actions {

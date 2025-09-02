@@ -39,11 +39,6 @@ export default function ({ hub }) {
     content.textContent = message;
     main.appendChild(content);
 
-    const close = document.createElement('button');
-    close.className = 'notification-close';
-    close.innerHTML = '&times;';
-    close.addEventListener('click', () => popup.remove());
-    main.appendChild(close);
 
     if (actions.length) {
       const actionsWrap = document.createElement('div');
