@@ -50,6 +50,7 @@ export default async function init({ hub, root, utils }) {
             <svg class="interactive-input-action-icon" width="16" height="16"><use xlink:href="#svg-cross-thin"></use></svg>
           </div>
         </div>
+        <div class="dropdown-menu header-search-dropdown" data-role="search-dropdown"></div>
       </div>
 
       <div class="header-actions">
@@ -214,23 +215,63 @@ export default async function init({ hub, root, utils }) {
   const searchWrap = root.querySelector('[data-role="search"]');
   const searchInput = searchWrap?.querySelector('input');
   const clearBtn = searchWrap?.querySelector('[data-role="clear"]');
+  const searchDropdown = root.querySelector('[data-role="search-dropdown"]');
 
   utils.listen(brand, 'click', async (e) => {
     e.preventDefault();
     await hub.api.navigation.toggle?.();
   });
 
-  function updateSearch() {
-    if (!searchWrap || !searchInput) return;
-    searchWrap.classList.toggle('active', searchInput.value.length > 0);
+  function renderResults(results = []) {
+    if (!searchDropdown) return;
+    if (!results.length) {
+      searchDropdown.classList.remove('show');
+      searchDropdown.innerHTML = '';
+      return;
+    }
+    const html = results
+      .map(
+        (u) => `
+    <a class="dropdown-item d-flex align-items-center" href="#${u.slug}">
+      <img src="${u.avatar}" alt="${u.name}" class="rounded-circle me-2" width="24" height="24">
+      <span>${u.name}</span>
+    </a>`
+      )
+      .join('');
+    searchDropdown.innerHTML = html;
+    searchDropdown.classList.add('show');
   }
 
-  searchInput?.addEventListener('input', updateSearch);
+  async function updateSearch() {
+    if (!searchWrap || !searchInput) return;
+    const term = searchInput.value.trim();
+    searchWrap.classList.toggle('active', term.length > 0);
+    if (!term) {
+      renderResults([]);
+      return;
+    }
+    try {
+      const results = await hub.call('header.search', term);
+      renderResults(results);
+    } catch {
+      renderResults([]);
+    }
+  }
+
+  searchInput?.addEventListener('input', () => {
+    updateSearch();
+  });
   clearBtn?.addEventListener('click', () => {
     if (!searchInput) return;
     searchInput.value = '';
     updateSearch();
     searchInput.focus();
+  });
+
+  utils.listen(document, 'click', (e) => {
+    if (!searchWrap?.contains(e.target)) {
+      renderResults([]);
+    }
   });
 
   function renderButton({ id, label, icon }) {
