@@ -11,7 +11,7 @@ export default function ({ hub }) {
     document.head.appendChild(link);
   }
 
-  function notify(message, { timeout = 3000, icon, actions = [] } = {}) {
+  function notify(message, { timeout, icon, actions = [] } = {}) {
     let container = document.querySelector('.notification-container');
     if (!container) {
       container = document.createElement('div');
@@ -22,18 +22,22 @@ export default function ({ hub }) {
     const popup = document.createElement('div');
     popup.className = 'notification-popup';
 
+    const main = document.createElement('div');
+    main.className = 'notification-main';
+    popup.appendChild(main);
+
     if (icon) {
       const img = document.createElement('img');
       img.src = icon;
       img.alt = '';
       img.className = 'notification-icon';
-      popup.appendChild(img);
+      main.appendChild(img);
     }
 
     const content = document.createElement('div');
     content.className = 'notification-content';
     content.textContent = message;
-    popup.appendChild(content);
+    main.appendChild(content);
 
     const close = document.createElement('button');
     close.className = 'notification-close';
@@ -60,7 +64,7 @@ export default function ({ hub }) {
     container.appendChild(popup);
     requestAnimationFrame(() => popup.classList.add('show'));
 
-    if (timeout) {
+    if (typeof timeout === 'number' && timeout > 0) {
       window.setTimeout(() => {
         popup.classList.remove('show');
         popup.classList.add('fade-out');

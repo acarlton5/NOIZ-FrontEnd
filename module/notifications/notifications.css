@@ -16,13 +16,13 @@
   padding: 1rem;
   border-radius: 0.5rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  display: flex;
-  align-items: center;
-  gap: 1rem;
   position: relative;
   opacity: 0;
   transform: translateY(-10px);
   transition: opacity 0.3s ease, transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .notification-popup.show {
@@ -40,6 +40,13 @@
   height: 48px;
   border-radius: 50%;
   flex-shrink: 0;
+}
+
+
+.notification-main {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .notification-content {
@@ -60,7 +67,7 @@
 .notification-actions {
   display: flex;
   gap: 0.5rem;
-  margin-top: 0.5rem;
+  justify-content: flex-end;
 }
 
 .notification-action {
