@@ -1,17 +1,14 @@
 
 export default async function init({ hub, root, utils }) {
-  const links = [
-    { title: 'Newsfeed', module: 'newsfeed', icon: '#svg-newsfeed' },
-    { title: 'Overview', module: 'overview', icon: '#svg-overview' },
-    { title: 'Groups', module: 'groups', icon: '#svg-group' },
-    { title: 'Members', module: 'members', icon: '#svg-members' },
-    { title: 'Badges', module: 'badges', icon: '#svg-badges' },
-    { title: 'Quests', module: 'quests', icon: '#svg-quests' },
-    { title: 'Streams', module: 'streams', icon: '#svg-streams' },
-    { title: 'Events', module: 'events', icon: '#svg-events' },
-    { title: 'Forums', module: 'forums', icon: '#svg-forums' },
-    { title: 'Marketplace', module: 'marketplace', icon: '#svg-marketplace' }
-  ];
+  const res = await fetch('modules-enabled.json');
+  const mods = await res.json();
+  const links = Object.values(mods)
+    .filter((m) => m.status === 'enabled' && m.navigation)
+    .map((m) => ({
+      title: m.name.charAt(0).toUpperCase() + m.name.slice(1),
+      module: m.name,
+      icon: `#svg-${m.icon}`
+    }));
 
   root.innerHTML = `
     <nav class="navigation-small" data-role="small">
