@@ -1,8 +1,6 @@
 const tpl = (user, unread) => `
   <section class="profile">
-    <div class="profile-banner">
-      <img src="${user.banner}" alt="${user.name} banner">
-    </div>
+    <div class="profile-banner" style="--banner:url('${user.banner}')"></div>
     <div class="profile-content">
       <div class="profile-avatar">
         <div class="avatar-wrap" style="--avi-width:128px; --avi-height:128px; --frame:url('${user.frame}')">
