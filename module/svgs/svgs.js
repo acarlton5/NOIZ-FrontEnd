@@ -12,6 +12,13 @@
  *     (bare symbols; this file will wrap them)
  */
 const SPRITE_RAW = `
+  <!-- SVG HOME -->
+  <svg style="display: none;">
+    <symbol id="svg-home" viewBox="0 0 24 24" preserveAspectRatio="xMinYMin meet">
+      <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+    </symbol>
+  </svg>
+  <!-- /SVG HOME -->
   <!-- SVG FACEBOOK -->
   <svg style="display: none;">
     <symbol id="svg-facebook" viewBox="0 0 18 18" preserveAspectRatio="xMinYMin meet">

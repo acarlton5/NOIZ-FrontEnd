@@ -169,7 +169,7 @@ async function loadServices() {
     }
   }
 }
-loadServices();
+await loadServices();
 
 let activeMainModule =
   document.querySelector('main module[data-module]')?.getAttribute('data-module') ||
@@ -319,7 +319,7 @@ const observer = new MutationObserver(muts => {
 });
 observer.observe(document.documentElement, { childList: true, subtree: true });
 
-mountAll();
+await mountAll();
 
 // Disable native context menu and emit event for custom context modules
 document.addEventListener('contextmenu', (e) => {
