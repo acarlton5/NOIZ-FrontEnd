@@ -198,6 +198,13 @@ export default async function init({ hub, root, utils }) {
     </header>
   `;
 
+  if (mods.quests?.status === 'enabled') {
+    root.querySelector('.quest')?.closest('.header-actions')?.remove();
+  }
+  if (mods.settings?.status === 'enabled') {
+    root.querySelector('.settings-button')?.remove();
+  }
+
   const slots = {
     right: root.querySelector('[data-slot="right"]')
   };
