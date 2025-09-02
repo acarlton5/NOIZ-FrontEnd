@@ -42,6 +42,11 @@
   flex-shrink: 0;
 }
 
+/* Tint SVG icons with the brand color */
+svg.notification-icon {
+  fill: #6330f5;
+}
+
 
 .notification-main {
   display: flex;
