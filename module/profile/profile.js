@@ -1,20 +1,28 @@
 const tpl = (user, unread) => `
   <section class="profile">
-    <div class="profile-header">
-      <div class="avatar-wrap" style="--avi-width:90px; --avi-height:90px; --frame:url('${user.frame}')">
-        <img class="avatar-image" src="${user.avatar}" alt="${user.name}">
+    <div class="profile-banner">
+      <img src="${user.banner}" alt="${user.name} banner">
+    </div>
+    <div class="profile-content">
+      <div class="profile-avatar">
+        <div class="avatar-wrap" style="--avi-width:96px; --avi-height:96px; --frame:url('${user.frame}')">
+          <img class="avatar-image" src="${user.avatar}" alt="${user.name}">
+        </div>
       </div>
       <h2 class="profile-name">${user.name}</h2>
-    </div>
-    <div class="profile-messages">
-      <h3>Messages</h3>
-      <span class="badge ${unread > 0 ? 'bg-success' : 'bg-secondary'}" data-role="unread">${unread}</span>
+      <div class="profile-actions">
+        <button class="btn btn-primary btn-sm">Add Friend</button>
+        <button class="btn btn-secondary btn-sm position-relative">
+          Messages
+          <span class="badge ${unread > 0 ? 'bg-success' : 'bg-secondary'} position-absolute top-0 start-100 translate-middle" data-role="unread">${unread}</span>
+        </button>
+      </div>
     </div>
   </section>
 `;
 
 export default async function init({ hub, root, utils, props }) {
-  const user = props?.user || { name: 'Unknown', avatar: '', frame: '' };
+  const user = props?.user || { name: 'Unknown', avatar: '', frame: '', banner: '' };
   root.innerHTML = tpl(user, 0);
 
   const badge = root.querySelector('[data-role="unread"]');
