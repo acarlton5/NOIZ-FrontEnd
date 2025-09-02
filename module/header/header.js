@@ -233,28 +233,48 @@ export default async function init({ hub, root, utils }) {
     );
   }
 
-  function renderResults(results = [], term = '') {
+  function renderResults(results = {}, term = '') {
     if (!searchDropdown) return;
-    if (!results.length) {
+    const { modules = [], members = [] } = results;
+    if (!modules.length && !members.length) {
       searchDropdown.classList.remove('show');
       searchDropdown.innerHTML = '';
       return;
     }
-    const items = results
-      .map(
-        (u) => `
-    <a class="dropdown-item header-search-item" href="#${u.slug}">
+    let html = '';
+    if (modules.length) {
+      const modItems = modules
+        .map(
+          (m) => `
+    <a class="dropdown-item header-search-item" href="#/${m.name}">
+      <svg width="40" height="40"><use xlink:href="#svg-${m.icon}"></use></svg>
+      <div class="info">
+        <div class="name">${highlight(m.name, term)}</div>
+      </div>
+    </a>`
+        )
+        .join('');
+      html += `
+    <div class="header-search-category">Modules</div>
+    ${modItems}`;
+    }
+    if (members.length) {
+      const memberItems = members
+        .map(
+          (u) => `
+    <a class="dropdown-item header-search-item" href="#/profile/${u.slug}">
       <img src="${u.avatar}" alt="${u.name}">
       <div class="info">
         <div class="name">${highlight(u.name, term)}</div>
         <div class="meta">${u.friendCount} friends in common</div>
       </div>
     </a>`
-      )
-      .join('');
-    const html = `
+        )
+        .join('');
+      html += `
     <div class="header-search-category">Members</div>
-    ${items}`;
+    ${memberItems}`;
+    }
     searchDropdown.innerHTML = html;
     searchDropdown.classList.add('show');
   }
@@ -264,14 +284,14 @@ export default async function init({ hub, root, utils }) {
     const term = searchInput.value.trim();
     searchWrap.classList.toggle('active', term.length > 0);
     if (!term) {
-      renderResults([]);
+      renderResults({});
       return;
     }
     try {
       const results = await hub.call('header.search', term);
       renderResults(results, term);
     } catch {
-      renderResults([]);
+      renderResults({});
     }
   }
 
@@ -287,7 +307,7 @@ export default async function init({ hub, root, utils }) {
 
   utils.listen(document, 'click', (e) => {
     if (!searchWrap?.contains(e.target)) {
-      renderResults([]);
+      renderResults({});
     }
   });
 
