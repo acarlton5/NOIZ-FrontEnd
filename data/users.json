@@ -3,6 +3,7 @@
     "name": "Marina Valentine",
     "avatar": "https://odindesignthemes.com/vikinger/img/avatar/01.jpg",
     "frame": "https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/28_years_later.png",
+    "banner": "https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/nameplates/angels.png",
     "hasNotification": true,
     "accent": "#ff72b6",
     "slug": "marina-valentine"
@@ -11,6 +12,7 @@
     "name": "Neko Bebop",
     "avatar": "https://odindesignthemes.com/vikinger/img/avatar/02.jpg",
     "frame": "https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/a_duck.png",
+    "banner": "https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/nameplates/aurora.png",
     "hasNotification": false,
     "accent": "#8ab4ff",
     "slug": "neko-bebop"
@@ -19,6 +21,7 @@
     "name": "Nick Grissom",
     "avatar": "https://odindesignthemes.com/vikinger/img/avatar/03.jpg",
     "frame": "https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/a_hint_of_clove.png",
+    "banner": "https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/nameplates/black_mana.png",
     "hasNotification": false,
     "accent": "#ffd059",
     "slug": "nick-grissom"
@@ -27,6 +30,7 @@
     "name": "Sarah Diamond",
     "avatar": "https://odindesignthemes.com/vikinger/img/avatar/04.jpg",
     "frame": "https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/aespa_fanlight.png",
+    "banner": "https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/nameplates/blue_mana.png",
     "hasNotification": false,
     "accent": "#b06dff",
     "slug": "sarah-diamond"
@@ -35,6 +39,7 @@
     "name": "John Viking",
     "avatar": "https://odindesignthemes.com/vikinger/img/avatar/05.jpg",
     "frame": "https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/afternoon_breeze.png",
+    "banner": "https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/nameplates/cat_beans.png",
     "hasNotification": false,
     "accent": "#72ffb6",
     "slug": "john-viking"
@@ -43,6 +48,7 @@
     "name": "Roald Peterson",
     "avatar": "https://odindesignthemes.com/vikinger/img/avatar/06.jpg",
     "frame": "https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/aim_for_love.png",
+    "banner": "https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/nameplates/cherry_blossom.png",
     "hasNotification": false,
     "accent": "#ff8a72",
     "slug": "roald-peterson"
@@ -51,6 +57,7 @@
     "name": "Kelly Ghost",
     "avatar": "https://odindesignthemes.com/vikinger/img/avatar/07.jpg",
     "frame": "https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/air.png",
+    "banner": "https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/nameplates/cherry_blossoms.png",
     "hasNotification": false,
     "accent": "#72c2ff",
     "slug": "kelly-ghost"
@@ -59,6 +66,7 @@
     "name": "Brad Gibson",
     "avatar": "https://odindesignthemes.com/vikinger/img/avatar/08.jpg",
     "frame": "https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/akuma.png",
+    "banner": "https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/nameplates/cityscape.png",
     "hasNotification": false,
     "accent": "#ffc072",
     "slug": "brad-gibson"
@@ -67,6 +75,7 @@
     "name": "Susie Swimmer",
     "avatar": "https://odindesignthemes.com/vikinger/img/avatar/09.jpg",
     "frame": "https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/all_might.png",
+    "banner": "https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/nameplates/cozy_cat.png",
     "hasNotification": false,
     "accent": "#ff72f2",
     "slug": "susie-swimmer"
@@ -75,6 +84,7 @@
     "name": "Clark Kent",
     "avatar": "https://odindesignthemes.com/vikinger/img/avatar/10.jpg",
     "frame": "https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/angel.png",
+    "banner": "https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/nameplates/d20_roll.png",
     "hasNotification": false,
     "accent": "#72ff8a",
     "slug": "clark-kent"
@@ -83,6 +93,7 @@
     "name": "Diana Prince",
     "avatar": "https://odindesignthemes.com/vikinger/img/avatar/11.jpg",
     "frame": "https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/angry.png",
+    "banner": "https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/nameplates/dark_fantasy.png",
     "hasNotification": false,
     "accent": "#ff7288",
     "slug": "diana-prince"
@@ -91,6 +102,7 @@
     "name": "Bruce Wayne",
     "avatar": "https://odindesignthemes.com/vikinger/img/avatar/12.jpg",
     "frame": "https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/angry_pink.png",
+    "banner": "https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/nameplates/dreamy.png",
     "hasNotification": false,
     "accent": "#7288ff",
     "slug": "bruce-wayne"
@@ -99,6 +111,7 @@
     "name": "Peter Parker",
     "avatar": "https://odindesignthemes.com/vikinger/img/avatar/13.jpg",
     "frame": "https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/angry_yellow.png",
+    "banner": "https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/nameplates/galaxy.png",
     "hasNotification": false,
     "accent": "#ffb672",
     "slug": "peter-parker"
@@ -107,6 +120,7 @@
     "name": "Tony Stark",
     "avatar": "https://odindesignthemes.com/vikinger/img/avatar/14.jpg",
     "frame": "https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/arcane_sigil.png",
+    "banner": "https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/nameplates/glitch.png",
     "hasNotification": false,
     "accent": "#72ffc2",
     "slug": "tony-stark"
@@ -115,6 +129,7 @@
     "name": "Steve Rogers",
     "avatar": "https://odindesignthemes.com/vikinger/img/avatar/15.jpg",
     "frame": "https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/armamenter.png",
+    "banner": "https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/nameplates/green_mana.png",
     "hasNotification": false,
     "accent": "#c272ff",
     "slug": "steve-rogers"
@@ -123,6 +138,7 @@
     "name": "Natasha Romanoff",
     "avatar": "https://odindesignthemes.com/vikinger/img/avatar/16.jpg",
     "frame": "https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/astronaut_helmet.png",
+    "banner": "https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/nameplates/heart_bloom.png",
     "hasNotification": false,
     "accent": "#ff72a0",
     "slug": "natasha-romanoff"
@@ -131,6 +147,7 @@
     "name": "Wanda Maximoff",
     "avatar": "https://odindesignthemes.com/vikinger/img/avatar/17.jpg",
     "frame": "https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/aurora.png",
+    "banner": "https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/nameplates/kawaii_gaming.png",
     "hasNotification": false,
     "accent": "#72ffd0",
     "slug": "wanda-maximoff"
@@ -139,6 +156,7 @@
     "name": "Thor Odinson",
     "avatar": "https://odindesignthemes.com/vikinger/img/avatar/18.jpg",
     "frame": "https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/autumn_crown.png",
+    "banner": "https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/nameplates/kitsune.png",
     "hasNotification": false,
     "accent": "#72f2ff",
     "slug": "thor-odinson"
@@ -147,6 +165,7 @@
     "name": "Loki Laufeyson",
     "avatar": "https://odindesignthemes.com/vikinger/img/avatar/19.jpg",
     "frame": "https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/autumns_arbor.png",
+    "banner": "https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/nameplates/koi_pond.png",
     "hasNotification": false,
     "accent": "#ffaa72",
     "slug": "loki-laufeyson"
@@ -155,6 +174,7 @@
     "name": "Carol Danvers",
     "avatar": "https://odindesignthemes.com/vikinger/img/avatar/20.jpg",
     "frame": "https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/autumns_arbor_aurora.png",
+    "banner": "https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/nameplates/moon_and_sun.png",
     "hasNotification": false,
     "accent": "#72a0ff",
     "slug": "carol-danvers"
