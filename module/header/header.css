@@ -89,20 +89,21 @@
   position: relative;
 }
 
+
 [data-role="header"] .search-bar .interactive-input input {
   width: 100%;
-  background-color: #fff;
-  color: #212529;
-  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
   border-radius: 12px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   padding-right: 3rem;
   padding-left: 3rem;
   height: 48px;
 }
 
 [data-role="header"] .search-bar .interactive-input input::placeholder {
-  color: #6c757d;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 [data-role="header"] .search-bar .interactive-input-icon-wrap,
@@ -123,7 +124,7 @@
 }
 
 [data-role="header"] .search-bar .interactive-input-icon {
-  fill: #6330f5;
+  fill: #fff;
 }
 
 [data-role="header"] .search-bar .interactive-input-action {
@@ -133,7 +134,7 @@
 }
 
 [data-role="header"] .search-bar .interactive-input-action-icon {
-  fill: #6330f5;
+  fill: #fff;
 }
 
 [data-role="header"] .search-bar .interactive-input.active .interactive-input-action {
@@ -438,7 +439,7 @@
     display: none;
   }
   [data-role="header"] .search-bar {
-    padding: 0 0 0 20px;
+    padding: 0 20px;
   }
   [data-role="header"] .quest,
   [data-role="header"] .action-list,
