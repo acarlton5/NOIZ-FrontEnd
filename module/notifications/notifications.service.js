@@ -1,6 +1,5 @@
 // module/notifications/notifications.service.js
 // Preloads notification styles and exposes a simple notification API.
-import './notifications.css';
 
 export default function ({ hub }) {
   // Ensure CSS is loaded when service starts
@@ -32,6 +31,5 @@ export default function ({ hub }) {
   }
 
   const api = { notify };
-  hub.extend?.('notifications', api);
   return api;
 }
