@@ -1,6 +1,65 @@
 {
-  "navigation": true,
-  "header": true,
-  "user-rail": true,
-  "svgs": true
+  "navigation": {
+    "name": "navigation",
+    "icon": "bars",
+    "status": "enabled",
+    "navigation": false,
+    "header": false
+  },
+  "header": {
+    "name": "header",
+    "icon": "home",
+    "status": "enabled",
+    "navigation": false,
+    "header": false
+  },
+  "user-rail": {
+    "name": "user-rail",
+    "icon": "user-group",
+    "status": "enabled",
+    "navigation": false,
+    "header": false
+  },
+  "svgs": {
+    "name": "svgs",
+    "icon": "images",
+    "status": "enabled",
+    "navigation": false,
+    "header": false
+  },
+  "newsfeed": {
+    "name": "newsfeed",
+    "icon": "newspaper",
+    "status": "enabled",
+    "navigation": true,
+    "header": false
+  },
+  "messages": {
+    "name": "messages",
+    "icon": "envelope",
+    "status": "enabled",
+    "navigation": true,
+    "header": true
+  },
+  "profile": {
+    "name": "profile",
+    "icon": "user",
+    "status": "enabled",
+    "navigation": true,
+    "header": false
+  },
+  "overview": {
+    "name": "overview",
+    "icon": "tachometer",
+    "status": "enabled",
+    "navigation": true,
+    "header": false
+  },
+  "notifications": {
+    "name": "notifications",
+    "icon": "bell",
+    "status": "enabled",
+    "navigation": false,
+    "header": true
+  }
 }
