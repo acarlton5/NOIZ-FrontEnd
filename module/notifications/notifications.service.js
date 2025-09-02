@@ -32,7 +32,9 @@ export default function ({ hub }) {
         const SVG_NS = 'http://www.w3.org/2000/svg';
         const XLINK_NS = 'http://www.w3.org/1999/xlink';
         const svg = document.createElementNS(SVG_NS, 'svg');
-        svg.className = 'notification-icon';
+        // `className` on SVG elements is a read-only object in some browsers,
+        // so use `setAttribute` to apply the class instead of direct assignment.
+        svg.setAttribute('class', 'notification-icon');
         const use = document.createElementNS(SVG_NS, 'use');
         const ref = icon.startsWith('#svg-') ? icon : `#svg-${icon.slice(1)}`;
         use.setAttribute('href', ref);
