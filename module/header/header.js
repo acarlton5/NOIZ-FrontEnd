@@ -222,7 +222,18 @@ export default async function init({ hub, root, utils }) {
     await hub.api.navigation.toggle?.();
   });
 
-  function renderResults(results = []) {
+  function highlight(text, term) {
+    const idx = text.toLowerCase().indexOf(term.toLowerCase());
+    if (idx === -1) return text;
+    const end = idx + term.length;
+    return (
+      text.slice(0, idx) +
+      `<span class="header-search-highlight">${text.slice(idx, end)}</span>` +
+      text.slice(end)
+    );
+  }
+
+  function renderResults(results = [], term = '') {
     if (!searchDropdown) return;
     if (!results.length) {
       searchDropdown.classList.remove('show');
@@ -235,7 +246,7 @@ export default async function init({ hub, root, utils }) {
     <a class="dropdown-item header-search-item" href="#${u.slug}">
       <img src="${u.avatar}" alt="${u.name}">
       <div class="info">
-        <div class="name">${u.name}</div>
+        <div class="name">${highlight(u.name, term)}</div>
         <div class="meta">${u.friendCount} friends in common</div>
       </div>
     </a>`
@@ -258,7 +269,7 @@ export default async function init({ hub, root, utils }) {
     }
     try {
       const results = await hub.call('header.search', term);
-      renderResults(results);
+      renderResults(results, term);
     } catch {
       renderResults([]);
     }

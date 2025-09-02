@@ -82,6 +82,7 @@
 [data-role="header"] .search-bar {
   flex: 1;
   padding: 0 0 0 40px;
+  position: relative;
 }
 
 [data-role="header"] .search-bar .interactive-input {
@@ -142,6 +143,10 @@
 }
 
 [data-role="header"] .header-search-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
   max-height: 300px;
   overflow-y: auto;
   padding: 0;
@@ -179,6 +184,10 @@
 [data-role="header"] .header-search-item .meta {
   font-size: 0.75rem;
   color: #6c757d;
+}
+
+[data-role="header"] .header-search-highlight {
+  background-color: #ffeb3b;
 }
 
 [data-role="header"] .quest-trigger {
