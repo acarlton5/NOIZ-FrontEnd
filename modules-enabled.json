@@ -13,7 +13,7 @@
     "status": "enabled",
     "navigation": false,
     "header": false,
-    "services": false
+    "services": true
   },
   "user-rail": {
     "name": "user-rail",
