@@ -7,6 +7,9 @@
 //   - removeButton(id)
 
 export default async function init({ hub, root, utils }) {
+  const res = await fetch('modules-enabled.json');
+  const mods = await res.json();
+
   root.innerHTML = `
     <header data-role="header" class="header">
       <div class="header-actions brand-group">
@@ -187,14 +190,7 @@ export default async function init({ hub, root, utils }) {
       </div>
 
       <div class="header-actions">
-        <div class="action-list" data-slot="right" aria-label="Utility actions">
-          <button class="action-list-item" type="button">
-            <svg class="icon" width="24" height="24"><use xlink:href="#svg-shopping-bag"></use></svg>
-          </button>
-          <button class="action-list-item" type="button">
-            <svg class="icon" width="24" height="24"><use xlink:href="#svg-notification"></use></svg>
-          </button>
-        </div>
+        <div class="action-list" data-slot="right" aria-label="Utility actions"></div>
         <button class="action-list-item settings-button" type="button">
           <svg class="icon" width="24" height="24"><use xlink:href="#svg-settings"></use></svg>
         </button>
@@ -267,22 +263,17 @@ export default async function init({ hub, root, utils }) {
     }
   };
 
-  if (hub.isReady('messages')) {
+  const headerMods = Object.values(mods).filter(
+    (m) => m.status === 'enabled' && m.header
+  );
+
+  headerMods.forEach((m) =>
     api.addButton({
-      id: 'messages',
-      icon: '#svg-messages',
-      onClick: async () => hub.api.messages.open?.()
-    });
-  } else {
-    const off = hub.once('module:ready:messages', () => {
-      api.addButton({
-        id: 'messages',
-        icon: '#svg-messages',
-        onClick: async () => hub.api.messages.open?.()
-      });
-    });
-    utils.onCleanup(off);
-  }
+      id: m.name,
+      icon: `#svg-${m.icon}`,
+      onClick: () => window.LoadMainModule(m.name)
+    })
+  );
 
   return api;
 }

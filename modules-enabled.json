@@ -1,0 +1,65 @@
+{
+  "navigation": {
+    "name": "navigation",
+    "icon": "bars",
+    "status": "enabled",
+    "navigation": false,
+    "header": false
+  },
+  "header": {
+    "name": "header",
+    "icon": "home",
+    "status": "enabled",
+    "navigation": false,
+    "header": false
+  },
+  "user-rail": {
+    "name": "user-rail",
+    "icon": "user-group",
+    "status": "enabled",
+    "navigation": false,
+    "header": false
+  },
+  "svgs": {
+    "name": "svgs",
+    "icon": "images",
+    "status": "enabled",
+    "navigation": false,
+    "header": false
+  },
+  "newsfeed": {
+    "name": "newsfeed",
+    "icon": "newsfeed",
+    "status": "enabled",
+    "navigation": true,
+    "header": false
+  },
+  "messages": {
+    "name": "messages",
+    "icon": "messages",
+    "status": "enabled",
+    "navigation": true,
+    "header": true
+  },
+  "profile": {
+    "name": "profile",
+    "icon": "profile",
+    "status": "enabled",
+    "navigation": true,
+    "header": false
+  },
+  "overview": {
+    "name": "overview",
+    "icon": "overview",
+    "status": "enabled",
+    "navigation": true,
+    "header": false
+  },
+  "notifications": {
+    "name": "notifications",
+    "icon": "notification",
+    "status": "enabled",
+    "navigation": false,
+    "header": true
+  }
+}
