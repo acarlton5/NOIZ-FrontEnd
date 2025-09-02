@@ -872,6 +872,27 @@ const SPRITE_RAW = `
     </symbol>
   </svg>
   <!-- /SVG QUESTBOX -->
-`
+`;
 
-    document.querySelector('module[data-module="svgs"]').innerHTML = SPRITE_RAW;
+export default async function init({ root }) {
+  const container = document.createElement('div');
+  container.innerHTML = SPRITE_RAW;
+
+  let sprite = root.querySelector('svg');
+  if (!sprite) {
+    sprite = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    sprite.style.display = 'none';
+    root.appendChild(sprite);
+  }
+
+  const existing = new Set(
+    Array.from(sprite.querySelectorAll('symbol')).map((s) => s.id)
+  );
+
+  container.querySelectorAll('symbol').forEach((sym) => {
+    if (!existing.has(sym.id)) {
+      existing.add(sym.id);
+      sprite.appendChild(sym);
+    }
+  });
+}
