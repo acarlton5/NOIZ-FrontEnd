@@ -1,6 +1,6 @@
 
 export default async function init({ hub, root, utils }) {
-  const config = hub.api.modules.list?.() || [];
+  const config = (await hub.api.modules.list?.()) || [];
   const links = config
     .filter((m) => m.nav)
     .map((m) => ({ title: m.title || m.name, module: m.name, icon: m.icon }));

@@ -267,11 +267,11 @@ export default async function init({ hub, root, utils }) {
     }
   };
 
-  if (!hub.api.modules.isEnabled?.('quests', 'header')) {
+  if (!(await hub.api.modules.isEnabled?.('quests', 'header'))) {
     root.querySelector('.quest')?.remove();
   }
 
-  if (hub.api.modules.isEnabled?.('messages', 'header')) {
+  if (await hub.api.modules.isEnabled?.('messages', 'header')) {
     if (hub.isReady('messages')) {
       api.addButton({
         id: 'messages',
