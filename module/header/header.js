@@ -229,15 +229,21 @@ export default async function init({ hub, root, utils }) {
       searchDropdown.innerHTML = '';
       return;
     }
-    const html = results
+    const items = results
       .map(
         (u) => `
-    <a class="dropdown-item d-flex align-items-center" href="#${u.slug}">
-      <img src="${u.avatar}" alt="${u.name}" class="rounded-circle me-2" width="24" height="24">
-      <span>${u.name}</span>
+    <a class="dropdown-item header-search-item" href="#${u.slug}">
+      <img src="${u.avatar}" alt="${u.name}">
+      <div class="info">
+        <div class="name">${u.name}</div>
+        <div class="meta">${u.friendCount} friends in common</div>
+      </div>
     </a>`
       )
       .join('');
+    const html = `
+    <div class="header-search-category">Members</div>
+    ${items}`;
     searchDropdown.innerHTML = html;
     searchDropdown.classList.add('show');
   }

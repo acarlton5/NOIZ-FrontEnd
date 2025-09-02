@@ -141,6 +141,46 @@
   display: none;
 }
 
+[data-role="header"] .header-search-dropdown {
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 0;
+}
+
+[data-role="header"] .header-search-category {
+  padding: 0.5rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #6c757d;
+  text-transform: uppercase;
+}
+
+[data-role="header"] .header-search-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+[data-role="header"] .header-search-item img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+[data-role="header"] .header-search-item .info {
+  display: flex;
+  flex-direction: column;
+}
+
+[data-role="header"] .header-search-item .name {
+  font-weight: 600;
+}
+
+[data-role="header"] .header-search-item .meta {
+  font-size: 0.75rem;
+  color: #6c757d;
+}
+
 [data-role="header"] .quest-trigger {
   background: none;
   border: none;

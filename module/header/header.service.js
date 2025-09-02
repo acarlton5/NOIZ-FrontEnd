@@ -1,12 +1,22 @@
 import { getUserBySlug } from '../users.js';
 
+const SLUGS = [
+  'john-viking',
+  'marina-valentine',
+  'neko-bebop',
+  'nick-grissom',
+  'sarah-diamond'
+];
+
 export default async function init({ hub }) {
   async function search(term) {
-    const slug = term?.trim().toLowerCase();
-    if (!slug) return [];
+    const q = term?.trim().toLowerCase();
+    if (!q) return [];
     try {
-      const user = await getUserBySlug(slug);
-      return user ? [user] : [];
+      const users = (await Promise.all(SLUGS.map(getUserBySlug))).filter(Boolean);
+      return users
+        .filter(u => u.name.toLowerCase().includes(q) || u.slug.includes(q))
+        .map(u => ({ ...u, friendCount: 0 }));
     } catch {
       return [];
     }
