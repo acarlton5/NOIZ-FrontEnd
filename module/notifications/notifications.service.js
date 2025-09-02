@@ -27,11 +27,24 @@ export default function ({ hub }) {
     popup.appendChild(main);
 
     if (icon) {
-      const img = document.createElement('img');
-      img.src = icon;
-      img.alt = '';
-      img.className = 'notification-icon';
-      main.appendChild(img);
+      let iconEl;
+      if (icon.startsWith('#')) {
+        const svg = document.createElement('svg');
+        svg.className = 'notification-icon';
+        const use = document.createElement('use');
+        const ref = icon.startsWith('#svg-') ? icon : `#svg-${icon.slice(1)}`;
+        use.setAttribute('href', ref);
+        use.setAttribute('xlink:href', ref);
+        svg.appendChild(use);
+        iconEl = svg;
+      } else {
+        const img = document.createElement('img');
+        img.src = icon;
+        img.alt = '';
+        img.className = 'notification-icon';
+        iconEl = img;
+      }
+      main.appendChild(iconEl);
     }
 
     const content = document.createElement('div');
