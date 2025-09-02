@@ -1,10 +1,10 @@
 # Contributing Guidelines
 
-This project is built with a mobile-first mindset using Bootstrap 4. Follow these rules for all code.
+This project is built with a mobile-first mindset using Bootstrap 5. Follow these rules for all code.
 
 ## Layout & Modules
-- `index.html` uses `<module>` elements with `data-module` attributes as mount points. Place each module in `module/<name>/<name.{html,css,js}>`.
-- Modules may expose an optional `<name>.service.js` that registers the module's API with `hub`. These services load at startup for entries in `modules-enabled.json` so their functions are available before the UI mounts.
+- `index.html` uses `<module>` elements with `data-module` attributes as mount points. Place each module in `module/<name>/<name>.js`.
+- Modules may expose an optional `module/<name>/<name>.service.js` that registers the module's API with `hub`. These services load at startup for entries in `modules-enabled.json` so their functions are available before the UI mounts.
 - Build layouts with Bootstrap's grid (`container[-fluid]`, `row`, `col-*`).
 - Prefer responsive utility classes and relative units; avoid fixed pixel widths or heights unless guarded by media queries.
 - Ensure modules collapse or stack on small viewports. Test changes in browser DevTools' device mode (e.g., iPhone 12).
