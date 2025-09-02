@@ -335,6 +335,9 @@ async function handleRoute() {
     } else {
       LoadMainModule(mod);
     }
+  } else {
+    const defaultMod = enabledModules.find((m) => m.main)?.name;
+    if (defaultMod) LoadMainModule(defaultMod);
   }
 }
 window.addEventListener("popstate", () => { handleRoute(); });
