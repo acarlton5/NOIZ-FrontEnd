@@ -6,16 +6,9 @@
 //   - addButton({ id, label?, icon?, onClick })
 //   - removeButton(id)
 
-import { getUserBySlug } from '../users.js';
-
 export default async function init({ hub, root, utils }) {
   const res = await fetch('modules-enabled.json');
   const mods = await res.json();
-
-  // TODO: replace logged-in.json with real auth system
-  const loggedRes = await fetch('/data/logged-in.json');
-  const logged = await loggedRes.json();
-  const currentUser = await getUserBySlug(logged.user);
 
   root.innerHTML = `
     <header data-role="header" class="header">
@@ -196,11 +189,6 @@ export default async function init({ hub, root, utils }) {
         </div>
       </div>
 
-      <div class="header-actions user-info">
-        <img class="avatar-image" data-role="user-avatar" alt="">
-        <span data-role="user-name"></span>
-      </div>
-
       <div class="header-actions">
         <div class="action-list" data-slot="right" aria-label="Utility actions"></div>
         <button class="action-list-item settings-button" type="button">
@@ -209,14 +197,6 @@ export default async function init({ hub, root, utils }) {
       </div>
     </header>
   `;
-
-  const avatarEl = root.querySelector('[data-role="user-avatar"]');
-  const nameEl = root.querySelector('[data-role="user-name"]');
-  if (currentUser) {
-    avatarEl.src = currentUser.avatar;
-    avatarEl.alt = currentUser.name;
-    nameEl.textContent = currentUser.name;
-  }
 
   const slots = {
     right: root.querySelector('[data-slot="right"]')

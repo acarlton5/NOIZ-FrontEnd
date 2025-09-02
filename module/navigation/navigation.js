@@ -1,3 +1,4 @@
+import { getUserBySlug } from '../users.js';
 
 export default async function init({ hub, root, utils }) {
   const res = await fetch('modules-enabled.json');
@@ -10,13 +11,16 @@ export default async function init({ hub, root, utils }) {
       icon: `#svg-${m.icon}`
     }));
 
+  const loggedSlug = await fetch('/data/logged-in.json').then(r => r.json());
+  const currentUser = await getUserBySlug(loggedSlug);
+
   root.innerHTML = `
     <nav class="navigation-small" data-role="small">
-      <a href="#" class="navigation-avatar avatar-wrap" style="--avi-width:48px; --avi-height:48px; --frame:url('https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/dragons_smile.png');">
+      <a href="#" class="navigation-avatar avatar-wrap" style="--avi-width:48px; --avi-height:48px; --frame:url('${currentUser.frame}');">
         <img
           class="avatar-image"
-          src="https://odindesignthemes.com/vikinger/img/avatar/01.jpg"
-          alt="User avatar"
+          src="${currentUser.avatar}"
+          alt="${currentUser.name}"
         />
       </a>
       <ul class="navigation-small-menu">
@@ -36,18 +40,18 @@ export default async function init({ hub, root, utils }) {
       <div class="navigation-large-profile">
         <img
           class="profile-banner"
-          src="https://raw.githubusercontent.com/ItsPi3141/discord-fake-avatar-decorations/refs/heads/main/public/nameplates/d20_roll.png"
+          src="${currentUser.banner}"
           alt=""
           aria-hidden="true"
         />
-        <div class="avatar-wrap" style="--avi-width:90px; --avi-height:90px; --frame:url('https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/dragons_smile.png');">
+        <div class="avatar-wrap" style="--avi-width:90px; --avi-height:90px; --frame:url('${currentUser.frame}');">
           <img
             class="avatar-image"
-            src="https://odindesignthemes.com/vikinger/img/avatar/01.jpg"
-            alt="User avatar"
+            src="${currentUser.avatar}"
+            alt="${currentUser.name}"
           />
         </div>
-        <h3 class="user-name">Marina Valentine</h3>
+        <h3 class="user-name">${currentUser.name}</h3>
         <p class="user-url">www.gamehuntress.com</p>
         <ul class="profile-stats">
           <li class="profile-stat"><span class="stat-value">930</span><span class="stat-label">Posts</span></li>
@@ -81,7 +85,6 @@ export default async function init({ hub, root, utils }) {
   const small = root.querySelector('[data-role="small"]');
   const large = root.querySelector('[data-role="large"]');
   const main = document.querySelector('main');
-
 
   utils.delegate(root, 'click', '.navigation-small-link, .navigation-large-link', (e, link) => {
     e.preventDefault();
