@@ -11,11 +11,10 @@ A modular, Bootstrap 5–powered starter for building responsive social/streamin
 ├── modules-enabled.json # Lists modules to mount and services to preload
 ├── module/         # One folder per module
 │   └── <name>/
-│       ├── <name>.js           # UI logic (lazy loaded)
+│       ├── <name>.js           # UI logic; generates markup dynamically (no separate HTML)
 │       └── <name>.service.js   # Optional service API loaded at startup
 ├── data/           # JSON fixtures that drive the UI
 ├── images/         # Static assets
-├── scripts/        # Helper scripts for data generation
 └── package.json    # npm scripts
 ```
 
