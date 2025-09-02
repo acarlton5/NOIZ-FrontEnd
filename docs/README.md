@@ -6,14 +6,22 @@ A modular, Bootstrap 5–powered starter for building responsive social/streamin
 ```
 .
 ├── index.html      # Page skeleton with <module> mount points
-├── app.js          # Module loader and event bus
+├── app.js          # Module loader, service loader, and event bus
 ├── app.css         # Global styles + module imports
+├── modules-enabled.json # Lists modules to mount and services to preload
 ├── module/         # One folder per module
+│   └── <name>/
+│       ├── <name>.js           # UI logic (lazy loaded)
+│       └── <name>.service.js   # Optional service API loaded at startup
 ├── data/           # JSON fixtures that drive the UI
 ├── images/         # Static assets
 ├── scripts/        # Helper scripts for data generation
 └── package.json    # npm scripts
 ```
+
+## Module Services
+- During startup, `app.js` reads `modules-enabled.json` and eagerly imports `<module>/<name>.service.js` when present.
+- Each service registers its API with the global `hub`, letting other modules call it before the corresponding UI is mounted.
 
 ## Getting Started
 1. Run `npm start` to launch a local static server via [`live-server`](https://www.npmjs.com/package/live-server) on `http://127.0.0.1:5173/` without opening a browser.
