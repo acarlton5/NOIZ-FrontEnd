@@ -69,6 +69,6 @@
     "status": "enabled",
     "navigation": false,
     "header": true,
-    "services": false
+    "services": true
   }
 }
