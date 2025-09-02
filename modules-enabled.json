@@ -29,35 +29,35 @@
   },
   "newsfeed": {
     "name": "newsfeed",
-    "icon": "newspaper",
+    "icon": "newsfeed",
     "status": "enabled",
     "navigation": true,
     "header": false
   },
   "messages": {
     "name": "messages",
-    "icon": "envelope",
+    "icon": "messages",
     "status": "enabled",
     "navigation": true,
     "header": true
   },
   "profile": {
     "name": "profile",
-    "icon": "user",
+    "icon": "profile",
     "status": "enabled",
     "navigation": true,
     "header": false
   },
   "overview": {
     "name": "overview",
-    "icon": "tachometer",
+    "icon": "overview",
     "status": "enabled",
     "navigation": true,
     "header": false
   },
   "notifications": {
     "name": "notifications",
-    "icon": "bell",
+    "icon": "notification",
     "status": "enabled",
     "navigation": false,
     "header": true
