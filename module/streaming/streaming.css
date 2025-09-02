@@ -1,0 +1,15 @@
+.streaming {
+  padding: 2rem;
+  color: #fff;
+  background: #000;
+  text-align: center;
+}
+
+.streaming-player {
+  margin-top: 1rem;
+  background: #222;
+  height: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

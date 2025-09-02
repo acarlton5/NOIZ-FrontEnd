@@ -8,8 +8,15 @@
 }
 
 .profile-banner {
+  position: relative;
   height: 240px;
   background: var(--banner, none) center/cover no-repeat;
+}
+
+.profile-banner .live-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
 }
 
 .profile-content {

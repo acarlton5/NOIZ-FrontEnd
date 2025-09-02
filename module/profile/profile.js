@@ -1,6 +1,8 @@
 const tpl = (user, unread) => `
   <section class="profile">
-    <div class="profile-banner" style="--banner:url('${user.banner}')"></div>
+    <div class="profile-banner" style="--banner:url('${user.banner}')">
+      ${user.isLive ? '<button class="btn btn-danger btn-sm live-button" data-role="watch-live">Live</button>' : ''}
+    </div>
     <div class="profile-content">
       <div class="profile-avatar">
         <div class="avatar-wrap" style="--avi-width:128px; --avi-height:128px; --frame:url('${user.frame}')">
@@ -13,6 +15,7 @@ const tpl = (user, unread) => `
           Send Message
           <span class="badge ${unread > 0 ? 'bg-success' : 'bg-secondary'} position-absolute top-0 start-100 translate-middle" data-role="unread">${unread}</span>
         </button>
+        ${user.isLive ? '<button class="btn btn-danger btn-sm" data-role="watch-live">Watch Live</button>' : ''}
       </div>
       <ul class="profile-stats">
         <li class="profile-stat"><span class="stat-number">930</span><span class="stat-label">Posts</span></li>
@@ -46,6 +49,13 @@ export default async function init({ hub, root, utils, props }) {
   hub.api.messages.getUnread().then(update).catch(() => {});
   const off = hub.on('messages:unreadChanged', update);
   utils.onCleanup(off);
+
+  if (user.isLive) {
+    utils.delegate(root, 'click', '[data-role="watch-live"]', (e) => {
+      e.preventDefault();
+      window.LoadMainModule('streaming', { user });
+    });
+  }
 
   return {};
 }
