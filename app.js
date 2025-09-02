@@ -179,6 +179,7 @@ async function LoadMainModule(name, props = {}) {
   }
   main.appendChild(node);
   activeMainModule = name;
+  hub.emit('route:change', { module: name, props });
 }
 window.LoadMainModule = LoadMainModule;
 
