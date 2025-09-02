@@ -1,7 +1,14 @@
-import { getUsers } from '../users.js';
+import { getUserBySlug } from '../users.js';
 
 export default async function init({ root, utils }) {
-  const users = await getUsers();
+  const loggedSlug = await fetch('/data/logged-in.json').then(r => r.json());
+  const loggedUser = await getUserBySlug(loggedSlug);
+  const { subscribed = [], followed = [] } = loggedUser || {};
+  const slugs = [
+    ...subscribed,
+    ...followed.filter(slug => !subscribed.includes(slug))
+  ];
+  const users = (await Promise.all(slugs.map(getUserBySlug))).filter(Boolean);
 
   root.innerHTML = `
     <nav class="user-rail">

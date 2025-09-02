@@ -1,13 +1,8 @@
-let cache;
-
-export async function getUsers() {
-  if (!cache) {
-    cache = fetch('/data/users.json').then(r => r.json());
-  }
-  return cache;
-}
+const cache = new Map();
 
 export async function getUserBySlug(slug) {
-  const users = await getUsers();
-  return users.find(u => u.slug === slug);
+  if (!cache.has(slug)) {
+    cache.set(slug, fetch(`/data/users/${slug}.json`).then(r => r.json()));
+  }
+  return cache.get(slug);
 }
