@@ -115,6 +115,7 @@ module[data-module="chat-sidebar"] .chat-input {
   gap: 8px;
   padding: 12px;
   border-top: 1px solid #1e293b;
+  margin-top: auto;
 }
 
 module[data-module="chat-sidebar"] .chat-input input {

@@ -38,24 +38,28 @@ export default async function init({ root }) {
       name: 'LuchaUno',
       color: '#4ade80',
       avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/3aecb399-e583-41d5-985a-e2e2860ae531-profile_image-150x150.png',
+      frame: 'https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/afternoon_breeze.png',
       badges: [BADGE_URLS[0], BADGE_URLS[1]]
     },
     DoctorHoot: {
       name: 'DoctorHoot',
       color: '#60a5fa',
       avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/3aecb399-e583-41d5-985a-e2e2860ae531-profile_image-150x150.png',
+      frame: 'https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/afternoon_breeze.png',
       badges: [BADGE_URLS[2]]
     },
     PitBear: {
       name: 'PitBear',
       color: '#f97316',
       avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/3aecb399-e583-41d5-985a-e2e2860ae531-profile_image-150x150.png',
+      frame: 'https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/afternoon_breeze.png',
       badges: [BADGE_URLS[3], BADGE_URLS[4], BADGE_URLS[5]]
     },
     PirateDropout: {
       name: 'PirateDropout',
       color: '#d946ef',
       avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/3aecb399-e583-41d5-985a-e2e2860ae531-profile_image-150x150.png',
+      frame: 'https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/afternoon_breeze.png',
       badges: [BADGE_URLS[6], BADGE_URLS[7]]
     }
   };
@@ -103,6 +107,10 @@ export default async function init({ root }) {
         const avatarWrap = document.createElement('div');
         avatarWrap.className = 'avatar-wrap';
         avatarWrap.style.setProperty('--avi-width', '36px');
+        avatarWrap.style.setProperty('--avi-height', '36px');
+        if (msg.user.frame) {
+          avatarWrap.style.setProperty('--frame', `url('${msg.user.frame}')`);
+        }
         const avatar = document.createElement('img');
         avatar.className = 'avatar-image';
         avatar.src = msg.user.avatar;
