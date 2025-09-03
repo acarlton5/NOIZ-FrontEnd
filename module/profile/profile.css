@@ -68,12 +68,16 @@
   background: #f9f9f9;
   padding: 1rem 0;
   overflow-y: auto;
+  --indicator-gap: 8px;
+  --indicator-width: 4px;
+  --indicator-hover-h: 24px;
+  --indicator-active-h: 32px;
 }
 
 .channels {
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 0 0 0 calc(var(--indicator-gap) + var(--indicator-width));
 }
 
 .channel {
@@ -91,19 +95,24 @@
 .channel::before {
   content: '';
   position: absolute;
-  left: 0;
+  left: calc(-1 * (var(--indicator-gap) + var(--indicator-width)));
   top: 50%;
-  width: 8px;
-  height: 16px;
-  border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px;
-  transform: translate(-100%, -50%);
-  background: #dc2626;
+  width: var(--indicator-width);
+  height: 0;
+  background: var(--accent, #ff72b6);
+  border-radius: 0 10px 10px 0;
+  transform: translateY(-50%);
   opacity: 0;
+  transition: height 0.16s ease, opacity 0.16s ease;
 }
 
-.channel:hover::before,
+.channel:hover::before {
+  height: var(--indicator-hover-h);
+  opacity: 1;
+}
+
 .channel.active::before {
+  height: var(--indicator-active-h);
   opacity: 1;
 }
 
