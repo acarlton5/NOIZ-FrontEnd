@@ -47,17 +47,40 @@ module[data-module="chat"] .chat-message .name {
 }
 
 module[data-module="chat"] .chat-form {
-  display: flex;
-  gap: 8px;
   padding: 8px;
   border-top: 1px solid #ddd;
 }
 
+module[data-module="chat"] .chat-input-group {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
 module[data-module="chat"] .chat-input {
   flex: 1;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 4px 8px;
+  border: none;
+  padding: 6px 40px 6px 12px;
+  outline: none;
+}
+
+module[data-module="chat"] .chat-send-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0 12px;
+}
+
+module[data-module="chat"] .chat-send-icon {
+  width: 20px;
+  height: 20px;
+  fill: #06c;
 }
 
 module[data-module="chat"] .chat-hide {

@@ -31,8 +31,14 @@ const tpl = (messages) => `
     ${messages.map(messageTpl).join('')}
   </div>
   <form class="chat-form" data-role="form">
-    <input type="text" class="chat-input" data-role="input" placeholder="Say something..." maxlength="200" />
-    <button type="submit" class="btn btn-primary btn-sm">Send</button>
+    <div class="chat-input-group">
+      <input type="text" class="chat-input" data-role="input" placeholder="Say something..." maxlength="200" />
+      <button type="submit" class="chat-send-btn" aria-label="Send">
+        <svg class="chat-send-icon" viewBox="0 0 24 24">
+          <path d="M2 21L23 12 2 3v7l15 2-15 2z" />
+        </svg>
+      </button>
+    </div>
   </form>
   <button type="button" class="chat-hide btn btn-link" data-action="hide">Hide chat</button>
 `;
