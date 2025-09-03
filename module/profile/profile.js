@@ -109,6 +109,20 @@ const tpl = (user) => `
             </div>
             <div class="alert-body">KamiKitsune subbed for 6 months!</div>
           </div>
+          <div class="chat-alert gift">
+            <div class="alert-header">
+              <span class="title">x5 Gift</span>
+              <span class="art">Gift Art</span>
+            </div>
+            <div class="alert-body">disc0queen gifted 5 subs to the community!</div>
+          </div>
+          <div class="chat-alert quest">
+            <div class="alert-header">
+              <span class="title">75% Quest</span>
+              <span class="art">Quest Art</span>
+            </div>
+            <div class="alert-body">froggyleex pushed the stream quest to 75% — almost there!</div>
+          </div>
         </div>
         <form class="message-form">
           <input type="text" placeholder="Send a message" />
