@@ -3,7 +3,7 @@ const members = [
     name: 'Bri',
     status: 'Typing...',
     avatar: 'https://odindesignthemes.com/vikinger/img/avatar/04.jpg',
-    banner: 'https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/nameplates/space_city.png',
+    banner: 'https://odindesignthemes.com/vikinger/img/cover/19.jpg',
     frame:
       'https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/sporty.png',
     accent: '#ffcd00'
@@ -12,7 +12,7 @@ const members = [
     name: 'Nick Grissom',
     status: 'Online',
     avatar: 'https://odindesignthemes.com/vikinger/img/avatar/02.jpg',
-    banner: 'https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/nameplates/bamboo.png',
+    banner: 'https://odindesignthemes.com/vikinger/img/cover/26.jpg',
     frame:
       'https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/a_hint_of_clove.png',
     accent: '#72ffb6'
