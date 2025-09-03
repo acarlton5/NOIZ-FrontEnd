@@ -3,10 +3,10 @@
 
 const tpl = (messages, members) => `
   <section class="container my-3" data-role="stream">
-    <div class="ratio ratio-16x9 mb-3">
+    <div class="ratio ratio-16x9">
       <video controls src="https://www.w3schools.com/html/mov_bbb.mp4"></video>
     </div>
-    <div class="card bg-dark text-white">
+    <aside class="stream-sidebar card bg-dark text-white">
       <div class="card-header">
         <ul class="nav nav-tabs card-header-tabs" role="tablist">
           <li class="nav-item" role="presentation">
@@ -33,7 +33,7 @@ const tpl = (messages, members) => `
           </ul>
         </div>
       </div>
-    </div>
+    </aside>
   </section>
 `;
 

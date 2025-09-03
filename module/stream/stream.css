@@ -1,7 +1,21 @@
 /* module/stream/stream.css */
+[data-role="stream"] {
+  margin-right: 360px;
+}
+
 [data-role="stream"] video {
   width: 100%;
   border-radius: 0.5rem;
+}
+
+[data-role="stream"] .stream-sidebar {
+  position: fixed;
+  top: 80px;
+  right: 0;
+  width: 360px;
+  height: calc(100vh - 96px);
+  z-index: 1050;
+  overflow-y: auto;
 }
 
 [data-role="stream"] .card {
