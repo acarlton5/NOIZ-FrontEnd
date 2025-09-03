@@ -25,7 +25,7 @@ const renderMessage = (m) => {
     `;
   }
   return `
-    <div class="message" style="--accent:${m.user.accent}">
+    <div class="message">
       <div class="avatar-wrap" style="--avi-width:32px; --avi-height:32px; --frame:url('${m.user.frame}');">
         <img src="${m.user.avatar}" alt="${m.user.name}" class="avatar-image" />
       </div>
@@ -123,7 +123,9 @@ export default async function init({ root, utils }) {
   let messages = [
     { type: 'event', user: users.Nova, text: 'Stream starting soon', accent: '#ffc107', time: now() },
     { user: users.Nova, text: 'Welcome to the stream!', time: now() },
-    { type: 'event', user: users.Dex, text: 'Dex just subscribed for 3 months!', accent: '#0dcaf0', time: now() },
+    { type: 'event', user: users.Dex, text: 'Dex subscribed for 3 months!', accent: '#0dcaf0', time: now() },
+    { type: 'event', user: users.Kai, text: 'Kai tipped $5!', accent: '#ff9800', time: now() },
+    { type: 'event', user: users.You, text: 'You sent a sticker!', accent: '#8bc34a', time: now() },
     { user: users.Dex, text: 'Hey everyone!', time: now() }
   ];
   let members = [
