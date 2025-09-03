@@ -8,11 +8,12 @@
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   overflow: hidden;
   height: 100%;
+  min-height: 720px;
 }
 
 .profile-chat-header {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: auto 1fr;
   align-items: center;
   padding: 1rem;
   border-bottom: 1px solid #e6e6e6;
@@ -22,6 +23,13 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
+}
+
+.profile-chat-header .channel-topic {
+  justify-self: end;
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: #555;
 }
 
 .profile-chat-header .profile-user .name {

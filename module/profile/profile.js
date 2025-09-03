@@ -6,8 +6,9 @@ const tpl = (user) => `
           <img class="avatar-image" src="${user.avatar}" alt="${user.name}">
         </div>
         <h2 class="name">${user.name}</h2>
+        ${user.isLive ? '<button class="btn btn-danger btn-sm" data-role="watch-live">Watch Live</button>' : ''}
       </div>
-      ${user.isLive ? '<button class="btn btn-danger btn-sm" data-role="watch-live">Watch Live</button>' : ''}
+      <h3 class="channel-topic"># general</h3>
     </header>
     <div class="profile-chat-layout">
       <aside class="channel-list">
