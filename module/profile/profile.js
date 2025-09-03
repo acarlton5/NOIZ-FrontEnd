@@ -18,11 +18,23 @@ const tpl = (user) => `
     </header>
     <div class="profile-chat-layout">
       <aside class="channel-list">
-        <ul class="channels">
-          <li class="channel active"># general</li>
-          <li class="channel"># announcements</li>
-          <li class="channel"># voice</li>
-        </ul>
+        <div class="channel-tabs">
+          <button class="tab active" data-tab="topics">Topics</button>
+          <button class="tab" data-tab="members">Members</button>
+        </div>
+        <div class="tab-content topics">
+          <ul class="channels">
+            <li class="channel active"># general</li>
+            <li class="channel"># announcements</li>
+            <li class="channel"># voice</li>
+          </ul>
+        </div>
+        <div class="tab-content members hidden">
+          <ul class="members">
+            <li class="member">CreatorUser</li>
+            <li class="member">MemberUser</li>
+          </ul>
+        </div>
       </aside>
       <section class="chat">
         <div class="messages">
@@ -48,6 +60,15 @@ export default async function init({ root, utils, props }) {
       window.LoadMainModule('streaming', { user });
     });
   }
+
+  utils.delegate(root, 'click', '.channel-tabs .tab', (e) => {
+    const tab = e.target.dataset.tab;
+    root.querySelectorAll('.channel-tabs .tab').forEach((btn) => {
+      btn.classList.toggle('active', btn === e.target);
+    });
+    root.querySelector('.tab-content.topics').classList.toggle('hidden', tab !== 'topics');
+    root.querySelector('.tab-content.members').classList.toggle('hidden', tab !== 'members');
+  });
 
   return {};
 }

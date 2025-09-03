@@ -84,10 +84,49 @@
   --indicator-active-h: 32px;
 }
 
+.channel-list .channel-tabs {
+  display: flex;
+  border-bottom: 1px solid #e6e6e6;
+  margin-bottom: 0.5rem;
+}
+
+.channel-list .channel-tabs .tab {
+  flex: 1;
+  padding: 0.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  color: #555;
+}
+
+.channel-list .channel-tabs .tab.active {
+  color: var(--accent, #ff72b6);
+  border-bottom: 2px solid var(--accent, #ff72b6);
+}
+
+.channel-list .tab-content {
+  padding-top: 0.5rem;
+}
+
+.channel-list .hidden {
+  display: none;
+}
+
 .channels {
   list-style: none;
   margin: 0;
   padding: 0 0 0 calc(var(--indicator-gap) + var(--indicator-width));
+}
+
+.members {
+  list-style: none;
+  margin: 0;
+  padding: 0 1rem;
+}
+
+.member {
+  padding: 0.5rem 0;
 }
 
 .channel {
