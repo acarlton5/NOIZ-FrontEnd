@@ -20,27 +20,28 @@ module[data-module="streaming"] .video-wrapper video {
   right: 0;
   width: 360px;
   height: calc(100vh - 80px);
-  background: #1d2333;
-  border-left: 1px solid #272c43;
+  background: #fff;
+  border-left: 1px solid #e0e0e0;
   display: flex;
   flex-direction: column;
   z-index: 2000;
   font-family: Arial, sans-serif;
-  color: #fff;
+  color: #1c2024;
 }
 
 .chat-header {
   padding: 8px 12px;
-  border-bottom: 1px solid #272c43;
+  border-bottom: 1px solid #e0e0e0;
+  background: #fff;
 }
 .chat-title {
   margin: 0;
   font-size: 14px;
-  color: #fff;
+  color: #1c2024;
 }
 .chat-status {
   font-size: 12px;
-  color: #9aa4bf;
+  color: #606a80;
 }
 
 .chat-messages {
@@ -56,13 +57,13 @@ module[data-module="streaming"] .video-wrapper video {
   align-items: flex-start;
   gap: 12px;
   font-size: 14px;
-  color: #fff;
+  color: #1c2024;
 }
 .chat-message.super {
-  border: 1px solid #272c43;
+  border: 1px solid #e0e0e0;
   border-radius: 4px;
   padding: 8px;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(0, 0, 0, 0.03);
 }
 .message-avatar.avatar-wrap {
   --avi-width: 32px;
@@ -74,7 +75,7 @@ module[data-module="streaming"] .video-wrapper video {
   align-items: center;
   gap: 4px;
   font-size: 12px;
-  color: #9aa4bf;
+  color: #606a80;
 }
 .message-author {
   font-weight: 600;
@@ -86,7 +87,7 @@ module[data-module="streaming"] .video-wrapper video {
 }
 
 .message-text {
-  color: #fff;
+  color: #1c2024;
 }
 
 .message-badges {
@@ -112,9 +113,9 @@ module[data-module="streaming"] .video-wrapper video {
   display: flex;
   align-items: center;
   gap: 8px;
-  border-top: 1px solid #272c43;
+  border-top: 1px solid #e0e0e0;
   padding: 8px;
-  background: #1d2333;
+  background: #fff;
 }
 .input-avatar.avatar-wrap {
   --avi-width: 32px;
@@ -123,15 +124,15 @@ module[data-module="streaming"] .video-wrapper video {
 }
 .chat-input input {
   flex: 1;
-  border: 1px solid #272c43;
+  border: 1px solid #ccd2e0;
   border-radius: 16px;
   padding: 6px 12px;
   font-size: 14px;
-  background: #272c43;
-  color: #fff;
+  background: #fff;
+  color: #1c2024;
 }
 .chat-input input::placeholder {
-  color: #9aa4bf;
+  color: #606a80;
 }
 .chat-input button {
   border: none;

@@ -87,8 +87,11 @@ export default async function init({ root, utils }) {
 
   const messagesEl = chat.querySelector('.chat-messages');
   messages.forEach(msg => {
+    const style = msg.amount
+      ? ` style="border-color:${msg.user.color};background-color:${msg.user.color}20;"`
+      : '';
     messagesEl.innerHTML += `
-      <div class="chat-message${msg.amount ? ' super' : ''}"${msg.amount ? ` style="border-color:${msg.user.color};"` : ''}>
+      <div class="chat-message${msg.amount ? ' super' : ''}"${style}>
         <div class="message-avatar avatar-wrap" style="--avi-width:32px; --frame:none;">
           <img class="avatar-image" src="${msg.user.avatar}" alt="${msg.user.name}">
         </div>
