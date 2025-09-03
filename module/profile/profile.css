@@ -1,7 +1,7 @@
 .profile-chat {
   display: flex;
   flex-direction: column;
-  max-width: 960px;
+  max-width: 1180px;
   margin: 0 auto;
   background: #fff;
   border-radius: 12px;
@@ -18,9 +18,21 @@
   border-bottom: 1px solid #e6e6e6;
 }
 
+.profile-chat-header .profile-user {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.profile-chat-header .profile-user .name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--accent, #000);
+}
+
 .profile-chat-layout {
   display: grid;
-  grid-template-columns: 240px 1fr;
+  grid-template-columns: 280px 1fr;
   flex: 1;
   height: 100%;
 }

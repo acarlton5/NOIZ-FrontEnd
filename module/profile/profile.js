@@ -1,7 +1,12 @@
 const tpl = (user) => `
-  <section class="profile-chat">
+  <section class="profile-chat" style="--accent:${user.accent};">
     <header class="profile-chat-header">
-      <h2>${user.name}</h2>
+      <div class="profile-user">
+        <div class="avatar-wrap" style="--avi-width:56px; --avi-height:56px; --frame:url('${user.frame}');">
+          <img class="avatar-image" src="${user.avatar}" alt="${user.name}">
+        </div>
+        <h2 class="name">${user.name}</h2>
+      </div>
       ${user.isLive ? '<button class="btn btn-danger btn-sm" data-role="watch-live">Watch Live</button>' : ''}
     </header>
     <div class="profile-chat-layout">
