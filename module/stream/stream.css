@@ -1,0 +1,9 @@
+/* module/stream/stream.css */
+[data-role="stream"] video {
+  width: 100%;
+  border-radius: 0.5rem;
+}
+
+[data-role="stream"] .card {
+  background-color: #1b1e29;
+}
