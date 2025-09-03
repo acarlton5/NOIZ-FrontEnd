@@ -1,0 +1,77 @@
+module[data-module="chat-sidebar"] {
+  position: fixed;
+  top: 80px;
+  right: 72px;
+  width: 300px;
+  height: calc(100vh - 80px);
+  background: #0f172a;
+  border-left: 1px solid #2a2e3a;
+  display: flex;
+  flex-direction: column;
+  z-index: 1035;
+}
+
+module[data-module="chat-sidebar"] .chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  list-style: none;
+  margin: 0;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+module[data-module="chat-sidebar"] .message {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  color: #fff;
+}
+
+module[data-module="chat-sidebar"] .message .avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+module[data-module="chat-sidebar"] .message .avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+module[data-module="chat-sidebar"] .message .bubble {
+  background: #20273a;
+  padding: 8px 12px;
+  border-radius: 12px;
+  max-width: 100%;
+}
+
+module[data-module="chat-sidebar"] .message .name {
+  font-size: 0.8rem;
+  opacity: 0.8;
+  margin-bottom: 2px;
+}
+
+module[data-module="chat-sidebar"] .message.self {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+module[data-module="chat-sidebar"] .message.self .bubble {
+  background: #3b82f6;
+}
+
+module[data-module="chat-sidebar"] .chat-input {
+  padding: 8px 16px;
+  border-top: 1px solid #2a2e3a;
+}
+
+module[data-module="chat-sidebar"] .chat-input input {
+  background: #1e2433;
+  color: #fff;
+  border: 1px solid #374151;
+}
