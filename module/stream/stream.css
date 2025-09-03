@@ -48,9 +48,9 @@
   gap: 0.5rem;
   margin-bottom: 0.75rem;
   padding: 0.5rem;
-  background-color: #1e1f26;
-  color: #f8f9fa;
-  border: 1px solid #343a40;
+  background-color: #fff;
+  color: #212529;
+  border: 1px solid #dee2e6;
   border-left: 4px solid var(--accent, #0d6efd);
   border-radius: 0.5rem;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
@@ -81,7 +81,7 @@
   gap: 0.25rem;
   margin-bottom: 0.25rem;
   font-size: 0.75rem;
-  color: #adb5bd;
+  color: #6c757d;
 }
 
 [data-role="stream-sidebar"] .message-header .time {
@@ -97,10 +97,10 @@
 }
 
 [data-role="stream-sidebar"] .message.event {
-  background: linear-gradient(90deg, var(--accent, #0d6efd), #1e1f26 60%);
+  background: linear-gradient(90deg, var(--accent, #0d6efd), #fff 60%);
   border: 1px solid var(--accent, #0d6efd);
   border-left: 0;
-  color: #fff;
+  color: #212529;
 }
 
 [data-role="stream-sidebar"] .input-group {
