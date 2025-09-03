@@ -16,11 +16,15 @@ const renderMessage = (m) => {
     const user = m.user || {};
     return `
       <div class="message event" style="--accent:${m.accent || user.accent || '#0d6efd'}">
-        ${user.avatar ? `<div class="avatar-wrap" style="--avi-width:32px; --avi-height:32px; --frame:url('${user.frame || ''}')"><img src="${user.avatar}" alt="${user.name || ''}" class="avatar-image" /></div>` : ''}
-        <div class="message-body">
-          ${(user.name || m.time) ? `<div class="message-header">${m.time ? `<time class="time">${m.time}</time>` : ''}${user.name ? `<span class="user" style="color:${user.accent || '#0d6efd'}">${user.name}</span>` : ''}${user.badges ? user.badges.map(b => `<span class="badge bg-secondary">${b}</span>`).join('') : ''}</div>` : ''}
-          <div class="text">${m.text}</div>
+        <div class="event-header">
+          ${user.avatar ? `<div class="avatar-wrap" style="--avi-width:32px; --avi-height:32px; --frame:url('${user.frame || ''}')"><img src="${user.avatar}" alt="${user.name || ''}" class="avatar-image" /></div>` : ''}
+          <div class="meta">
+            ${user.name ? `<span class="user">${user.name}</span>` : ''}
+            ${user.badges ? user.badges.map(b => `<span class="badge bg-secondary">${b}</span>`).join('') : ''}
+          </div>
+          ${m.time ? `<time class="time">${m.time}</time>` : ''}
         </div>
+        <div class="event-body">${m.text}</div>
       </div>
     `;
   }
@@ -55,15 +59,19 @@ const renderMember = (m) => `
 `;
 
 const sidebarTpl = (messages, members, currentUser) => `
-  <div class="card-header">
-    <ul class="nav nav-tabs card-header-tabs" role="tablist">
+  <div class="card-header d-flex align-items-center">
+    <ul class="nav nav-tabs card-header-tabs flex-grow-1" role="tablist">
       <li class="nav-item" role="presentation">
         <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#chat" type="button" role="tab">Chat</button>
       </li>
       <li class="nav-item" role="presentation">
-        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#members" type="button" role="tab">Members</button>
+        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#members" type="button" role="tab">Members (${members.length})</button>
       </li>
     </ul>
+    <div class="header-actions ms-auto">
+      <button class="btn btn-sm btn-link" data-action="settings" aria-label="Settings"><svg class="icon icon-settings"><use xlink:href="#svg-settings"></use></svg></button>
+      <button class="btn btn-sm btn-link" data-action="close" aria-label="Close"><svg class="icon icon-cross"><use xlink:href="#svg-cross"></use></svg></button>
+    </div>
   </div>
   <div class="card-body tab-content">
     <div class="tab-pane fade show active" id="chat" role="tabpanel">
@@ -72,15 +80,14 @@ const sidebarTpl = (messages, members, currentUser) => `
       </div>
       <div class="chat-input">
         <div class="input-user">${currentUser.name || 'Anon'}</div>
-        <textarea class="form-control" rows="1" maxlength="200" placeholder="Chat..." data-role="input"></textarea>
-        <div class="input-actions">
+        <div class="input-group">
           <button class="btn btn-link p-0" data-action="emoji" aria-label="Emoji">😊</button>
           <button class="btn btn-link p-0" data-action="donate" aria-label="Send a tip">💲</button>
+          <textarea class="form-control" rows="1" maxlength="200" placeholder="Chat..." data-role="input"></textarea>
           <span class="char-count" data-role="count">0/200</span>
           <button class="btn btn-link p-0" data-action="send" aria-label="Send"><svg class="icon icon-send"><use xlink:href="#svg-send-message"></use></svg></button>
         </div>
       </div>
-      <button class="chat-toggle" data-action="toggle-chat">Hide chat</button>
     </div>
     <div class="tab-pane fade" id="members" role="tabpanel">
       <ul class="list-unstyled" data-role="members">
@@ -173,6 +180,15 @@ export default async function init({ root, utils }) {
     messages.push({ user: users.You, text, time: now() });
     input.value = '';
     renderSidebar();
+  });
+
+  utils.delegate(sidebar, 'click', '[data-action="close"]', () => {
+    sidebar.remove();
+  });
+
+  utils.delegate(sidebar, 'click', '[data-action="settings"]', () => {
+    // Placeholder for settings action
+    console.log('settings clicked');
   });
 
   utils.listen(sidebar, 'keydown', (e) => {
