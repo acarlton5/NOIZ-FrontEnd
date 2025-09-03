@@ -11,6 +11,13 @@ module[data-module="chat-sidebar"] {
   overflow: hidden;
 }
 
+module[data-module="chat-sidebar"] > .chat-sidebar {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
 module[data-module="chat-sidebar"] .chat-header {
   padding: 12px 16px;
   border-bottom: 1px solid #1e293b;
@@ -189,10 +196,10 @@ module[data-module="chat-sidebar"] .emote-drawer {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 72px;
+  bottom: 0;
   background: #0f172a;
   border-top: 1px solid #1e293b;
-  transform: translateY(100%);
+  transform: translateY(calc(100% + 72px));
   transition: transform 0.2s ease;
   display: flex;
   flex-direction: column;
@@ -201,7 +208,7 @@ module[data-module="chat-sidebar"] .emote-drawer {
 }
 
 module[data-module="chat-sidebar"] .emote-drawer.open {
-  transform: translateY(0);
+  transform: translateY(-72px);
 }
 
 module[data-module="chat-sidebar"] .emote-drawer .tabs {
