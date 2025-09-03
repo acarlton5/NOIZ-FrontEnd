@@ -5,8 +5,10 @@ const tpl = (user) => `
         <div class="avatar-wrap" style="--avi-width:56px; --avi-height:56px; --frame:url('${user.frame}');">
           <img class="avatar-image" src="${user.avatar}" alt="${user.name}">
         </div>
-        <h2 class="name">${user.name}</h2>
-        ${user.isLive ? '<button class="btn btn-danger btn-sm" data-role="watch-live">Watch Live</button>' : ''}
+        <div class="user-meta">
+          <h2 class="name">${user.name}</h2>
+          ${user.isLive ? '<span class="live-badge" data-role="watch-live">LIVE</span>' : ''}
+        </div>
       </div>
       <h3 class="channel-topic"># general</h3>
     </header>
