@@ -4,6 +4,8 @@ const members = [
     status: 'Typing...',
     avatar: 'https://odindesignthemes.com/vikinger/img/avatar/04.jpg',
     banner: 'https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/nameplates/space_city.png',
+    frame:
+      'https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/sporty.png',
     accent: '#ffcd00'
   },
   {
@@ -11,6 +13,8 @@ const members = [
     status: 'Online',
     avatar: 'https://odindesignthemes.com/vikinger/img/avatar/02.jpg',
     banner: 'https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/nameplates/bamboo.png',
+    frame:
+      'https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/a_hint_of_clove.png',
     accent: '#72ffb6'
   }
 ];
@@ -52,12 +56,14 @@ const tpl = (user) => `
               .map(
                 (m) => `
             <li class="member" style="--banner:url('${m.banner}'); --accent:${m.accent};">
-              <img class="avatar" src="${m.avatar}" alt="${m.name}">
+              <div class="avatar-wrap" style="--avi-width:32px; --avi-height:32px; --frame:url('${m.frame}');">
+                <img class="avatar-image" src="${m.avatar}" alt="${m.name}">
+                <span class="accent-dot"></span>
+              </div>
               <div class="meta">
                 <span class="name">${m.name}</span>
                 <span class="status">${m.status}</span>
               </div>
-              <span class="accent-dot"></span>
             </li>`
               )
               .join('')}

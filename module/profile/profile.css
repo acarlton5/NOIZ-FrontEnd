@@ -140,12 +140,31 @@
 }
 
 
-.member .avatar {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
+.member .avatar-wrap {
+  --avi-width: 32px;
+  --avi-height: 32px;
+  --frame-opacity: 0;
   margin-right: 0.75rem;
   flex-shrink: 0;
+}
+
+.member .avatar-wrap::after {
+  transition: opacity 0.16s ease;
+}
+
+.member:hover .avatar-wrap {
+  --frame-opacity: 1;
+}
+
+.member .avatar-wrap .accent-dot {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent, #ff72b6);
+  z-index: 3;
 }
 
 .member .meta {
@@ -164,15 +183,6 @@
   color: #ccc;
 }
 
-.member .accent-dot {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--accent, #ff72b6);
-}
 
 .channel {
   padding: 0.5rem 0.75rem 0.5rem 1rem;
