@@ -9,7 +9,7 @@ const tpl = (user) => `
           <h2 class="name">${user.name}</h2>
           ${
             user.isLive
-              ? '<span class="live-badge" data-role="watch-live"><span class="scroll-text">LIVE LIVE </span></span>'
+              ? '<span class="live-badge" data-role="watch-live">LIVE</span>'
               : ''
           }
         </div>
