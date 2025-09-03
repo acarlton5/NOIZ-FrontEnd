@@ -2,9 +2,11 @@
 // Stream module with video player and live chat
 
 const tpl = (messages, members) => `
-  <section class="container my-3" data-role="stream">
-    <div class="ratio ratio-16x9">
-      <video controls src="https://www.w3schools.com/html/mov_bbb.mp4"></video>
+  <section class="my-3" data-role="stream">
+    <div class="stream-main">
+      <div class="ratio ratio-16x9">
+        <video controls src="https://www.w3schools.com/html/mov_bbb.mp4"></video>
+      </div>
     </div>
     <aside class="stream-sidebar card bg-dark text-white">
       <div class="card-header">
@@ -20,7 +22,12 @@ const tpl = (messages, members) => `
       <div class="card-body tab-content">
         <div class="tab-pane fade show active" id="chat" role="tabpanel">
           <div data-role="messages" class="mb-3" style="max-height:200px; overflow-y:auto;">
-            ${messages.map(m => `<div class="mb-1"><strong>${m.user}:</strong> ${m.text}</div>`).join('')}
+            ${messages.map(m => `
+              <div class="message">
+                <span class="user badge bg-secondary me-2">${m.user}</span>
+                <span class="text">${m.text}</span>
+              </div>
+            `).join('')}
           </div>
           <div class="input-group">
             <input type="text" class="form-control" placeholder="Type a message" data-role="input">
