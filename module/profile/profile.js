@@ -1,20 +1,20 @@
 const tpl = (user) => `
   <section class="profile-chat" style="--accent:${user.accent};">
-    <header class="profile-chat-header">
+    <header class="profile-chat-header" style="--banner:url('${user.banner}')">
       <div class="profile-user">
-        <div class="avatar-wrap" style="--avi-width:56px; --avi-height:56px; --frame:url('${user.frame}');">
+        <div class="avatar-wrap" style="--avi-width:56px; --avi-height:56px; --frame:url('${user.frame}'); --frame-opacity:1;">
           <img class="avatar-image" src="${user.avatar}" alt="${user.name}">
         </div>
         <div class="user-meta">
           <h2 class="name">${user.name}</h2>
-          ${
-            user.isLive
-              ? '<span class="live-badge" data-role="watch-live">LIVE</span>'
-              : ''
-          }
+          <span class="topic"># general</span>
         </div>
       </div>
-      <h3 class="channel-topic"># general</h3>
+      ${
+        user.isLive
+          ? '<span class="live-pill" data-role="watch-live">LIVE</span>'
+          : ''
+      }
     </header>
     <div class="profile-chat-layout">
       <aside class="channel-list">
