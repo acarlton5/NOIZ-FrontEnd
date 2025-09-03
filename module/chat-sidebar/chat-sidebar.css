@@ -43,6 +43,15 @@ module[data-module="chat-sidebar"] .message .avatar-wrap {
   --avi-width: 36px;
   --avi-height: 36px;
   flex-shrink: 0;
+  --frame-opacity: 0;
+}
+
+module[data-module="chat-sidebar"] .message .avatar-wrap::after {
+  transition: opacity 0.16s ease;
+}
+
+module[data-module="chat-sidebar"] .message .avatar-wrap:hover {
+  --frame-opacity: 1;
 }
 
 module[data-module="chat-sidebar"] .message .msg {
@@ -66,6 +75,10 @@ module[data-module="chat-sidebar"] .message .badge-icon {
   border: 0;
   border-radius: 0;
   margin-left: 2px;
+}
+
+module[data-module="chat-sidebar"] .message.event .badge-icon {
+  margin-left: 0;
 }
 
 module[data-module="chat-sidebar"] .message .text {
@@ -107,6 +120,12 @@ module[data-module="chat-sidebar"] .message.event .info {
 
 module[data-module="chat-sidebar"] .message.event .info .name {
   margin-bottom: 0;
+}
+
+module[data-module="chat-sidebar"] .message.event .info .text {
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
 module[data-module="chat-sidebar"] .chat-input {

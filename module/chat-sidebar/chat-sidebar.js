@@ -69,7 +69,13 @@ export default async function init({ root }) {
     { user: users.DoctorHoot, text: 'What was that?' },
     { user: users.PitBear, text: 'Can I play next game?' },
     { user: users.PirateDropout, text: 'Push!' },
-    { type: 'event', user: users.PirateDropout, sticker: 'https://streamstickers.com/uploads/vader-sample-65017.gif', text: '+50,000' },
+    {
+      type: 'event',
+      user: users.PirateDropout,
+      sticker: 'https://streamstickers.com/uploads/vader-sample-65017.gif',
+      badge: BADGE_URLS[8],
+      text: '+50,000'
+    },
     { user: users.LuchaUno, text: "That's so cool!" },
     { user: users.PitBear, text: 'I really love this channel' },
     { user: users.DoctorHoot, text: 'Thanks for joining!' }
@@ -98,7 +104,7 @@ export default async function init({ root }) {
           <img class="sticker" src="${msg.sticker}" alt="sticker"/>
           <div class="info">
             <div class="name" style="color:${msg.user.color}">${msg.user.name}</div>
-            <div class="text">${msg.text}</div>
+            <div class="text">${msg.badge ? `<img class="badge-icon" src="${msg.badge}" alt="badge"/>` : ''}${msg.text}</div>
           </div>
         </div>
       `;
