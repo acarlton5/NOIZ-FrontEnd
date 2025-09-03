@@ -11,7 +11,7 @@ export default async function init({ root, utils }) {
     {
       user: {
         name: 'Lena',
-        avatar: 'https://placehold.co/24x24',
+        avatar: 'https://placehold.co/32x32',
         color: '#0a8d48',
         badges: [
           'https://static-cdn.jtvnw.net/badges/v1/51f536c1-96ca-495b-bc11-150c857a6d54/2',
@@ -25,7 +25,7 @@ export default async function init({ root, utils }) {
     {
       user: {
         name: 'Ash',
-        avatar: 'https://placehold.co/24x24',
+        avatar: 'https://placehold.co/32x32',
         color: '#2a7fff',
         badges: [
           'https://static-cdn.jtvnw.net/badges/v1/098219cb-48d8-4945-96a6-80594c7a90dd/2',
@@ -38,7 +38,7 @@ export default async function init({ root, utils }) {
     {
       user: {
         name: 'IntroMeb',
-        avatar: 'https://placehold.co/24x24',
+        avatar: 'https://placehold.co/32x32',
         color: '#26bba4',
         badges: [
           'https://static-cdn.jtvnw.net/badges/v1/8dbdfef5-0901-457f-a644-afa77ba176e5/2'
@@ -50,7 +50,7 @@ export default async function init({ root, utils }) {
     {
       user: {
         name: 'Laura Mipsum',
-        avatar: 'https://placehold.co/24x24',
+        avatar: 'https://placehold.co/32x32',
         color: '#0fa36b',
         badges: [
           'https://static-cdn.jtvnw.net/badges/v1/cf91bbc0-0332-413a-a7f3-e36bac08b624/2',

@@ -99,12 +99,16 @@ module[data-module="streaming"] .video-wrapper video {
 }
 .chat-super .super-body {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 12px;
   padding: 8px;
 }
+.chat-super .super-body .message-body {
+  flex: 1;
+}
 .chat-super .super-sticker {
-  margin-top: 8px;
+  display: block;
+  margin: 8px auto 0;
   width: 120px;
   height: 120px;
   object-fit: contain;
