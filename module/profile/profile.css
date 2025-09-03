@@ -139,7 +139,10 @@
   width: 100%;
   padding: 0.5rem 0.75rem 0.5rem calc(0.75rem + var(--indicator-width) + var(--indicator-gap));
   border-radius: 8px;
-  background: var(--banner) center/cover no-repeat;
+  background-image: var(--banner);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: #fff;
   overflow: hidden;
 }
@@ -163,7 +166,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to right, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100%);
+  background: linear-gradient(to right, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0) 100%);
   z-index: 1;
 }
 
