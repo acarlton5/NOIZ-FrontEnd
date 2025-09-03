@@ -3,17 +3,75 @@ export default function init({ root }) {
     <aside class="chat-sidebar">
       <ul class="chat-messages" data-role="messages">
         <li class="message">
-          <div class="avatar"><img src="https://placekitten.com/40/40" alt="Kitten"></div>
-          <div class="bubble">
-            <div class="name">PirateDropout</div>
-            <div class="text">+50,000</div>
+          <div class="avatar-wrap" style="--avi-width:36px;">
+            <img class="avatar-image" src="https://placekitten.com/40/40" alt="LuchaUno"/>
+          </div>
+          <div class="msg">
+            <span class="name" style="color:#4ade80">LuchaUno</span>
+            <span class="text">Nice!</span>
           </div>
         </li>
         <li class="message">
-          <div class="avatar"><img src="https://placekitten.com/41/41" alt="Cat"></div>
-          <div class="bubble">
-            <div class="name">DoctorHoot</div>
-            <div class="text">Can I play next game?</div>
+          <div class="avatar-wrap" style="--avi-width:36px;">
+            <img class="avatar-image" src="https://placekitten.com/41/41" alt="DoctorHoot"/>
+          </div>
+          <div class="msg">
+            <span class="name" style="color:#60a5fa">DoctorHoot</span>
+            <span class="text">What was that?</span>
+          </div>
+        </li>
+        <li class="message">
+          <div class="avatar-wrap" style="--avi-width:36px;">
+            <img class="avatar-image" src="https://placekitten.com/42/42" alt="PitBear"/>
+          </div>
+          <div class="msg">
+            <span class="name" style="color:#f97316">PitBear</span>
+            <span class="text">Can I play next game?</span>
+          </div>
+        </li>
+        <li class="message">
+          <div class="avatar-wrap" style="--avi-width:36px;">
+            <img class="avatar-image" src="https://placekitten.com/43/43" alt="PirateDropout"/>
+          </div>
+          <div class="msg">
+            <span class="name" style="color:#d946ef">PirateDropout</span>
+            <span class="text">Push!</span>
+          </div>
+        </li>
+        <li class="message event">
+          <div class="event-bubble">
+            <img class="sticker" src="https://placekitten.com/64/64" alt="sticker"/>
+            <div class="info">
+              <div class="name" style="color:#d946ef">PirateDropout</div>
+              <div class="text">+50,000</div>
+            </div>
+          </div>
+        </li>
+        <li class="message">
+          <div class="avatar-wrap" style="--avi-width:36px;">
+            <img class="avatar-image" src="https://placekitten.com/44/44" alt="LuchaUno"/>
+          </div>
+          <div class="msg">
+            <span class="name" style="color:#4ade80">LuchaUno</span>
+            <span class="text">That's so cool!</span>
+          </div>
+        </li>
+        <li class="message">
+          <div class="avatar-wrap" style="--avi-width:36px;">
+            <img class="avatar-image" src="https://placekitten.com/45/45" alt="PitBear"/>
+          </div>
+          <div class="msg">
+            <span class="name" style="color:#f97316">PitBear</span>
+            <span class="text">I really love this channel</span>
+          </div>
+        </li>
+        <li class="message">
+          <div class="avatar-wrap" style="--avi-width:36px;">
+            <img class="avatar-image" src="https://placekitten.com/46/46" alt="DoctorHoot"/>
+          </div>
+          <div class="msg">
+            <span class="name" style="color:#60a5fa">DoctorHoot</span>
+            <span class="text">Thanks for joining!</span>
           </div>
         </li>
       </ul>
@@ -33,7 +91,7 @@ export default function init({ root }) {
     if (!text) return;
     const li = document.createElement('li');
     li.className = 'message self';
-    li.innerHTML = `<div class="bubble"><div class="text">${text}</div></div>`;
+    li.innerHTML = `<div class="msg"><span class="name" style="color:#3b82f6">You</span><span class="text">${text}</span></div>`;
     messages.appendChild(li);
     input.value = '';
     messages.scrollTop = messages.scrollHeight;
