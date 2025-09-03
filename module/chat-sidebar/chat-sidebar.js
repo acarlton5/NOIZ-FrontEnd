@@ -3,7 +3,20 @@ export default async function init({ root }) {
     <aside class="chat-sidebar">
       <header class="chat-header">Chat</header>
       <ul class="chat-messages" data-role="messages"></ul>
+      <div class="emote-drawer" data-role="drawer">
+        <div class="tabs">
+          <button type="button" data-tab="emotes" class="active">Emotes</button>
+          <button type="button" data-tab="resonances">Resonances</button>
+          <button type="button" data-tab="extensions">Extensions</button>
+        </div>
+        <div class="tab-content" data-role="tab-content"></div>
+      </div>
       <form class="chat-input" data-role="form">
+        <button type="button" class="drawer-btn" data-role="drawer-btn" aria-label="Open emotes">
+          <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 1a7 7 0 100 14A7 7 0 008 1zm0 2a5 5 0 110 10A5 5 0 018 3zm-2.5 4a.5.5 0 110 1 .5.5 0 010-1zm5 0a.5.5 0 110 1 .5.5 0 010-1zM5.5 9.5a2.5 2.5 0 005 0h-5z" fill="currentColor"/>
+          </svg>
+        </button>
         <input type="text" class="form-control" data-role="input" placeholder="Type a message" />
         <button type="submit" class="send-btn" aria-label="Send">
           <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -17,6 +30,24 @@ export default async function init({ root }) {
   const form = root.querySelector('[data-role="form"]');
   const input = root.querySelector('[data-role="input"]');
   const messages = root.querySelector('[data-role="messages"]');
+  const drawer = root.querySelector('[data-role="drawer"]');
+  const drawerBtn = root.querySelector('[data-role="drawer-btn"]');
+  const tabs = root.querySelectorAll('[data-role="drawer"] .tabs button');
+  const tabContent = root.querySelector('[data-role="tab-content"]');
+
+  drawerBtn.addEventListener('click', () => {
+    drawer.classList.toggle('open');
+  });
+
+  tabs.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabs.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      tabContent.textContent = btn.textContent;
+    });
+  });
+
+  tabContent.textContent = 'Emotes';
 
   const BADGE_URLS = [
     'https://static-cdn.jtvnw.net/badges/v1/51f536c1-96ca-495b-bc11-150c857a6d54/2',
