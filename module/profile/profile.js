@@ -71,9 +71,44 @@ const tpl = (user) => `
       </aside>
       <section class="chat">
         <div class="messages">
-          <div class="message"><span class="author">MemberUser</span> Much cooler user names etc.</div>
-          <div class="message"><span class="author">CreatorUser</span> Everything here is scoped into the sidebar chat stay unchanged.</div>
-          <div class="message"><span class="author">System</span> 100 Cheer</div>
+          <div class="chat-message">
+            <div class="avatar-wrap" style="--avi-width:40px; --avi-height:40px; --frame:url('https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/sporty.png');">
+              <img class="avatar-image" src="https://odindesignthemes.com/vikinger/img/avatar/04.jpg" alt="Member User">
+            </div>
+            <div class="content">
+              <div class="meta">
+                <span class="author">Member User ✓</span>
+                <time>2:42 PM</time>
+              </div>
+              <div class="text">Main chat uses the same message components — just larger tokens.</div>
+            </div>
+          </div>
+          <div class="chat-message">
+            <div class="avatar-wrap" style="--avi-width:40px; --avi-height:40px; --frame:url('https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/a_hint_of_clove.png');">
+              <img class="avatar-image" src="https://odindesignthemes.com/vikinger/img/avatar/02.jpg" alt="Creator User">
+            </div>
+            <div class="content">
+              <div class="meta">
+                <span class="author">Creator User</span>
+                <time>2:42 PM</time>
+              </div>
+              <div class="text">Everything here is scoped so the sidebar chat stays unchanged.</div>
+            </div>
+          </div>
+          <div class="chat-alert cheer">
+            <div class="alert-header">
+              <span class="title">300 Cheer</span>
+              <span class="art">Cheerer Art</span>
+            </div>
+            <div class="alert-body">Rinoga: Let's gooo!</div>
+          </div>
+          <div class="chat-alert sub">
+            <div class="alert-header">
+              <span class="title">Tier 1 Subscription</span>
+              <span class="art">Subscriber Art</span>
+            </div>
+            <div class="alert-body">KamiKitsune subbed for 6 months!</div>
+          </div>
         </div>
         <form class="message-form">
           <input type="text" placeholder="Send a message" />
