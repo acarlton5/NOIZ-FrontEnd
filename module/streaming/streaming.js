@@ -99,11 +99,11 @@ export default async function init({ root, utils }) {
                 ${renderBadges(msg.user.badges)}
               </div>
               <div class="message-text">${msg.text}</div>
+              ${msg.sticker ? `<img class="super-sticker" src="${msg.sticker}" alt="sticker">` : ''}
             </div>
           </div>
         </div>
       `;
-      showDonationAlert(msg);
     } else {
       messagesEl.innerHTML += `
         <div class="chat-message">
@@ -131,16 +131,5 @@ export default async function init({ root, utils }) {
     if (!badges || !badges.length) return '';
     const imgs = badges.slice(0, 5).map(url => `<img class="message-badge" src="${url}" alt="badge">`).join('');
     return `<span class="message-badges">${imgs}</span>`;
-  }
-
-  function showDonationAlert({ user, amount, text, sticker }) {
-    const alert = document.createElement('div');
-    alert.className = 'donation-alert';
-    alert.innerHTML = `
-      <img class="donation-sticker" src="${sticker}" alt="sticker">
-      <div class="donation-text"><strong>${user.name}</strong> donated ${amount} — ${text}</div>
-    `;
-    document.body.appendChild(alert);
-    setTimeout(() => alert.remove(), 5000);
   }
 }
