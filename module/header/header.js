@@ -294,6 +294,14 @@ export default async function init({ hub, root, utils }) {
     searchInput.focus();
   });
 
+  if (searchDropdown) {
+    utils.delegate(searchDropdown, 'click', '.header-search-item', () => {
+      if (!searchInput) return;
+      searchInput.value = '';
+      updateSearch();
+    });
+  }
+
   utils.listen(document, 'click', (e) => {
     if (!searchWrap?.contains(e.target)) {
       renderResults({});
