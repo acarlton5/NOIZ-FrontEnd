@@ -32,12 +32,27 @@ const tpl = (messages) => `
   </div>
   <form class="chat-form" data-role="form">
     <div class="chat-input-group">
-      <input type="text" class="chat-input" data-role="input" placeholder="Say something..." maxlength="200" />
-      <button type="submit" class="chat-send-btn" aria-label="Send">
-        <svg class="chat-send-icon" viewBox="0 0 24 24">
-          <path d="M2 21L23 12 2 3v7l15 2-15 2z" />
-        </svg>
-      </button>
+      <div class="chat-input-top">
+        <div class="chat-avatar">A</div>
+        <div class="chat-input-wrapper">
+          <div class="chat-user">Anon</div>
+          <input type="text" class="chat-input" data-role="input" placeholder="Chat..." maxlength="200" />
+        </div>
+      </div>
+      <div class="chat-input-bottom">
+        <div class="chat-tools">
+          <button type="button" class="chat-emoji-btn" aria-label="Emoji">😊</button>
+          <button type="button" class="chat-money-btn" aria-label="Send a tip">💲</button>
+        </div>
+        <div class="chat-actions">
+          <span class="chat-count" data-role="count">0/200</span>
+          <button type="submit" class="chat-send-btn" aria-label="Send">
+            <svg class="chat-send-icon" viewBox="0 0 24 24">
+              <path d="M2 21L23 12 2 3v7l15 2-15 2z" />
+            </svg>
+          </button>
+        </div>
+      </div>
     </div>
   </form>
   <button type="button" class="chat-hide btn btn-link" data-action="hide">Hide chat</button>
@@ -74,6 +89,11 @@ export default async function init({ root, utils }) {
     });
     input.value = '';
     render();
+  });
+
+  utils.delegate(root, 'input', '[data-role="input"]', (e) => {
+    const counter = root.querySelector('[data-role="count"]');
+    counter.textContent = `${e.target.value.length}/200`;
   });
 
   utils.delegate(root, 'click', '[data-action="hide"]', () => {
