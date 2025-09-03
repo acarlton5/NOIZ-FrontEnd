@@ -69,6 +69,18 @@ module[data-module="streaming"] .video-wrapper video {
   margin-right: 4px;
 }
 
+.message-badges {
+  display: inline-flex;
+  gap: 2px;
+  margin-right: 4px;
+  vertical-align: middle;
+}
+
+.message-badge {
+  width: 16px;
+  height: 16px;
+}
+
 .chat-super {
   border: 1px solid #0fa36b;
   border-radius: 4px;
