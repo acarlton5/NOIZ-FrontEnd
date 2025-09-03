@@ -100,24 +100,35 @@ module[data-module="chat-sidebar"] .chat-input {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 8px 16px;
+  padding: 12px;
   border-top: 1px solid #1e293b;
 }
 
 module[data-module="chat-sidebar"] .chat-input input {
   flex: 1;
-  background: #1e293b;
+  background: #0f172a;
   color: #fff;
   border: 1px solid #334155;
-  border-radius: 8px;
-  padding: 8px 12px;
+  border-radius: 12px;
+  padding: 12px 16px;
 }
 
 module[data-module="chat-sidebar"] .chat-input .send-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
   background: #3b82f6;
   color: #fff;
   border: none;
-  padding: 8px 12px;
-  border-radius: 8px;
+  border-radius: 12px;
+  cursor: pointer;
   line-height: 1;
+}
+
+module[data-module="chat-sidebar"] .chat-input .send-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
 }

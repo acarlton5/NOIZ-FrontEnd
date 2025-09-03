@@ -78,7 +78,11 @@ export default async function init({ root }) {
       </ul>
       <form class="chat-input" data-role="form">
         <input type="text" class="form-control" data-role="input" placeholder="Type a message" />
-        <button type="submit" class="send-btn" aria-label="Send">&#10148;</button>
+        <button type="submit" class="send-btn" aria-label="Send">
+          <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 2l9 6-9 6V2z" fill="currentColor"/>
+          </svg>
+        </button>
       </form>
     </aside>
   `;
