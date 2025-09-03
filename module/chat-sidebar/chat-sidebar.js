@@ -71,6 +71,16 @@ export default async function init({ root }) {
           'https://static-cdn.jtvnw.net/jtv_user_pictures/3aecb399-e583-41d5-985a-e2e2860ae531-profile_image-150x150.png'
       },
       emotes: [
+        'https://static-cdn.jtvnw.net/emoticons/v2/1003187/static/dark/3.0',
+        'https://static-cdn.jtvnw.net/emoticons/v2/1003189/static/dark/3.0',
+        'https://static-cdn.jtvnw.net/emoticons/v2/1003190/static/dark/3.0',
+        'https://static-cdn.jtvnw.net/emoticons/v2/160394/static/dark/3.0',
+        'https://static-cdn.jtvnw.net/emoticons/v2/160404/static/dark/3.0',
+        'https://static-cdn.jtvnw.net/emoticons/v2/160401/static/dark/3.0',
+        'https://static-cdn.jtvnw.net/emoticons/v2/160400/static/dark/3.0',
+        'https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_adfadf0ae06a4258adc865761746b227/static/dark/3.0',
+        'https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_665235901db747b1bd395a5f1c0ab8a9/static/dark/3.0',
+        'https://static-cdn.jtvnw.net/emoticons/v2/1220086/static/dark/3.0',
         'https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_a829c76ca15f49a2bf71e1270f83fe83/static/dark/3.0',
         'https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_4e1c5651219a462894aefa8b6720efc5/static/dark/3.0',
         'https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_4b51b45f35df4dd8ad45a611c9a9ec35/static/dark/3.0',
@@ -82,15 +92,25 @@ export default async function init({ root }) {
   ];
 
   function renderEmoteTab() {
-    tabContent.innerHTML = EMOTE_SETS.map(set => {
-      const header = set.global
-        ? `<div class="emote-set-header"><span class="streamer-name">Global</span></div>`
-        : `<div class="emote-set-header"><img class="streamer-avatar" src="${set.streamer.avatar}" alt="${set.streamer.name}" /><span class="streamer-name">${set.streamer.name}</span></div>`;
-      const emotes = set.emotes
-        .map(url => `<button type="button" class="emote" data-url="${url}"><img src="${url}" alt="emote" /></button>`)
-        .join('');
-      return `<div class="emote-set">${header}<div class="emote-list">${emotes}</div></div>`;
-    }).join('');
+    tabContent.innerHTML = `
+      <input type="text" class="emote-search" data-role="emote-search" placeholder="Search emotes" />
+      ${EMOTE_SETS.map(set => {
+        const header = set.global
+          ? \`<div class="emote-set-header"><span class="streamer-name">Global</span></div>\`
+          : \`<div class="emote-set-header"><img class="streamer-avatar" src="\${set.streamer.avatar}" alt="\${set.streamer.name}" /><span class="streamer-name">\${set.streamer.name}</span></div>\`;
+        const emotes = set.emotes
+          .map(url => \`<button type="button" class="emote" data-url="\${url}"><img src="\${url}" alt="emote" /></button>\`)
+          .join('');
+        return \`<div class="emote-set">\${header}<div class="emote-list">\${emotes}</div></div>\`;
+      }).join('')}
+    `;
+    const search = tabContent.querySelector('[data-role="emote-search"]');
+    search.addEventListener('input', () => {
+      const term = search.value.toLowerCase();
+      tabContent.querySelectorAll('.emote').forEach(btn => {
+        btn.style.display = btn.dataset.url.toLowerCase().includes(term) ? '' : 'none';
+      });
+    });
   }
 
   const TAB_RENDERERS = {
