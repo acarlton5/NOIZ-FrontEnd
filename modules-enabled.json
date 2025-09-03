@@ -70,5 +70,13 @@
     "navigation": false,
     "header": true,
     "services": true
+  },
+  "chat": {
+    "name": "chat",
+    "icon": "messages",
+    "status": "enabled",
+    "navigation": false,
+    "header": false,
+    "services": false
   }
 }
