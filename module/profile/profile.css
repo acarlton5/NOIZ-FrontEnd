@@ -122,7 +122,7 @@
 .members {
   list-style: none;
   margin: 0;
-  padding: 0 1rem;
+  padding: 0 0.5rem;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -132,6 +132,7 @@
   position: relative;
   display: flex;
   align-items: center;
+  width: 100%;
   padding: 0.5rem 0.75rem;
   border-radius: 8px;
   background: linear-gradient(to right, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.85) 60%, rgba(0,0,0,0) 100%), var(--banner) center/cover no-repeat;
@@ -156,15 +157,13 @@
   --frame-opacity: 1;
 }
 
-.member .avatar-wrap .accent-dot {
-  position: absolute;
-  bottom: -2px;
-  right: -2px;
+.member .accent-dot {
   width: 10px;
   height: 10px;
   border-radius: 50%;
   background: var(--accent, #ff72b6);
-  z-index: 3;
+  margin-right: 0.75rem;
+  flex-shrink: 0;
 }
 
 .member .meta {
