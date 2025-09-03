@@ -253,8 +253,8 @@ module[data-module="chat-sidebar"] .emote-set-header .streamer-avatar {
 }
 
 module[data-module="chat-sidebar"] .emote-list {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(32px, 1fr));
   gap: 4px;
 }
 
