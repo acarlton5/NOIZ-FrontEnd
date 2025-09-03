@@ -106,8 +106,7 @@ module[data-module="chat"] .chat-actions {
 }
 
 module[data-module="chat"] .chat-tools {
-  display: grid;
-  grid-template-rows: repeat(2, 1fr);
+  display: flex;
   gap: 4px;
   margin-right: 8px;
 }
