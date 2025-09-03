@@ -46,7 +46,7 @@
 .profile-chat-header .profile-user .name {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #fff;
+  color: var(--accent, #ff72b6);
 }
 
 .profile-chat-header .profile-user .topic {
