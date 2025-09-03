@@ -70,5 +70,13 @@
     "navigation": false,
     "header": true,
     "services": true
+  },
+  "streaming": {
+    "name": "streaming",
+    "icon": "streams",
+    "status": "enabled",
+    "navigation": true,
+    "header": false,
+    "services": false
   }
 }
