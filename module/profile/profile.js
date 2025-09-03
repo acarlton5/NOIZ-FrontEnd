@@ -56,7 +56,6 @@ const tpl = (user) => `
               .map(
                 (m) => `
             <li class="member" style="--banner:url('${m.banner}'); --accent:${m.accent};">
-              <span class="accent-dot"></span>
               <div class="avatar-wrap" style="--avi-width:32px; --avi-height:32px; --frame:url('${m.frame}');">
                 <img class="avatar-image" src="${m.avatar}" alt="${m.name}">
               </div>
