@@ -39,15 +39,74 @@ export default async function init({ root }) {
     drawer.classList.toggle('open');
   });
 
+  const EMOTE_SETS = [
+    {
+      streamer: {
+        name: 'SampleStreamer',
+        avatar:
+          'https://static-cdn.jtvnw.net/jtv_user_pictures/3aecb399-e583-41d5-985a-e2e2860ae531-profile_image-150x150.png'
+      },
+      emotes: [
+        'https://static-cdn.jtvnw.net/emoticons/v2/1003187/static/dark/3.0',
+        'https://static-cdn.jtvnw.net/emoticons/v2/1003189/static/dark/3.0',
+        'https://static-cdn.jtvnw.net/emoticons/v2/1003190/static/dark/3.0',
+        'https://static-cdn.jtvnw.net/emoticons/v2/160394/static/dark/3.0',
+        'https://static-cdn.jtvnw.net/emoticons/v2/160404/static/dark/3.0',
+        'https://static-cdn.jtvnw.net/emoticons/v2/160401/static/dark/3.0',
+        'https://static-cdn.jtvnw.net/emoticons/v2/160400/static/dark/3.0',
+        'https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_adfadf0ae06a4258adc865761746b227/static/dark/3.0',
+        'https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_665235901db747b1bd395a5f1c0ab8a9/static/dark/3.0',
+        'https://static-cdn.jtvnw.net/emoticons/v2/1220086/static/dark/3.0',
+        'https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_a829c76ca15f49a2bf71e1270f83fe83/static/dark/3.0',
+        'https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_4e1c5651219a462894aefa8b6720efc5/static/dark/3.0',
+        'https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_4b51b45f35df4dd8ad45a611c9a9ec35/static/dark/3.0',
+        'https://static-cdn.jtvnw.net/emoticons/v2/122213/static/light/3.0',
+        'https://static-cdn.jtvnw.net/emoticons/v2/406623/static/light/3.0',
+        'https://static-cdn.jtvnw.net/emoticons/v2/1494991/static/light/3.0'
+      ]
+    }
+  ];
+
+  function renderEmoteTab() {
+    tabContent.innerHTML = EMOTE_SETS.map(
+      set => `
+        <div class="emote-set">
+          <div class="emote-set-header">
+            <img class="streamer-avatar" src="${set.streamer.avatar}" alt="${set.streamer.name}" />
+            <span class="streamer-name">${set.streamer.name}</span>
+          </div>
+          <div class="emote-list">
+            ${set.emotes
+              .map(
+                url =>
+                  `<button type="button" class="emote" data-url="${url}"><img src="${url}" alt="emote" /></button>`
+              )
+              .join('')}
+          </div>
+        </div>`
+    ).join('');
+  }
+
+  const TAB_RENDERERS = {
+    emotes: renderEmoteTab,
+    resonances: () => {
+      tabContent.textContent = 'Resonances';
+    },
+    extensions: () => {
+      tabContent.textContent = 'Extensions';
+    }
+  };
+
   tabs.forEach(btn => {
     btn.addEventListener('click', () => {
       tabs.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      tabContent.textContent = btn.textContent;
+      const renderer = TAB_RENDERERS[btn.dataset.tab];
+      if (renderer) renderer();
     });
   });
 
-  tabContent.textContent = 'Emotes';
+  renderEmoteTab();
 
   const BADGE_URLS = [
     'https://static-cdn.jtvnw.net/badges/v1/51f536c1-96ca-495b-bc11-150c857a6d54/2',

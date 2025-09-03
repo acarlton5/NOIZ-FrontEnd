@@ -234,3 +234,38 @@ module[data-module="chat-sidebar"] .emote-drawer .tab-content {
   padding: 8px;
   color: #e2e8f0;
 }
+
+module[data-module="chat-sidebar"] .emote-set {
+  margin-bottom: 12px;
+}
+
+module[data-module="chat-sidebar"] .emote-set-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+module[data-module="chat-sidebar"] .emote-set-header .streamer-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+
+module[data-module="chat-sidebar"] .emote-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+module[data-module="chat-sidebar"] .emote-list .emote {
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+module[data-module="chat-sidebar"] .emote-list .emote img {
+  width: 32px;
+  height: 32px;
+}
