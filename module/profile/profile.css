@@ -139,10 +139,7 @@
   width: 100%;
   padding: 0.5rem 0.75rem 0.5rem calc(0.75rem + var(--indicator-width) + var(--indicator-gap));
   border-radius: 8px;
-  background-image: var(--banner);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background: var(--banner) center/cover no-repeat;
   color: #fff;
   overflow: hidden;
 }
