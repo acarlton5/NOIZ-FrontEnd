@@ -166,11 +166,8 @@
 }
 
 [data-role="stream-sidebar"] .chat-input {
-  border: 1px solid #e9ecef;
-  border-radius: 0.5rem;
-  padding: 0.5rem;
+  padding: 0.5rem 0.75rem;
   margin-top: 0.5rem;
-  background-color: #fff;
 }
 
 [data-role="stream-sidebar"] .chat-input .input-user {
@@ -178,7 +175,7 @@
   align-items: center;
   gap: 0.5rem;
   font-size: 0.875rem;
-  color: #212529;
+  color: #6c757d;
   margin-bottom: 0.25rem;
 }
 
@@ -204,9 +201,11 @@
   margin-top: 0.25rem;
 }
 
-[data-role="stream-sidebar"] .chat-input .actions .btn {
-  color: #6c757d;
+[data-role="stream-sidebar"] .chat-input .actions button {
+  background: none;
+  border: 0;
   padding: 0;
+  color: #6c757d;
 }
 
 [data-role="stream-sidebar"] .chat-input .actions .char-count {
@@ -216,11 +215,16 @@
 }
 
 [data-role="stream-sidebar"] .chat-input .hide-chat {
+  display: block;
+  width: 100%;
+  border: 0;
   border-top: 1px solid #e9ecef;
   margin-top: 0.5rem;
+  padding-top: 0.25rem;
+  background: none;
   font-size: 0.875rem;
   color: #6c757d;
-  text-decoration: none;
+  text-align: center;
 }
 
 [data-role="stream-sidebar"] [data-role="members"] .member {

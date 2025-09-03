@@ -87,12 +87,12 @@ const sidebarTpl = (messages, members, currentUser) => `
         </div>
         <textarea class="chat-field" rows="1" maxlength="200" placeholder="Chat..." data-role="input"></textarea>
         <div class="actions">
-          <button class="btn btn-link p-0" data-action="emoji" aria-label="Emoji">😊</button>
-          <button class="btn btn-link p-0" data-action="donate" aria-label="Send a tip">💲</button>
+          <button type="button" data-action="emoji" aria-label="Emoji">😊</button>
+          <button type="button" data-action="donate" aria-label="Send a tip">💲</button>
           <span class="char-count" data-role="count">0/200</span>
-          <button class="btn btn-link p-0" data-action="send" aria-label="Send"><svg class="icon icon-send"><use xlink:href="#svg-send-message"></use></svg></button>
+          <button type="button" data-action="send" aria-label="Send"><svg class="icon icon-send"><use xlink:href="#svg-send-message"></use></svg></button>
         </div>
-        <button class="btn btn-link w-100 hide-chat" data-action="hide">Hide chat</button>
+        <button type="button" class="hide-chat" data-action="hide">Hide chat</button>
       </div>
     </div>
     <div class="tab-pane fade" id="members" role="tabpanel">
