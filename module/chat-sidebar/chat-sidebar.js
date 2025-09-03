@@ -4,7 +4,7 @@ export default function init({ root }) {
       <ul class="chat-messages" data-role="messages">
         <li class="message">
           <div class="avatar-wrap" style="--avi-width:36px;">
-            <img class="avatar-image" src="https://placekitten.com/40/40" alt="LuchaUno"/>
+            <img class="avatar-image" src="https://static-cdn.jtvnw.net/jtv_user_pictures/3aecb399-e583-41d5-985a-e2e2860ae531-profile_image-150x150.png" alt="LuchaUno"/>
           </div>
           <div class="msg">
             <span class="name" style="color:#4ade80">LuchaUno</span>
@@ -13,7 +13,7 @@ export default function init({ root }) {
         </li>
         <li class="message">
           <div class="avatar-wrap" style="--avi-width:36px;">
-            <img class="avatar-image" src="https://placekitten.com/41/41" alt="DoctorHoot"/>
+            <img class="avatar-image" src="https://static-cdn.jtvnw.net/jtv_user_pictures/3aecb399-e583-41d5-985a-e2e2860ae531-profile_image-150x150.png" alt="DoctorHoot"/>
           </div>
           <div class="msg">
             <span class="name" style="color:#60a5fa">DoctorHoot</span>
@@ -22,7 +22,7 @@ export default function init({ root }) {
         </li>
         <li class="message">
           <div class="avatar-wrap" style="--avi-width:36px;">
-            <img class="avatar-image" src="https://placekitten.com/42/42" alt="PitBear"/>
+            <img class="avatar-image" src="https://static-cdn.jtvnw.net/jtv_user_pictures/3aecb399-e583-41d5-985a-e2e2860ae531-profile_image-150x150.png" alt="PitBear"/>
           </div>
           <div class="msg">
             <span class="name" style="color:#f97316">PitBear</span>
@@ -31,7 +31,7 @@ export default function init({ root }) {
         </li>
         <li class="message">
           <div class="avatar-wrap" style="--avi-width:36px;">
-            <img class="avatar-image" src="https://placekitten.com/43/43" alt="PirateDropout"/>
+            <img class="avatar-image" src="https://static-cdn.jtvnw.net/jtv_user_pictures/3aecb399-e583-41d5-985a-e2e2860ae531-profile_image-150x150.png" alt="PirateDropout"/>
           </div>
           <div class="msg">
             <span class="name" style="color:#d946ef">PirateDropout</span>
@@ -40,7 +40,7 @@ export default function init({ root }) {
         </li>
         <li class="message event">
           <div class="event-bubble">
-            <img class="sticker" src="https://placekitten.com/64/64" alt="sticker"/>
+            <img class="sticker" src="https://streamstickers.com/uploads/vader-sample-65017.gif" alt="sticker"/>
             <div class="info">
               <div class="name" style="color:#d946ef">PirateDropout</div>
               <div class="text">+50,000</div>
@@ -49,7 +49,7 @@ export default function init({ root }) {
         </li>
         <li class="message">
           <div class="avatar-wrap" style="--avi-width:36px;">
-            <img class="avatar-image" src="https://placekitten.com/44/44" alt="LuchaUno"/>
+            <img class="avatar-image" src="https://static-cdn.jtvnw.net/jtv_user_pictures/3aecb399-e583-41d5-985a-e2e2860ae531-profile_image-150x150.png" alt="LuchaUno"/>
           </div>
           <div class="msg">
             <span class="name" style="color:#4ade80">LuchaUno</span>
@@ -58,7 +58,7 @@ export default function init({ root }) {
         </li>
         <li class="message">
           <div class="avatar-wrap" style="--avi-width:36px;">
-            <img class="avatar-image" src="https://placekitten.com/45/45" alt="PitBear"/>
+            <img class="avatar-image" src="https://static-cdn.jtvnw.net/jtv_user_pictures/3aecb399-e583-41d5-985a-e2e2860ae531-profile_image-150x150.png" alt="PitBear"/>
           </div>
           <div class="msg">
             <span class="name" style="color:#f97316">PitBear</span>
@@ -67,7 +67,7 @@ export default function init({ root }) {
         </li>
         <li class="message">
           <div class="avatar-wrap" style="--avi-width:36px;">
-            <img class="avatar-image" src="https://placekitten.com/46/46" alt="DoctorHoot"/>
+            <img class="avatar-image" src="https://static-cdn.jtvnw.net/jtv_user_pictures/3aecb399-e583-41d5-985a-e2e2860ae531-profile_image-150x150.png" alt="DoctorHoot"/>
           </div>
           <div class="msg">
             <span class="name" style="color:#60a5fa">DoctorHoot</span>
