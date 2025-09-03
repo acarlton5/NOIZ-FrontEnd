@@ -80,13 +80,16 @@ const sidebarTpl = (messages, members, currentUser) => `
       </div>
       <div class="chat-input">
         <div class="input-user">${currentUser.name || 'Anon'}</div>
-        <div class="input-group">
-          <button class="btn btn-link p-0" data-action="emoji" aria-label="Emoji">😊</button>
-          <button class="btn btn-link p-0" data-action="donate" aria-label="Send a tip">💲</button>
+        <div class="input-wrap">
           <textarea class="form-control" rows="1" maxlength="200" placeholder="Chat..." data-role="input"></textarea>
-          <span class="char-count" data-role="count">0/200</span>
-          <button class="btn btn-link p-0" data-action="send" aria-label="Send"><svg class="icon icon-send"><use xlink:href="#svg-send-message"></use></svg></button>
+          <div class="actions">
+            <button class="btn btn-link p-0" data-action="emoji" aria-label="Emoji">😊</button>
+            <button class="btn btn-link p-0" data-action="donate" aria-label="Send a tip">💲</button>
+            <span class="char-count" data-role="count">0/200</span>
+            <button class="btn btn-link p-0" data-action="send" aria-label="Send"><svg class="icon icon-send"><use xlink:href="#svg-send-message"></use></svg></button>
+          </div>
         </div>
+        <button class="btn btn-link w-100 hide-chat" data-action="hide">Hide chat</button>
       </div>
     </div>
     <div class="tab-pane fade" id="members" role="tabpanel">
@@ -182,7 +185,7 @@ export default async function init({ root, utils }) {
     renderSidebar();
   });
 
-  utils.delegate(sidebar, 'click', '[data-action="close"]', () => {
+  utils.delegate(sidebar, 'click', '[data-action="close"], [data-action="hide"]', () => {
     sidebar.remove();
   });
 
