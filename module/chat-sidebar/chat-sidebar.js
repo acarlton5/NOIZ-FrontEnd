@@ -121,7 +121,7 @@ export default async function init({ root }) {
 
       (msg.user.badges || []).slice(0, 5).forEach(url => {
         const badge = document.createElement('img');
-        badge.className = 'badge';
+        badge.className = 'badge-icon';
         badge.src = url;
         badge.alt = 'badge';
         nameSpan.appendChild(badge);
