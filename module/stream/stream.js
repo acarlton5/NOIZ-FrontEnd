@@ -11,6 +11,31 @@ const mainTpl = `
   </section>
 `;
 
+const renderMessage = (m) => {
+  if (m.type === 'event') {
+    return `
+      <div class="message event">
+        <div class="text">${m.text}</div>
+      </div>
+    `;
+  }
+  return `
+    <div class="message" style="--accent:${m.user.accent}">
+      <div class="avatar-wrap" style="--avi-width:32px; --avi-height:32px; --frame:url('${m.user.frame}');">
+        <img src="${m.user.avatar}" alt="${m.user.name}" class="avatar-image" />
+      </div>
+      <div class="message-body">
+        <div class="message-header">
+          <span class="user" style="color:${m.user.accent}">${m.user.name}</span>
+          ${m.user.badges.map(b => `<span class="badge bg-secondary">${b}</span>`).join('')}
+          <time class="time">${m.time}</time>
+        </div>
+        <div class="text">${m.text}</div>
+      </div>
+    </div>
+  `;
+};
+
 const sidebarTpl = (messages, members) => `
   <div class="card-header">
     <ul class="nav nav-tabs card-header-tabs" role="tablist">
@@ -25,15 +50,7 @@ const sidebarTpl = (messages, members) => `
   <div class="card-body tab-content">
     <div class="tab-pane fade show active" id="chat" role="tabpanel">
       <div data-role="messages" class="mb-3">
-        ${messages.map(m => `
-          <div class="message">
-            <div class="message-header">
-              <span class="user">${m.user}</span>
-              <time class="time">${m.time}</time>
-            </div>
-            <div class="text">${m.text}</div>
-          </div>
-        `).join('')}
+        ${messages.map(renderMessage).join('')}
       </div>
       <div class="input-group">
         <input type="text" class="form-control" placeholder="Type a message" data-role="input">
@@ -49,12 +66,44 @@ const sidebarTpl = (messages, members) => `
 `;
 
 export default async function init({ root, utils }) {
+  const users = {
+    Nova: {
+      name: 'Nova',
+      avatar: 'https://odindesignthemes.com/vikinger/img/avatar/05.jpg',
+      frame: 'https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/afternoon_breeze.png',
+      accent: '#72ffb6',
+      badges: ['Host']
+    },
+    Dex: {
+      name: 'Dex',
+      avatar: 'https://odindesignthemes.com/vikinger/img/avatar/01.jpg',
+      frame: 'https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/28_years_later.png',
+      accent: '#ff72b6',
+      badges: ['Mod']
+    },
+    Kai: {
+      name: 'Kai',
+      avatar: 'https://odindesignthemes.com/vikinger/img/avatar/02.jpg',
+      frame: 'https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/a_duck.png',
+      accent: '#8ab4ff',
+      badges: ['Member']
+    },
+    You: {
+      name: 'You',
+      avatar: 'https://odindesignthemes.com/vikinger/img/avatar/03.jpg',
+      frame: 'https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/afternoon_breeze.png',
+      accent: '#0d6efd',
+      badges: []
+    }
+  };
+
   const now = () => new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
   let messages = [
-    { user: 'Nova', text: 'Welcome to the stream!', time: now() },
-    { user: 'Dex', text: 'Hey everyone!', time: now() }
+    { type: 'event', text: 'Stream starting soon', time: now() },
+    { user: users.Nova, text: 'Welcome to the stream!', time: now() },
+    { user: users.Dex, text: 'Hey everyone!', time: now() }
   ];
-  let members = ['Nova', 'Dex', 'Kai'];
+  let members = [users.Nova.name, users.Dex.name, users.Kai.name];
 
   // Render main video section inside module root
   root.innerHTML = mainTpl;
@@ -82,7 +131,7 @@ export default async function init({ root, utils }) {
     const input = sidebar.querySelector('[data-role="input"]');
     const text = input.value.trim();
     if (!text) return;
-    messages.push({ user: 'You', text, time: now() });
+    messages.push({ user: users.You, text, time: now() });
     input.value = '';
     renderSidebar();
   });
