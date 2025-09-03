@@ -166,8 +166,11 @@
 }
 
 [data-role="stream-sidebar"] .chat-input {
-  border-top: 1px solid #e9ecef;
-  padding-top: 0.5rem;
+  border: 1px solid #e9ecef;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  background-color: #fff;
 }
 
 [data-role="stream-sidebar"] .chat-input .input-user {
