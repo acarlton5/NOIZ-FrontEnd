@@ -132,3 +132,24 @@ module[data-module="streaming"] .video-wrapper video {
   font-size: 14px;
   cursor: pointer;
 }
+
+.donation-alert {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 12px 16px;
+  border-radius: 8px;
+  z-index: 3000;
+  font-size: 16px;
+}
+
+.donation-sticker {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+}

@@ -61,7 +61,8 @@ export default async function init({ root, utils }) {
         ]
       },
       amount: '$5.00',
-      text: 'BRAVO'
+      text: 'BRAVO',
+      sticker: 'https://streamstickers.com/uploads/spongebob-sample-55340.gif'
     }
   ];
 
@@ -102,6 +103,7 @@ export default async function init({ root, utils }) {
           </div>
         </div>
       `;
+      showDonationAlert(msg);
     } else {
       messagesEl.innerHTML += `
         <div class="chat-message">
@@ -129,5 +131,16 @@ export default async function init({ root, utils }) {
     if (!badges || !badges.length) return '';
     const imgs = badges.slice(0, 5).map(url => `<img class="message-badge" src="${url}" alt="badge">`).join('');
     return `<span class="message-badges">${imgs}</span>`;
+  }
+
+  function showDonationAlert({ user, amount, text, sticker }) {
+    const alert = document.createElement('div');
+    alert.className = 'donation-alert';
+    alert.innerHTML = `
+      <img class="donation-sticker" src="${sticker}" alt="sticker">
+      <div class="donation-text"><strong>${user.name}</strong> donated ${amount} — ${text}</div>
+    `;
+    document.body.appendChild(alert);
+    setTimeout(() => alert.remove(), 5000);
   }
 }
