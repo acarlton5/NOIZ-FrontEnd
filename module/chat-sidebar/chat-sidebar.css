@@ -53,6 +53,14 @@ module[data-module="chat-sidebar"] .message .msg {
 module[data-module="chat-sidebar"] .message .name {
   font-weight: 700;
   margin-bottom: 2px;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+module[data-module="chat-sidebar"] .message .badge {
+  width: 16px;
+  height: 16px;
 }
 
 module[data-module="chat-sidebar"] .message .text {
