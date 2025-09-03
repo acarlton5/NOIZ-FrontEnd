@@ -95,15 +95,11 @@
   font-size: 0.875rem;
 }
 
-[data-role="stream-sidebar"] .message.event {
-  display: block;
-  text-align: center;
-  background-color: #f1f3f5;
-  border-left-color: #ffc107;
-}
-
-[data-role="stream-sidebar"] .message.event .text {
-  color: #495057;
+[data-role="stream-sidebar"] .alert.event {
+  border-left: 4px solid var(--accent, #0d6efd);
+  border-radius: 0.5rem;
+  background-color: #fff;
+  color: #212529;
 }
 
 [data-role="stream-sidebar"] .input-group {
@@ -119,4 +115,48 @@
 [data-role="stream-sidebar"] .input-group .btn {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+}
+
+[data-role="stream-sidebar"] .input-group .btn .icon {
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+}
+
+[data-role="stream-sidebar"] [data-role="members"] {
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+[data-role="stream-sidebar"] [data-role="members"] .member {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  padding: 0.5rem;
+  border-bottom: 1px solid #e9ecef;
+}
+
+[data-role="stream-sidebar"] [data-role="members"] .member:last-child {
+  border-bottom: 0;
+}
+
+[data-role="stream-sidebar"] [data-role="members"] .member .avatar-wrap {
+  --avi-width: 32px;
+  --avi-height: 32px;
+}
+
+[data-role="stream-sidebar"] [data-role="members"] .member .member-body {
+  flex: 1;
+}
+
+[data-role="stream-sidebar"] [data-role="members"] .member .member-header {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.875rem;
+}
+
+[data-role="stream-sidebar"] [data-role="members"] .member .status {
+  font-size: 0.75rem;
+  color: #6c757d;
 }

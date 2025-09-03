@@ -14,8 +14,8 @@ const mainTpl = `
 const renderMessage = (m) => {
   if (m.type === 'event') {
     return `
-      <div class="message event">
-        <div class="text">${m.text}</div>
+      <div class="alert event mb-3" style="--accent:${m.accent || '#0d6efd'}">
+        ${m.text}
       </div>
     `;
   }
@@ -36,6 +36,21 @@ const renderMessage = (m) => {
   `;
 };
 
+const renderMember = (m) => `
+  <li class="member" style="--accent:${m.user.accent}">
+    <div class="avatar-wrap" style="--avi-width:32px; --avi-height:32px; --frame:url('${m.user.frame}');">
+      <img src="${m.user.avatar}" alt="${m.user.name}" class="avatar-image" />
+    </div>
+    <div class="member-body">
+      <div class="member-header">
+        <span class="user" style="color:${m.user.accent}">${m.user.name}</span>
+        ${m.user.badges.map(b => `<span class="badge bg-secondary">${b}</span>`).join('')}
+      </div>
+      <div class="status">${m.status}</div>
+    </div>
+  </li>
+`;
+
 const sidebarTpl = (messages, members) => `
   <div class="card-header">
     <ul class="nav nav-tabs card-header-tabs" role="tablist">
@@ -53,13 +68,15 @@ const sidebarTpl = (messages, members) => `
         ${messages.map(renderMessage).join('')}
       </div>
       <div class="input-group">
-        <input type="text" class="form-control" placeholder="Type a message" data-role="input">
-        <button class="btn btn-primary" data-action="send">Send</button>
+        <input type="text" class="form-control" placeholder="Say hi" data-role="input">
+        <button class="btn btn-primary" data-action="send" aria-label="Send">
+          <svg class="icon icon-send"><use xlink:href="#svg-send-message"></use></svg>
+        </button>
       </div>
     </div>
     <div class="tab-pane fade" id="members" role="tabpanel">
-      <ul class="list-group list-group-flush" data-role="members">
-        ${members.map(name => `<li class="list-group-item">${name}</li>`).join('')}
+      <ul class="list-unstyled" data-role="members">
+        ${members.map(renderMember).join('')}
       </ul>
     </div>
   </div>
@@ -99,11 +116,15 @@ export default async function init({ root, utils }) {
 
   const now = () => new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
   let messages = [
-    { type: 'event', text: 'Stream starting soon', time: now() },
+    { type: 'event', text: 'Stream starting soon', accent: '#ffc107' },
     { user: users.Nova, text: 'Welcome to the stream!', time: now() },
     { user: users.Dex, text: 'Hey everyone!', time: now() }
   ];
-  let members = [users.Nova.name, users.Dex.name, users.Kai.name];
+  let members = [
+    { user: users.Nova, status: 'Hosting' },
+    { user: users.Dex, status: 'Modding' },
+    { user: users.Kai, status: 'Watching' }
+  ];
 
   // Render main video section inside module root
   root.innerHTML = mainTpl;
