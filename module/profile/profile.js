@@ -1,3 +1,20 @@
+const members = [
+  {
+    name: 'Bri',
+    status: 'Typing...',
+    avatar: 'https://odindesignthemes.com/vikinger/img/avatar/04.jpg',
+    banner: 'https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/nameplates/space_city.png',
+    accent: '#ffcd00'
+  },
+  {
+    name: 'Nick Grissom',
+    status: 'Online',
+    avatar: 'https://odindesignthemes.com/vikinger/img/avatar/02.jpg',
+    banner: 'https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/nameplates/bamboo.png',
+    accent: '#72ffb6'
+  }
+];
+
 const tpl = (user) => `
   <section class="profile-chat" style="--accent:${user.accent};">
     <header class="profile-chat-header" style="--banner:url('${user.banner}')">
@@ -31,8 +48,19 @@ const tpl = (user) => `
         </div>
         <div class="tab-content members hidden">
           <ul class="members">
-            <li class="member">CreatorUser</li>
-            <li class="member">MemberUser</li>
+            ${members
+              .map(
+                (m) => `
+            <li class="member" style="--banner:url('${m.banner}'); --accent:${m.accent};">
+              <img class="avatar" src="${m.avatar}" alt="${m.name}">
+              <div class="meta">
+                <span class="name">${m.name}</span>
+                <span class="status">${m.status}</span>
+              </div>
+              <span class="accent-dot"></span>
+            </li>`
+              )
+              .join('')}
           </ul>
         </div>
       </aside>
