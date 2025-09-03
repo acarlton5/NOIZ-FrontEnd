@@ -1,6 +1,7 @@
-export default function init({ root }) {
+export default async function init({ root }) {
   root.innerHTML = `
     <aside class="chat-sidebar">
+      <header class="chat-header">Chat</header>
       <ul class="chat-messages" data-role="messages">
         <li class="message">
           <div class="avatar-wrap" style="--avi-width:36px;">
@@ -77,6 +78,7 @@ export default function init({ root }) {
       </ul>
       <form class="chat-input" data-role="form">
         <input type="text" class="form-control" data-role="input" placeholder="Type a message" />
+        <button type="submit" class="send-btn" aria-label="Send">&#10148;</button>
       </form>
     </aside>
   `;
