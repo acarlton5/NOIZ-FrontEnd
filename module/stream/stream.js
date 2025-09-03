@@ -16,9 +16,9 @@ const renderMessage = (m) => {
     const user = m.user || {};
     return `
       <div class="message event" style="--accent:${m.accent || user.accent || '#0d6efd'}">
-        ${user.avatar ? `<div class="avatar-wrap" style="--avi-width:32px; --avi-height:32px; --frame:url('${user.frame || ''}');"><img src="${user.avatar}" alt="${user.name || ''}" class="avatar-image" /></div>` : ''}
+        ${user.avatar ? `<div class="avatar-wrap" style="--avi-width:32px; --avi-height:32px; --frame:url('${user.frame || ''}')"><img src="${user.avatar}" alt="${user.name || ''}" class="avatar-image" /></div>` : ''}
         <div class="message-body">
-          ${(user.name || m.time) ? `<div class="message-header">${user.name ? `<span class="user" style="color:${user.accent || '#0d6efd'}">${user.name}</span>` : ''}${user.badges ? user.badges.map(b => `<span class="badge bg-secondary">${b}</span>`).join('') : ''}${m.time ? `<time class="time">${m.time}</time>` : ''}</div>` : ''}
+          ${(user.name || m.time) ? `<div class="message-header">${m.time ? `<time class="time">${m.time}</time>` : ''}${user.name ? `<span class="user" style="color:${user.accent || '#0d6efd'}">${user.name}</span>` : ''}${user.badges ? user.badges.map(b => `<span class="badge bg-secondary">${b}</span>`).join('') : ''}</div>` : ''}
           <div class="text">${m.text}</div>
         </div>
       </div>
@@ -30,12 +30,10 @@ const renderMessage = (m) => {
         <img src="${m.user.avatar}" alt="${m.user.name}" class="avatar-image" />
       </div>
       <div class="message-body">
-        <div class="message-header">
-          <span class="user" style="color:${m.user.accent}">${m.user.name}</span>
-          ${m.user.badges.map(b => `<span class="badge bg-secondary">${b}</span>`).join('')}
-          <time class="time">${m.time}</time>
-        </div>
-        <div class="text">${m.text}</div>
+        <time class="time">${m.time}</time>
+        <span class="user" style="color:${m.user.accent}">${m.user.name}</span>
+        ${m.user.badges.map(b => `<span class="badge bg-secondary">${b}</span>`).join('')}
+        <span class="text">${m.text}</span>
       </div>
     </div>
   `;
@@ -56,7 +54,7 @@ const renderMember = (m) => `
   </li>
 `;
 
-const sidebarTpl = (messages, members) => `
+const sidebarTpl = (messages, members, currentUser) => `
   <div class="card-header">
     <ul class="nav nav-tabs card-header-tabs" role="tablist">
       <li class="nav-item" role="presentation">
@@ -72,12 +70,17 @@ const sidebarTpl = (messages, members) => `
       <div data-role="messages" class="mb-3">
         ${messages.map(renderMessage).join('')}
       </div>
-      <div class="input-group">
-        <input type="text" class="form-control" placeholder="Say hi" data-role="input">
-        <button class="btn btn-primary" data-action="send" aria-label="Send">
-          <svg class="icon icon-send"><use xlink:href="#svg-send-message"></use></svg>
-        </button>
+      <div class="chat-input">
+        <div class="input-user">${currentUser.name || 'Anon'}</div>
+        <textarea class="form-control" rows="1" maxlength="200" placeholder="Chat..." data-role="input"></textarea>
+        <div class="input-actions">
+          <button class="btn btn-link p-0" data-action="emoji" aria-label="Emoji">😊</button>
+          <button class="btn btn-link p-0" data-action="donate" aria-label="Send a tip">💲</button>
+          <span class="char-count" data-role="count">0/200</span>
+          <button class="btn btn-link p-0" data-action="send" aria-label="Send"><svg class="icon icon-send"><use xlink:href="#svg-send-message"></use></svg></button>
+        </div>
       </div>
+      <button class="chat-toggle" data-action="toggle-chat">Hide chat</button>
     </div>
     <div class="tab-pane fade" id="members" role="tabpanel">
       <ul class="list-unstyled" data-role="members">
@@ -149,9 +152,16 @@ export default async function init({ root, utils }) {
   }
 
   function renderSidebar() {
-    sidebar.innerHTML = sidebarTpl(messages, members);
+    sidebar.innerHTML = sidebarTpl(messages, members, users.You);
     const messagesEl = sidebar.querySelector('[data-role="messages"]');
     messagesEl.scrollTop = messagesEl.scrollHeight;
+    const input = sidebar.querySelector('[data-role="input"]');
+    const count = sidebar.querySelector('[data-role="count"]');
+    if (input && count) {
+      const update = () => { count.textContent = `${input.value.length}/200`; };
+      input.addEventListener('input', update);
+      update();
+    }
   }
 
   renderSidebar();
@@ -165,8 +175,9 @@ export default async function init({ root, utils }) {
     renderSidebar();
   });
 
-  utils.listen(sidebar, 'keyup', (e) => {
-    if (e.target.matches('[data-role="input"]') && e.key === 'Enter') {
+  utils.listen(sidebar, 'keydown', (e) => {
+    if (e.target.matches('[data-role="input"]') && e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
       sidebar.querySelector('[data-action="send"]').click();
     }
   });
@@ -177,4 +188,3 @@ export default async function init({ root, utils }) {
     // optional API
   };
 }
-
