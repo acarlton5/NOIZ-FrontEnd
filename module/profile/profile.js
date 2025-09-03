@@ -7,7 +7,11 @@ const tpl = (user) => `
         </div>
         <div class="user-meta">
           <h2 class="name">${user.name}</h2>
-          ${user.isLive ? '<span class="live-badge" data-role="watch-live">LIVE</span>' : ''}
+          ${
+            user.isLive
+              ? '<span class="live-badge" data-role="watch-live"><span class="scroll-text">LIVE LIVE </span></span>'
+              : ''
+          }
         </div>
       </div>
       <h3 class="channel-topic"># general</h3>

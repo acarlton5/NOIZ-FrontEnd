@@ -41,6 +41,23 @@
   border-radius: 4px;
   cursor: pointer;
   text-transform: uppercase;
+  overflow: hidden;
+  position: relative;
+}
+
+.profile-chat-header .profile-user .live-badge .scroll-text {
+  display: inline-block;
+  white-space: nowrap;
+  animation: live-scroll 2s linear infinite;
+}
+
+@keyframes live-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 .profile-chat-header .channel-topic {
@@ -77,14 +94,32 @@
 }
 
 .channel {
-  padding: 0.5rem 0.75rem;
+  padding: 0.5rem 0.75rem 0.5rem 1.5rem;
   border-radius: 6px;
   cursor: pointer;
+  position: relative;
 }
 
 .channel.active,
 .channel:hover {
   background: #e6e6e6;
+}
+
+.channel::before {
+  content: '';
+  position: absolute;
+  left: 0.5rem;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  background: var(--accent, #000);
+  opacity: 0.4;
+}
+
+.channel.active::before {
+  opacity: 1;
 }
 
 .chat {
