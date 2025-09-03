@@ -183,8 +183,7 @@
   --avi-width: 24px;
   --avi-height: 24px;
 }
-
-[data-role="stream-sidebar"] .chat-input .input-wrap textarea {
+[data-role="stream-sidebar"] .chat-input .chat-field {
   width: 100%;
   border: none;
   border-bottom: 1px solid #ced4da;
@@ -195,19 +194,19 @@
   font-size: 0.875rem;
 }
 
-[data-role="stream-sidebar"] .chat-input .input-wrap .actions {
+[data-role="stream-sidebar"] .chat-input .actions {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   margin-top: 0.25rem;
 }
 
-[data-role="stream-sidebar"] .chat-input .input-wrap .actions .btn {
+[data-role="stream-sidebar"] .chat-input .actions .btn {
   color: #6c757d;
   padding: 0;
 }
 
-[data-role="stream-sidebar"] .chat-input .input-wrap .actions .char-count {
+[data-role="stream-sidebar"] .chat-input .actions .char-count {
   margin-left: auto;
   font-size: 0.75rem;
   color: #6c757d;
