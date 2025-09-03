@@ -71,8 +71,8 @@
     "header": true,
     "services": true
   },
-  "chat-sidebar": {
-    "name": "chat-sidebar",
+  "chat": {
+    "name": "chat",
     "icon": "messages",
     "status": "enabled",
     "navigation": false,
