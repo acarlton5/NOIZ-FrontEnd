@@ -79,7 +79,12 @@ const sidebarTpl = (messages, members, currentUser) => `
         ${messages.map(renderMessage).join('')}
       </div>
       <div class="chat-input">
-        <div class="input-user">${currentUser.name || 'Anon'}</div>
+        <div class="input-user">
+          <div class="avatar-wrap" style="--avi-width:24px; --avi-height:24px; --frame:url('${currentUser.frame || ''}')">
+            ${currentUser.avatar ? `<img src="${currentUser.avatar}" alt="${currentUser.name || 'Anon'}" class="avatar-image" />` : ''}
+          </div>
+          <span class="name">${currentUser.name || 'Anon'}</span>
+        </div>
         <div class="input-wrap">
           <textarea class="form-control" rows="1" maxlength="200" placeholder="Chat..." data-role="input"></textarea>
           <div class="actions">
