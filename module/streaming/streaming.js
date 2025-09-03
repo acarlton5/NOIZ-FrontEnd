@@ -85,41 +85,25 @@ export default async function init({ root, utils }) {
 
   const messagesEl = chat.querySelector('.chat-messages');
   messages.forEach(msg => {
-    if (msg.amount) {
-      messagesEl.innerHTML += `
-        <div class="chat-super">
-          <div class="super-header" style="background:${msg.user.color};">${msg.amount}</div>
-          <div class="super-body">
-            <div class="message-avatar avatar-wrap" style="--avi-width:32px; --frame:none;">
-              <img class="avatar-image" src="${msg.user.avatar}" alt="${msg.user.name}">
-            </div>
-            <div class="message-body">
-              <div class="message-meta">
-                <span class="message-author" style="color:${msg.user.color};">${msg.user.name}</span>
-                ${renderBadges(msg.user.badges)}
-              </div>
-              <div class="message-text">${msg.text}</div>
-              ${msg.sticker ? `<img class="super-sticker" src="${msg.sticker}" alt="sticker">` : ''}
-            </div>
-          </div>
+    messagesEl.innerHTML += `
+      <div class="chat-message${msg.amount ? ' super' : ''}"${msg.amount ? ` style="border-color:${msg.user.color};"` : ''}>
+        <div class="message-avatar avatar-wrap" style="--avi-width:32px; --frame:none;">
+          <img class="avatar-image" src="${msg.user.avatar}" alt="${msg.user.name}">
         </div>
-      `;
-    } else {
-      messagesEl.innerHTML += `
-        <div class="chat-message">
-          <div class="message-avatar avatar-wrap" style="--avi-width:32px; --frame:none;">
-            <img class="avatar-image" src="${msg.user.avatar}" alt="${msg.user.name}">
+        <div class="message-body">
+          <div class="message-meta">
+            <span class="message-author" style="color:${msg.user.color};">${msg.user.name}</span>
+            ${renderBadges(msg.user.badges)}
+            ${msg.amount ? `<span class="message-amount" style="color:${msg.user.color};">${msg.amount}</span>` : ''}
           </div>
-          <div class="message-body">
-            <div class="message-meta">
-              <span class="message-time">${msg.time}</span>
-              <span class="message-author" style="color:${msg.user.color};">${msg.user.name}</span>
-              ${renderBadges(msg.user.badges)}
-            </div>
-            <div class="message-text">${msg.text}</div>
-          </div>
+          ${msg.text ? `<div class="message-text">${msg.text}</div>` : ''}
+          ${msg.sticker ? `<img class="message-sticker" src="${msg.sticker}" alt="sticker">` : ''}
         </div>
-      `;
+      </div>
+    `;
+
+    if (msg.amount && msg.sticker) {
+      triggerAlert(msg);
     }
   });
 
@@ -131,5 +115,16 @@ export default async function init({ root, utils }) {
     if (!badges || !badges.length) return '';
     const imgs = badges.slice(0, 5).map(url => `<img class="message-badge" src="${url}" alt="badge">`).join('');
     return `<span class="message-badges">${imgs}</span>`;
+  }
+
+  function triggerAlert(msg) {
+    const alert = document.createElement('div');
+    alert.className = 'donation-alert';
+    alert.innerHTML = `
+      <img class="alert-sticker" src="${msg.sticker}" alt="sticker">
+      <div class="alert-text"><span class="alert-name">${msg.user.name}</span> donated <span class="alert-amount">${msg.amount}</span></div>
+    `;
+    document.body.appendChild(alert);
+    setTimeout(() => alert.remove(), 4000);
   }
 }
