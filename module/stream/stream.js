@@ -24,11 +24,14 @@ const sidebarTpl = (messages, members) => `
   </div>
   <div class="card-body tab-content">
     <div class="tab-pane fade show active" id="chat" role="tabpanel">
-      <div data-role="messages" class="mb-3" style="max-height:200px; overflow-y:auto;">
+      <div data-role="messages" class="mb-3">
         ${messages.map(m => `
           <div class="message">
-            <span class="user badge bg-secondary me-2">${m.user}</span>
-            <span class="text">${m.text}</span>
+            <div class="message-header">
+              <span class="user">${m.user}</span>
+              <time class="time">${m.time}</time>
+            </div>
+            <div class="text">${m.text}</div>
           </div>
         `).join('')}
       </div>
@@ -39,16 +42,17 @@ const sidebarTpl = (messages, members) => `
     </div>
     <div class="tab-pane fade" id="members" role="tabpanel">
       <ul class="list-group list-group-flush" data-role="members">
-        ${members.map(name => `<li class="list-group-item bg-dark text-white">${name}</li>`).join('')}
+        ${members.map(name => `<li class="list-group-item">${name}</li>`).join('')}
       </ul>
     </div>
   </div>
 `;
 
 export default async function init({ root, utils }) {
+  const now = () => new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
   let messages = [
-    { user: 'Nova', text: 'Welcome to the stream!' },
-    { user: 'Dex', text: 'Hey everyone!' }
+    { user: 'Nova', text: 'Welcome to the stream!', time: now() },
+    { user: 'Dex', text: 'Hey everyone!', time: now() }
   ];
   let members = ['Nova', 'Dex', 'Kai'];
 
@@ -57,7 +61,7 @@ export default async function init({ root, utils }) {
 
   // Create chat sidebar outside of main content
   const sidebar = document.createElement('aside');
-  sidebar.className = 'stream-sidebar card bg-dark text-white';
+  sidebar.className = 'stream-sidebar card';
   sidebar.setAttribute('data-role', 'stream-sidebar');
   const rail = document.querySelector('module[data-module="user-rail"]');
   if (rail) {
@@ -78,7 +82,7 @@ export default async function init({ root, utils }) {
     const input = sidebar.querySelector('[data-role="input"]');
     const text = input.value.trim();
     if (!text) return;
-    messages.push({ user: 'You', text });
+    messages.push({ user: 'You', text, time: now() });
     input.value = '';
     renderSidebar();
   });

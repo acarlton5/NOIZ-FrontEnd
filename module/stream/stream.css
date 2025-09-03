@@ -21,20 +21,65 @@
   height: calc(100vh - 96px);
   z-index: 1050;
   overflow-y: auto;
-  background-color: #1b1e29;
+  background-color: #f8f9fa;
+  color: #212529;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+[data-role="stream-sidebar"] .card-header,
+[data-role="stream-sidebar"] .nav-tabs .nav-link {
+  background-color: transparent;
+  border: none;
+  color: #495057;
+}
+
+[data-role="stream-sidebar"] .nav-tabs .nav-link.active {
+  color: #0d6efd;
+  border-bottom: 2px solid #0d6efd;
+}
+
+[data-role="stream-sidebar"] [data-role="messages"] {
+  max-height: 60vh;
+  overflow-y: auto;
 }
 
 [data-role="stream-sidebar"] .message {
+  margin-bottom: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  background-color: #ffffff;
+  border: 1px solid #e9ecef;
+  border-left: 4px solid #0d6efd;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+[data-role="stream-sidebar"] .message-header {
   display: flex;
-  align-items: flex-start;
-  gap: 0.5rem;
-  padding: 0.25rem 0.5rem;
-  margin-bottom: 0.5rem;
-  background-color: #252a41;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.25rem;
+  font-size: 0.75rem;
+  color: #6c757d;
+}
+
+[data-role="stream-sidebar"] .message-header .user {
+  font-weight: 600;
+  background-color: #e9ecef;
+  color: #212529;
+  padding: 0.1rem 0.25rem;
   border-radius: 0.25rem;
 }
 
-[data-role="stream-sidebar"] .message .user {
-  font-weight: 600;
-  color: #4ff461;
+[data-role="stream-sidebar"] .message .text {
+  font-size: 0.875rem;
+}
+
+[data-role="stream-sidebar"] .input-group .form-control {
+  background-color: #fff;
+  color: #212529;
+}
+
+[data-role="stream-sidebar"] .input-group .btn {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
