@@ -60,7 +60,8 @@ export default async function init({ root, utils }) {
           'https://static-cdn.jtvnw.net/badges/v1/ccbbedaa-f4db-4d0b-9c2a-375de7ad947c/2'
         ]
       },
-      amount: '$5.00'
+      amount: '$5.00',
+      text: 'BRAVO'
     }
   ];
 
@@ -73,7 +74,9 @@ export default async function init({ root, utils }) {
     </header>
     <div class="chat-messages"></div>
     <form class="chat-input">
-      <img class="input-avatar" src="https://placehold.co/24x24" alt="Anon">
+      <div class="input-avatar avatar-wrap" style="--avi-width:32px; --frame:none;">
+        <img class="avatar-image" src="https://placehold.co/32x32" alt="Anon">
+      </div>
       <input type="text" placeholder="Say something..." maxlength="200" />
       <button type="submit">Send</button>
     </form>
@@ -86,13 +89,15 @@ export default async function init({ root, utils }) {
         <div class="chat-super">
           <div class="super-header" style="background:${msg.user.color};">${msg.amount}</div>
           <div class="super-body">
-            <img class="message-avatar" src="${msg.user.avatar}" alt="${msg.user.name}">
+            <div class="message-avatar avatar-wrap" style="--avi-width:32px; --frame:none;">
+              <img class="avatar-image" src="${msg.user.avatar}" alt="${msg.user.name}">
+            </div>
             <div class="message-body">
               <div class="message-meta">
                 <span class="message-author" style="color:${msg.user.color};">${msg.user.name}</span>
                 ${renderBadges(msg.user.badges)}
               </div>
-              <div class="message-text">${msg.amount}</div>
+              <div class="message-text">${msg.text}</div>
             </div>
           </div>
         </div>
@@ -100,12 +105,14 @@ export default async function init({ root, utils }) {
     } else {
       messagesEl.innerHTML += `
         <div class="chat-message">
-          <img class="message-avatar" src="${msg.user.avatar}" alt="${msg.user.name}">
+          <div class="message-avatar avatar-wrap" style="--avi-width:32px; --frame:none;">
+            <img class="avatar-image" src="${msg.user.avatar}" alt="${msg.user.name}">
+          </div>
           <div class="message-body">
             <div class="message-meta">
+              <span class="message-time">${msg.time}</span>
               <span class="message-author" style="color:${msg.user.color};">${msg.user.name}</span>
               ${renderBadges(msg.user.badges)}
-              <span class="message-time">${msg.time}</span>
             </div>
             <div class="message-text">${msg.text}</div>
           </div>

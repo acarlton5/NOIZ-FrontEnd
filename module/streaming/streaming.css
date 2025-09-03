@@ -18,7 +18,7 @@ module[data-module="streaming"] .video-wrapper video {
   position: fixed;
   top: 80px;
   right: 0;
-  width: 340px;
+  width: 360px;
   height: calc(100vh - 80px);
   background: #fff;
   border-left: 1px solid #ccc;
@@ -44,57 +44,63 @@ module[data-module="streaming"] .video-wrapper video {
 .chat-messages {
   flex: 1;
   overflow-y: auto;
-  padding: 8px;
+  padding: 12px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
 }
 .chat-message {
   display: flex;
   align-items: flex-start;
-  gap: 8px;
-  font-size: 13px;
+  gap: 12px;
+  font-size: 14px;
 }
-.message-avatar {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
+.message-avatar.avatar-wrap {
+  --avi-width: 32px;
+  --frame: none;
+  flex: 0 0 var(--avi-width);
 }
 .message-meta {
-  font-size: 11px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
   color: #777;
+}
+.message-time {
+  color: #999;
 }
 .message-author {
   font-weight: 600;
-  margin-right: 4px;
+  font-size: 14px;
 }
 
 .message-badges {
   display: inline-flex;
   gap: 2px;
-  margin-right: 4px;
   vertical-align: middle;
 }
 
 .message-badge {
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
 }
 
 .chat-super {
   border: 1px solid #0fa36b;
   border-radius: 4px;
   overflow: hidden;
-  font-size: 13px;
+  font-size: 14px;
 }
 .chat-super .super-header {
   color: #fff;
   padding: 4px 8px;
+  font-weight: 600;
 }
 .chat-super .super-body {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   padding: 8px;
 }
 
@@ -105,24 +111,24 @@ module[data-module="streaming"] .video-wrapper video {
   border-top: 1px solid #e0e0e0;
   padding: 8px;
 }
-.input-avatar {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
+.input-avatar.avatar-wrap {
+  --avi-width: 32px;
+  --frame: none;
+  flex: 0 0 var(--avi-width);
 }
 .chat-input input {
   flex: 1;
   border: 1px solid #ccc;
   border-radius: 16px;
-  padding: 4px 8px;
-  font-size: 13px;
+  padding: 6px 12px;
+  font-size: 14px;
 }
 .chat-input button {
   border: none;
   background: #4285f4;
   color: #fff;
   border-radius: 16px;
-  padding: 4px 12px;
-  font-size: 13px;
+  padding: 6px 16px;
+  font-size: 14px;
   cursor: pointer;
 }
