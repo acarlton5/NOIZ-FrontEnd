@@ -7,6 +7,8 @@ export default async function init({ root, utils }) {
     </section>
   `;
 
+  const videoWrapper = root.querySelector('.video-wrapper');
+
   const messages = [
     {
       user: {
@@ -120,11 +122,8 @@ export default async function init({ root, utils }) {
   function triggerAlert(msg) {
     const alert = document.createElement('div');
     alert.className = 'donation-alert';
-    alert.innerHTML = `
-      <img class="alert-sticker" src="${msg.sticker}" alt="sticker">
-      <div class="alert-text"><span class="alert-name">${msg.user.name}</span> donated <span class="alert-amount">${msg.amount}</span></div>
-    `;
-    document.body.appendChild(alert);
+    alert.innerHTML = `<img class="alert-sticker" src="${msg.sticker}" alt="sticker">`;
+    videoWrapper.appendChild(alert);
     setTimeout(() => alert.remove(), 4000);
   }
 }
