@@ -1,47 +1,48 @@
 // module/stream/stream.js
-// Stream module with video player and live chat
+// Stream module with video player and live chat sidebar mounted outside main
 
-const tpl = (messages, members) => `
+const mainTpl = `
   <section class="my-3" data-role="stream">
     <div class="stream-main">
       <div class="ratio ratio-16x9">
         <video controls src="https://www.w3schools.com/html/mov_bbb.mp4"></video>
       </div>
     </div>
-    <aside class="stream-sidebar card bg-dark text-white">
-      <div class="card-header">
-        <ul class="nav nav-tabs card-header-tabs" role="tablist">
-          <li class="nav-item" role="presentation">
-            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#chat" type="button" role="tab">Chat</button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#members" type="button" role="tab">Members</button>
-          </li>
-        </ul>
-      </div>
-      <div class="card-body tab-content">
-        <div class="tab-pane fade show active" id="chat" role="tabpanel">
-          <div data-role="messages" class="mb-3" style="max-height:200px; overflow-y:auto;">
-            ${messages.map(m => `
-              <div class="message">
-                <span class="user badge bg-secondary me-2">${m.user}</span>
-                <span class="text">${m.text}</span>
-              </div>
-            `).join('')}
-          </div>
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="Type a message" data-role="input">
-            <button class="btn btn-primary" data-action="send">Send</button>
-          </div>
-        </div>
-        <div class="tab-pane fade" id="members" role="tabpanel">
-          <ul class="list-group list-group-flush" data-role="members">
-            ${members.map(name => `<li class="list-group-item bg-dark text-white">${name}</li>`).join('')}
-          </ul>
-        </div>
-      </div>
-    </aside>
   </section>
+`;
+
+const sidebarTpl = (messages, members) => `
+  <div class="card-header">
+    <ul class="nav nav-tabs card-header-tabs" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#chat" type="button" role="tab">Chat</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#members" type="button" role="tab">Members</button>
+      </li>
+    </ul>
+  </div>
+  <div class="card-body tab-content">
+    <div class="tab-pane fade show active" id="chat" role="tabpanel">
+      <div data-role="messages" class="mb-3" style="max-height:200px; overflow-y:auto;">
+        ${messages.map(m => `
+          <div class="message">
+            <span class="user badge bg-secondary me-2">${m.user}</span>
+            <span class="text">${m.text}</span>
+          </div>
+        `).join('')}
+      </div>
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Type a message" data-role="input">
+        <button class="btn btn-primary" data-action="send">Send</button>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="members" role="tabpanel">
+      <ul class="list-group list-group-flush" data-role="members">
+        ${members.map(name => `<li class="list-group-item bg-dark text-white">${name}</li>`).join('')}
+      </ul>
+    </div>
+  </div>
 `;
 
 export default async function init({ root, utils }) {
@@ -51,30 +52,47 @@ export default async function init({ root, utils }) {
   ];
   let members = ['Nova', 'Dex', 'Kai'];
 
-  function render() {
-    root.innerHTML = tpl(messages, members);
+  // Render main video section inside module root
+  root.innerHTML = mainTpl;
+
+  // Create chat sidebar outside of main content
+  const sidebar = document.createElement('aside');
+  sidebar.className = 'stream-sidebar card bg-dark text-white';
+  sidebar.setAttribute('data-role', 'stream-sidebar');
+  const rail = document.querySelector('module[data-module="user-rail"]');
+  if (rail) {
+    rail.before(sidebar);
+  } else {
+    document.body.appendChild(sidebar);
   }
 
-  render();
+  function renderSidebar() {
+    sidebar.innerHTML = sidebarTpl(messages, members);
+    const messagesEl = sidebar.querySelector('[data-role="messages"]');
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+  }
 
-  utils.delegate(root, 'click', '[data-action="send"]', () => {
-    const input = root.querySelector('[data-role="input"]');
+  renderSidebar();
+
+  utils.delegate(sidebar, 'click', '[data-action="send"]', () => {
+    const input = sidebar.querySelector('[data-role="input"]');
     const text = input.value.trim();
     if (!text) return;
     messages.push({ user: 'You', text });
     input.value = '';
-    render();
-    const messagesEl = root.querySelector('[data-role="messages"]');
-    messagesEl.scrollTop = messagesEl.scrollHeight;
+    renderSidebar();
   });
 
-  utils.listen(root, 'keyup', (e) => {
+  utils.listen(sidebar, 'keyup', (e) => {
     if (e.target.matches('[data-role="input"]') && e.key === 'Enter') {
-      root.querySelector('[data-action="send"]').click();
+      sidebar.querySelector('[data-action="send"]').click();
     }
   });
+
+  utils.onCleanup(() => sidebar.remove());
 
   return {
     // optional API
   };
 }
+

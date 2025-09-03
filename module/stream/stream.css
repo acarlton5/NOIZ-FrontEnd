@@ -13,7 +13,7 @@
   border-radius: 0.5rem;
 }
 
-[data-role="stream"] .stream-sidebar {
+[data-role="stream-sidebar"] {
   position: fixed;
   top: 80px;
   right: 0;
@@ -24,7 +24,7 @@
   background-color: #1b1e29;
 }
 
-[data-role="stream"] .message {
+[data-role="stream-sidebar"] .message {
   display: flex;
   align-items: flex-start;
   gap: 0.5rem;
@@ -34,7 +34,7 @@
   border-radius: 0.25rem;
 }
 
-[data-role="stream"] .message .user {
+[data-role="stream-sidebar"] .message .user {
   font-weight: 600;
   color: #4ff461;
 }
