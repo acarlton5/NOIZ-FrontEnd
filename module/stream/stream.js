@@ -13,9 +13,14 @@ const mainTpl = `
 
 const renderMessage = (m) => {
   if (m.type === 'event') {
+    const user = m.user || {};
     return `
-      <div class="alert event mb-3" style="--accent:${m.accent || '#0d6efd'}">
-        ${m.text}
+      <div class="message event" style="--accent:${m.accent || user.accent || '#0d6efd'}">
+        ${user.avatar ? `<div class="avatar-wrap" style="--avi-width:32px; --avi-height:32px; --frame:url('${user.frame || ''}');"><img src="${user.avatar}" alt="${user.name || ''}" class="avatar-image" /></div>` : ''}
+        <div class="message-body">
+          ${(user.name || m.time) ? `<div class="message-header">${user.name ? `<span class="user" style="color:${user.accent || '#0d6efd'}">${user.name}</span>` : ''}${user.badges ? user.badges.map(b => `<span class="badge bg-secondary">${b}</span>`).join('') : ''}${m.time ? `<time class="time">${m.time}</time>` : ''}</div>` : ''}
+          <div class="text">${m.text}</div>
+        </div>
       </div>
     `;
   }
@@ -116,8 +121,9 @@ export default async function init({ root, utils }) {
 
   const now = () => new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
   let messages = [
-    { type: 'event', text: 'Stream starting soon', accent: '#ffc107' },
+    { type: 'event', user: users.Nova, text: 'Stream starting soon', accent: '#ffc107', time: now() },
     { user: users.Nova, text: 'Welcome to the stream!', time: now() },
+    { type: 'event', user: users.Dex, text: 'Dex just subscribed for 3 months!', accent: '#0dcaf0', time: now() },
     { user: users.Dex, text: 'Hey everyone!', time: now() }
   ];
   let members = [
