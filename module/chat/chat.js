@@ -191,6 +191,7 @@ export default async function init({ root, utils }) {
     counter.textContent = `${e.target.value.length}/200`;
   });
 
+
   utils.delegate(root, 'click', '[data-action="hide"]', () => {
     root.style.display = 'none';
   });
