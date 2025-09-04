@@ -17,6 +17,7 @@ module[data-module="chat"] .chat-header {
 }
 
 module[data-module="chat"] .chat-dono-scroller {
+  border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
   padding: 4px 12px;
   display: flex;
@@ -67,6 +68,7 @@ module[data-module="chat"] .msg-avatar::after {
   transition: opacity 0.16s ease;
 }
 
+module[data-module="chat"] .chat-message:hover .msg-avatar,
 module[data-module="chat"] .msg-avatar:hover {
   --frame-opacity: 1;
 }
@@ -303,4 +305,62 @@ module[data-module="chat"] .dono-pill .avatar {
 module[data-module="chat"] .dono-pill .amount {
   position: relative;
   z-index: 1;
+}
+
+module[data-module="chat"] .chat-drawer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  border-top: 1px solid #ddd;
+  transform: translateY(calc(100% + 72px));
+  transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  max-height: 200px;
+  z-index: 10;
+}
+
+module[data-module="chat"] .chat-drawer.open {
+  transform: translateY(-72px);
+}
+
+module[data-module="chat"] .emote-set {
+  padding: 8px;
+}
+
+module[data-module="chat"] .emote-set-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+module[data-module="chat"] .emote-set-header .streamer-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+
+module[data-module="chat"] .emote-set-header .streamer-name {
+  font-weight: 600;
+}
+
+module[data-module="chat"] .emote-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(32px, 1fr));
+  gap: 4px;
+}
+
+module[data-module="chat"] .emote-list .emote {
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+module[data-module="chat"] .emote-list .emote img {
+  width: 32px;
+  height: 32px;
 }
