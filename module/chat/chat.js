@@ -16,7 +16,7 @@ const messageTpl = (m) => {
   if (m.type === 'sticker') {
     return `
       <div class="chat-message sticker">
-        <span class="msg-avatar avatar-wrap" ${m.frame ? `style="--frame:url('${m.frame}');"` : ''}>
+        <span class="msg-avatar avatar-wrap">
           ${m.avatar ? `<img class="avatar-image" src="${m.avatar}" alt="${m.user}">` : `<span class="avatar-letter" style="background:${m.avatarColor || '#933'}">${(m.user || '?')[0]}</span>`}
         </span>
         <div class="msg-body">
@@ -35,7 +35,7 @@ const messageTpl = (m) => {
   }
   return `
     <div class="chat-message">
-      <span class="msg-avatar avatar-wrap" ${m.frame ? `style="--frame:url('${m.frame}');"` : ''}>
+      <span class="msg-avatar avatar-wrap">
         ${m.avatar ? `<img class="avatar-image" src="${m.avatar}" alt="${m.user}">` : `<span class="avatar-letter" style="background:${m.avatarColor || '#933'}">${(m.user || '?')[0]}</span>`}
       </span>
       <div class="msg-body">
@@ -97,7 +97,6 @@ export default async function init({ root, utils }) {
       avatar: 'https://odindesignthemes.com/vikinger/img/avatar/01.jpg',
       color: '#07b',
       text: 'wow',
-      frame: 'images/frames/astronaut_helmet.png',
       badges: [
         'https://static-cdn.jtvnw.net/badges/v1/51f536c1-96ca-495b-bc11-150c857a6d54/2',
         'https://static-cdn.jtvnw.net/badges/v1/a56ef091-e8cd-49bd-9de9-7b342c9a7e7e/2',
