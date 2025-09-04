@@ -13,11 +13,41 @@ const messageTpl = (m) => {
       </div>
     `;
   }
+  if (m.type === 'sticker') {
+    return `
+      <div class="chat-message sticker">
+        <span class="msg-avatar avatar-wrap" ${m.frame ? `style="--frame:url('${m.frame}');"` : ''}>
+          ${m.avatar ? `<img class="avatar-image" src="${m.avatar}" alt="${m.user}">` : `<span class="avatar-letter" style="background:${m.avatarColor || '#933'}">${(m.user || '?')[0]}</span>`}
+        </span>
+        <div class="msg-body">
+        <div class="msg-header">
+          <span class="name" style="color:${m.color || '#333'}">${m.user}</span>
+          <span class="time">${m.time}</span>
+        </div>
+          <div class="sticker-meta">
+            ${m.badge ? `<img class="sticker-badge" src="${m.badge}" alt="badge" />` : ''}
+            <span class="amount">${m.amount || ''}</span>
+          </div>
+          <img class="sticker" src="${m.sticker}" alt="sticker" />
+        </div>
+      </div>
+    `;
+  }
   return `
     <div class="chat-message">
-      <span class="time">${m.time}</span>
-      <span class="name" style="color:${m.color || '#333'}">${m.user}</span>
-      <span class="text">${m.text}</span>
+      <span class="msg-avatar avatar-wrap" ${m.frame ? `style="--frame:url('${m.frame}');"` : ''}>
+        ${m.avatar ? `<img class="avatar-image" src="${m.avatar}" alt="${m.user}">` : `<span class="avatar-letter" style="background:${m.avatarColor || '#933'}">${(m.user || '?')[0]}</span>`}
+      </span>
+      <div class="msg-body">
+        <div class="msg-header">
+          <div class="user-meta">
+            <span class="name" style="color:${m.color || '#333'}">${m.user}</span>
+            ${m.badges && m.badges.length ? `<span class="badges">${m.badges.slice(0,5).map((b) => `<img src="${b}" alt="badge" />`).join('')}</span>` : ''}
+          </div>
+          <span class="time">${m.time}</span>
+        </div>
+        <div class="text">${m.text}</div>
+      </div>
     </div>
   `;
 };
@@ -27,17 +57,33 @@ const tpl = (messages) => `
     <div class="title">Live chat</div>
     <div class="meta">Top chat • 283K</div>
   </div>
+  <div class="chat-dono-scroller" data-role="dono-scroller"></div>
   <div class="chat-body" data-role="list">
     ${messages.map(messageTpl).join('')}
   </div>
   <form class="chat-form" data-role="form">
     <div class="chat-input-group">
-      <input type="text" class="chat-input" data-role="input" placeholder="Say something..." maxlength="200" />
-      <button type="submit" class="chat-send-btn" aria-label="Send">
-        <svg class="chat-send-icon" viewBox="0 0 24 24">
-          <path d="M2 21L23 12 2 3v7l15 2-15 2z" />
-        </svg>
-      </button>
+      <div class="chat-input-top">
+        <div class="chat-avatar">A</div>
+        <div class="chat-input-wrapper">
+          <div class="chat-user">Anon</div>
+          <input type="text" class="chat-input" data-role="input" placeholder="Chat..." maxlength="200" />
+        </div>
+      </div>
+      <div class="chat-input-bottom">
+        <span class="chat-count" data-role="count">0/200</span>
+        <div class="chat-actions">
+          <div class="chat-tools">
+            <button type="button" class="chat-emoji-btn" aria-label="Emoji">😊</button>
+            <button type="button" class="chat-money-btn" aria-label="Send a tip">💲</button>
+          </div>
+          <button type="submit" class="chat-send-btn" aria-label="Send">
+            <svg class="chat-send-icon" viewBox="0 0 24 24">
+              <path d="M2 21L23 12 2 3v7l15 2-15 2z" />
+            </svg>
+          </button>
+        </div>
+      </div>
     </div>
   </form>
   <button type="button" class="chat-hide btn btn-link" data-action="hide">Hide chat</button>
@@ -45,21 +91,85 @@ const tpl = (messages) => `
 
 export default async function init({ root, utils }) {
   let messages = [
-    { time: '9:58 AM', user: 'Lena', color: '#07b', text: 'wow' },
-    { time: '9:58 AM', user: 'Ash', color: '#0a0', text: 'more pushups!' },
-    { time: '9:58 AM', user: 'IntroMeb', color: '#c00', text: 'great play!' },
-    { time: '9:58 AM', user: 'Chankonabe', color: '#b80', text: "how's everyone on the eh team doing?" },
-    { time: '9:58 AM', user: 'pexelwiz', color: '#609', text: 'awesome! 👏' },
+    {
+      time: '9:58 AM',
+      user: 'Lena',
+      avatar: 'https://odindesignthemes.com/vikinger/img/avatar/01.jpg',
+      color: '#07b',
+      text: 'wow',
+      frame: 'images/frames/astronaut_helmet.png',
+      badges: [
+        'https://static-cdn.jtvnw.net/badges/v1/51f536c1-96ca-495b-bc11-150c857a6d54/2',
+        'https://static-cdn.jtvnw.net/badges/v1/a56ef091-e8cd-49bd-9de9-7b342c9a7e7e/2',
+        'https://static-cdn.jtvnw.net/badges/v1/ada84c7c-36d4-4bb3-b2d6-d601d468e6c7/2',
+        'https://static-cdn.jtvnw.net/badges/v1/098219cb-48d8-4945-96a6-80594c7a90dd/2',
+        'https://static-cdn.jtvnw.net/badges/v1/3ffa9565-c35b-4cad-800b-041e60659cf2/2'
+      ]
+    },
+    {
+      time: '9:58 AM',
+      user: 'Ash',
+      avatar: 'https://odindesignthemes.com/vikinger/img/avatar/02.jpg',
+      color: '#0a0',
+      text: 'more pushups!',
+      badges: [
+        'https://static-cdn.jtvnw.net/badges/v1/8dbdfef5-0901-457f-a644-afa77ba176e5/2',
+        'https://static-cdn.jtvnw.net/badges/v1/cf91bbc0-0332-413a-a7f3-e36bac08b624/2'
+      ]
+    },
+    {
+      time: '9:58 AM',
+      user: 'IntroMeb',
+      avatar: 'https://odindesignthemes.com/vikinger/img/avatar/03.jpg',
+      color: '#c00',
+      text: 'great play!',
+      badges: [
+        'https://static-cdn.jtvnw.net/badges/v1/2cbc339f-34f4-488a-ae51-efdf74f4e323/2'
+      ]
+    },
+    {
+      time: '9:58 AM',
+      user: 'Chankonabe',
+      avatar: 'https://odindesignthemes.com/vikinger/img/avatar/04.jpg',
+      color: '#b80',
+      text: "how's everyone on the eh team doing?",
+      badges: [
+        'https://static-cdn.jtvnw.net/badges/v1/3267646d-33f0-4b17-b3df-f923a41db1d0/2',
+        'https://static-cdn.jtvnw.net/badges/v1/d97c37bd-a6f5-4c38-8f57-4e4bef88af34/2',
+        'https://static-cdn.jtvnw.net/badges/v1/ccbbedaa-f4db-4d0b-9c2a-375de7ad947c/2'
+      ]
+    },
+    {
+      time: '9:58 AM',
+      user: 'pexelwiz',
+      avatar: 'https://odindesignthemes.com/vikinger/img/avatar/05.jpg',
+      color: '#609',
+      text: 'awesome! 👏'
+    },
+    {
+      time: '9:59 AM',
+      user: 'StickerFan',
+      avatar: 'https://odindesignthemes.com/vikinger/img/avatar/06.jpg',
+      color: '#333',
+      type: 'sticker',
+      sticker: 'https://streamstickers.com/uploads/vader-sample-65017.gif',
+      amount: '$3.00',
+      badge: 'https://static-cdn.jtvnw.net/badges/v1/51f536c1-96ca-495b-bc11-150c857a6d54/2'
+    },
     { type: 'donation', user: 'Laura Ipsum', amount: '$5.00', text: 'BRAVO 🦊' }
   ];
+
+  let donoScroller;
 
   function render() {
     root.innerHTML = tpl(messages);
     const list = root.querySelector('[data-role="list"]');
     list.scrollTop = list.scrollHeight;
+    donoScroller = root.querySelector('[data-role="dono-scroller"]');
   }
 
   render();
+  messages.filter((m) => m.type === 'donation').forEach(spawnDonation);
 
   utils.delegate(root, 'submit', '[data-role="form"]', (e) => {
     e.preventDefault();
@@ -76,14 +186,45 @@ export default async function init({ root, utils }) {
     render();
   });
 
+  utils.delegate(root, 'input', '[data-role="input"]', (e) => {
+    const counter = root.querySelector('[data-role="count"]');
+    counter.textContent = `${e.target.value.length}/200`;
+  });
+
+
   utils.delegate(root, 'click', '[data-action="hide"]', () => {
     root.style.display = 'none';
   });
+
+  function spawnDonation({ user, amount, duration = 5000, accent } = {}) {
+    if (!donoScroller) return;
+    const pill = document.createElement('div');
+    pill.className = 'dono-pill';
+    if (accent) pill.style.setProperty('--accent', accent);
+    pill.innerHTML = `
+      <span class="avatar">${(user || '?')[0]}</span>
+      <span class="amount">${amount}</span>
+      <div class="dono-timer"></div>`;
+    const timer = pill.querySelector('.dono-timer');
+    donoScroller.appendChild(pill);
+    donoScroller.scrollLeft = donoScroller.scrollWidth;
+    requestAnimationFrame(() => {
+      timer.style.transitionDuration = `${duration}ms`;
+      timer.style.width = '0%';
+    });
+    setTimeout(() => pill.remove(), duration);
+  }
 
   return {
     addMessage(m) {
       messages.push(m);
       render();
+      if (m.type === 'donation') {
+        spawnDonation(m);
+      }
+    },
+    showDonation(m) {
+      spawnDonation(m);
     }
   };
 }

@@ -428,6 +428,7 @@
   fill: #fff;
 }
 
+
 @media (max-width: 991.98px) {
   [data-role="header"] .header-brand-text {
     display: none;

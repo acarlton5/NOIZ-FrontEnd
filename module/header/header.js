@@ -196,6 +196,7 @@ export default async function init({ hub, root, utils }) {
           <svg class="icon" width="24" height="24"><use xlink:href="#svg-settings"></use></svg>
         </button>
       </div>
+
     </header>
   `;
 
@@ -221,6 +222,7 @@ export default async function init({ hub, root, utils }) {
     e.preventDefault();
     await hub.api.navigation.toggle?.();
   });
+
 
   function renderResults(results = {}) {
     if (!searchDropdown) return;
@@ -342,7 +344,7 @@ export default async function init({ hub, root, utils }) {
       if (!registry.has(id)) return;
       root.querySelectorAll(`[data-role="btn"][data-id="${CSS.escape(id)}"]`).forEach(n => n.remove());
       registry.delete(id);
-    }
+    },
   };
 
   const headerMods = Object.values(mods).filter(
