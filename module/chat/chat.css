@@ -148,6 +148,7 @@ module[data-module="chat"] .chat-message.sticker .sticker {
 module[data-module="chat"] .chat-form {
   padding: 8px;
   border-top: 1px solid #ddd;
+  position: relative;
 }
 
 module[data-module="chat"] .chat-input-group {
@@ -311,7 +312,7 @@ module[data-module="chat"] .chat-drawer {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: var(--chat-form-height, 72px);
+  bottom: 100%;
   background: #fff;
   border-top: 1px solid #ddd;
   transform: translateY(100%);

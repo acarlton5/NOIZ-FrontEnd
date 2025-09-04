@@ -112,15 +112,15 @@ const tpl = (messages) => `
   <div class="chat-body" data-role="list">
     ${messages.map(messageTpl).join('')}
   </div>
-  <div class="chat-drawer emote-drawer" data-role="emote-drawer">
-    ${renderEmoteDrawer()}
-  </div>
-  <div class="chat-drawer resonance-drawer" data-role="resonance-drawer">
-    <div class="emote-set">
-      <div class="emote-set-header"><span class="streamer-name">Resonances</span></div>
-    </div>
-  </div>
   <form class="chat-form" data-role="form">
+    <div class="chat-drawer emote-drawer" data-role="emote-drawer">
+      ${renderEmoteDrawer()}
+    </div>
+    <div class="chat-drawer resonance-drawer" data-role="resonance-drawer">
+      <div class="emote-set">
+        <div class="emote-set-header"><span class="streamer-name">Resonances</span></div>
+      </div>
+    </div>
     <div class="chat-input-group">
       <div class="chat-input-top">
         <div class="chat-avatar">A</div>
@@ -226,8 +226,6 @@ export default async function init({ root, utils }) {
     donoScroller = root.querySelector('[data-role="dono-scroller"]');
     emoteDrawer = root.querySelector('[data-role="emote-drawer"]');
     resonanceDrawer = root.querySelector('[data-role="resonance-drawer"]');
-    const form = root.querySelector('[data-role="form"]');
-    root.style.setProperty('--chat-form-height', `${form.offsetHeight}px`);
   }
 
   render();
