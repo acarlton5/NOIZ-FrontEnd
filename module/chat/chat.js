@@ -103,6 +103,37 @@ const renderEmoteDrawer = () =>
     return `<div class="emote-set">${header}<div class="emote-list">${emotes}</div></div>`;
   }).join('');
 
+const RESONANCE_ITEMS = [
+  {
+    sticker: 'https://streamstickers.com/uploads/vader-sample-65017.gif',
+    amount: '$1.00',
+    badge: 'images/logo_badge.svg'
+  },
+  {
+    sticker: 'https://streamstickers.com/uploads/doge-sample-65018.gif',
+    amount: '$2.00',
+    badge: 'images/logo_badge.svg'
+  },
+  {
+    sticker: 'https://streamstickers.com/uploads/tiny-rick-sample-65020.gif',
+    amount: '$5.00',
+    badge: 'images/logo_badge.svg'
+  }
+];
+
+const renderResonanceDrawer = () =>
+  `<div class="resonance-grid">${RESONANCE_ITEMS.map(
+    (item) => `
+      <button type="button" class="resonance-item" data-sticker="${item.sticker}">
+        <img class="resonance-sticker" src="${item.sticker}" alt="sticker" />
+        <div class="resonance-cost">
+          ${item.badge ? `<img class="resonance-badge" src="${item.badge}" alt="badge" />` : ''}
+          <span class="amount">${item.amount}</span>
+        </div>
+      </button>
+    `
+  ).join('')}</div>`;
+
 const tpl = (messages) => `
   <div class="chat-header">
     <div class="title">Live chat</div>
@@ -117,9 +148,8 @@ const tpl = (messages) => `
       ${renderEmoteDrawer()}
     </div>
     <div class="chat-drawer resonance-drawer" data-role="resonance-drawer">
-      <div class="emote-set">
-        <div class="emote-set-header"><span class="streamer-name">Resonances</span></div>
-      </div>
+      <div class="emote-set-header"><span class="streamer-name">Resonances</span></div>
+      ${renderResonanceDrawer()}
     </div>
     <div class="chat-input-group">
       <div class="chat-input-top">
