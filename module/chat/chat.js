@@ -148,7 +148,10 @@ const tpl = (messages) => `
       ${renderEmoteDrawer()}
     </div>
     <div class="chat-drawer resonance-drawer" data-role="resonance-drawer">
-      <div class="emote-set-header"><span class="streamer-name">Resonances</span></div>
+      <div class="emote-set-header">
+        <img class="resonance-icon" src="images/logo_badge.svg" alt="resonance" />
+        <span class="streamer-name">Resonances</span>
+      </div>
       ${renderResonanceDrawer()}
     </div>
     <div class="chat-input-group">

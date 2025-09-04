@@ -408,3 +408,8 @@ module[data-module="chat"] .resonance-cost .resonance-badge {
   width: 16px;
   height: 16px;
 }
+
+module[data-module="chat"] .resonance-drawer .resonance-icon {
+  width: 20px;
+  height: 20px;
+}
