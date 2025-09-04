@@ -413,3 +413,51 @@ module[data-module="chat"] .resonance-drawer .resonance-icon {
   width: 20px;
   height: 20px;
 }
+
+module[data-module="chat"] .resonance-use-content {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+module[data-module="chat"] .resonance-use-sticker {
+  max-width: 120px;
+  max-height: 120px;
+}
+
+module[data-module="chat"] .resonance-use-effects {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  font-size: 12px;
+}
+
+module[data-module="chat"] .resonance-use-effects li {
+  background: #f0f0f0;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+module[data-module="chat"] .resonance-use-actions {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+module[data-module="chat"] .resonance-use-actions button {
+  flex: 1;
+  padding: 4px 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+module[data-module="chat"] .resonance-use-actions .resonance-use-btn {
+  background: #06c;
+  color: #fff;
+}

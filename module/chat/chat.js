@@ -107,24 +107,27 @@ const RESONANCE_ITEMS = [
   {
     sticker: 'https://streamstickers.com/uploads/vader-sample-65017.gif',
     amount: '$1.00',
-    badge: 'images/logo_badge.svg'
+    badge: 'images/logo_badge.svg',
+    effects: ['Sound FX', 'Visual FX', 'Chat FX', 'Sticker']
   },
   {
     sticker: 'https://streamstickers.com/uploads/doge-sample-65018.gif',
     amount: '$2.00',
-    badge: 'images/logo_badge.svg'
+    badge: 'images/logo_badge.svg',
+    effects: ['Sound FX', 'Visual FX', 'Chat FX', 'Sticker']
   },
   {
     sticker: 'https://streamstickers.com/uploads/tiny-rick-sample-65020.gif',
     amount: '$5.00',
-    badge: 'images/logo_badge.svg'
+    badge: 'images/logo_badge.svg',
+    effects: ['Sound FX', 'Visual FX', 'Chat FX', 'Sticker']
   }
 ];
 
 const renderResonanceDrawer = () =>
   `<div class="resonance-grid">${RESONANCE_ITEMS.map(
-    (item) => `
-      <button type="button" class="resonance-item" data-sticker="${item.sticker}">
+    (item, i) => `
+      <button type="button" class="resonance-item" data-index="${i}" data-sticker="${item.sticker}">
         <img class="resonance-sticker" src="${item.sticker}" alt="sticker" />
         <div class="resonance-cost">
           ${item.badge ? `<img class="resonance-badge" src="${item.badge}" alt="badge" />` : ''}
@@ -153,6 +156,16 @@ const tpl = (messages) => `
         <span class="streamer-name">Resonances</span>
       </div>
       ${renderResonanceDrawer()}
+    </div>
+    <div class="chat-drawer resonance-use-drawer" data-role="resonance-use-drawer">
+      <div class="resonance-use-content">
+        <img class="resonance-use-sticker" data-role="resonance-use-sticker" src="" alt="resonance" />
+        <ul class="resonance-use-effects" data-role="resonance-use-effects"></ul>
+        <div class="resonance-use-actions">
+          <button type="button" class="resonance-cancel-btn">Cancel</button>
+          <button type="button" class="resonance-use-btn">Use</button>
+        </div>
+      </div>
     </div>
     <div class="chat-input-group">
       <div class="chat-input-top">
@@ -250,7 +263,8 @@ export default async function init({ root, utils }) {
     { type: 'donation', user: 'Laura Ipsum', amount: '$5.00', text: 'BRAVO 🦊' }
   ];
 
-  let donoScroller, emoteDrawer, resonanceDrawer;
+  let donoScroller, emoteDrawer, resonanceDrawer, resonanceUseDrawer;
+  let selectedResonance = null;
 
   function render() {
     root.innerHTML = tpl(messages);
@@ -259,6 +273,7 @@ export default async function init({ root, utils }) {
     donoScroller = root.querySelector('[data-role="dono-scroller"]');
     emoteDrawer = root.querySelector('[data-role="emote-drawer"]');
     resonanceDrawer = root.querySelector('[data-role="resonance-drawer"]');
+    resonanceUseDrawer = root.querySelector('[data-role="resonance-use-drawer"]');
   }
 
   render();
@@ -300,7 +315,40 @@ export default async function init({ root, utils }) {
     const isOpen = resonanceDrawer.classList.contains('open');
     emoteDrawer.classList.remove('open');
     resonanceDrawer.classList.remove('open');
+    resonanceUseDrawer.classList.remove('open');
     if (!isOpen) resonanceDrawer.classList.add('open');
+  });
+
+  utils.delegate(root, 'click', '.resonance-item', (e) => {
+    const idx = parseInt(e.target.closest('.resonance-item').dataset.index, 10);
+    const item = RESONANCE_ITEMS[idx];
+    const sticker = resonanceUseDrawer.querySelector('[data-role="resonance-use-sticker"]');
+    const effects = resonanceUseDrawer.querySelector('[data-role="resonance-use-effects"]');
+    sticker.src = item.sticker;
+    effects.innerHTML = item.effects.map((f) => `<li>${f}</li>`).join('');
+    resonanceDrawer.classList.remove('open');
+    emoteDrawer.classList.remove('open');
+    resonanceUseDrawer.classList.add('open');
+    selectedResonance = item;
+  });
+
+  utils.delegate(root, 'click', '.resonance-cancel-btn', () => {
+    resonanceUseDrawer.classList.remove('open');
+    resonanceDrawer.classList.add('open');
+  });
+
+  utils.delegate(root, 'click', '.resonance-use-btn', () => {
+    if (!selectedResonance) return;
+    messages.push({
+      time: new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }),
+      user: 'Anon',
+      type: 'sticker',
+      sticker: selectedResonance.sticker,
+      amount: selectedResonance.amount,
+      badge: selectedResonance.badge
+    });
+    resonanceUseDrawer.classList.remove('open');
+    render();
   });
 
   function spawnDonation({ user, amount, duration = 5000, accent } = {}) {
