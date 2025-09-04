@@ -48,8 +48,38 @@ module[data-module="chat"] .chat-body {
 
 module[data-module="chat"] .chat-message {
   display: flex;
-  gap: 4px;
+  gap: 8px;
   margin-bottom: 4px;
+  align-items: flex-start;
+}
+
+module[data-module="chat"] .msg-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #933;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  flex-shrink: 0;
+  transition: box-shadow 0.2s;
+}
+
+module[data-module="chat"] .msg-avatar:hover {
+  box-shadow: 0 0 0 2px #06c;
+}
+
+module[data-module="chat"] .msg-body {
+  flex: 1;
+}
+
+module[data-module="chat"] .msg-header {
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
 module[data-module="chat"] .chat-message .time {
@@ -58,6 +88,16 @@ module[data-module="chat"] .chat-message .time {
 
 module[data-module="chat"] .chat-message .name {
   font-weight: 600;
+}
+
+module[data-module="chat"] .badges img {
+  width: 16px;
+  height: 16px;
+}
+
+module[data-module="chat"] .chat-message.sticker .sticker {
+  max-width: 80px;
+  margin-top: 2px;
 }
 
 module[data-module="chat"] .chat-form {

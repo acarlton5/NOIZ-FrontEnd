@@ -13,11 +13,31 @@ const messageTpl = (m) => {
       </div>
     `;
   }
+  if (m.type === 'sticker') {
+    return `
+      <div class="chat-message sticker">
+        <span class="msg-avatar" style="background:${m.avatarColor || '#933'}">${(m.user || '?')[0]}</span>
+        <div class="msg-body">
+          <div class="msg-header">
+            <span class="time">${m.time}</span>
+            <span class="name" style="color:${m.color || '#333'}">${m.user}</span>
+          </div>
+          <img class="sticker" src="${m.sticker}" alt="sticker" />
+        </div>
+      </div>
+    `;
+  }
   return `
     <div class="chat-message">
-      <span class="time">${m.time}</span>
-      <span class="name" style="color:${m.color || '#333'}">${m.user}</span>
-      <span class="text">${m.text}</span>
+      <span class="msg-avatar" style="background:${m.avatarColor || '#933'}">${(m.user || '?')[0]}</span>
+      <div class="msg-body">
+        <div class="msg-header">
+          <span class="time">${m.time}</span>
+          ${m.badges && m.badges.length ? `<span class="badges">${m.badges.slice(0,5).map((b) => `<img src="${b}" alt="badge" />`).join('')}</span>` : ''}
+          <span class="name" style="color:${m.color || '#333'}">${m.user}</span>
+        </div>
+        <div class="text">${m.text}</div>
+      </div>
     </div>
   `;
 };
@@ -61,11 +81,62 @@ const tpl = (messages) => `
 
 export default async function init({ root, utils }) {
   let messages = [
-    { time: '9:58 AM', user: 'Lena', color: '#07b', text: 'wow' },
-    { time: '9:58 AM', user: 'Ash', color: '#0a0', text: 'more pushups!' },
-    { time: '9:58 AM', user: 'IntroMeb', color: '#c00', text: 'great play!' },
-    { time: '9:58 AM', user: 'Chankonabe', color: '#b80', text: "how's everyone on the eh team doing?" },
-    { time: '9:58 AM', user: 'pexelwiz', color: '#609', text: 'awesome! 👏' },
+    {
+      time: '9:58 AM',
+      user: 'Lena',
+      color: '#07b',
+      text: 'wow',
+      badges: [
+        'https://static-cdn.jtvnw.net/badges/v1/51f536c1-96ca-495b-bc11-150c857a6d54/2',
+        'https://static-cdn.jtvnw.net/badges/v1/a56ef091-e8cd-49bd-9de9-7b342c9a7e7e/2',
+        'https://static-cdn.jtvnw.net/badges/v1/ada84c7c-36d4-4bb3-b2d6-d601d468e6c7/2',
+        'https://static-cdn.jtvnw.net/badges/v1/098219cb-48d8-4945-96a6-80594c7a90dd/2',
+        'https://static-cdn.jtvnw.net/badges/v1/3ffa9565-c35b-4cad-800b-041e60659cf2/2'
+      ]
+    },
+    {
+      time: '9:58 AM',
+      user: 'Ash',
+      color: '#0a0',
+      text: 'more pushups!',
+      badges: [
+        'https://static-cdn.jtvnw.net/badges/v1/8dbdfef5-0901-457f-a644-afa77ba176e5/2',
+        'https://static-cdn.jtvnw.net/badges/v1/cf91bbc0-0332-413a-a7f3-e36bac08b624/2'
+      ]
+    },
+    {
+      time: '9:58 AM',
+      user: 'IntroMeb',
+      color: '#c00',
+      text: 'great play!',
+      badges: [
+        'https://static-cdn.jtvnw.net/badges/v1/2cbc339f-34f4-488a-ae51-efdf74f4e323/2'
+      ]
+    },
+    {
+      time: '9:58 AM',
+      user: 'Chankonabe',
+      color: '#b80',
+      text: "how's everyone on the eh team doing?",
+      badges: [
+        'https://static-cdn.jtvnw.net/badges/v1/3267646d-33f0-4b17-b3df-f923a41db1d0/2',
+        'https://static-cdn.jtvnw.net/badges/v1/d97c37bd-a6f5-4c38-8f57-4e4bef88af34/2',
+        'https://static-cdn.jtvnw.net/badges/v1/ccbbedaa-f4db-4d0b-9c2a-375de7ad947c/2'
+      ]
+    },
+    {
+      time: '9:58 AM',
+      user: 'pexelwiz',
+      color: '#609',
+      text: 'awesome! 👏'
+    },
+    {
+      time: '9:59 AM',
+      user: 'StickerFan',
+      color: '#333',
+      type: 'sticker',
+      sticker: 'https://streamstickers.com/uploads/vader-sample-65017.gif'
+    },
     { type: 'donation', user: 'Laura Ipsum', amount: '$5.00', text: 'BRAVO 🦊' }
   ];
 
