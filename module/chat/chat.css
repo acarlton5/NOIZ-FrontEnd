@@ -14,7 +14,15 @@ module[data-module="chat"] {
 
 module[data-module="chat"] .chat-header {
   padding: 8px 12px;
+}
+
+module[data-module="chat"] .chat-dono-scroller {
   border-bottom: 1px solid #ddd;
+  padding: 4px 12px;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  pointer-events: none;
 }
 
 module[data-module="chat"] .chat-header .title {
@@ -161,4 +169,33 @@ module[data-module="chat"] .donation-header {
   display: flex;
   justify-content: space-between;
   font-weight: 600;
+}
+
+module[data-module="chat"] .dono-pill {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  background: #1a2232;
+  color: #fff;
+  border-radius: 9999px;
+  padding: 0.25rem 0.75rem;
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 600;
+  overflow: hidden;
+}
+
+module[data-module="chat"] .dono-pill .dono-timer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.2);
+  transition: width linear;
+  z-index: 0;
+}
+
+module[data-module="chat"] .dono-pill .text {
+  position: relative;
+  z-index: 1;
 }

@@ -27,6 +27,7 @@ const tpl = (messages) => `
     <div class="title">Live chat</div>
     <div class="meta">Top chat • 283K</div>
   </div>
+  <div class="chat-dono-scroller" data-role="dono-scroller"></div>
   <div class="chat-body" data-role="list">
     ${messages.map(messageTpl).join('')}
   </div>
@@ -68,10 +69,13 @@ export default async function init({ root, utils }) {
     { type: 'donation', user: 'Laura Ipsum', amount: '$5.00', text: 'BRAVO 🦊' }
   ];
 
+  let donoScroller;
+
   function render() {
     root.innerHTML = tpl(messages);
     const list = root.querySelector('[data-role="list"]');
     list.scrollTop = list.scrollHeight;
+    donoScroller = root.querySelector('[data-role="dono-scroller"]');
   }
 
   render();
@@ -100,10 +104,30 @@ export default async function init({ root, utils }) {
     root.style.display = 'none';
   });
 
+  function spawnDonation({ user, amount, duration = 5000 } = {}) {
+    if (!donoScroller) return;
+    const pill = document.createElement('div');
+    pill.className = 'dono-pill';
+    pill.innerHTML = `<span class="text">${user} donated ${amount}</span><div class="dono-timer"></div>`;
+    const timer = pill.querySelector('.dono-timer');
+    donoScroller.appendChild(pill);
+    requestAnimationFrame(() => {
+      timer.style.transitionDuration = `${duration}ms`;
+      timer.style.width = '0%';
+    });
+    setTimeout(() => pill.remove(), duration);
+  }
+
   return {
     addMessage(m) {
       messages.push(m);
       render();
+      if (m.type === 'donation') {
+        spawnDonation(m);
+      }
+    },
+    showDonation(m) {
+      spawnDonation(m);
     }
   };
 }
