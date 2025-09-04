@@ -60,7 +60,11 @@ module[data-module="chat"] .msg-avatar {
   flex-shrink: 0;
 }
 
-module[data-module="chat"] .msg-avatar:hover {
+module[data-module="chat"] .msg-avatar::after {
+  transition: opacity 0.16s ease;
+}
+
+module[data-module="chat"] .chat-message:hover .msg-avatar {
   --frame-opacity: 1;
 }
 
@@ -94,6 +98,7 @@ module[data-module="chat"] .user-meta {
 
 module[data-module="chat"] .chat-message .time {
   color: #888;
+  font-size: 12px;
 }
 
 module[data-module="chat"] .chat-message .name {

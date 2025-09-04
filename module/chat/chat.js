@@ -17,7 +17,7 @@ const messageTpl = (m) => {
     return `
       <div class="chat-message sticker">
         <span class="msg-avatar avatar-wrap" ${m.frame ? `style="--frame:url('${m.frame}');"` : ''}>
-          <span class="avatar-letter" style="background:${m.avatarColor || '#933'}">${(m.user || '?')[0]}</span>
+          ${m.avatar ? `<img class="avatar-image" src="${m.avatar}" alt="${m.user}">` : `<span class="avatar-letter" style="background:${m.avatarColor || '#933'}">${(m.user || '?')[0]}</span>`}
         </span>
         <div class="msg-body">
         <div class="msg-header">
@@ -36,7 +36,7 @@ const messageTpl = (m) => {
   return `
     <div class="chat-message">
       <span class="msg-avatar avatar-wrap" ${m.frame ? `style="--frame:url('${m.frame}');"` : ''}>
-        <span class="avatar-letter" style="background:${m.avatarColor || '#933'}">${(m.user || '?')[0]}</span>
+        ${m.avatar ? `<img class="avatar-image" src="${m.avatar}" alt="${m.user}">` : `<span class="avatar-letter" style="background:${m.avatarColor || '#933'}">${(m.user || '?')[0]}</span>`}
       </span>
       <div class="msg-body">
         <div class="msg-header">
@@ -94,6 +94,7 @@ export default async function init({ root, utils }) {
     {
       time: '9:58 AM',
       user: 'Lena',
+      avatar: 'https://odindesignthemes.com/vikinger/img/avatar/01.jpg',
       color: '#07b',
       text: 'wow',
       frame: 'images/frames/astronaut_helmet.png',
@@ -108,6 +109,7 @@ export default async function init({ root, utils }) {
     {
       time: '9:58 AM',
       user: 'Ash',
+      avatar: 'https://odindesignthemes.com/vikinger/img/avatar/02.jpg',
       color: '#0a0',
       text: 'more pushups!',
       badges: [
@@ -118,6 +120,7 @@ export default async function init({ root, utils }) {
     {
       time: '9:58 AM',
       user: 'IntroMeb',
+      avatar: 'https://odindesignthemes.com/vikinger/img/avatar/03.jpg',
       color: '#c00',
       text: 'great play!',
       badges: [
@@ -127,6 +130,7 @@ export default async function init({ root, utils }) {
     {
       time: '9:58 AM',
       user: 'Chankonabe',
+      avatar: 'https://odindesignthemes.com/vikinger/img/avatar/04.jpg',
       color: '#b80',
       text: "how's everyone on the eh team doing?",
       badges: [
@@ -138,12 +142,14 @@ export default async function init({ root, utils }) {
     {
       time: '9:58 AM',
       user: 'pexelwiz',
+      avatar: 'https://odindesignthemes.com/vikinger/img/avatar/05.jpg',
       color: '#609',
       text: 'awesome! 👏'
     },
     {
       time: '9:59 AM',
       user: 'StickerFan',
+      avatar: 'https://odindesignthemes.com/vikinger/img/avatar/06.jpg',
       color: '#333',
       type: 'sticker',
       sticker: 'https://streamstickers.com/uploads/vader-sample-65017.gif',
