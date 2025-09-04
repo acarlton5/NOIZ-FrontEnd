@@ -226,6 +226,8 @@ export default async function init({ root, utils }) {
     donoScroller = root.querySelector('[data-role="dono-scroller"]');
     emoteDrawer = root.querySelector('[data-role="emote-drawer"]');
     resonanceDrawer = root.querySelector('[data-role="resonance-drawer"]');
+    const form = root.querySelector('[data-role="form"]');
+    root.style.setProperty('--chat-form-height', `${form.offsetHeight}px`);
   }
 
   render();

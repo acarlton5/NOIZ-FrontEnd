@@ -314,7 +314,7 @@ module[data-module="chat"] .chat-drawer {
   bottom: 0;
   background: #fff;
   border-top: 1px solid #ddd;
-  transform: translateY(calc(100% + 72px));
+  transform: translateY(calc(100% + var(--chat-form-height, 72px)));
   transition: transform 0.2s ease;
   display: flex;
   flex-direction: column;
@@ -323,7 +323,7 @@ module[data-module="chat"] .chat-drawer {
 }
 
 module[data-module="chat"] .chat-drawer.open {
-  transform: translateY(-72px);
+  transform: translateY(calc(-1 * var(--chat-form-height, 72px)));
 }
 
 module[data-module="chat"] .emote-set {
