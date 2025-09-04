@@ -257,13 +257,17 @@ export default async function init({ root, utils }) {
   });
 
   utils.delegate(root, 'click', '.chat-emoji-btn', () => {
-    emoteDrawer.classList.toggle('open');
+    const isOpen = emoteDrawer.classList.contains('open');
+    emoteDrawer.classList.remove('open');
     resonanceDrawer.classList.remove('open');
+    if (!isOpen) emoteDrawer.classList.add('open');
   });
 
   utils.delegate(root, 'click', '.chat-money-btn', () => {
-    resonanceDrawer.classList.toggle('open');
+    const isOpen = resonanceDrawer.classList.contains('open');
     emoteDrawer.classList.remove('open');
+    resonanceDrawer.classList.remove('open');
+    if (!isOpen) resonanceDrawer.classList.add('open');
   });
 
   function spawnDonation({ user, amount, duration = 5000, accent } = {}) {
