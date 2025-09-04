@@ -54,22 +54,26 @@ module[data-module="chat"] .chat-message {
 }
 
 module[data-module="chat"] .msg-avatar {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background: #933;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  font-weight: 600;
+  --avi-width: 24px;
+  --avi-height: 24px;
+  --frame-opacity: 0;
   flex-shrink: 0;
-  transition: box-shadow 0.2s;
 }
 
 module[data-module="chat"] .msg-avatar:hover {
-  box-shadow: 0 0 0 2px #06c;
+  --frame-opacity: 1;
+}
+
+module[data-module="chat"] .msg-avatar .avatar-letter {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
 }
 
 module[data-module="chat"] .msg-body {
@@ -90,14 +94,39 @@ module[data-module="chat"] .chat-message .name {
   font-weight: 600;
 }
 
+module[data-module="chat"] .badges {
+  display: inline-flex;
+  gap: 2px;
+  margin-right: 2px;
+}
+
 module[data-module="chat"] .badges img {
+  width: 16px;
+  height: 16px;
+}
+
+module[data-module="chat"] .chat-message.sticker {
+  background: #f8f8f8;
+  border-radius: 6px;
+  padding: 4px;
+}
+
+module[data-module="chat"] .chat-message.sticker .sticker-meta {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+module[data-module="chat"] .chat-message.sticker .sticker-badge {
   width: 16px;
   height: 16px;
 }
 
 module[data-module="chat"] .chat-message.sticker .sticker {
   max-width: 80px;
-  margin-top: 2px;
+  margin-top: 4px;
 }
 
 module[data-module="chat"] .chat-form {

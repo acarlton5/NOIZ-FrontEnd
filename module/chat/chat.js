@@ -16,11 +16,17 @@ const messageTpl = (m) => {
   if (m.type === 'sticker') {
     return `
       <div class="chat-message sticker">
-        <span class="msg-avatar" style="background:${m.avatarColor || '#933'}">${(m.user || '?')[0]}</span>
+        <span class="msg-avatar avatar-wrap" ${m.frame ? `style="--frame:url('${m.frame}');"` : ''}>
+          <span class="avatar-letter" style="background:${m.avatarColor || '#933'}">${(m.user || '?')[0]}</span>
+        </span>
         <div class="msg-body">
           <div class="msg-header">
             <span class="time">${m.time}</span>
             <span class="name" style="color:${m.color || '#333'}">${m.user}</span>
+          </div>
+          <div class="sticker-meta">
+            ${m.badge ? `<img class="sticker-badge" src="${m.badge}" alt="badge" />` : ''}
+            <span class="amount">${m.amount || ''}</span>
           </div>
           <img class="sticker" src="${m.sticker}" alt="sticker" />
         </div>
@@ -29,7 +35,9 @@ const messageTpl = (m) => {
   }
   return `
     <div class="chat-message">
-      <span class="msg-avatar" style="background:${m.avatarColor || '#933'}">${(m.user || '?')[0]}</span>
+      <span class="msg-avatar avatar-wrap" ${m.frame ? `style="--frame:url('${m.frame}');"` : ''}>
+        <span class="avatar-letter" style="background:${m.avatarColor || '#933'}">${(m.user || '?')[0]}</span>
+      </span>
       <div class="msg-body">
         <div class="msg-header">
           <span class="time">${m.time}</span>
@@ -86,6 +94,7 @@ export default async function init({ root, utils }) {
       user: 'Lena',
       color: '#07b',
       text: 'wow',
+      frame: 'images/frames/astronaut_helmet.png',
       badges: [
         'https://static-cdn.jtvnw.net/badges/v1/51f536c1-96ca-495b-bc11-150c857a6d54/2',
         'https://static-cdn.jtvnw.net/badges/v1/a56ef091-e8cd-49bd-9de9-7b342c9a7e7e/2',
@@ -135,7 +144,9 @@ export default async function init({ root, utils }) {
       user: 'StickerFan',
       color: '#333',
       type: 'sticker',
-      sticker: 'https://streamstickers.com/uploads/vader-sample-65017.gif'
+      sticker: 'https://streamstickers.com/uploads/vader-sample-65017.gif',
+      amount: '$3.00',
+      badge: 'https://static-cdn.jtvnw.net/badges/v1/51f536c1-96ca-495b-bc11-150c857a6d54/2'
     },
     { type: 'donation', user: 'Laura Ipsum', amount: '$5.00', text: 'BRAVO 🦊' }
   ];
