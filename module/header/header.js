@@ -197,7 +197,6 @@ export default async function init({ hub, root, utils }) {
         </button>
       </div>
 
-      <div class="dono-scroller" data-role="dono-scroller"></div>
     </header>
   `;
 
@@ -218,26 +217,12 @@ export default async function init({ hub, root, utils }) {
   const searchInput = searchWrap?.querySelector('input');
   const clearBtn = searchWrap?.querySelector('[data-role="clear"]');
   const searchDropdown = root.querySelector('[data-role="search-dropdown"]');
-  const donoScroller = root.querySelector('[data-role="dono-scroller"]');
 
   utils.listen(brand, 'click', async (e) => {
     e.preventDefault();
     await hub.api.navigation.toggle?.();
   });
 
-  function spawnDonation({ user, amount, duration = 5000 } = {}) {
-    if (!donoScroller) return;
-    const pill = document.createElement('div');
-    pill.className = 'dono-pill';
-    pill.innerHTML = `<span class="text">${user} donated $${amount}</span><div class="dono-timer"></div>`;
-    const timer = pill.querySelector('.dono-timer');
-    donoScroller.appendChild(pill);
-    requestAnimationFrame(() => {
-      timer.style.transitionDuration = `${duration}ms`;
-      timer.style.width = '0%';
-    });
-    setTimeout(() => pill.remove(), duration);
-  }
 
   function renderResults(results = {}) {
     if (!searchDropdown) return;
@@ -360,9 +345,6 @@ export default async function init({ hub, root, utils }) {
       root.querySelectorAll(`[data-role="btn"][data-id="${CSS.escape(id)}"]`).forEach(n => n.remove());
       registry.delete(id);
     },
-    showDonation({ user, amount, duration } = {}) {
-      spawnDonation({ user, amount, duration });
-    }
   };
 
   const headerMods = Object.values(mods).filter(

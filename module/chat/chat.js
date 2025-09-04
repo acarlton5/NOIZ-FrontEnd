@@ -79,6 +79,7 @@ export default async function init({ root, utils }) {
   }
 
   render();
+  messages.filter((m) => m.type === 'donation').forEach(spawnDonation);
 
   utils.delegate(root, 'submit', '[data-role="form"]', (e) => {
     e.preventDefault();
@@ -108,9 +109,13 @@ export default async function init({ root, utils }) {
     if (!donoScroller) return;
     const pill = document.createElement('div');
     pill.className = 'dono-pill';
-    pill.innerHTML = `<span class="text">${user} donated ${amount}</span><div class="dono-timer"></div>`;
+    pill.innerHTML = `
+      <span class="avatar">${(user || '?')[0]}</span>
+      <span class="amount">${amount}</span>
+      <div class="dono-timer"></div>`;
     const timer = pill.querySelector('.dono-timer');
     donoScroller.appendChild(pill);
+    donoScroller.scrollLeft = donoScroller.scrollWidth;
     requestAnimationFrame(() => {
       timer.style.transitionDuration = `${duration}ms`;
       timer.style.width = '0%';
