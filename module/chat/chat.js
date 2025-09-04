@@ -105,10 +105,11 @@ export default async function init({ root, utils }) {
     root.style.display = 'none';
   });
 
-  function spawnDonation({ user, amount, duration = 5000 } = {}) {
+  function spawnDonation({ user, amount, duration = 5000, accent } = {}) {
     if (!donoScroller) return;
     const pill = document.createElement('div');
     pill.className = 'dono-pill';
+    if (accent) pill.style.setProperty('--accent', accent);
     pill.innerHTML = `
       <span class="avatar">${(user || '?')[0]}</span>
       <span class="amount">${amount}</span>
