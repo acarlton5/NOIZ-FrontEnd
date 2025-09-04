@@ -311,19 +311,20 @@ module[data-module="chat"] .chat-drawer {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 0;
+  bottom: var(--chat-form-height, 72px);
   background: #fff;
   border-top: 1px solid #ddd;
-  transform: translateY(calc(100% + var(--chat-form-height, 72px)));
+  transform: translateY(100%);
   transition: transform 0.2s ease;
   display: flex;
   flex-direction: column;
   max-height: 200px;
+  overflow-y: auto;
   z-index: 10;
 }
 
 module[data-module="chat"] .chat-drawer.open {
-  transform: translateY(calc(-1 * var(--chat-form-height, 72px)));
+  transform: translateY(0);
 }
 
 module[data-module="chat"] .emote-set {
