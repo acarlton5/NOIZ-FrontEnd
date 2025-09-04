@@ -83,6 +83,12 @@ module[data-module="chat"] .msg-body {
 module[data-module="chat"] .msg-header {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+}
+
+module[data-module="chat"] .user-meta {
+  display: flex;
+  align-items: center;
   gap: 4px;
 }
 
@@ -97,7 +103,7 @@ module[data-module="chat"] .chat-message .name {
 module[data-module="chat"] .badges {
   display: inline-flex;
   gap: 2px;
-  margin-right: 2px;
+  margin-left: 2px;
 }
 
 module[data-module="chat"] .badges img {

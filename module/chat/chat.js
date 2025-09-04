@@ -20,10 +20,10 @@ const messageTpl = (m) => {
           <span class="avatar-letter" style="background:${m.avatarColor || '#933'}">${(m.user || '?')[0]}</span>
         </span>
         <div class="msg-body">
-          <div class="msg-header">
-            <span class="time">${m.time}</span>
-            <span class="name" style="color:${m.color || '#333'}">${m.user}</span>
-          </div>
+        <div class="msg-header">
+          <span class="name" style="color:${m.color || '#333'}">${m.user}</span>
+          <span class="time">${m.time}</span>
+        </div>
           <div class="sticker-meta">
             ${m.badge ? `<img class="sticker-badge" src="${m.badge}" alt="badge" />` : ''}
             <span class="amount">${m.amount || ''}</span>
@@ -40,9 +40,11 @@ const messageTpl = (m) => {
       </span>
       <div class="msg-body">
         <div class="msg-header">
+          <div class="user-meta">
+            <span class="name" style="color:${m.color || '#333'}">${m.user}</span>
+            ${m.badges && m.badges.length ? `<span class="badges">${m.badges.slice(0,5).map((b) => `<img src="${b}" alt="badge" />`).join('')}</span>` : ''}
+          </div>
           <span class="time">${m.time}</span>
-          ${m.badges && m.badges.length ? `<span class="badges">${m.badges.slice(0,5).map((b) => `<img src="${b}" alt="badge" />`).join('')}</span>` : ''}
-          <span class="name" style="color:${m.color || '#333'}">${m.user}</span>
         </div>
         <div class="text">${m.text}</div>
       </div>
