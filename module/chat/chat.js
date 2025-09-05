@@ -16,7 +16,7 @@ const messageTpl = (m) => {
   if (m.type === 'sticker') {
     return `
       <div class="chat-message sticker">
-        <span class="msg-avatar avatar-wrap" ${m.frame ? `style="--frame:url('${m.frame}');"` : ''}>
+        <span class="msg-avatar avatar-wrap">
           ${m.avatar ? `<img class="avatar-image" src="${m.avatar}" alt="${m.user}">` : `<span class="avatar-letter" style="background:${m.avatarColor || '#933'}">${(m.user || '?')[0]}</span>`}
         </span>
         <div class="msg-body">
@@ -35,7 +35,7 @@ const messageTpl = (m) => {
   }
   return `
     <div class="chat-message">
-      <span class="msg-avatar avatar-wrap" ${m.frame ? `style="--frame:url('${m.frame}');"` : ''}>
+      <span class="msg-avatar avatar-wrap">
         ${m.avatar ? `<img class="avatar-image" src="${m.avatar}" alt="${m.user}">` : `<span class="avatar-letter" style="background:${m.avatarColor || '#933'}">${(m.user || '?')[0]}</span>`}
       </span>
       <div class="msg-body">
@@ -52,6 +52,91 @@ const messageTpl = (m) => {
   `;
 };
 
+const EMOTE_SETS = [
+  {
+    global: true,
+    emotes: [
+      'https://static-cdn.jtvnw.net/emoticons/v2/1003187/static/dark/3.0',
+      'https://static-cdn.jtvnw.net/emoticons/v2/1003189/static/dark/3.0',
+      'https://static-cdn.jtvnw.net/emoticons/v2/1003190/static/dark/3.0'
+    ]
+  },
+  {
+    streamer: {
+      name: 'StreamerOne',
+      avatar: 'https://odindesignthemes.com/vikinger/img/avatar/02.jpg'
+    },
+    emotes: [
+      'https://static-cdn.jtvnw.net/emoticons/v2/160394/static/dark/3.0',
+      'https://static-cdn.jtvnw.net/emoticons/v2/160404/static/dark/3.0',
+      'https://static-cdn.jtvnw.net/emoticons/v2/160401/static/dark/3.0',
+      'https://static-cdn.jtvnw.net/emoticons/v2/160400/static/dark/3.0',
+      'https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_adfadf0ae06a4258adc865761746b227/static/dark/3.0',
+      'https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_665235901db747b1bd395a5f1c0ab8a9/static/dark/3.0',
+      'https://static-cdn.jtvnw.net/emoticons/v2/1220086/static/dark/3.0'
+    ]
+  },
+  {
+    streamer: {
+      name: 'StreamerTwo',
+      avatar: 'https://odindesignthemes.com/vikinger/img/avatar/03.jpg'
+    },
+    emotes: [
+      'https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_a829c76ca15f49a2bf71e1270f83fe83/static/dark/3.0',
+      'https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_4e1c5651219a462894aefa8b6720efc5/static/dark/3.0',
+      'https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_4b51b45f35df4dd8ad45a611c9a9ec35/static/dark/3.0',
+      'https://static-cdn.jtvnw.net/emoticons/v2/122213/static/light/3.0',
+      'https://static-cdn.jtvnw.net/emoticons/v2/406623/static/light/3.0',
+      'https://static-cdn.jtvnw.net/emoticons/v2/1494991/static/light/3.0'
+    ]
+  }
+];
+
+const renderEmoteDrawer = () =>
+  EMOTE_SETS.map((set) => {
+    const header = set.global
+      ? `<div class="emote-set-header"><img class="streamer-avatar" src="images/logo.png" alt="NOIZ" /><span class="streamer-name">Global</span></div>`
+      : `<div class="emote-set-header"><img class="streamer-avatar" src="${set.streamer.avatar}" alt="${set.streamer.name}" /><span class="streamer-name">${set.streamer.name}</span></div>`;
+    const emotes = set.emotes
+      .map((url) => `<button type="button" class="emote" data-url="${url}"><img src="${url}" alt="emote" /></button>`)
+      .join('');
+    return `<div class="emote-set">${header}<div class="emote-list">${emotes}</div></div>`;
+  }).join('');
+
+const RESONANCE_ITEMS = [
+  {
+    sticker: 'https://streamstickers.com/uploads/vader-sample-65017.gif',
+    amount: '$1.00',
+    badge: 'images/logo_badge.svg',
+    effects: ['Sound FX', 'Visual FX', 'Chat FX', 'Sticker']
+  },
+  {
+    sticker: 'https://streamstickers.com/uploads/doge-sample-65018.gif',
+    amount: '$2.00',
+    badge: 'images/logo_badge.svg',
+    effects: ['Sound FX', 'Visual FX', 'Chat FX', 'Sticker']
+  },
+  {
+    sticker: 'https://streamstickers.com/uploads/tiny-rick-sample-65020.gif',
+    amount: '$5.00',
+    badge: 'images/logo_badge.svg',
+    effects: ['Sound FX', 'Visual FX', 'Chat FX', 'Sticker']
+  }
+];
+
+const renderResonanceDrawer = () =>
+  `<div class="resonance-grid">${RESONANCE_ITEMS.map(
+    (item, i) => `
+      <button type="button" class="resonance-item" data-index="${i}" data-sticker="${item.sticker}">
+        <img class="resonance-sticker" src="${item.sticker}" alt="sticker" />
+        <div class="resonance-cost">
+          ${item.badge ? `<img class="resonance-badge" src="${item.badge}" alt="badge" />` : ''}
+          <span class="amount">${item.amount}</span>
+        </div>
+      </button>
+    `
+  ).join('')}</div>`;
+
 const tpl = (messages) => `
   <div class="chat-header">
     <div class="title">Live chat</div>
@@ -62,6 +147,26 @@ const tpl = (messages) => `
     ${messages.map(messageTpl).join('')}
   </div>
   <form class="chat-form" data-role="form">
+    <div class="chat-drawer emote-drawer" data-role="emote-drawer">
+      ${renderEmoteDrawer()}
+    </div>
+    <div class="chat-drawer resonance-drawer" data-role="resonance-drawer">
+      <div class="emote-set-header">
+        <img class="resonance-icon" src="images/logo_badge.svg" alt="resonance" />
+        <span class="streamer-name">Resonances</span>
+      </div>
+      ${renderResonanceDrawer()}
+    </div>
+    <div class="chat-drawer resonance-use-drawer" data-role="resonance-use-drawer">
+      <div class="resonance-use-content">
+        <img class="resonance-use-sticker" data-role="resonance-use-sticker" src="" alt="resonance" />
+        <ul class="resonance-use-effects" data-role="resonance-use-effects"></ul>
+        <div class="resonance-use-actions">
+          <button type="button" class="resonance-cancel-btn">Cancel</button>
+          <button type="button" class="resonance-use-btn">Use</button>
+        </div>
+      </div>
+    </div>
     <div class="chat-input-group">
       <div class="chat-input-top">
         <div class="chat-avatar">A</div>
@@ -97,7 +202,6 @@ export default async function init({ root, utils }) {
       avatar: 'https://odindesignthemes.com/vikinger/img/avatar/01.jpg',
       color: '#07b',
       text: 'wow',
-      frame: 'images/frames/astronaut_helmet.png',
       badges: [
         'https://static-cdn.jtvnw.net/badges/v1/51f536c1-96ca-495b-bc11-150c857a6d54/2',
         'https://static-cdn.jtvnw.net/badges/v1/a56ef091-e8cd-49bd-9de9-7b342c9a7e7e/2',
@@ -159,13 +263,17 @@ export default async function init({ root, utils }) {
     { type: 'donation', user: 'Laura Ipsum', amount: '$5.00', text: 'BRAVO 🦊' }
   ];
 
-  let donoScroller;
+  let donoScroller, emoteDrawer, resonanceDrawer, resonanceUseDrawer;
+  let selectedResonance = null;
 
   function render() {
     root.innerHTML = tpl(messages);
     const list = root.querySelector('[data-role="list"]');
     list.scrollTop = list.scrollHeight;
     donoScroller = root.querySelector('[data-role="dono-scroller"]');
+    emoteDrawer = root.querySelector('[data-role="emote-drawer"]');
+    resonanceDrawer = root.querySelector('[data-role="resonance-drawer"]');
+    resonanceUseDrawer = root.querySelector('[data-role="resonance-use-drawer"]');
   }
 
   render();
@@ -194,6 +302,53 @@ export default async function init({ root, utils }) {
 
   utils.delegate(root, 'click', '[data-action="hide"]', () => {
     root.style.display = 'none';
+  });
+
+  utils.delegate(root, 'click', '.chat-emoji-btn', () => {
+    const isOpen = emoteDrawer.classList.contains('open');
+    emoteDrawer.classList.remove('open');
+    resonanceDrawer.classList.remove('open');
+    if (!isOpen) emoteDrawer.classList.add('open');
+  });
+
+  utils.delegate(root, 'click', '.chat-money-btn', () => {
+    const isOpen = resonanceDrawer.classList.contains('open');
+    emoteDrawer.classList.remove('open');
+    resonanceDrawer.classList.remove('open');
+    resonanceUseDrawer.classList.remove('open');
+    if (!isOpen) resonanceDrawer.classList.add('open');
+  });
+
+  utils.delegate(root, 'click', '.resonance-item', (e) => {
+    const idx = parseInt(e.target.closest('.resonance-item').dataset.index, 10);
+    const item = RESONANCE_ITEMS[idx];
+    const sticker = resonanceUseDrawer.querySelector('[data-role="resonance-use-sticker"]');
+    const effects = resonanceUseDrawer.querySelector('[data-role="resonance-use-effects"]');
+    sticker.src = item.sticker;
+    effects.innerHTML = item.effects.map((f) => `<li>${f}</li>`).join('');
+    resonanceDrawer.classList.remove('open');
+    emoteDrawer.classList.remove('open');
+    resonanceUseDrawer.classList.add('open');
+    selectedResonance = item;
+  });
+
+  utils.delegate(root, 'click', '.resonance-cancel-btn', () => {
+    resonanceUseDrawer.classList.remove('open');
+    resonanceDrawer.classList.add('open');
+  });
+
+  utils.delegate(root, 'click', '.resonance-use-btn', () => {
+    if (!selectedResonance) return;
+    messages.push({
+      time: new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }),
+      user: 'Anon',
+      type: 'sticker',
+      sticker: selectedResonance.sticker,
+      amount: selectedResonance.amount,
+      badge: selectedResonance.badge
+    });
+    resonanceUseDrawer.classList.remove('open');
+    render();
   });
 
   function spawnDonation({ user, amount, duration = 5000, accent } = {}) {
