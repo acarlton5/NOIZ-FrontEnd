@@ -102,16 +102,20 @@ export default async function init({ hub, root, utils }) {
           s.thumbnailId ? `<img src="${s.thumbnailId}" alt="" />` : ''
         }<div class="act-info"><strong>${s.title || 'Streaming'}</strong>${
           s.viewers ? `<span>${s.viewers} viewers</span>` : ''
-        }</div></li>`
+        }</div><button class="act-btn watch">Watch</button></li>`
       );
     } else if (status.online) {
       const entries = Object.entries(status.online).filter(([k, v]) => v);
       if (entries.length) {
         const [k, v] = entries[0];
+        const btn =
+          k === 'watching'
+            ? '<button class="act-btn join">Join</button>'
+            : '';
         cards.push(
           `<li class="activity-card online"><div class="act-info"><strong>${
             k.charAt(0).toUpperCase() + k.slice(1)
-          }</strong><span>${v}</span></div></li>`
+          }</strong><span>${v}</span></div>${btn}</li>`
         );
       } else {
         cards.push(

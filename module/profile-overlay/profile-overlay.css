@@ -228,6 +228,17 @@ module[data-module="profile-overlay"] .po-activity-list .act-info span {
   color: #6b7280;
 }
 
+module[data-module="profile-overlay"] .po-activity-list .act-btn {
+  margin-left: auto;
+  background: var(--accent, #5865f2);
+  border: none;
+  color: #ffffff;
+  padding: 4px 8px;
+  font-size: 0.75rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
 module[data-module="profile-overlay"] .po-right {
   background: #ffffff;
   padding: 16px 24px;
