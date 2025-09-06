@@ -1,7 +1,7 @@
 export default async function init({ root }) {
   root.innerHTML = `
     <aside class="chat-sidebar">
-      <header class="chat-header">Chat</header>
+      <header class="chat-header" style="--banner:url('images/banners/cityscape.png')">Chat</header>
       <ul class="chat-messages" data-role="messages"></ul>
       <div class="emote-drawer" data-role="drawer">
         <div class="tabs">
@@ -114,9 +114,7 @@ export default async function init({ root }) {
 
   const TAB_RENDERERS = {
     emotes: renderEmoteTab,
-    resonances: () => {
-      tabContent.textContent = 'Resonances';
-    },
+    resonances: renderResonanceTab,
     extensions: () => {
       tabContent.textContent = 'Extensions';
     }
@@ -134,47 +132,83 @@ export default async function init({ root }) {
   renderEmoteTab();
 
   const BADGE_URLS = [
-    'https://static-cdn.jtvnw.net/badges/v1/51f536c1-96ca-495b-bc11-150c857a6d54/2',
-    'https://static-cdn.jtvnw.net/badges/v1/a56ef091-e8cd-49bd-9de9-7b342c9a7e7e/2',
-    'https://static-cdn.jtvnw.net/badges/v1/ada84c7c-36d4-4bb3-b2d6-d601d468e6c7/2',
-    'https://static-cdn.jtvnw.net/badges/v1/098219cb-48d8-4945-96a6-80594c7a90dd/2',
-    'https://static-cdn.jtvnw.net/badges/v1/3ffa9565-c35b-4cad-800b-041e60659cf2/2',
-    'https://static-cdn.jtvnw.net/badges/v1/8dbdfef5-0901-457f-a644-afa77ba176e5/2',
-    'https://static-cdn.jtvnw.net/badges/v1/cf91bbc0-0332-413a-a7f3-e36bac08b624/2',
-    'https://static-cdn.jtvnw.net/badges/v1/2cbc339f-34f4-488a-ae51-efdf74f4e323/2',
-    'https://static-cdn.jtvnw.net/badges/v1/3267646d-33f0-4b17-b3df-f923a41db1d0/2',
-    'https://static-cdn.jtvnw.net/badges/v1/d97c37bd-a6f5-4c38-8f57-4e4bef88af34/2',
-    'https://static-cdn.jtvnw.net/badges/v1/ccbbedaa-f4db-4d0b-9c2a-375de7ad947c/2',
-    'https://static-cdn.jtvnw.net/badges/v1/b817aba4-fad8-49e2-b88a-7cc744dfa6ec/2'
+    'images/badges/dev.png',
+    'images/badges/mod.png',
+    'images/badges/partner.png',
+    'images/badges/vip.png',
+    'images/badges/artist.png',
+    'images/badges/sub.png',
+    'images/badges/clipper.png',
+    'images/badges/trophy.svg',
+    'images/badges/gifter.png',
+    'images/badges/bot.png',
+    'images/badges/bugDCT.svg',
+    'images/badges/heart.svg'
   ];
+
+  const RESONANCE_ITEMS = [
+    {
+      sticker: 'images/resonances/001/catch_em.gif',
+      amount: '100',
+      badge: BADGE_URLS[8]
+    },
+    {
+      sticker: 'images/resonances/002/pipe_smash.gif',
+      amount: '200',
+      badge: BADGE_URLS[9]
+    },
+    {
+      sticker: 'images/resonances/003/wazzup.gif',
+      amount: '500',
+      badge: BADGE_URLS[10]
+    }
+  ];
+
+  function renderResonanceTab() {
+    tabContent.innerHTML = `
+      <div class="resonance-grid">
+        ${RESONANCE_ITEMS.map(
+          item => `
+            <button type="button" class="resonance-item">
+              <img class="resonance-sticker" src="${item.sticker}" alt="resonance" />
+              <div class="resonance-cost">
+                <img class="resonance-badge" src="${item.badge}" alt="badge" />
+                <span class="amount">${item.amount}</span>
+              </div>
+            </button>
+          `
+        ).join('')}
+      </div>
+    `;
+  }
 
   const users = {
     LuchaUno: {
       name: 'LuchaUno',
       color: '#4ade80',
       avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/3aecb399-e583-41d5-985a-e2e2860ae531-profile_image-150x150.png',
-      frame: 'https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/afternoon_breeze.png',
+      frame: 'images/frames/afternoon_breeze.png',
       badges: [BADGE_URLS[0], BADGE_URLS[1]]
     },
     DoctorHoot: {
       name: 'DoctorHoot',
       color: '#60a5fa',
       avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/3aecb399-e583-41d5-985a-e2e2860ae531-profile_image-150x150.png',
-      frame: 'https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/afternoon_breeze.png',
+      frame: 'images/frames/aurora.png',
       badges: [BADGE_URLS[2]]
     },
     PitBear: {
       name: 'PitBear',
       color: '#f97316',
       avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/3aecb399-e583-41d5-985a-e2e2860ae531-profile_image-150x150.png',
-      frame: 'https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/afternoon_breeze.png',
+      frame: 'images/frames/dusk_and_dawn.png',
       badges: [BADGE_URLS[3], BADGE_URLS[4], BADGE_URLS[5]]
     },
     PirateDropout: {
       name: 'PirateDropout',
       color: '#d946ef',
       avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/3aecb399-e583-41d5-985a-e2e2860ae531-profile_image-150x150.png',
-      frame: 'https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/afternoon_breeze.png',
+      frame: 'images/frames/dragon_balls.png',
       badges: [BADGE_URLS[6], BADGE_URLS[7]]
     }
   };
@@ -187,8 +221,8 @@ export default async function init({ root }) {
     {
       type: 'event',
       user: users.PirateDropout,
-      sticker: 'https://streamstickers.com/uploads/vader-sample-65017.gif',
-      badge: BADGE_URLS[8],
+      sticker: 'images/resonances/001/catch_em.gif',
+      badge: BADGE_URLS[11],
       text: '+50,000'
     },
     { user: users.LuchaUno, text: "That's so cool!" },

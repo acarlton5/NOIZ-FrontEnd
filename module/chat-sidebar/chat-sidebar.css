@@ -24,6 +24,15 @@ module[data-module="chat-sidebar"] .chat-header {
   font-weight: 700;
   color: #fff;
   text-align: center;
+  position: relative;
+}
+
+module[data-module="chat-sidebar"] .chat-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--banner, none) center/cover no-repeat;
+  z-index: -1;
 }
 
 module[data-module="chat-sidebar"] .chat-messages {
@@ -280,4 +289,40 @@ module[data-module="chat-sidebar"] .emote-list .emote {
 module[data-module="chat-sidebar"] .emote-list .emote img {
   width: 32px;
   height: 32px;
+}
+
+module[data-module="chat-sidebar"] .resonance-grid {
+  padding: 8px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(56px, 1fr));
+  gap: 8px;
+}
+
+module[data-module="chat-sidebar"] .resonance-item {
+  border: none;
+  background: #1e293b;
+  border-radius: 8px;
+  padding: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+module[data-module="chat-sidebar"] .resonance-item .resonance-sticker {
+  max-width: 48px;
+  max-height: 48px;
+}
+
+module[data-module="chat-sidebar"] .resonance-cost {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+module[data-module="chat-sidebar"] .resonance-cost .resonance-badge {
+  width: 16px;
+  height: 16px;
 }
