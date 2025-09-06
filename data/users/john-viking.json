@@ -6,6 +6,12 @@
   "hasNotification": false,
   "accent": "#72ffb6",
   "slug": "john-viking",
+  "about": "Leader of the NOIZ raid party and digital explorer.",
+  "memberSince": "March 2023",
+  "connections": [
+    "images/ui/gift.png",
+    "images/ui/follow.png"
+  ],
   "subscribed": ["marina-valentine", "neko-bebop"],
   "followed": ["neko-bebop", "nick-grissom", "sarah-diamond"]
 }

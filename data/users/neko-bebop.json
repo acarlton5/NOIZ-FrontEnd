@@ -5,5 +5,11 @@
   "banner": "https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/nameplates/aurora.png",
   "hasNotification": false,
   "accent": "#8ab4ff",
-  "slug": "neko-bebop"
+  "slug": "neko-bebop",
+  "about": "Cat cafe owner by day, NOIZ mod by night.",
+  "memberSince": "July 2022",
+  "connections": [
+    "images/ui/follow.png",
+    "images/ui/gift.png"
+  ]
 }

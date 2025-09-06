@@ -16,7 +16,7 @@ export default async function init({ hub, root, utils }) {
         ${users
           .map(
             (u, i) => `
-        <li class="user-rail-item${u.hasNotification ? ' has-notification' : ''}" data-index="${i}" style="--accent:${u.accent};" data-profile-name="${u.name}" data-profile-avatar="${u.avatar}" data-profile-banner="${u.banner}" data-profile-accent="${u.accent}" data-profile-frame="${u.frame}">
+        <li class="user-rail-item${u.hasNotification ? ' has-notification' : ''}" data-index="${i}" style="--accent:${u.accent};" data-profile-name="${u.name}" data-profile-avatar="${u.avatar}" data-profile-banner="${u.banner}" data-profile-accent="${u.accent}" data-profile-frame="${u.frame}" data-profile-about="${u.about || ''}" data-profile-since="${u.memberSince || ''}" data-profile-connections="${(u.connections || []).join(',')}">
           <div class="avatar-wrap" style="--frame:url('${u.frame}');">
             <img class="avatar-image" src="${u.avatar}" alt="${u.name}">
           </div>

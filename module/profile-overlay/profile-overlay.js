@@ -2,7 +2,6 @@ export default async function init({ hub, root, utils }) {
   root.innerHTML = `
     <div class="profile-overlay hidden" role="dialog" aria-modal="true">
       <div class="po-card">
-        <button type="button" class="po-close" aria-label="Close">&times;</button>
         <div class="po-left">
           <div class="po-banner"></div>
           <div class="po-accent"></div>
@@ -10,7 +9,10 @@ export default async function init({ hub, root, utils }) {
             <div class="po-avatar"><img alt="" /></div>
             <h2 class="po-name"></h2>
             <button class="po-edit">Edit Profile</button>
-            <div class="po-about"></div>
+            <div class="po-section po-about-section">
+              <h3>About Me</h3>
+              <p class="po-about"></p>
+            </div>
             <div class="po-section po-member">
               <h3>Member Since</h3>
               <p class="po-member-date"></p>
@@ -18,6 +20,10 @@ export default async function init({ hub, root, utils }) {
             <div class="po-section po-connections">
               <h3>Connections</h3>
               <div class="po-conn-list"></div>
+            </div>
+            <div class="po-section po-note">
+              <h3>Note</h3>
+              <p class="po-note-text">Click to add a note</p>
             </div>
           </div>
         </div>
@@ -46,6 +52,9 @@ export default async function init({ hub, root, utils }) {
               <p class="po-empty">No mutuals to show.</p>
             </div>
           </div>
+          <div class="po-footer">
+            <button type="button" class="po-close">Close</button>
+          </div>
         </div>
       </div>
     </div>
@@ -55,6 +64,7 @@ export default async function init({ hub, root, utils }) {
   const banner = overlay.querySelector('.po-banner');
   const avatar = overlay.querySelector('.po-avatar img');
   const nameEl = overlay.querySelector('.po-name');
+  const aboutSection = overlay.querySelector('.po-about-section');
   const aboutEl = overlay.querySelector('.po-about');
   const memberDateEl = overlay.querySelector('.po-member-date');
   const connList = overlay.querySelector('.po-conn-list');
@@ -71,7 +81,7 @@ export default async function init({ hub, root, utils }) {
     avatar.alt = user.name || '';
     nameEl.textContent = user.name || '';
     aboutEl.textContent = user.about || '';
-    aboutEl.style.display = user.about ? 'block' : 'none';
+    aboutSection.style.display = user.about ? 'block' : 'none';
     aboutRight.textContent = user.about || 'Nothing to see here';
     if (user.memberSince) {
       memberDateEl.textContent = user.memberSince;

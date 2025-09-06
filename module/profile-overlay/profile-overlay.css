@@ -50,8 +50,8 @@ module[data-module="profile-overlay"] .po-left-body {
   margin-top: -48px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
+  align-items: center;
+  text-align: center;
 }
 
 module[data-module="profile-overlay"] .po-avatar {
@@ -95,7 +95,7 @@ module[data-module="profile-overlay"] .po-name {
   margin-top: 12px;
   font-size: 1.25rem;
   font-weight: 700;
-  text-align: left;
+  text-align: center;
 }
 
 module[data-module="profile-overlay"] .po-edit {
@@ -110,7 +110,7 @@ module[data-module="profile-overlay"] .po-edit {
 }
 
 module[data-module="profile-overlay"] .po-about {
-  margin-top: 16px;
+  margin-top: 0;
   font-size: 0.875rem;
   color: #374151;
   white-space: pre-wrap;
@@ -119,6 +119,7 @@ module[data-module="profile-overlay"] .po-about {
 module[data-module="profile-overlay"] .po-section {
   margin-top: 24px;
   width: 100%;
+  text-align: left;
 }
 
 module[data-module="profile-overlay"] .po-section h3 {
@@ -142,6 +143,11 @@ module[data-module="profile-overlay"] .po-conn-list {
 module[data-module="profile-overlay"] .po-conn-list img {
   width: 24px;
   height: 24px;
+}
+
+module[data-module="profile-overlay"] .po-note-text {
+  font-size: 0.875rem;
+  color: #6b7280;
 }
 
 module[data-module="profile-overlay"] .po-right {
@@ -173,16 +179,21 @@ module[data-module="profile-overlay"] .po-tab.active {
   border-color: var(--accent, #5865f2);
 }
 
-module[data-module="profile-overlay"] .po-close {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  background: transparent;
-  border: none;
-  font-size: 24px;
-  line-height: 1;
+module[data-module="profile-overlay"] .po-footer {
+  margin-top: 16px;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 16px;
+  text-align: right;
+}
+
+module[data-module="profile-overlay"] .po-footer .po-close {
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-weight: 600;
+  color: #1f2937;
   cursor: pointer;
-  color: #6b7280;
 }
 
 module[data-module="profile-overlay"] .po-panels {

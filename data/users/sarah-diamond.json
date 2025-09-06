@@ -5,5 +5,11 @@
   "banner": "https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/nameplates/blue_mana.png",
   "hasNotification": false,
   "accent": "#b06dff",
-  "slug": "sarah-diamond"
+  "slug": "sarah-diamond",
+  "about": "Cosplayer weaving NOIZ magic on stream.",
+  "memberSince": "September 2020",
+  "connections": [
+    "images/ui/follow.png",
+    "images/ui/emote.png"
+  ]
 }

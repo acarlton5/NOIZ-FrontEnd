@@ -5,5 +5,11 @@
   "banner": "https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/nameplates/black_mana.png",
   "hasNotification": false,
   "accent": "#ffd059",
-  "slug": "nick-grissom"
+  "slug": "nick-grissom",
+  "about": "Speedrunner chasing the highest NOIZ scores.",
+  "memberSince": "May 2021",
+  "connections": [
+    "images/ui/emote.png",
+    "images/ui/gift.png"
+  ]
 }
