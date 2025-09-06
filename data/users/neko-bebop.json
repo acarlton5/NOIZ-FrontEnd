@@ -56,7 +56,48 @@
   },
   "hosting": null,
   "set-badges": ["admin", "artist", "mod", "vip", "clipper"],
-  "earned-badges": ["admin", "artist", "mod", "vip", "clipper"],
+  "earned-badges": [
+    {
+      "id": "admin",
+      "icon": "images/badges/admin.png",
+      "name": "Admin",
+      "description": "Server administrator",
+      "awardedFor": "NOIZ",
+      "awardedOn": "Jan 14, 2019"
+    },
+    {
+      "id": "artist",
+      "icon": "images/badges/artist.png",
+      "name": "Artist",
+      "description": "Shared five original artworks",
+      "awardedFor": "NOIZ Summer Event",
+      "awardedOn": "Mar 26, 2019"
+    },
+    {
+      "id": "mod",
+      "icon": "images/badges/mod.png",
+      "name": "Moderator",
+      "description": "Keeps the community in check",
+      "awardedFor": "NOIZ",
+      "awardedOn": "May 2, 2018"
+    },
+    {
+      "id": "vip",
+      "icon": "images/badges/vip.png",
+      "name": "VIP",
+      "description": "Recognized supporter",
+      "awardedFor": "DbD Campaign 2025",
+      "awardedOn": "Jan 9, 2018"
+    },
+    {
+      "id": "clipper",
+      "icon": "images/badges/clipper.png",
+      "name": "Clipper",
+      "description": "Shared 100+ clips",
+      "awardedFor": "NOIZ",
+      "awardedOn": "Feb 1, 2019"
+    }
+  ],
   "BadgeID": "mod",
   "VODs": true,
   "extensions": { "enabled": [], "disabled": [] },

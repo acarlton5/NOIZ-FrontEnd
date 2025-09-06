@@ -274,3 +274,48 @@ module[data-module="profile-overlay"] .po-topic-perms {
   color: #6b7280;
   font-size: 0.875rem;
 }
+
+module[data-module="profile-overlay"] .po-badge-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+module[data-module="profile-overlay"] .po-badge-item {
+  display: flex;
+  align-items: center;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+module[data-module="profile-overlay"] .po-badge-item img {
+  width: 48px;
+  height: 48px;
+  margin-right: 12px;
+}
+
+module[data-module="profile-overlay"] .po-badge-info {
+  display: flex;
+  flex-direction: column;
+}
+
+module[data-module="profile-overlay"] .po-badge-name {
+  font-weight: 600;
+  margin: 0;
+}
+
+module[data-module="profile-overlay"] .po-badge-desc {
+  font-size: 0.875rem;
+  color: #374151;
+  margin: 4px 0;
+}
+
+module[data-module="profile-overlay"] .po-badge-meta {
+  font-size: 0.75rem;
+  color: #6b7280;
+}

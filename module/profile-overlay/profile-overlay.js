@@ -83,6 +83,7 @@ export default async function init({ hub, root, utils }) {
   const tabs = overlay.querySelectorAll('.po-tab');
   const panels = overlay.querySelectorAll('.po-panel');
   const topicsPanel = overlay.querySelector('[data-panel="topics"]');
+  const badgesPanel = overlay.querySelector('[data-panel="badges"]');
 
   function fill(user = {}) {
     overlay.style.setProperty('--accent', user.accent || '#5865f2');
@@ -143,6 +144,30 @@ export default async function init({ hub, root, utils }) {
         .join('')}</ul>`;
     } else {
       topicsPanel.innerHTML = '<p class="po-empty">No topics to show.</p>';
+    }
+
+    const earned = user['earned-badges'];
+    if (earned && earned.length) {
+      badgesPanel.innerHTML = `<ul class="po-badge-list">${earned
+        .map((b) => {
+          const meta = [
+            b.awardedFor,
+            b.awardedOn ? `Unlocked ${b.awardedOn}` : null
+          ].filter(Boolean).join(' • ');
+          return `
+            <li class="po-badge-item">
+              <img src="${b.icon}" alt="${b.name} badge" />
+              <div class="po-badge-info">
+                <h4 class="po-badge-name">${b.name}</h4>
+                <p class="po-badge-desc">${b.description}</p>
+                <p class="po-badge-meta">${meta}</p>
+              </div>
+            </li>
+          `;
+        })
+        .join('')}</ul>`;
+    } else {
+      badgesPanel.innerHTML = '<p class="po-empty">No badges to show.</p>';
     }
   }
 
