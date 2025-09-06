@@ -1,0 +1,94 @@
+module[data-module="profile-overlay"] .profile-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+module[data-module="profile-overlay"] .profile-overlay.hidden {
+  display: none;
+}
+
+module[data-module="profile-overlay"] .po-card {
+  background: #fff;
+  color: #333;
+  width: 600px;
+  max-width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  position: relative;
+  overflow: hidden;
+}
+
+module[data-module="profile-overlay"] .po-banner {
+  grid-column: 1 / -1;
+  height: 120px;
+  background-size: cover;
+  background-position: center;
+}
+
+module[data-module="profile-overlay"] .po-content {
+  padding: 72px 24px 24px;
+}
+
+module[data-module="profile-overlay"] .po-avatar {
+  position: absolute;
+  top: 72px;
+  left: 24px;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 0 0 4px var(--accent, #5865f2);
+  background: var(--frame) center/cover no-repeat;
+}
+
+module[data-module="profile-overlay"] .po-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+module[data-module="profile-overlay"] .po-name {
+  margin: 0 0 0 112px;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+module[data-module="profile-overlay"] .po-tabs {
+  border-left: 1px solid #eee;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+module[data-module="profile-overlay"] .po-tab {
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+module[data-module="profile-overlay"] .po-tab.active {
+  background: var(--accent, #5865f2);
+  color: #fff;
+}
+
+module[data-module="profile-overlay"] .po-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  color: #666;
+}

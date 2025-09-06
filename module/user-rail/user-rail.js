@@ -1,6 +1,6 @@
 import { getUserBySlug } from '../users.js';
 
-export default async function init({ root, utils }) {
+export default async function init({ hub, root, utils }) {
   const loggedSlug = await fetch('/data/logged-in.json').then(r => r.json());
   const loggedUser = await getUserBySlug(loggedSlug);
   const { subscribed = [], followed = [] } = loggedUser || {};
@@ -35,7 +35,7 @@ export default async function init({ root, utils }) {
     const index = parseInt(el.dataset.index, 10);
     const user = users[index];
     if (user) {
-      window.LoadMainModule('profile', { user });
+      hub.api['profile-overlay'].show(user);
     }
   });
 

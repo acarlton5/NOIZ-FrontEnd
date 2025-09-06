@@ -90,7 +90,7 @@ export default async function init({ hub, root, utils }) {
     e.preventDefault();
     const mod = link.getAttribute('data-module');
     if (mod === 'profile') {
-      window.LoadMainModule('profile', { user: currentUser });
+      hub.api['profile-overlay'].show(currentUser);
     } else if (mod) {
       window.LoadMainModule(mod);
     }
@@ -103,7 +103,7 @@ export default async function init({ hub, root, utils }) {
     (e) => {
       e.preventDefault();
       e.stopPropagation();
-      window.LoadMainModule('profile', { user: currentUser });
+      hub.api['profile-overlay'].show(currentUser);
     }
   );
 

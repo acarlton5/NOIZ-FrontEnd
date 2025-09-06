@@ -94,7 +94,7 @@ export default async function init({ hub, root, utils }) {
       accent: el.dataset.profileAccent,
       frame: el.dataset.profileFrame,
     };
-    window.LoadMainModule('profile', { user });
+    hub.api['profile-overlay'].show(user);
   });
 
   return { show, hide };
