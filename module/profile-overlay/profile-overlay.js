@@ -2,24 +2,42 @@ export default async function init({ hub, root, utils }) {
   root.innerHTML = `
     <div class="profile-overlay hidden" role="dialog" aria-modal="true">
       <div class="po-card">
-        <button type="button" class="po-close" aria-label="Close">&times;</button>
-
         <div class="po-left">
           <div class="po-banner"></div>
           <div class="po-accent"></div>
           <div class="po-left-body">
             <div class="po-avatar"><img alt="" /></div>
             <h2 class="po-name"></h2>
+            <button class="po-edit">Edit Profile</button>
+            <div class="po-about"></div>
+            <div class="po-section po-member">
+              <h3>Member Since</h3>
+              <p class="po-member-date"></p>
+            </div>
+            <div class="po-section po-connections">
+              <h3>Connections</h3>
+              <div class="po-conn-list"></div>
+            </div>
           </div>
         </div>
 
         <div class="po-right">
+          <button type="button" class="po-close" aria-label="Close">&times;</button>
           <div class="po-tabs">
-            <button class="po-tab active">Activity</button>
-            <button class="po-tab">About</button>
-            <button class="po-tab">Mutual</button>
+            <button class="po-tab active" data-tab="activity">Activity</button>
+            <button class="po-tab" data-tab="about">About</button>
+            <button class="po-tab" data-tab="mutual">Mutual</button>
           </div>
-          <div class="po-panel"></div>
+          <div class="po-panel">
+            <div class="po-activity">
+              <p class="po-activity-head">You don't have any activity here</p>
+              <p class="po-activity-sub">Connect accounts to show off your game status, see what friends are playing and more.</p>
+              <div class="po-activity-actions">
+                <button class="po-btn">Connect Accounts</button>
+                <button class="po-btn">Add Game</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -29,6 +47,9 @@ export default async function init({ hub, root, utils }) {
   const banner = overlay.querySelector('.po-banner');
   const avatar = overlay.querySelector('.po-avatar img');
   const nameEl = overlay.querySelector('.po-name');
+  const aboutEl = overlay.querySelector('.po-about');
+  const memberDateEl = overlay.querySelector('.po-member-date');
+  const connList = overlay.querySelector('.po-conn-list');
   const closeBtn = overlay.querySelector('.po-close');
 
   function fill(user = {}) {
@@ -38,6 +59,23 @@ export default async function init({ hub, root, utils }) {
     avatar.src = user.avatar || '';
     avatar.alt = user.name || '';
     nameEl.textContent = user.name || '';
+    aboutEl.textContent = user.about || '';
+    aboutEl.style.display = user.about ? 'block' : 'none';
+    if (user.memberSince) {
+      memberDateEl.textContent = user.memberSince;
+      memberDateEl.closest('.po-member').style.display = 'block';
+    } else {
+      memberDateEl.closest('.po-member').style.display = 'none';
+    }
+    if (user.connections && user.connections.length) {
+      connList.innerHTML = user.connections
+        .map((c) => `<img src="${c}" alt="connection" />`)
+        .join('');
+      connList.closest('.po-connections').style.display = 'block';
+    } else {
+      connList.innerHTML = '';
+      connList.closest('.po-connections').style.display = 'none';
+    }
   }
 
   function show(user) {

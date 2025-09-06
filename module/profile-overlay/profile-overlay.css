@@ -22,7 +22,7 @@ module[data-module="profile-overlay"] .po-card {
   border-radius: 8px;
   box-shadow: 0 16px 40px rgba(0,0,0,.2);
   display: grid;
-  grid-template-columns: 260px 1fr;
+  grid-template-columns: 340px 1fr;
   overflow: hidden;
   position: relative;
 }
@@ -30,6 +30,8 @@ module[data-module="profile-overlay"] .po-card {
 module[data-module="profile-overlay"] .po-left {
   background: #f9fafb;
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 module[data-module="profile-overlay"] .po-banner {
@@ -48,8 +50,8 @@ module[data-module="profile-overlay"] .po-left-body {
   margin-top: -48px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
+  align-items: flex-start;
+  text-align: left;
 }
 
 module[data-module="profile-overlay"] .po-avatar {
@@ -71,7 +73,53 @@ module[data-module="profile-overlay"] .po-name {
   margin-top: 12px;
   font-size: 1.25rem;
   font-weight: 700;
-  text-align: center;
+  text-align: left;
+}
+
+module[data-module="profile-overlay"] .po-edit {
+  margin-top: 8px;
+  background: #e5e7eb;
+  border: 1px solid #d1d5db;
+  color: #1f2937;
+  padding: 4px 8px;
+  font-size: 0.875rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+module[data-module="profile-overlay"] .po-about {
+  margin-top: 16px;
+  font-size: 0.875rem;
+  color: #374151;
+  white-space: pre-wrap;
+}
+
+module[data-module="profile-overlay"] .po-section {
+  margin-top: 24px;
+  width: 100%;
+}
+
+module[data-module="profile-overlay"] .po-section h3 {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #6b7280;
+  margin-bottom: 8px;
+}
+
+module[data-module="profile-overlay"] .po-member-date {
+  font-size: 0.875rem;
+  color: #1f2937;
+}
+
+module[data-module="profile-overlay"] .po-conn-list {
+  display: flex;
+  gap: 8px;
+}
+
+module[data-module="profile-overlay"] .po-conn-list img {
+  width: 24px;
+  height: 24px;
 }
 
 module[data-module="profile-overlay"] .po-right {
@@ -79,6 +127,7 @@ module[data-module="profile-overlay"] .po-right {
   padding: 16px 24px;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 module[data-module="profile-overlay"] .po-tabs {
@@ -113,4 +162,43 @@ module[data-module="profile-overlay"] .po-close {
   line-height: 1;
   cursor: pointer;
   color: #6b7280;
+}
+
+module[data-module="profile-overlay"] .po-panel {
+  flex: 1;
+  overflow-y: auto;
+}
+
+module[data-module="profile-overlay"] .po-activity {
+  text-align: center;
+  color: #6b7280;
+  padding: 40px 0;
+}
+
+module[data-module="profile-overlay"] .po-activity-head {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+module[data-module="profile-overlay"] .po-activity-sub {
+  font-size: 0.875rem;
+  margin-top: 4px;
+}
+
+module[data-module="profile-overlay"] .po-activity-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+module[data-module="profile-overlay"] .po-btn {
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-weight: 600;
+  color: #1f2937;
+  cursor: pointer;
 }

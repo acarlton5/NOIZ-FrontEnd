@@ -93,6 +93,11 @@ export default async function init({ hub, root, utils }) {
       banner: el.dataset.profileBanner,
       accent: el.dataset.profileAccent,
       frame: el.dataset.profileFrame,
+      about: el.dataset.profileAbout,
+      memberSince: el.dataset.profileSince,
+      connections: el.dataset.profileConnections
+        ? el.dataset.profileConnections.split(',')
+        : [],
     };
     hub.api['profile-overlay'].show(user);
   });
