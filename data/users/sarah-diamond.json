@@ -14,6 +14,18 @@
     "images/ui/follow.png",
     "images/ui/emote.png"
   ],
+  "topics": [
+    {
+      "id": "99999999-9999-9999-9999-999999999999",
+      "name": "Photography",
+      "permissions": ["viewer"]
+    },
+    {
+      "id": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+      "name": "Travel Vlogs",
+      "permissions": ["sub"]
+    }
+  ],
   "badges": [
     "images/badges/admin.png",
     "images/badges/artist.png",

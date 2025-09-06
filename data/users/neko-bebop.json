@@ -14,6 +14,18 @@
     "images/ui/follow.png",
     "images/ui/gift.png"
   ],
+  "topics": [
+    {
+      "id": "55555555-5555-5555-5555-555555555555",
+      "name": "Music",
+      "permissions": ["viewer", "sub"]
+    },
+    {
+      "id": "66666666-6666-6666-6666-666666666666",
+      "name": "Cat Pics",
+      "permissions": []
+    }
+  ],
   "badges": [
     "images/badges/admin.png",
     "images/badges/artist.png",

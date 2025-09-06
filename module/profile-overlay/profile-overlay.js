@@ -1,3 +1,5 @@
+import { getUserByToken } from '../users.js';
+
 export default async function init({ hub, root, utils }) {
   const loggedIn = await fetch('/data/logged-in.json').then(r => r.json()).catch(() => null);
 
@@ -80,6 +82,7 @@ export default async function init({ hub, root, utils }) {
   const closeBtn = overlay.querySelector('.po-close');
   const tabs = overlay.querySelectorAll('.po-tab');
   const panels = overlay.querySelectorAll('.po-panel');
+  const topicsPanel = overlay.querySelector('[data-panel="topics"]');
 
   function fill(user = {}) {
     overlay.style.setProperty('--accent', user.accent || '#5865f2');
@@ -127,6 +130,20 @@ export default async function init({ hub, root, utils }) {
       connList.innerHTML = '';
       connList.closest('.po-connections').style.display = 'none';
     }
+
+    if (user.topics && user.topics.length) {
+      topicsPanel.innerHTML = `<ul class="po-topic-list">${user.topics
+        .map(
+          (t) => `<li data-topic-id="${t.id}"><span class="po-topic-name">${t.name}</span>${
+            t.permissions && t.permissions.length
+              ? `<span class="po-topic-perms">${t.permissions.join(', ')}</span>`
+              : ''
+          }</li>`
+        )
+        .join('')}</ul>`;
+    } else {
+      topicsPanel.innerHTML = '<p class="po-empty">No topics to show.</p>';
+    }
   }
 
   function switchTab(tabName) {
@@ -138,7 +155,11 @@ export default async function init({ hub, root, utils }) {
     utils.listen(tab, 'click', () => switchTab(tab.dataset.tab));
   });
 
-  function show(user) {
+  async function show(user) {
+    if (user && user.token) {
+      const full = await getUserByToken(user.token).catch(() => ({}));
+      user = { ...full, ...user };
+    }
     fill(user);
     switchTab('topics');
     overlay.classList.remove('hidden');
