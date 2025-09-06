@@ -20,6 +20,7 @@ export default async function init({ hub, root, utils }) {
             <div class="po-avatar"><img alt="" /></div>
             <h2 class="po-name"></h2>
             <p class="po-tagline"></p>
+            <div class="po-badges"></div>
             <div class="po-actions"></div>
             <div class="po-section po-about-section">
               <h3>About Me</h3>
@@ -75,6 +76,7 @@ export default async function init({ hub, root, utils }) {
   const memberDateEl = overlay.querySelector('.po-member-date');
   const connList = overlay.querySelector('.po-conn-list');
   const actions = overlay.querySelector('.po-actions');
+  const badgesEl = overlay.querySelector('.po-badges');
   const closeBtn = overlay.querySelector('.po-close');
   const tabs = overlay.querySelectorAll('.po-tab');
   const panels = overlay.querySelectorAll('.po-panel');
@@ -103,6 +105,13 @@ export default async function init({ hub, root, utils }) {
       actions.innerHTML += `<button class="po-action support">${icons.support}<span>Support</span></button>`;
     }
     actions.innerHTML += `<button class="po-action shop">${icons.shop}<span>Shop</span></button>`;
+    if (user.badges && user.badges.length) {
+      badgesEl.innerHTML = user.badges.slice(0,5).map((b) => `<img src="${b}" alt="badge" />`).join('');
+      badgesEl.style.display = 'flex';
+    } else {
+      badgesEl.innerHTML = '';
+      badgesEl.style.display = 'none';
+    }
     if (user.memberSince) {
       memberDateEl.textContent = user.memberSince;
       memberDateEl.closest('.po-member').style.display = 'block';

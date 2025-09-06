@@ -111,9 +111,9 @@ module[data-module="mini-profile"] .mini-profile .mp-action {
   display: flex;
   align-items: center;
   gap: 4px;
-  background: #f3f4f6;
-  border: 1px solid #e5e7eb;
-  color: #1f2937;
+  background: var(--accent, #5865f2);
+  border: none;
+  color: #ffffff;
   padding: 6px 8px;
   font-size: 0.875rem;
   border-radius: 6px;
@@ -123,6 +123,18 @@ module[data-module="mini-profile"] .mini-profile .mp-action {
 module[data-module="mini-profile"] .mini-profile .mp-action svg {
   width: 16px;
   height: 16px;
+}
+
+module[data-module="mini-profile"] .mini-profile .mp-badges {
+  margin-top: 4px;
+  display: none;
+  gap: 4px;
+  justify-content: center;
+}
+
+module[data-module="mini-profile"] .mini-profile .mp-badges img {
+  width: 24px;
+  height: 24px;
 }
 
 module[data-module="mini-profile"] .mini-profile .mp-section {

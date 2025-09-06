@@ -18,6 +18,7 @@ export default async function init({ hub, root, utils }) {
         <div class="mp-avatar"><img alt="" /></div>
         <h2 class="mp-name"></h2>
         <p class="mp-tagline"></p>
+        <div class="mp-badges"></div>
         <div class="mp-actions"></div>
         <div class="mp-section mp-about-section">
           <h3>About Me</h3>
@@ -45,6 +46,7 @@ export default async function init({ hub, root, utils }) {
   const nameEl = card.querySelector('.mp-name');
   const tagEl = card.querySelector('.mp-tagline');
   const actions = card.querySelector('.mp-actions');
+  const badgesEl = card.querySelector('.mp-badges');
   const aboutSection = card.querySelector('.mp-about-section');
   const aboutEl = card.querySelector('.mp-about');
   const memberDateEl = card.querySelector('.mp-member-date');
@@ -72,6 +74,13 @@ export default async function init({ hub, root, utils }) {
       actions.innerHTML += `<button class="mp-action support">${icons.support}<span>Support</span></button>`;
     }
     actions.innerHTML += `<button class="mp-action shop">${icons.shop}<span>Shop</span></button>`;
+    if (user.badges && user.badges.length) {
+      badgesEl.innerHTML = user.badges.slice(0,5).map((b) => `<img src="${b}" alt="badge" />`).join('');
+      badgesEl.style.display = 'flex';
+    } else {
+      badgesEl.innerHTML = '';
+      badgesEl.style.display = 'none';
+    }
     if (user.about) {
       aboutEl.textContent = user.about;
       aboutSection.style.display = 'block';
@@ -145,6 +154,9 @@ export default async function init({ hub, root, utils }) {
       connections: el.dataset.profileConnections
         ? el.dataset.profileConnections.split(',')
         : [],
+      badges: el.dataset.profileBadges
+        ? el.dataset.profileBadges.split(',')
+        : [],
       streaming: el.dataset.profileStreaming === 'true'
     };
     show(user, e.pageX, e.pageY);
@@ -165,6 +177,9 @@ export default async function init({ hub, root, utils }) {
       memberSince: el.dataset.profileSince,
       connections: el.dataset.profileConnections
         ? el.dataset.profileConnections.split(',')
+        : [],
+      badges: el.dataset.profileBadges
+        ? el.dataset.profileBadges.split(',')
         : [],
       streaming: el.dataset.profileStreaming === 'true'
     };

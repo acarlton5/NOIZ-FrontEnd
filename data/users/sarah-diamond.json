@@ -11,5 +11,12 @@
   "connections": [
     "images/ui/follow.png",
     "images/ui/emote.png"
+  ],
+  "badges": [
+    "images/badges/admin.png",
+    "images/badges/artist.png",
+    "images/badges/mod.png",
+    "images/badges/vip.png",
+    "images/badges/clipper.png"
   ]
 }

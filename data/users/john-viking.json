@@ -12,6 +12,13 @@
     "images/ui/gift.png",
     "images/ui/follow.png"
   ],
+  "badges": [
+    "images/badges/admin.png",
+    "images/badges/artist.png",
+    "images/badges/mod.png",
+    "images/badges/vip.png",
+    "images/badges/clipper.png"
+  ],
   "subscribed": ["marina-valentine", "neko-bebop"],
   "followed": ["neko-bebop", "nick-grissom", "sarah-diamond"]
 }
