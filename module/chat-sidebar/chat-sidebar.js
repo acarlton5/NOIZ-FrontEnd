@@ -43,59 +43,32 @@ export default async function init({ root }) {
     {
       global: true,
       emotes: [
-        'https://static-cdn.jtvnw.net/emoticons/v2/1003187/static/dark/3.0',
-        'https://static-cdn.jtvnw.net/emoticons/v2/1003189/static/dark/3.0',
-        'https://static-cdn.jtvnw.net/emoticons/v2/1003190/static/dark/3.0'
+        'images/badges/dev.png',
+        'images/badges/mod.png',
+        'images/badges/partner.png'
       ]
     },
     {
       streamer: {
-        name: 'SampleS3treamer',
-        avatar:
-          'https://static-cdn.jtvnw.net/jtv_user_pictures/3aecb399-e583-41d5-985a-e2e2860ae531-profile_image-150x150.png'
+        name: 'SampleStreamer',
+        avatar: 'images/logo.png'
       },
       emotes: [
-        'https://static-cdn.jtvnw.net/emoticons/v2/160394/static/dark/3.0',
-        'https://static-cdn.jtvnw.net/emoticons/v2/160404/static/dark/3.0',
-        'https://static-cdn.jtvnw.net/emoticons/v2/160401/static/dark/3.0',
-        'https://static-cdn.jtvnw.net/emoticons/v2/160400/static/dark/3.0',
-        'https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_adfadf0ae06a4258adc865761746b227/static/dark/3.0',
-        'https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_665235901db747b1bd395a5f1c0ab8a9/static/dark/3.0',
-        'https://static-cdn.jtvnw.net/emoticons/v2/1220086/static/dark/3.0'
+        'images/badges/vip.png',
+        'images/badges/artist.png',
+        'images/badges/sub.png',
+        'images/badges/clipper.png'
       ]
     },
     {
       streamer: {
-        name: 'AnotherSt3reamer',
-        avatar:
-          'https://static-cdn.jtvnw.net/jtv_user_pictures/3aecb399-e583-41d5-985a-e2e2860ae531-profile_image-150x150.png'
+        name: 'AnotherStreamer',
+        avatar: 'images/logo.png'
       },
       emotes: [
-        'https://static-cdn.jtvnw.net/emoticons/v2/1003187/static/dark/3.0',
-        'https://static-cdn.jtvnw.net/emoticons/v2/1003189/static/dark/3.0',
-        'https://static-cdn.jtvnw.net/emoticons/v2/1003190/static/dark/3.0',
-        'https://static-cdn.jtvnw.net/emoticons/v2/160394/static/dark/3.0',
-        'https://static-cdn.jtvnw.net/emoticons/v2/160404/static/dark/3.0',
-        'https://static-cdn.jtvnw.net/emoticons/v2/160401/static/dark/3.0',
-        'https://static-cdn.jtvnw.net/emoticons/v2/160400/static/dark/3.0',
-        'https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_adfadf0ae06a4258adc865761746b227/static/dark/3.0',
-        'https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_665235901db747b1bd395a5f1c0ab8a9/static/dark/3.0',
-        'https://static-cdn.jtvnw.net/emoticons/v2/1220086/static/dark/3.0'
-      ]
-    },
-    {
-      streamer: {
-        name: 'AnotherStrea3mer',
-        avatar:
-          'https://static-cdn.jtvnw.net/jtv_user_pictures/3aecb399-e583-41d5-985a-e2e2860ae531-profile_image-150x150.png'
-      },
-      emotes: [
-        'https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_a829c76ca15f49a2bf71e1270f83fe83/static/dark/3.0',
-        'https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_4e1c5651219a462894aefa8b6720efc5/static/dark/3.0',
-        'https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_4b51b45f35df4dd8ad45a611c9a9ec35/static/dark/3.0',
-        'https://static-cdn.jtvnw.net/emoticons/v2/122213/static/light/3.0',
-        'https://static-cdn.jtvnw.net/emoticons/v2/406623/static/light/3.0',
-        'https://static-cdn.jtvnw.net/emoticons/v2/1494991/static/light/3.0'
+        'images/badges/trophy.svg',
+        'images/badges/gifter.png',
+        'images/badges/bot.png'
       ]
     }
   ];
@@ -146,23 +119,42 @@ export default async function init({ root }) {
     'images/badges/heart.svg'
   ];
 
-  const RESONANCE_ITEMS = [
-    {
-      sticker: 'images/resonances/001/catch_em.gif',
-      amount: '100',
-      badge: BADGE_URLS[8]
-    },
-    {
-      sticker: 'images/resonances/002/pipe_smash.gif',
-      amount: '200',
-      badge: BADGE_URLS[9]
-    },
-    {
-      sticker: 'images/resonances/003/wazzup.gif',
-      amount: '500',
-      badge: BADGE_URLS[10]
-    }
+  const RESONANCE_STICKERS = [
+    'images/resonances/001/catch_em.gif',
+    'images/resonances/002/pipe_smash.gif',
+    'images/resonances/003/wazzup.gif',
+    'images/resonances/004/erase_this_from_my_mind.gif',
+    'images/resonances/005/super_saiyan.gif',
+    'images/resonances/006/pat_pat.gif',
+    'images/resonances/007/repo_duck!.gif',
+    'images/resonances/008/bubble_pop.gif',
+    'images/resonances/009/water_balloon.gif',
+    'images/resonances/010/super_splasher.gif',
+    'images/resonances/011/we_have_a_problem.gif',
+    'images/resonances/012/up_to_11.gif',
+    'images/resonances/013/party_popper.gif',
+    'images/resonances/014/party_horn.gif',
+    'images/resonances/015/arctic_snowball.gif',
+    'images/resonances/016/tomato_toss.gif',
+    'images/resonances/017/ghostly_boo.gif',
+    'images/resonances/018/unidab.gif',
+    'images/resonances/019/play_puppet.gif',
+    'images/resonances/020/best_friend.gif',
+    'images/resonances/021/clown_around.gif',
+    'images/resonances/022/pyramid_head.gif',
+    'images/resonances/023/leather_man.gif',
+    'images/resonances/024/friday_slasher.gif',
+    'images/resonances/025/the_screamer.gif',
+    'images/resonances/026/halloween_treat.gif',
+    'images/resonances/027/nightmare.gif',
+    'images/resonances/028/easter_egg_splat.gif'
   ];
+
+  const RESONANCE_ITEMS = RESONANCE_STICKERS.map((sticker, i) => ({
+    sticker,
+    amount: `${(i + 1) * 100}`,
+    badge: BADGE_URLS[8 + (i % 4)]
+  }));
 
   function renderResonanceTab() {
     tabContent.innerHTML = `
@@ -186,28 +178,28 @@ export default async function init({ root }) {
     LuchaUno: {
       name: 'LuchaUno',
       color: '#4ade80',
-      avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/3aecb399-e583-41d5-985a-e2e2860ae531-profile_image-150x150.png',
+      avatar: 'images/logo.png',
       frame: 'images/frames/afternoon_breeze.png',
       badges: [BADGE_URLS[0], BADGE_URLS[1]]
     },
     DoctorHoot: {
       name: 'DoctorHoot',
       color: '#60a5fa',
-      avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/3aecb399-e583-41d5-985a-e2e2860ae531-profile_image-150x150.png',
+      avatar: 'images/logo.png',
       frame: 'images/frames/aurora.png',
       badges: [BADGE_URLS[2]]
     },
     PitBear: {
       name: 'PitBear',
       color: '#f97316',
-      avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/3aecb399-e583-41d5-985a-e2e2860ae531-profile_image-150x150.png',
+      avatar: 'images/logo.png',
       frame: 'images/frames/dusk_and_dawn.png',
       badges: [BADGE_URLS[3], BADGE_URLS[4], BADGE_URLS[5]]
     },
     PirateDropout: {
       name: 'PirateDropout',
       color: '#d946ef',
-      avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/3aecb399-e583-41d5-985a-e2e2860ae531-profile_image-150x150.png',
+      avatar: 'images/logo.png',
       frame: 'images/frames/dragon_balls.png',
       badges: [BADGE_URLS[6], BADGE_URLS[7]]
     }
