@@ -90,22 +90,16 @@ export default async function init({ hub, root, utils }) {
     e.preventDefault();
     const mod = link.getAttribute('data-module');
     if (mod === 'profile') {
-      hub.api['profile-overlay'].show(currentUser);
+      const rect = link.getBoundingClientRect();
+      hub.api['mini-profile'].show(
+        currentUser,
+        rect.left + rect.width / 2 + window.scrollX,
+        rect.bottom + window.scrollY
+      );
     } else if (mod) {
       window.LoadMainModule(mod);
     }
   });
-
-  utils.delegate(
-    root,
-    'click',
-    '.navigation-avatar, .navigation-large-profile .avatar-wrap, .navigation-large-profile .user-name',
-    (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      hub.api['profile-overlay'].show(currentUser);
-    }
-  );
 
   // Tooltip handling for compact navigation
   let tooltip;

@@ -9,9 +9,10 @@ export default async function init({ hub, root, utils }) {
     support:
       '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M11.645 20.353a.75.75 0 0 0 .71 0 45.956 45.956 0 0 0 1.035-.62c1.588-.977 3.267-2.015 4.825-3.152C21.247 14.73 23 12.537 23 9.943 23 7.206 20.955 5 18.352 5c-1.542 0-3.01.876-3.708 2.18a.75.75 0 0 1-1.288 0C12.655 5.876 11.187 5 9.645 5 7.043 5 5 7.206 5 9.943c0 2.594 1.753 4.786 3.785 6.638 1.558 1.137 3.237 2.175 4.825 3.152.345.212.689.42 1.035.62Z" clip-rule="evenodd"/></svg>',
     shop:
-      '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M7.5 6v.75H5.513c-.96 0-1.764.724-1.865 1.679l-1.263 12A1.875 1.875 0 0 0 4.25 22.5h15.5a1.875 1.875 0 0 0 1.865-2.071l-1.263-12a1.875 1.875 0 0 0-1.865-1.679H16.5V6a4.5 4.5 0 1 0-9 0ZM12 3a3 3 0 0 0-3 3v.75h6V6a3 3 0 0 0-3-3Zm-3 8.25a3 3 0 1 0 6 0v-.75a.75.75 0 0 1 1.5 0v.75a4.5 4.5 0 1 1-9 0v-.75a.75.75 0 0 1 1.5 0v.75Z" clip-rule="evenodd"/></svg>'
+      '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M7.5 6v.75H5.513c-.964 0-1.764.724-1.865 1.679l-1.263 12A1.875 1.875 0 0 0 4.25 22.5h15.5a1.875 1.875 0 0 0 1.865-2.071l-1.263-12a1.875 1.875 0 0 0-1.865-1.679H16.5V6a4.5 4.5 0 1 0-9 0ZM12 3a3 3 0 0 0-3 3v.75h6V6a3 3 0 0 0-3-3Zm-3 8.25a3 3 0 1 0 6 0v-.75a.75.75 0 0 1 1.5 0v.75a4.5 4.5 0 1 1-9 0v-.75a.75.75 0 0 1 1.5 0v.75Z" clip-rule="evenodd"/></svg>',
+    stream:
+      '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5 3.5v17l14-8.5-14-8.5Z"/></svg>'
   };
-
   root.innerHTML = `
     <div class="mini-profile hidden" role="dialog" aria-modal="false" aria-hidden="true">
       <div class="mp-banner"></div>
@@ -106,6 +107,9 @@ export default async function init({ hub, root, utils }) {
       actions.innerHTML += `<button class="mp-action support">${icons.support}<span>Support</span></button>`;
     }
     actions.innerHTML += `<button class="mp-action shop">${icons.shop}<span>Shop</span></button>`;
+    if (user.streaming) {
+      actions.innerHTML += `<button class="mp-action stream">${icons.stream}<span>View Stream</span></button>`;
+    }
     if (user.badges && user.badges.length) {
       badgesEl.innerHTML = user.badges.slice(0,5).map((b) => `<img src="${b}" alt="badge" />`).join('');
       badgesEl.style.display = 'flex';
@@ -165,6 +169,7 @@ export default async function init({ hub, root, utils }) {
       const full = await getUserByToken(user.token).catch(() => ({}));
       user = { ...full, ...user };
     }
+    user.streaming = user.streaming || !!(user.status && user.status.streaming);
     fill(user);
     position(x, y);
     card.classList.add('visible');
@@ -185,7 +190,8 @@ export default async function init({ hub, root, utils }) {
     if (e.key === 'Escape') hide();
   });
 
-  utils.delegate(document, 'contextmenu', '[data-profile-name]', (e, el) => {
+  utils.delegate(document, 'click', '[data-profile-name]', (e, el) => {
+    if (e.button !== 0) return;
     e.preventDefault();
     const user = {
       name: el.dataset.profileName,
@@ -205,30 +211,6 @@ export default async function init({ hub, root, utils }) {
       streaming: el.dataset.profileStreaming === 'true'
     };
     show(user, e.pageX, e.pageY);
-  });
-
-  utils.delegate(document, 'click', '[data-profile-name]', (e, el) => {
-    if (e.button !== 0) return;
-    e.preventDefault();
-    hide();
-    const user = {
-      name: el.dataset.profileName,
-      token: el.dataset.profileToken,
-      avatar: el.dataset.profileAvatar,
-      banner: el.dataset.profileBanner,
-      accent: el.dataset.profileAccent,
-      frame: el.dataset.profileFrame,
-      bio: el.dataset.profileBio,
-      memberSince: el.dataset.profileSince,
-      connections: el.dataset.profileConnections
-        ? el.dataset.profileConnections.split(',')
-        : [],
-      badges: el.dataset.profileBadges
-        ? el.dataset.profileBadges.split(',')
-        : [],
-      streaming: el.dataset.profileStreaming === 'true'
-    };
-    hub.api['profile-overlay'].show(user);
   });
 
   return { show, hide };

@@ -28,15 +28,9 @@ export default async function init({ hub, root, utils }) {
   `;
 
   utils.delegate(root, 'click', '.user-rail-item', (e, el) => {
-    e.stopPropagation();
     root.querySelectorAll('.user-rail-item.active').forEach(item => item.classList.remove('active'));
     el.classList.add('active');
     el.classList.remove('has-notification');
-    const index = parseInt(el.dataset.index, 10);
-    const user = users[index];
-    if (user) {
-      hub.api['profile-overlay'].show(user);
-    }
   });
 
   return {};
