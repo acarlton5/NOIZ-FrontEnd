@@ -16,7 +16,7 @@ export default async function init({ hub, root, utils }) {
 
   root.innerHTML = `
     <nav class="navigation-small" data-role="small">
-      <a href="#" class="navigation-avatar avatar-wrap" style="--avi-width:48px; --avi-height:48px; --frame:url('${currentUser.frame}');">
+      <a href="#" class="navigation-avatar avatar-wrap" style="--avi-width:48px; --avi-height:48px; --frame:url('${currentUser.frame}');" data-profile-name="${currentUser.name}" data-profile-avatar="${currentUser.avatar}" data-profile-banner="${currentUser.banner}" data-profile-accent="${currentUser.accent}" data-profile-frame="${currentUser.frame}">
         <img
           class="avatar-image"
           src="${currentUser.avatar}"
@@ -44,14 +44,14 @@ export default async function init({ hub, root, utils }) {
           alt=""
           aria-hidden="true"
         />
-        <div class="avatar-wrap" style="--avi-width:90px; --avi-height:90px; --frame:url('${currentUser.frame}');">
+        <div class="avatar-wrap" style="--avi-width:90px; --avi-height:90px; --frame:url('${currentUser.frame}');" data-profile-name="${currentUser.name}" data-profile-avatar="${currentUser.avatar}" data-profile-banner="${currentUser.banner}" data-profile-accent="${currentUser.accent}" data-profile-frame="${currentUser.frame}">
           <img
             class="avatar-image"
             src="${currentUser.avatar}"
             alt="${currentUser.name}"
           />
         </div>
-        <h3 class="user-name">${currentUser.name}</h3>
+        <h3 class="user-name" data-profile-name="${currentUser.name}" data-profile-avatar="${currentUser.avatar}" data-profile-banner="${currentUser.banner}" data-profile-accent="${currentUser.accent}" data-profile-frame="${currentUser.frame}">${currentUser.name}</h3>
         <p class="user-url">www.gamehuntress.com</p>
         <ul class="profile-stats">
           <li class="profile-stat"><span class="stat-value">930</span><span class="stat-label">Posts</span></li>
@@ -98,7 +98,6 @@ export default async function init({ hub, root, utils }) {
 
   utils.delegate(root, 'click', '.navigation-avatar', (e) => {
     e.preventDefault();
-    window.LoadMainModule('profile', { user: currentUser });
   });
 
   // Tooltip handling for compact navigation

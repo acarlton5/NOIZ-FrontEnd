@@ -16,7 +16,7 @@ export default async function init({ root, utils }) {
         ${users
           .map(
             (u, i) => `
-        <li class="user-rail-item${u.hasNotification ? ' has-notification' : ''}" data-index="${i}" style="--accent:${u.accent};">
+        <li class="user-rail-item${u.hasNotification ? ' has-notification' : ''}" data-index="${i}" style="--accent:${u.accent};" data-profile-name="${u.name}" data-profile-avatar="${u.avatar}" data-profile-banner="${u.banner}" data-profile-accent="${u.accent}" data-profile-frame="${u.frame}">
           <div class="avatar-wrap" style="--frame:url('${u.frame}');">
             <img class="avatar-image" src="${u.avatar}" alt="${u.name}">
           </div>
@@ -31,8 +31,6 @@ export default async function init({ root, utils }) {
     root.querySelectorAll('.user-rail-item.active').forEach(item => item.classList.remove('active'));
     el.classList.add('active');
     el.classList.remove('has-notification');
-    const u = users[parseInt(el.getAttribute('data-index'), 10)];
-    window.LoadMainModule('profile', { user: u });
   });
 
   return {};

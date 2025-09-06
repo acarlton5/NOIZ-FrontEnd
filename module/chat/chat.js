@@ -16,12 +16,12 @@ const messageTpl = (m) => {
   if (m.type === 'sticker') {
     return `
       <div class="chat-message sticker">
-        <span class="msg-avatar avatar-wrap">
+        <span class="msg-avatar avatar-wrap" data-profile-name="${m.user}" data-profile-avatar="${m.avatar || ''}">
           ${m.avatar ? `<img class="avatar-image" src="${m.avatar}" alt="${m.user}">` : `<span class="avatar-letter" style="background:${m.avatarColor || '#933'}">${(m.user || '?')[0]}</span>`}
         </span>
         <div class="msg-body">
         <div class="msg-header">
-          <span class="name" style="color:${m.color || '#333'}">${m.user}</span>
+          <span class="name" style="color:${m.color || '#333'}" data-profile-name="${m.user}" data-profile-avatar="${m.avatar || ''}">${m.user}</span>
           <span class="time">${m.time}</span>
         </div>
           <div class="sticker-meta">
@@ -34,17 +34,17 @@ const messageTpl = (m) => {
     `;
   }
   return `
-    <div class="chat-message">
-      <span class="msg-avatar avatar-wrap">
-        ${m.avatar ? `<img class="avatar-image" src="${m.avatar}" alt="${m.user}">` : `<span class="avatar-letter" style="background:${m.avatarColor || '#933'}">${(m.user || '?')[0]}</span>`}
-      </span>
-      <div class="msg-body">
-        <div class="msg-header">
-          <div class="user-meta">
-            <span class="name" style="color:${m.color || '#333'}">${m.user}</span>
-            ${m.badges && m.badges.length ? `<span class="badges">${m.badges.slice(0,5).map((b) => `<img src="${b}" alt="badge" />`).join('')}</span>` : ''}
-          </div>
-          <span class="time">${m.time}</span>
+      <div class="chat-message">
+        <span class="msg-avatar avatar-wrap" data-profile-name="${m.user}" data-profile-avatar="${m.avatar || ''}">
+          ${m.avatar ? `<img class="avatar-image" src="${m.avatar}" alt="${m.user}">` : `<span class="avatar-letter" style="background:${m.avatarColor || '#933'}">${(m.user || '?')[0]}</span>`}
+        </span>
+        <div class="msg-body">
+          <div class="msg-header">
+            <div class="user-meta">
+              <span class="name" style="color:${m.color || '#333'}" data-profile-name="${m.user}" data-profile-avatar="${m.avatar || ''}">${m.user}</span>
+              ${m.badges && m.badges.length ? `<span class="badges">${m.badges.slice(0,5).map((b) => `<img src="${b}" alt="badge" />`).join('')}</span>` : ''}
+            </div>
+            <span class="time">${m.time}</span>
         </div>
         <div class="text">${m.text}</div>
       </div>
