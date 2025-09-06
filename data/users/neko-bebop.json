@@ -33,10 +33,10 @@
     "images/badges/vip.png",
     "images/badges/clipper.png"
   ],
-  "following": [1, 2],
-  "followers": [1, 2, 4],
-  "subscribedTo": [1],
-  "subscribers": [1, 2],
+  "following": ["john-viking", "marina-valentine"],
+  "followers": ["john-viking", "marina-valentine", "nick-grissom"],
+  "subscribedTo": ["john-viking"],
+  "subscribers": ["john-viking", "marina-valentine"],
   "lang": "en",
   "status": {
     "streaming": {

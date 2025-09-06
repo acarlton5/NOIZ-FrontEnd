@@ -33,10 +33,10 @@
     "images/badges/vip.png",
     "images/badges/clipper.png"
   ],
-  "following": [3, 4, 5],
-  "followers": [2, 3],
-  "subscribedTo": [2, 3],
-  "subscribers": [3],
+  "following": ["neko-bebop", "nick-grissom", "sarah-diamond"],
+  "followers": ["marina-valentine", "neko-bebop"],
+  "subscribedTo": ["marina-valentine", "neko-bebop"],
+  "subscribers": ["neko-bebop"],
   "lang": "en",
   "status": {
     "streaming": null,
