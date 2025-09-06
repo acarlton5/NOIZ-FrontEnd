@@ -5,36 +5,76 @@ export default async function init({ hub, root, utils }) {
       <div class="mp-accent"></div>
       <div class="mp-body">
         <div class="mp-avatar"><img alt="" /></div>
-        <div class="mp-meta">
-          <div class="mp-name-line">
-            <span class="mp-display"></span>
-          </div>
-          <div class="mp-status-line">
-            <span class="status-dot" data-status="offline"></span>
-            <span class="mp-status-text">Offline</span>
-          </div>
+        <h2 class="mp-name"></h2>
+        <p class="mp-tagline"></p>
+        <button class="mp-edit">Edit Profile</button>
+        <div class="mp-section mp-about-section">
+          <h3>About Me</h3>
+          <p class="mp-about"></p>
+        </div>
+        <div class="mp-section mp-member">
+          <h3>Member Since</h3>
+          <p class="mp-member-date"></p>
+        </div>
+        <div class="mp-section mp-connections">
+          <h3>Connections</h3>
+          <div class="mp-conn-list"></div>
+        </div>
+        <div class="mp-section mp-note">
+          <h3>Note</h3>
+          <p class="mp-note-text">Click to add a note</p>
         </div>
       </div>
-      <div class="mp-actions"></div>
     </div>
   `;
 
   const card = root.querySelector('.mini-profile');
   const banner = card.querySelector('.mp-banner');
   const avatarImg = card.querySelector('.mp-avatar img');
-  const display = card.querySelector('.mp-display');
+  const nameEl = card.querySelector('.mp-name');
+  const tagEl = card.querySelector('.mp-tagline');
+  const aboutSection = card.querySelector('.mp-about-section');
+  const aboutEl = card.querySelector('.mp-about');
+  const memberDateEl = card.querySelector('.mp-member-date');
+  const connList = card.querySelector('.mp-conn-list');
 
-  function fill(user) {
+  function fill(user = {}) {
     card.style.setProperty('--accent', user.accent || '#5865f2');
     card.style.setProperty('--frame', user.frame ? `url('${user.frame}')` : 'none');
-    if (user.banner) {
-      banner.style.backgroundImage = `url("${user.banner}")`;
-    } else {
-      banner.style.backgroundImage = 'none';
-    }
+    banner.style.backgroundImage = user.banner ? `url("${user.banner}")` : 'none';
     avatarImg.src = user.avatar || '';
     avatarImg.alt = user.name || '';
-    display.textContent = user.name || 'Unknown';
+    nameEl.textContent = user.name || '';
+    if (user.slug) {
+      tagEl.textContent = `@${user.slug}`;
+      tagEl.style.display = 'block';
+    } else {
+      tagEl.textContent = '';
+      tagEl.style.display = 'none';
+    }
+    if (user.about) {
+      aboutEl.textContent = user.about;
+      aboutSection.style.display = 'block';
+    } else {
+      aboutEl.textContent = '';
+      aboutSection.style.display = 'none';
+    }
+    if (user.memberSince) {
+      memberDateEl.textContent = user.memberSince;
+      memberDateEl.closest('.mp-member').style.display = 'block';
+    } else {
+      memberDateEl.textContent = '';
+      memberDateEl.closest('.mp-member').style.display = 'none';
+    }
+    if (user.connections && user.connections.length) {
+      connList.innerHTML = user.connections
+        .map((c) => `<img src="${c}" alt="connection" />`)
+        .join('');
+      connList.closest('.mp-connections').style.display = 'block';
+    } else {
+      connList.innerHTML = '';
+      connList.closest('.mp-connections').style.display = 'none';
+    }
   }
 
   function position(x, y) {
@@ -75,10 +115,16 @@ export default async function init({ hub, root, utils }) {
     e.preventDefault();
     const user = {
       name: el.dataset.profileName,
+      slug: el.dataset.profileSlug,
       avatar: el.dataset.profileAvatar,
       banner: el.dataset.profileBanner,
       accent: el.dataset.profileAccent,
       frame: el.dataset.profileFrame,
+      about: el.dataset.profileAbout,
+      memberSince: el.dataset.profileSince,
+      connections: el.dataset.profileConnections
+        ? el.dataset.profileConnections.split(',')
+        : [],
     };
     show(user, e.pageX, e.pageY);
   });
@@ -89,6 +135,7 @@ export default async function init({ hub, root, utils }) {
     hide();
     const user = {
       name: el.dataset.profileName,
+      slug: el.dataset.profileSlug,
       avatar: el.dataset.profileAvatar,
       banner: el.dataset.profileBanner,
       accent: el.dataset.profileAccent,

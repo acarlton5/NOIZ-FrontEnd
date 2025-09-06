@@ -8,6 +8,7 @@ export default async function init({ hub, root, utils }) {
           <div class="po-left-body">
             <div class="po-avatar"><img alt="" /></div>
             <h2 class="po-name"></h2>
+            <p class="po-tagline"></p>
             <button class="po-edit">Edit Profile</button>
             <div class="po-section po-about-section">
               <h3>About Me</h3>
@@ -64,6 +65,7 @@ export default async function init({ hub, root, utils }) {
   const banner = overlay.querySelector('.po-banner');
   const avatar = overlay.querySelector('.po-avatar img');
   const nameEl = overlay.querySelector('.po-name');
+  const tagEl = overlay.querySelector('.po-tagline');
   const aboutSection = overlay.querySelector('.po-about-section');
   const aboutEl = overlay.querySelector('.po-about');
   const memberDateEl = overlay.querySelector('.po-member-date');
@@ -80,6 +82,13 @@ export default async function init({ hub, root, utils }) {
     avatar.src = user.avatar || '';
     avatar.alt = user.name || '';
     nameEl.textContent = user.name || '';
+    if (user.slug) {
+      tagEl.textContent = `@${user.slug}`;
+      tagEl.style.display = 'block';
+    } else {
+      tagEl.textContent = '';
+      tagEl.style.display = 'none';
+    }
     aboutEl.textContent = user.about || '';
     aboutSection.style.display = user.about ? 'block' : 'none';
     aboutRight.textContent = user.about || 'Nothing to see here';
