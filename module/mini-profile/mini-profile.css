@@ -191,7 +191,30 @@ module[data-module="mini-profile"] .mini-profile .mp-activity-list {
 }
 
 module[data-module="mini-profile"] .mini-profile .mp-activity-list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f3f4f6;
+  border-radius: 4px;
+  padding: 6px 8px;
   font-size: 0.875rem;
   color: #1f2937;
+}
+
+module[data-module="mini-profile"] .mini-profile .mp-activity-list img {
+  width: 40px;
+  height: 24px;
+  object-fit: cover;
+  border-radius: 2px;
+}
+
+module[data-module="mini-profile"] .mini-profile .mp-activity-list .act-info {
+  display: flex;
+  flex-direction: column;
+}
+
+module[data-module="mini-profile"] .mini-profile .mp-activity-list .act-info span {
+  font-size: 0.75rem;
+  color: #6b7280;
 }
 

@@ -37,7 +37,7 @@ export default async function init({ hub, root, utils }) {
               <div class="po-conn-list"></div>
             </div>
             <div class="po-section po-activity">
-              <h3>Customizing My Profile</h3>
+              <h3>Activity</h3>
               <ul class="po-activity-list"></ul>
             </div>
             <div class="po-section po-note">
@@ -91,28 +91,53 @@ export default async function init({ hub, root, utils }) {
   const topicsPanel = overlay.querySelector('[data-panel="topics"]');
   const badgesPanel = overlay.querySelector('[data-panel="badges"]');
 
-  function activityLines(user = {}) {
-    const lines = [];
+  function activityCards(user = {}) {
+    const cards = [];
     const status = user.status || {};
+
     if (status.streaming) {
-      lines.push(`Streaming ${status.streaming.title || ''}`);
+      const s = status.streaming;
+      cards.push(
+        `<li class="activity-card streaming">${
+          s.thumbnailId ? `<img src="${s.thumbnailId}" alt="" />` : ''
+        }<div class="act-info"><strong>${s.title || 'Streaming'}</strong>${
+          s.viewers ? `<span>${s.viewers} viewers</span>` : ''
+        }</div></li>`
+      );
     } else if (status.online) {
       const entries = Object.entries(status.online).filter(([k, v]) => v);
       if (entries.length) {
         const [k, v] = entries[0];
-        lines.push(`${k.charAt(0).toUpperCase() + k.slice(1)} ${v}`);
+        cards.push(
+          `<li class="activity-card online"><div class="act-info"><strong>${
+            k.charAt(0).toUpperCase() + k.slice(1)
+          }</strong><span>${v}</span></div></li>`
+        );
       } else {
-        lines.push('Online');
+        cards.push(
+          '<li class="activity-card online"><div class="act-info"><strong>Online</strong></div></li>'
+        );
       }
     } else if (status.away !== null) {
-      lines.push('Away');
+      cards.push(
+        '<li class="activity-card away"><div class="act-info"><strong>Away</strong></div></li>'
+      );
     } else if (status.dnd !== null) {
-      lines.push('Do Not Disturb');
+      cards.push(
+        '<li class="activity-card dnd"><div class="act-info"><strong>Do Not Disturb</strong></div></li>'
+      );
     }
+
     if (user.hosting) {
-      lines.push(`Hosting ${user.hosting.title || ''}`);
+      const h = user.hosting;
+      cards.push(
+        `<li class="activity-card hosting">${
+          h.thumbnailId ? `<img src="${h.thumbnailId}" alt="" />` : ''
+        }<div class="act-info"><strong>Hosting ${h.title || ''}</strong></div></li>`
+      );
     }
-    return lines;
+
+    return cards;
   }
 
   function fill(user = {}) {
@@ -162,9 +187,9 @@ export default async function init({ hub, root, utils }) {
       connList.closest('.po-connections').style.display = 'none';
     }
 
-    const acts = activityLines(user);
+    const acts = activityCards(user);
     if (acts.length) {
-      activityList.innerHTML = acts.map((a) => `<li>${a}</li>`).join('');
+      activityList.innerHTML = acts.join('');
       activitySection.style.display = 'block';
     } else {
       activityList.innerHTML = '';
@@ -224,6 +249,7 @@ export default async function init({ hub, root, utils }) {
       const full = await getUserByToken(user.token).catch(() => ({}));
       user = { ...full, ...user };
     }
+    user.streaming = user.streaming || !!(user.status && user.status.streaming);
     fill(user);
     switchTab('topics');
     overlay.classList.remove('hidden');
