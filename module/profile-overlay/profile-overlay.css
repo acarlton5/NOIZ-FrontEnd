@@ -131,10 +131,6 @@ module[data-module="profile-overlay"] .po-action {
   cursor: pointer;
 }
 
-module[data-module="profile-overlay"] .po-action.icon-only {
-  padding: 6px;
-}
-
 module[data-module="profile-overlay"] .po-action svg {
   width: 16px;
   height: 16px;
@@ -241,36 +237,8 @@ module[data-module="profile-overlay"] .po-panel.active {
   display: block;
 }
 
-module[data-module="profile-overlay"] .po-activity {
+module[data-module="profile-overlay"] .po-empty {
   text-align: center;
   color: #6b7280;
   padding: 40px 0;
-}
-
-module[data-module="profile-overlay"] .po-activity-head {
-  font-size: 1rem;
-  font-weight: 600;
-  color: #1f2937;
-}
-
-module[data-module="profile-overlay"] .po-activity-sub {
-  font-size: 0.875rem;
-  margin-top: 4px;
-}
-
-module[data-module="profile-overlay"] .po-activity-actions {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin-top: 24px;
-}
-
-module[data-module="profile-overlay"] .po-btn {
-  background: #f3f4f6;
-  border: 1px solid #e5e7eb;
-  padding: 8px 12px;
-  border-radius: 4px;
-  font-weight: 600;
-  color: #1f2937;
-  cursor: pointer;
 }

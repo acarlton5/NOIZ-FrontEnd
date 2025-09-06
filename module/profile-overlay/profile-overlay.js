@@ -2,10 +2,12 @@ export default async function init({ hub, root, utils }) {
   const loggedIn = await fetch('/data/logged-in.json').then(r => r.json()).catch(() => null);
 
   const icons = {
-    edit: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.731 2.269a2.625 2.625 0 0 0-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 0 0 0-3.712ZM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 0 0-1.32 2.214l-.8 2.685a.75.75 0 0 0 .933.933l2.685-.8a5.25 5.25 0 0 0 2.214-1.32l12.15-12.15Z"/></svg>',
-    shop: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M7.5 6v.75H5.513c-.96 0-1.764.724-1.865 1.679l-1.263 12A1.875 1.875 0 0 0 4.25 22.5h15.5a1.875 1.875 0 0 0 1.865-2.071l-1.263-12a1.875 1.875 0 0 0-1.865-1.679H16.5V6a4.5 4.5 0 1 0-9 0ZM12 3a3 3 0 0 0-3 3v.75h6V6a3 3 0 0 0-3-3Zm-3 8.25a3 3 0 1 0 6 0v-.75a.75.75 0 0 1 1.5 0v.75a4.5 4.5 0 1 1-9 0v-.75a.75.75 0 0 1 1.5 0v.75Z" clip-rule="evenodd"/></svg>',
-    chat: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M4.848 2.771A49.144 49.144 0 0 1 12 2.25c2.43 0 4.817.178 7.152.52 1.978.292 3.348 2.024 3.348 3.97v6.02c0 1.946-1.37 3.678-3.348 3.97-1.94.284-3.916.455-5.922.505a.39.39 0 0 0-.266.112L8.78 21.53A.75.75 0 0 1 7.5 21v-3.955a48.842 48.842 0 0 1-2.652-.316c-1.978-.29-3.348-2.024-3.348-3.97V6.741c0-1.946 1.37-3.68 3.348-3.97Z" clip-rule="evenodd"/></svg>',
-    stream: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.5 4.5a3 3 0 0 0-3 3v9a3 3 0 0 0 3 3h8.25a3 3 0 0 0 3-3v-9a3 3 0 0 0-3-3H4.5ZM19.94 18.75l-2.69-2.69V7.94l2.69-2.69c.944-.945 2.56-.276 2.56 1.06v11.38c0 1.336-1.616 2.005-2.56 1.06Z"/></svg>'
+    follow:
+      '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"/><path fill-rule="evenodd" d="M12 14a7 7 0 0 0-7 7 .75.75 0 0 0 1.5 0 5.5 5.5 0 0 1 11 0 .75.75 0 0 0 1.5 0 7 7 0 0 0-7-7Z" clip-rule="evenodd"/><path d="M19 7a1 1 0 1 0 0-2h-1V4a1 1 0 1 0-2 0v1h-1a1 1 0 1 0 0 2h1v1a1 1 0 1 0 2 0V7h1Z"/></svg>',
+    support:
+      '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M11.645 20.353a.75.75 0 0 0 .71 0 45.956 45.956 0 0 0 1.035-.62c1.588-.977 3.267-2.015 4.825-3.152C21.247 14.73 23 12.537 23 9.943 23 7.206 20.955 5 18.352 5c-1.542 0-3.01.876-3.708 2.18a.75.75 0 0 1-1.288 0C12.655 5.876 11.187 5 9.645 5 7.043 5 5 7.206 5 9.943c0 2.594 1.753 4.786 3.785 6.638 1.558 1.137 3.237 2.175 4.825 3.152.345.212.689.42 1.035.62Z" clip-rule="evenodd"/></svg>',
+    shop:
+      '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M7.5 6v.75H5.513c-.96 0-1.764.724-1.865 1.679l-1.263 12A1.875 1.875 0 0 0 4.25 22.5h15.5a1.875 1.875 0 0 0 1.865-2.071l-1.263-12a1.875 1.875 0 0 0-1.865-1.679H16.5V6a4.5 4.5 0 1 0-9 0ZM12 3a3 3 0 0 0-3 3v.75h6V6a3 3 0 0 0-3-3Zm-3 8.25a3 3 0 1 0 6 0v-.75a.75.75 0 0 1 1.5 0v.75a4.5 4.5 0 1 1-9 0v-.75a.75.75 0 0 1 1.5 0v.75Z" clip-rule="evenodd"/></svg>'
   };
 
   root.innerHTML = `
@@ -40,26 +42,19 @@ export default async function init({ hub, root, utils }) {
 
         <div class="po-right">
           <div class="po-tabs">
-            <button class="po-tab active" data-tab="activity">Activity</button>
-            <button class="po-tab" data-tab="about">About</button>
-            <button class="po-tab" data-tab="mutual">Mutual</button>
+            <button class="po-tab active" data-tab="topics">Topics</button>
+            <button class="po-tab" data-tab="badges">Badges</button>
+            <button class="po-tab" data-tab="members">Members</button>
           </div>
           <div class="po-panels">
-            <div class="po-panel active" data-panel="activity">
-              <div class="po-activity">
-                <p class="po-activity-head">You don't have any activity here</p>
-                <p class="po-activity-sub">Connect accounts to show off your game status, see what friends are playing and more.</p>
-                <div class="po-activity-actions">
-                  <button class="po-btn">Connect Accounts</button>
-                  <button class="po-btn">Add Game</button>
-                </div>
-              </div>
+            <div class="po-panel active" data-panel="topics">
+              <p class="po-empty">No topics to show.</p>
             </div>
-            <div class="po-panel" data-panel="about">
-              <p class="po-about-right"></p>
+            <div class="po-panel" data-panel="badges">
+              <p class="po-empty">No badges to show.</p>
             </div>
-            <div class="po-panel" data-panel="mutual">
-              <p class="po-empty">No mutuals to show.</p>
+            <div class="po-panel" data-panel="members">
+              <p class="po-empty">No members to show.</p>
             </div>
           </div>
           <div class="po-footer">
@@ -83,7 +78,6 @@ export default async function init({ hub, root, utils }) {
   const closeBtn = overlay.querySelector('.po-close');
   const tabs = overlay.querySelectorAll('.po-tab');
   const panels = overlay.querySelectorAll('.po-panel');
-  const aboutRight = overlay.querySelector('.po-about-right');
 
   function fill(user = {}) {
     overlay.style.setProperty('--accent', user.accent || '#5865f2');
@@ -101,18 +95,14 @@ export default async function init({ hub, root, utils }) {
     }
     aboutEl.textContent = user.about || '';
     aboutSection.style.display = user.about ? 'block' : 'none';
-    aboutRight.textContent = user.about || 'Nothing to see here';
 
     actions.innerHTML = '';
     const isSelf = user.slug === loggedIn;
-    if (isSelf) {
-      actions.innerHTML += `<button class="po-action edit">${icons.edit}<span>Edit Profile</span></button>`;
+    if (!isSelf) {
+      actions.innerHTML += `<button class="po-action follow">${icons.follow}<span>Follow</span></button>`;
+      actions.innerHTML += `<button class="po-action support">${icons.support}<span>Support</span></button>`;
     }
-    actions.innerHTML += `<button class="po-action icon-only shop" title="Shop">${icons.shop}</button>`;
-    actions.innerHTML += `<button class="po-action icon-only chat" title="Chat">${icons.chat}</button>`;
-    if (user.streaming) {
-      actions.innerHTML += `<button class="po-action icon-only stream" title="Stream">${icons.stream}</button>`;
-    }
+    actions.innerHTML += `<button class="po-action shop">${icons.shop}<span>Shop</span></button>`;
     if (user.memberSince) {
       memberDateEl.textContent = user.memberSince;
       memberDateEl.closest('.po-member').style.display = 'block';
@@ -141,7 +131,7 @@ export default async function init({ hub, root, utils }) {
 
   function show(user) {
     fill(user);
-    switchTab('activity');
+    switchTab('topics');
     overlay.classList.remove('hidden');
     overlay.classList.add('visible');
   }

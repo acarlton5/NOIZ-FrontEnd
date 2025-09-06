@@ -120,10 +120,6 @@ module[data-module="mini-profile"] .mini-profile .mp-action {
   cursor: pointer;
 }
 
-module[data-module="mini-profile"] .mini-profile .mp-action.icon-only {
-  padding: 6px;
-}
-
 module[data-module="mini-profile"] .mini-profile .mp-action svg {
   width: 16px;
   height: 16px;
