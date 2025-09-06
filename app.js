@@ -171,8 +171,11 @@ async function loadServices() {
 }
 await loadServices();
 
+// Determine the currently mounted main module, ignoring persistent overlays
 let activeMainModule =
-  document.querySelector('main module[data-module]')?.getAttribute('data-module') ||
+  document
+    .querySelector('main module[data-module]:not([data-module="profile-overlay"])')
+    ?.getAttribute('data-module') ||
   null;
 async function LoadMainModule(name, props = {}) {
   if (!name) return;

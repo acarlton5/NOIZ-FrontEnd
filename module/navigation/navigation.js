@@ -16,7 +16,7 @@ export default async function init({ hub, root, utils }) {
 
   root.innerHTML = `
     <nav class="navigation-small" data-role="small">
-      <a href="#" class="navigation-avatar avatar-wrap" style="--avi-width:48px; --avi-height:48px; --frame:url('${currentUser.frame}');">
+      <a href="#" class="navigation-avatar avatar-wrap" style="--avi-width:48px; --avi-height:48px; --frame:url('${currentUser.frame}');" data-profile-name="${currentUser.name}" data-profile-slug="${currentUser.slug}" data-profile-avatar="${currentUser.avatar}" data-profile-banner="${currentUser.banner}" data-profile-accent="${currentUser.accent}" data-profile-frame="${currentUser.frame}" data-profile-about="${currentUser.about || ''}" data-profile-since="${currentUser.memberSince || ''}" data-profile-connections="${(currentUser.connections || []).join(',')}" data-profile-badges="${(currentUser.badges || []).join(',')}" data-profile-streaming="${currentUser.streaming ? 'true' : 'false'}">
         <img
           class="avatar-image"
           src="${currentUser.avatar}"
@@ -44,14 +44,14 @@ export default async function init({ hub, root, utils }) {
           alt=""
           aria-hidden="true"
         />
-        <div class="avatar-wrap" style="--avi-width:90px; --avi-height:90px; --frame:url('${currentUser.frame}');">
+        <div class="avatar-wrap" style="--avi-width:90px; --avi-height:90px; --frame:url('${currentUser.frame}');" data-profile-name="${currentUser.name}" data-profile-slug="${currentUser.slug}" data-profile-avatar="${currentUser.avatar}" data-profile-banner="${currentUser.banner}" data-profile-accent="${currentUser.accent}" data-profile-frame="${currentUser.frame}" data-profile-about="${currentUser.about || ''}" data-profile-since="${currentUser.memberSince || ''}" data-profile-connections="${(currentUser.connections || []).join(',')}" data-profile-badges="${(currentUser.badges || []).join(',')}" data-profile-streaming="${currentUser.streaming ? 'true' : 'false'}">
           <img
             class="avatar-image"
             src="${currentUser.avatar}"
             alt="${currentUser.name}"
           />
         </div>
-        <h3 class="user-name">${currentUser.name}</h3>
+        <h3 class="user-name" data-profile-name="${currentUser.name}" data-profile-slug="${currentUser.slug}" data-profile-avatar="${currentUser.avatar}" data-profile-banner="${currentUser.banner}" data-profile-accent="${currentUser.accent}" data-profile-frame="${currentUser.frame}" data-profile-about="${currentUser.about || ''}" data-profile-since="${currentUser.memberSince || ''}" data-profile-connections="${(currentUser.connections || []).join(',')}" data-profile-badges="${(currentUser.badges || []).join(',')}" data-profile-streaming="${currentUser.streaming ? 'true' : 'false'}">${currentUser.name}</h3>
         <p class="user-url">www.gamehuntress.com</p>
         <ul class="profile-stats">
           <li class="profile-stat"><span class="stat-value">930</span><span class="stat-label">Posts</span></li>
@@ -90,16 +90,22 @@ export default async function init({ hub, root, utils }) {
     e.preventDefault();
     const mod = link.getAttribute('data-module');
     if (mod === 'profile') {
-      window.LoadMainModule('profile', { user: currentUser });
+      hub.api['profile-overlay'].show(currentUser);
     } else if (mod) {
       window.LoadMainModule(mod);
     }
   });
 
-  utils.delegate(root, 'click', '.navigation-avatar', (e) => {
-    e.preventDefault();
-    window.LoadMainModule('profile', { user: currentUser });
-  });
+  utils.delegate(
+    root,
+    'click',
+    '.navigation-avatar, .navigation-large-profile .avatar-wrap, .navigation-large-profile .user-name',
+    (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      hub.api['profile-overlay'].show(currentUser);
+    }
+  );
 
   // Tooltip handling for compact navigation
   let tooltip;
