@@ -1,4 +1,13 @@
 export default async function init({ hub, root, utils }) {
+  const loggedIn = await fetch('/data/logged-in.json').then(r => r.json()).catch(() => null);
+
+  const icons = {
+    edit: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.731 2.269a2.625 2.625 0 0 0-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 0 0 0-3.712ZM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 0 0-1.32 2.214l-.8 2.685a.75.75 0 0 0 .933.933l2.685-.8a5.25 5.25 0 0 0 2.214-1.32l12.15-12.15Z"/></svg>',
+    shop: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M7.5 6v.75H5.513c-.96 0-1.764.724-1.865 1.679l-1.263 12A1.875 1.875 0 0 0 4.25 22.5h15.5a1.875 1.875 0 0 0 1.865-2.071l-1.263-12a1.875 1.875 0 0 0-1.865-1.679H16.5V6a4.5 4.5 0 1 0-9 0ZM12 3a3 3 0 0 0-3 3v.75h6V6a3 3 0 0 0-3-3Zm-3 8.25a3 3 0 1 0 6 0v-.75a.75.75 0 0 1 1.5 0v.75a4.5 4.5 0 1 1-9 0v-.75a.75.75 0 0 1 1.5 0v.75Z" clip-rule="evenodd"/></svg>',
+    chat: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M4.848 2.771A49.144 49.144 0 0 1 12 2.25c2.43 0 4.817.178 7.152.52 1.978.292 3.348 2.024 3.348 3.97v6.02c0 1.946-1.37 3.678-3.348 3.97-1.94.284-3.916.455-5.922.505a.39.39 0 0 0-.266.112L8.78 21.53A.75.75 0 0 1 7.5 21v-3.955a48.842 48.842 0 0 1-2.652-.316c-1.978-.29-3.348-2.024-3.348-3.97V6.741c0-1.946 1.37-3.68 3.348-3.97Z" clip-rule="evenodd"/></svg>',
+    stream: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.5 4.5a3 3 0 0 0-3 3v9a3 3 0 0 0 3 3h8.25a3 3 0 0 0 3-3v-9a3 3 0 0 0-3-3H4.5ZM19.94 18.75l-2.69-2.69V7.94l2.69-2.69c.944-.945 2.56-.276 2.56 1.06v11.38c0 1.336-1.616 2.005-2.56 1.06Z"/></svg>'
+  };
+
   root.innerHTML = `
     <div class="mini-profile hidden" role="dialog" aria-modal="false" aria-hidden="true">
       <div class="mp-banner"></div>
@@ -7,7 +16,7 @@ export default async function init({ hub, root, utils }) {
         <div class="mp-avatar"><img alt="" /></div>
         <h2 class="mp-name"></h2>
         <p class="mp-tagline"></p>
-        <button class="mp-edit">Edit Profile</button>
+        <div class="mp-actions"></div>
         <div class="mp-section mp-about-section">
           <h3>About Me</h3>
           <p class="mp-about"></p>
@@ -33,6 +42,7 @@ export default async function init({ hub, root, utils }) {
   const avatarImg = card.querySelector('.mp-avatar img');
   const nameEl = card.querySelector('.mp-name');
   const tagEl = card.querySelector('.mp-tagline');
+  const actions = card.querySelector('.mp-actions');
   const aboutSection = card.querySelector('.mp-about-section');
   const aboutEl = card.querySelector('.mp-about');
   const memberDateEl = card.querySelector('.mp-member-date');
@@ -51,6 +61,17 @@ export default async function init({ hub, root, utils }) {
     } else {
       tagEl.textContent = '';
       tagEl.style.display = 'none';
+    }
+
+    actions.innerHTML = '';
+    const isSelf = user.slug === loggedIn;
+    if (isSelf) {
+      actions.innerHTML += `<button class="mp-action edit">${icons.edit}<span>Edit Profile</span></button>`;
+    }
+    actions.innerHTML += `<button class="mp-action icon-only shop" title="Shop">${icons.shop}</button>`;
+    actions.innerHTML += `<button class="mp-action icon-only chat" title="Chat">${icons.chat}</button>`;
+    if (user.streaming) {
+      actions.innerHTML += `<button class="mp-action icon-only stream" title="Stream">${icons.stream}</button>`;
     }
     if (user.about) {
       aboutEl.textContent = user.about;
@@ -125,6 +146,7 @@ export default async function init({ hub, root, utils }) {
       connections: el.dataset.profileConnections
         ? el.dataset.profileConnections.split(',')
         : [],
+      streaming: el.dataset.profileStreaming === 'true'
     };
     show(user, e.pageX, e.pageY);
   });
@@ -145,6 +167,7 @@ export default async function init({ hub, root, utils }) {
       connections: el.dataset.profileConnections
         ? el.dataset.profileConnections.split(',')
         : [],
+      streaming: el.dataset.profileStreaming === 'true'
     };
     hub.api['profile-overlay'].show(user);
   });

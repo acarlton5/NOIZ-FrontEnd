@@ -112,15 +112,32 @@ module[data-module="profile-overlay"] .po-tagline {
   color: #6b7280;
 }
 
-module[data-module="profile-overlay"] .po-edit {
+module[data-module="profile-overlay"] .po-actions {
   margin-top: 8px;
-  background: #e5e7eb;
-  border: 1px solid #d1d5db;
+  display: flex;
+  gap: 8px;
+}
+
+module[data-module="profile-overlay"] .po-action {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
   color: #1f2937;
-  padding: 4px 8px;
+  padding: 6px 8px;
   font-size: 0.875rem;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
+}
+
+module[data-module="profile-overlay"] .po-action.icon-only {
+  padding: 6px;
+}
+
+module[data-module="profile-overlay"] .po-action svg {
+  width: 16px;
+  height: 16px;
 }
 
 module[data-module="profile-overlay"] .po-about {

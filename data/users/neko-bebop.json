@@ -8,6 +8,7 @@
   "slug": "neko-bebop",
   "about": "Cat cafe owner by day, NOIZ mod by night.",
   "memberSince": "July 2022",
+  "streaming": true,
   "connections": [
     "images/ui/follow.png",
     "images/ui/gift.png"
