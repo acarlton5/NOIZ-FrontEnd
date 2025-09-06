@@ -1,12 +1,13 @@
 {
+  "id": 3,
+  "token": "neko-bebop",
   "name": "Neko Bebop",
   "avatar": "https://odindesignthemes.com/vikinger/img/avatar/02.jpg",
   "frame": "https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/a_duck.png",
   "banner": "https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/nameplates/aurora.png",
   "hasNotification": false,
   "accent": "#8ab4ff",
-  "slug": "neko-bebop",
-  "about": "Cat cafe owner by day, NOIZ mod by night.",
+  "bio": "Cat cafe owner by day, NOIZ mod by night.",
   "memberSince": "July 2022",
   "streaming": true,
   "connections": [
@@ -19,5 +20,33 @@
     "images/badges/mod.png",
     "images/badges/vip.png",
     "images/badges/clipper.png"
-  ]
+  ],
+  "following": [1, 2],
+  "followers": [1, 2, 4],
+  "subscribedTo": [1],
+  "subscribers": [1, 2],
+  "lang": "en",
+  "status": {
+    "streaming": {
+      "id": "stream123",
+      "title": "Chill Cat Café",
+      "viewers": 220,
+      "weavers": 180,
+      "category": 42,
+      "audience": "everyone",
+      "costream": null,
+      "thumbnailId": "images/thumbs/catcafe.jpg",
+      "transcodes": []
+    },
+    "online": null,
+    "away": null,
+    "dnd": null
+  },
+  "hosting": null,
+  "set-badges": ["admin", "artist", "mod", "vip", "clipper"],
+  "earned-badges": ["admin", "artist", "mod", "vip", "clipper"],
+  "BadgeID": "mod",
+  "VODs": true,
+  "extensions": { "enabled": [], "disabled": [] },
+  "plugins": { "enabled": [], "disabled": [] }
 }

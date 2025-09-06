@@ -88,18 +88,18 @@ export default async function init({ hub, root, utils }) {
     avatar.src = user.avatar || '';
     avatar.alt = user.name || '';
     nameEl.textContent = user.name || '';
-    if (user.slug) {
-      tagEl.textContent = `@${user.slug}`;
+    if (user.token) {
+      tagEl.textContent = `@${user.token}`;
       tagEl.style.display = 'block';
     } else {
       tagEl.textContent = '';
       tagEl.style.display = 'none';
     }
-    aboutEl.textContent = user.about || '';
-    aboutSection.style.display = user.about ? 'block' : 'none';
+    aboutEl.textContent = user.bio || '';
+    aboutSection.style.display = user.bio ? 'block' : 'none';
 
     actions.innerHTML = '';
-    const isSelf = user.slug === loggedIn;
+    const isSelf = user.token === loggedIn;
     if (!isSelf) {
       actions.innerHTML += `<button class="po-action follow">${icons.follow}<span>Follow</span></button>`;
       actions.innerHTML += `<button class="po-action support">${icons.support}<span>Support</span></button>`;

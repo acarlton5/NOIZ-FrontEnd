@@ -1,6 +1,6 @@
-import { getUserBySlug } from '../users.js';
+import { getUserByToken } from '../users.js';
 
-const SLUGS = [
+const TOKENS = [
   'john-viking',
   'marina-valentine',
   'neko-bebop',
@@ -19,9 +19,9 @@ export default async function init({ hub }) {
     const q = term?.trim().toLowerCase();
     if (!q) return { members: [], modules: [] };
     try {
-      const users = (await Promise.all(SLUGS.map(getUserBySlug))).filter(Boolean);
+      const users = (await Promise.all(TOKENS.map(getUserByToken))).filter(Boolean);
       const members = users
-        .filter((u) => u.name.toLowerCase().includes(q) || u.slug.includes(q))
+        .filter((u) => u.name.toLowerCase().includes(q) || u.token.includes(q))
         .map((u) => ({ ...u, friendCount: 0 }));
       const modules = navModules.filter((m) => m.name.toLowerCase().includes(q));
       return { members, modules };

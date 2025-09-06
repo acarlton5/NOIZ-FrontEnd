@@ -1,13 +1,15 @@
 {
+  "id": 1,
+  "token": "john-viking",
   "name": "John Viking",
   "avatar": "https://odindesignthemes.com/vikinger/img/avatar/05.jpg",
   "frame": "https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/decorations/afternoon_breeze.png",
   "banner": "https://cdn.jsdelivr.net/gh/itspi3141/discord-fake-avatar-decorations@main/public/nameplates/cat_beans.png",
   "hasNotification": false,
   "accent": "#72ffb6",
-  "slug": "john-viking",
-  "about": "Leader of the NOIZ raid party and digital explorer.",
+  "bio": "Leader of the NOIZ raid party and digital explorer.",
   "memberSince": "March 2023",
+  "streaming": false,
   "connections": [
     "images/ui/gift.png",
     "images/ui/follow.png"
@@ -19,6 +21,22 @@
     "images/badges/vip.png",
     "images/badges/clipper.png"
   ],
-  "subscribed": ["marina-valentine", "neko-bebop"],
-  "followed": ["neko-bebop", "nick-grissom", "sarah-diamond"]
+  "following": [3, 4, 5],
+  "followers": [2, 3],
+  "subscribedTo": [2, 3],
+  "subscribers": [3],
+  "lang": "en",
+  "status": {
+    "streaming": null,
+    "online": { "watching": "home feed" },
+    "away": null,
+    "dnd": null
+  },
+  "hosting": null,
+  "set-badges": ["admin", "artist", "mod", "vip", "clipper"],
+  "earned-badges": ["admin", "artist", "mod", "vip", "clipper"],
+  "BadgeID": "founder",
+  "VODs": true,
+  "extensions": { "enabled": [], "disabled": [] },
+  "plugins": { "enabled": [], "disabled": [] }
 }

@@ -1,10 +1,10 @@
 // module/chat/chat.js
 // Simple sidebar chat module with mock data and basic send capability
 
-import { getUserBySlug } from '../users.js';
+import { getUserByToken } from '../users.js';
 
 const profileData = (u = {}) =>
-  `data-profile-name="${u.name || ''}" data-profile-slug="${u.slug || ''}" data-profile-avatar="${u.avatar || ''}" data-profile-banner="${u.banner || ''}" data-profile-accent="${u.accent || ''}" data-profile-frame="${u.frame || ''}" data-profile-about="${u.about || ''}" data-profile-since="${u.memberSince || ''}" data-profile-connections="${(u.connections || []).join(',')}" data-profile-badges="${(u.badges || []).join(',')}" data-profile-streaming="${u.streaming ? 'true' : 'false'}"`;
+  `data-profile-name="${u.name || ''}" data-profile-token="${u.token || ''}" data-profile-avatar="${u.avatar || ''}" data-profile-banner="${u.banner || ''}" data-profile-accent="${u.accent || ''}" data-profile-frame="${u.frame || ''}" data-profile-bio="${u.bio || ''}" data-profile-since="${u.memberSince || ''}" data-profile-connections="${(u.connections || []).join(',')}" data-profile-badges="${(u.badges || []).join(',')}" data-profile-streaming="${u.streaming ? 'true' : 'false'}"`;
 
 const messageTpl = (m) => {
   const u = m.user || {};
@@ -227,8 +227,8 @@ const tpl = (messages) => `
 `;
 
 export default async function init({ root, utils }) {
-  const slugs = ['john-viking', 'marina-valentine', 'neko-bebop', 'nick-grissom', 'sarah-diamond'];
-  const users = Object.fromEntries(await Promise.all(slugs.map(async (s) => [s, await getUserBySlug(s)])));
+  const tokens = ['john-viking', 'marina-valentine', 'neko-bebop', 'nick-grissom', 'sarah-diamond'];
+  const users = Object.fromEntries(await Promise.all(tokens.map(async (s) => [s, await getUserByToken(s)])));
 
   let messages = [
     {
@@ -306,7 +306,7 @@ export default async function init({ root, utils }) {
     if (!text) return;
     messages.push({
       time: new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }),
-      user: { name: 'Anon', slug: 'anon', accent: '#333' },
+      user: { name: 'Anon', token: 'anon', accent: '#333' },
       color: '#333',
       text
     });
@@ -361,7 +361,7 @@ export default async function init({ root, utils }) {
     if (!selectedResonance) return;
       messages.push({
         time: new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }),
-        user: { name: 'Anon', slug: 'anon', accent: '#333' },
+        user: { name: 'Anon', token: 'anon', accent: '#333' },
         type: 'sticker',
         sticker: selectedResonance.sticker,
         amount: selectedResonance.amount,

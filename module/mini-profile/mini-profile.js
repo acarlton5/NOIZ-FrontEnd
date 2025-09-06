@@ -59,8 +59,8 @@ export default async function init({ hub, root, utils }) {
     avatarImg.src = user.avatar || '';
     avatarImg.alt = user.name || '';
     nameEl.textContent = user.name || '';
-    if (user.slug) {
-      tagEl.textContent = `@${user.slug}`;
+    if (user.token) {
+      tagEl.textContent = `@${user.token}`;
       tagEl.style.display = 'block';
     } else {
       tagEl.textContent = '';
@@ -68,7 +68,7 @@ export default async function init({ hub, root, utils }) {
     }
 
     actions.innerHTML = '';
-    const isSelf = user.slug === loggedIn;
+    const isSelf = user.token === loggedIn;
     if (!isSelf) {
       actions.innerHTML += `<button class="mp-action follow">${icons.follow}<span>Follow</span></button>`;
       actions.innerHTML += `<button class="mp-action support">${icons.support}<span>Support</span></button>`;
@@ -81,8 +81,8 @@ export default async function init({ hub, root, utils }) {
       badgesEl.innerHTML = '';
       badgesEl.style.display = 'none';
     }
-    if (user.about) {
-      aboutEl.textContent = user.about;
+    if (user.bio) {
+      aboutEl.textContent = user.bio;
       aboutSection.style.display = 'block';
     } else {
       aboutEl.textContent = '';
@@ -144,12 +144,12 @@ export default async function init({ hub, root, utils }) {
     e.preventDefault();
     const user = {
       name: el.dataset.profileName,
-      slug: el.dataset.profileSlug,
+      token: el.dataset.profileToken,
       avatar: el.dataset.profileAvatar,
       banner: el.dataset.profileBanner,
       accent: el.dataset.profileAccent,
       frame: el.dataset.profileFrame,
-      about: el.dataset.profileAbout,
+      bio: el.dataset.profileBio,
       memberSince: el.dataset.profileSince,
       connections: el.dataset.profileConnections
         ? el.dataset.profileConnections.split(',')
@@ -168,12 +168,12 @@ export default async function init({ hub, root, utils }) {
     hide();
     const user = {
       name: el.dataset.profileName,
-      slug: el.dataset.profileSlug,
+      token: el.dataset.profileToken,
       avatar: el.dataset.profileAvatar,
       banner: el.dataset.profileBanner,
       accent: el.dataset.profileAccent,
       frame: el.dataset.profileFrame,
-      about: el.dataset.profileAbout,
+      bio: el.dataset.profileBio,
       memberSince: el.dataset.profileSince,
       connections: el.dataset.profileConnections
         ? el.dataset.profileConnections.split(',')

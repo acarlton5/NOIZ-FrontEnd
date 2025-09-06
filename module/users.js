@@ -1,8 +1,8 @@
 const cache = new Map();
 
-export async function getUserBySlug(slug) {
-  if (!cache.has(slug)) {
-    cache.set(slug, fetch(`/data/users/${slug}.json`).then(r => r.json()));
+export async function getUserByToken(token) {
+  if (!cache.has(token)) {
+    cache.set(token, fetch(`/data/users/${token}.json`).then(r => r.json()));
   }
-  return cache.get(slug);
+  return cache.get(token);
 }
