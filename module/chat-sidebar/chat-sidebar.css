@@ -310,8 +310,9 @@ module[data-module="chat-sidebar"] .resonance-item {
 }
 
 module[data-module="chat-sidebar"] .resonance-item .resonance-sticker {
-  max-width: 48px;
-  max-height: 48px;
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
 }
 
 module[data-module="chat-sidebar"] .resonance-cost {
