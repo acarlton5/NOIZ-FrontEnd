@@ -190,8 +190,7 @@ export default async function init({ hub, root, utils }) {
     if (e.key === 'Escape') hide();
   });
 
-  utils.delegate(document, 'click', '[data-profile-name]', (e, el) => {
-    if (e.button !== 0) return;
+  utils.delegate(document, 'contextmenu', '[data-profile-name]', (e, el) => {
     e.preventDefault();
     const user = {
       name: el.dataset.profileName,

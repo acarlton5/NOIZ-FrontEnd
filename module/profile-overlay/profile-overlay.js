@@ -239,5 +239,28 @@ export default async function init({ hub, root, utils }) {
   utils.listen(overlay, 'click', (e) => { if (e.target === overlay) hide(); });
   utils.listen(document, 'keydown', (e) => { if (e.key === 'Escape') hide(); });
 
+  utils.delegate(document, 'click', '[data-profile-name]', (e, el) => {
+    if (e.button !== 0) return;
+    e.preventDefault();
+    const user = {
+      name: el.dataset.profileName,
+      token: el.dataset.profileToken,
+      avatar: el.dataset.profileAvatar,
+      banner: el.dataset.profileBanner,
+      accent: el.dataset.profileAccent,
+      frame: el.dataset.profileFrame,
+      bio: el.dataset.profileBio,
+      memberSince: el.dataset.profileSince,
+      connections: el.dataset.profileConnections
+        ? el.dataset.profileConnections.split(',')
+        : [],
+      badges: el.dataset.profileBadges
+        ? el.dataset.profileBadges.split(',')
+        : [],
+      streaming: el.dataset.profileStreaming === 'true'
+    };
+    show(user);
+  });
+
   return { show, hide };
 }
