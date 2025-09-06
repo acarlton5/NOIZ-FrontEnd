@@ -44,7 +44,14 @@
     "away": null,
     "dnd": null
   },
-  "hosting": null,
+  "hosting": {
+    "id": "host123",
+    "title": "Raid Night",
+    "category": 42,
+    "audience": "everyone",
+    "costream": null,
+    "thumbnailId": "images/thumbs/catcafe.jpg"
+  },
   "set-badges": ["admin", "artist", "mod", "vip", "clipper"],
   "earned-badges": [
     {

@@ -181,3 +181,17 @@ module[data-module="mini-profile"] .mini-profile .mp-note-text {
   color: #6b7280;
 }
 
+module[data-module="mini-profile"] .mini-profile .mp-activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+module[data-module="mini-profile"] .mini-profile .mp-activity-list li {
+  font-size: 0.875rem;
+  color: #1f2937;
+}
+

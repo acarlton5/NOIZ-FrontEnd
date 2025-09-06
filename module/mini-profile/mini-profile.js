@@ -1,3 +1,5 @@
+import { getUserByToken } from '../users.js';
+
 export default async function init({ hub, root, utils }) {
   const loggedIn = await fetch('/data/logged-in.json').then(r => r.json()).catch(() => null);
 
@@ -32,6 +34,10 @@ export default async function init({ hub, root, utils }) {
           <h3>Connections</h3>
           <div class="mp-conn-list"></div>
         </div>
+        <div class="mp-section mp-activity">
+          <h3>Customizing My Profile</h3>
+          <ul class="mp-activity-list"></ul>
+        </div>
         <div class="mp-section mp-note">
           <h3>Note</h3>
           <p class="mp-note-text">Click to add a note</p>
@@ -51,6 +57,32 @@ export default async function init({ hub, root, utils }) {
   const aboutEl = card.querySelector('.mp-about');
   const memberDateEl = card.querySelector('.mp-member-date');
   const connList = card.querySelector('.mp-conn-list');
+  const activitySection = card.querySelector('.mp-activity');
+  const activityList = card.querySelector('.mp-activity-list');
+
+  function activityLines(user = {}) {
+    const lines = [];
+    const status = user.status || {};
+    if (status.streaming) {
+      lines.push(`Streaming ${status.streaming.title || ''}`);
+    } else if (status.online) {
+      const entries = Object.entries(status.online).filter(([k, v]) => v);
+      if (entries.length) {
+        const [k, v] = entries[0];
+        lines.push(`${k.charAt(0).toUpperCase() + k.slice(1)} ${v}`);
+      } else {
+        lines.push('Online');
+      }
+    } else if (status.away !== null) {
+      lines.push('Away');
+    } else if (status.dnd !== null) {
+      lines.push('Do Not Disturb');
+    }
+    if (user.hosting) {
+      lines.push(`Hosting ${user.hosting.title || ''}`);
+    }
+    return lines;
+  }
 
   function fill(user = {}) {
     card.style.setProperty('--accent', user.accent || '#5865f2');
@@ -104,6 +136,15 @@ export default async function init({ hub, root, utils }) {
       connList.innerHTML = '';
       connList.closest('.mp-connections').style.display = 'none';
     }
+
+    const acts = activityLines(user);
+    if (acts.length) {
+      activityList.innerHTML = acts.map((a) => `<li>${a}</li>`).join('');
+      activitySection.style.display = 'block';
+    } else {
+      activityList.innerHTML = '';
+      activitySection.style.display = 'none';
+    }
   }
 
   function position(x, y) {
@@ -119,7 +160,11 @@ export default async function init({ hub, root, utils }) {
     card.style.top = `${top}px`;
   }
 
-  function show(user, x, y) {
+  async function show(user, x, y) {
+    if (user && user.token) {
+      const full = await getUserByToken(user.token).catch(() => ({}));
+      user = { ...full, ...user };
+    }
     fill(user);
     position(x, y);
     card.classList.add('visible');

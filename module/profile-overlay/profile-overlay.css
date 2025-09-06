@@ -191,6 +191,20 @@ module[data-module="profile-overlay"] .po-note-text {
   color: #6b7280;
 }
 
+module[data-module="profile-overlay"] .po-activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+module[data-module="profile-overlay"] .po-activity-list li {
+  font-size: 0.875rem;
+  color: #1f2937;
+}
+
 module[data-module="profile-overlay"] .po-right {
   background: #ffffff;
   padding: 16px 24px;

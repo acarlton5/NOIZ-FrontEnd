@@ -36,6 +36,10 @@ export default async function init({ hub, root, utils }) {
               <h3>Connections</h3>
               <div class="po-conn-list"></div>
             </div>
+            <div class="po-section po-activity">
+              <h3>Customizing My Profile</h3>
+              <ul class="po-activity-list"></ul>
+            </div>
             <div class="po-section po-note">
               <h3>Note</h3>
               <p class="po-note-text">Click to add a note</p>
@@ -77,6 +81,8 @@ export default async function init({ hub, root, utils }) {
   const aboutEl = overlay.querySelector('.po-about');
   const memberDateEl = overlay.querySelector('.po-member-date');
   const connList = overlay.querySelector('.po-conn-list');
+  const activitySection = overlay.querySelector('.po-activity');
+  const activityList = overlay.querySelector('.po-activity-list');
   const actions = overlay.querySelector('.po-actions');
   const badgesEl = overlay.querySelector('.po-badges');
   const closeBtn = overlay.querySelector('.po-close');
@@ -84,6 +90,30 @@ export default async function init({ hub, root, utils }) {
   const panels = overlay.querySelectorAll('.po-panel');
   const topicsPanel = overlay.querySelector('[data-panel="topics"]');
   const badgesPanel = overlay.querySelector('[data-panel="badges"]');
+
+  function activityLines(user = {}) {
+    const lines = [];
+    const status = user.status || {};
+    if (status.streaming) {
+      lines.push(`Streaming ${status.streaming.title || ''}`);
+    } else if (status.online) {
+      const entries = Object.entries(status.online).filter(([k, v]) => v);
+      if (entries.length) {
+        const [k, v] = entries[0];
+        lines.push(`${k.charAt(0).toUpperCase() + k.slice(1)} ${v}`);
+      } else {
+        lines.push('Online');
+      }
+    } else if (status.away !== null) {
+      lines.push('Away');
+    } else if (status.dnd !== null) {
+      lines.push('Do Not Disturb');
+    }
+    if (user.hosting) {
+      lines.push(`Hosting ${user.hosting.title || ''}`);
+    }
+    return lines;
+  }
 
   function fill(user = {}) {
     overlay.style.setProperty('--accent', user.accent || '#5865f2');
@@ -130,6 +160,15 @@ export default async function init({ hub, root, utils }) {
     } else {
       connList.innerHTML = '';
       connList.closest('.po-connections').style.display = 'none';
+    }
+
+    const acts = activityLines(user);
+    if (acts.length) {
+      activityList.innerHTML = acts.map((a) => `<li>${a}</li>`).join('');
+      activitySection.style.display = 'block';
+    } else {
+      activityList.innerHTML = '';
+      activitySection.style.display = 'none';
     }
 
     if (user.topics && user.topics.length) {
