@@ -108,23 +108,22 @@ module[data-module="mini-profile"] .mini-profile .mp-actions {
   margin-top: 8px;
   display: flex;
   gap: 8px;
-  width: 100%;
+  justify-content: center;
 }
 
 module[data-module="mini-profile"] .mini-profile .mp-action {
-  flex: 1 1 0;
+  flex: 0 0 40px;
+  width: 40px;
+  height: 40px;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 2px;
+  justify-content: center;
   background: var(--accent, #5865f2);
   border: none;
   color: #ffffff;
-  padding: 6px 4px;
-  font-size: 0.75rem;
+  padding: 0;
   border-radius: 6px;
   cursor: pointer;
-  text-align: center;
 }
 
 module[data-module="mini-profile"] .mini-profile .mp-action svg {

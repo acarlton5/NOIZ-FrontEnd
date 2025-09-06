@@ -132,12 +132,12 @@ export default async function init({ hub, root, utils }) {
     actions.innerHTML = '';
     const isSelf = user.token === loggedIn;
     if (!isSelf) {
-      actions.innerHTML += `<button class="mp-action follow">${icons.follow}<span>Follow</span></button>`;
-      actions.innerHTML += `<button class="mp-action support">${icons.support}<span>Support</span></button>`;
+      actions.innerHTML += `<button class="mp-action follow" aria-label="Follow">${icons.follow}</button>`;
+      actions.innerHTML += `<button class="mp-action support" aria-label="Support">${icons.support}</button>`;
     }
-    actions.innerHTML += `<button class="mp-action shop">${icons.shop}<span>Shop</span></button>`;
+    actions.innerHTML += `<button class="mp-action shop" aria-label="Shop">${icons.shop}</button>`;
     if (user.streaming) {
-      actions.innerHTML += `<button class="mp-action stream">${icons.stream}<span>View Stream</span></button>`;
+      actions.innerHTML += `<button class="mp-action stream" aria-label="View Stream">${icons.stream}</button>`;
     }
     if (user.badges && user.badges.length) {
       badgesEl.innerHTML = user.badges.slice(0,5).map((b) => `<img src="${b}" alt="badge" />`).join('');

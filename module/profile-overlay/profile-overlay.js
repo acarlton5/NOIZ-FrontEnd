@@ -3,14 +3,16 @@ import { getUserByToken } from '../users.js';
 export default async function init({ hub, root, utils }) {
   const loggedIn = await fetch('/data/logged-in.json').then(r => r.json()).catch(() => null);
 
-  const icons = {
-    follow:
-      '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"/><path fill-rule="evenodd" d="M12 14a7 7 0 0 0-7 7 .75.75 0 0 0 1.5 0 5.5 5.5 0 0 1 11 0 .75.75 0 0 0 1.5 0 7 7 0 0 0-7-7Z" clip-rule="evenodd"/><path d="M19 7a1 1 0 1 0 0-2h-1V4a1 1 0 1 0-2 0v1h-1a1 1 0 1 0 0 2h1v1a1 1 0 1 0 2 0V7h1Z"/></svg>',
-    support:
-      '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M11.645 20.353a.75.75 0 0 0 .71 0 45.956 45.956 0 0 0 1.035-.62c1.588-.977 3.267-2.015 4.825-3.152C21.247 14.73 23 12.537 23 9.943 23 7.206 20.955 5 18.352 5c-1.542 0-3.01.876-3.708 2.18a.75.75 0 0 1-1.288 0C12.655 5.876 11.187 5 9.645 5 7.043 5 5 7.206 5 9.943c0 2.594 1.753 4.786 3.785 6.638 1.558 1.137 3.237 2.175 4.825 3.152.345.212.689.42 1.035.62Z" clip-rule="evenodd"/></svg>',
-    shop:
-      '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M7.5 6v.75H5.513c-.96 0-1.764.724-1.865 1.679l-1.263 12A1.875 1.875 0 0 0 4.25 22.5h15.5a1.875 1.875 0 0 0 1.865-2.071l-1.263-12a1.875 1.875 0 0 0-1.865-1.679H16.5V6a4.5 4.5 0 1 0-9 0ZM12 3a3 3 0 0 0-3 3v.75h6V6a3 3 0 0 0-3-3Zm-3 8.25a3 3 0 1 0 6 0v-.75a.75.75 0 0 1 1.5 0v.75a4.5 4.5 0 1 1-9 0v-.75a.75.75 0 0 1 1.5 0v.75Z" clip-rule="evenodd"/></svg>'
-  };
+    const icons = {
+      follow:
+        '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"/><path fill-rule="evenodd" d="M12 14a7 7 0 0 0-7 7 .75.75 0 0 0 1.5 0 5.5 5.5 0 0 1 11 0 .75.75 0 0 0 1.5 0 7 7 0 0 0-7-7Z" clip-rule="evenodd"/><path d="M19 7a1 1 0 1 0 0-2h-1V4a1 1 0 1 0-2 0v1h-1a1 1 0 1 0 0 2h1v1a1 1 0 1 0 2 0V7h1Z"/></svg>',
+      support:
+        '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M11.645 20.353a.75.75 0 0 0 .71 0 45.956 45.956 0 0 0 1.035-.62c1.588-.977 3.267-2.015 4.825-3.152C21.247 14.73 23 12.537 23 9.943 23 7.206 20.955 5 18.352 5c-1.542 0-3.01.876-3.708 2.18a.75.75 0 0 1-1.288 0C12.655 5.876 11.187 5 9.645 5 7.043 5 5 7.206 5 9.943c0 2.594 1.753 4.786 3.785 6.638 1.558 1.137 3.237 2.175 4.825 3.152.345.212.689.42 1.035.62Z" clip-rule="evenodd"/></svg>',
+      shop:
+        '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M7.5 6v.75H5.513c-.964 0-1.764.724-1.865 1.679l-1.263 12A1.875 1.875 0 0 0 4.25 22.5h15.5a1.875 1.875 0 0 0 1.865-2.071l-1.263-12a1.875 1.875 0 0 0-1.865-1.679H16.5V6a4.5 4.5 0 1 0-9 0ZM12 3a3 3 0 0 0-3 3v.75h6V6a3 3 0 0 0-3-3Zm-3 8.25a3 3 0 1 0 6 0v-.75a.75.75 0 0 1 1.5 0v.75a4.5 4.5 0 1 1-9 0v-.75a.75.75 0 0 1 1.5 0v.75Z" clip-rule="evenodd"/></svg>',
+      stream:
+        '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5 3.5v17l14-8.5-14-8.5Z"/></svg>'
+    };
 
   root.innerHTML = `
     <div class="profile-overlay hidden" role="dialog" aria-modal="true">
@@ -164,10 +166,13 @@ export default async function init({ hub, root, utils }) {
     actions.innerHTML = '';
     const isSelf = user.token === loggedIn;
     if (!isSelf) {
-      actions.innerHTML += `<button class="po-action follow">${icons.follow}<span>Follow</span></button>`;
-      actions.innerHTML += `<button class="po-action support">${icons.support}<span>Support</span></button>`;
+      actions.innerHTML += `<button class="po-action follow" aria-label="Follow">${icons.follow}</button>`;
+      actions.innerHTML += `<button class="po-action support" aria-label="Support">${icons.support}</button>`;
     }
-    actions.innerHTML += `<button class="po-action shop">${icons.shop}<span>Shop</span></button>`;
+    actions.innerHTML += `<button class="po-action shop" aria-label="Shop">${icons.shop}</button>`;
+    if (user.streaming) {
+      actions.innerHTML += `<button class="po-action stream" aria-label="View Stream">${icons.stream}</button>`;
+    }
     if (user.badges && user.badges.length) {
       badgesEl.innerHTML = user.badges.slice(0,5).map((b) => `<img src="${b}" alt="badge" />`).join('');
       badgesEl.style.display = 'flex';
