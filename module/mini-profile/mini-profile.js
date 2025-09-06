@@ -37,23 +37,22 @@ export default async function init({ hub, root, utils }) {
     display.textContent = user.name || 'Unknown';
   }
 
-  function position(anchor) {
-    const rect = anchor.getBoundingClientRect();
+  function position(x, y) {
     const mpW = card.offsetWidth;
     const mpH = card.offsetHeight;
-    let left = rect.right + 8;
-    if (left + mpW > window.innerWidth - 8) left = rect.left - mpW - 8;
+    let left = x + 8;
+    if (left + mpW > window.innerWidth - 8) left = x - mpW - 8;
     if (left < 8) left = 8;
-    let top = rect.top;
+    let top = y;
     if (top + mpH > window.innerHeight - 8) top = window.innerHeight - mpH - 8;
     if (top < 8) top = 8;
-    card.style.left = `${left + window.scrollX}px`;
-    card.style.top = `${top + window.scrollY}px`;
+    card.style.left = `${left}px`;
+    card.style.top = `${top}px`;
   }
 
-  function show(user, anchor) {
+  function show(user, x, y) {
     fill(user);
-    position(anchor);
+    position(x, y);
     card.classList.add('visible');
     card.classList.remove('hidden');
   }
@@ -72,7 +71,8 @@ export default async function init({ hub, root, utils }) {
     if (e.key === 'Escape') hide();
   });
 
-  utils.delegate(document, 'click', '[data-profile-name]', (e, el) => {
+  utils.delegate(document, 'contextmenu', '[data-profile-name]', (e, el) => {
+    e.preventDefault();
     const user = {
       name: el.dataset.profileName,
       avatar: el.dataset.profileAvatar,
@@ -80,7 +80,21 @@ export default async function init({ hub, root, utils }) {
       accent: el.dataset.profileAccent,
       frame: el.dataset.profileFrame,
     };
-    show(user, el);
+    show(user, e.pageX, e.pageY);
+  });
+
+  utils.delegate(document, 'click', '[data-profile-name]', (e, el) => {
+    if (e.button !== 0) return;
+    e.preventDefault();
+    hide();
+    const user = {
+      name: el.dataset.profileName,
+      avatar: el.dataset.profileAvatar,
+      banner: el.dataset.profileBanner,
+      accent: el.dataset.profileAccent,
+      frame: el.dataset.profileFrame,
+    };
+    window.LoadMainModule('profile', { user });
   });
 
   return { show, hide };

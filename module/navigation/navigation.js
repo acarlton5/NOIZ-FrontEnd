@@ -96,9 +96,16 @@ export default async function init({ hub, root, utils }) {
     }
   });
 
-  utils.delegate(root, 'click', '.navigation-avatar', (e) => {
-    e.preventDefault();
-  });
+  utils.delegate(
+    root,
+    'click',
+    '.navigation-avatar, .navigation-large-profile .avatar-wrap, .navigation-large-profile .user-name',
+    (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      window.LoadMainModule('profile', { user: currentUser });
+    }
+  );
 
   // Tooltip handling for compact navigation
   let tooltip;
