@@ -56,38 +56,32 @@ const EMOTE_SETS = [
   {
     global: true,
     emotes: [
-      'https://static-cdn.jtvnw.net/emoticons/v2/1003187/static/dark/3.0',
-      'https://static-cdn.jtvnw.net/emoticons/v2/1003189/static/dark/3.0',
-      'https://static-cdn.jtvnw.net/emoticons/v2/1003190/static/dark/3.0'
+      'images/badges/dev.png',
+      'images/badges/mod.png',
+      'images/badges/partner.png'
     ]
   },
   {
     streamer: {
-      name: 'StreamerOne',
-      avatar: 'https://odindesignthemes.com/vikinger/img/avatar/02.jpg'
+      name: 'SampleStreamer',
+      avatar: 'images/logo.png'
     },
     emotes: [
-      'https://static-cdn.jtvnw.net/emoticons/v2/160394/static/dark/3.0',
-      'https://static-cdn.jtvnw.net/emoticons/v2/160404/static/dark/3.0',
-      'https://static-cdn.jtvnw.net/emoticons/v2/160401/static/dark/3.0',
-      'https://static-cdn.jtvnw.net/emoticons/v2/160400/static/dark/3.0',
-      'https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_adfadf0ae06a4258adc865761746b227/static/dark/3.0',
-      'https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_665235901db747b1bd395a5f1c0ab8a9/static/dark/3.0',
-      'https://static-cdn.jtvnw.net/emoticons/v2/1220086/static/dark/3.0'
+      'images/badges/vip.png',
+      'images/badges/artist.png',
+      'images/badges/sub.png',
+      'images/badges/clipper.png'
     ]
   },
   {
     streamer: {
-      name: 'StreamerTwo',
-      avatar: 'https://odindesignthemes.com/vikinger/img/avatar/03.jpg'
+      name: 'AnotherStreamer',
+      avatar: 'images/logo.png'
     },
     emotes: [
-      'https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_a829c76ca15f49a2bf71e1270f83fe83/static/dark/3.0',
-      'https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_4e1c5651219a462894aefa8b6720efc5/static/dark/3.0',
-      'https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_4b51b45f35df4dd8ad45a611c9a9ec35/static/dark/3.0',
-      'https://static-cdn.jtvnw.net/emoticons/v2/122213/static/light/3.0',
-      'https://static-cdn.jtvnw.net/emoticons/v2/406623/static/light/3.0',
-      'https://static-cdn.jtvnw.net/emoticons/v2/1494991/static/light/3.0'
+      'images/badges/trophy.svg',
+      'images/badges/gifter.png',
+      'images/badges/bot.png'
     ]
   }
 ];
@@ -102,27 +96,59 @@ const renderEmoteDrawer = () =>
       .join('');
     return `<div class="emote-set">${header}<div class="emote-list">${emotes}</div></div>`;
   }).join('');
-
-const RESONANCE_ITEMS = [
-  {
-    sticker: 'https://streamstickers.com/uploads/vader-sample-65017.gif',
-    amount: '$1.00',
-    badge: 'images/logo_badge.svg',
-    effects: ['Sound FX', 'Visual FX', 'Chat FX', 'Sticker']
-  },
-  {
-    sticker: 'https://streamstickers.com/uploads/doge-sample-65018.gif',
-    amount: '$2.00',
-    badge: 'images/logo_badge.svg',
-    effects: ['Sound FX', 'Visual FX', 'Chat FX', 'Sticker']
-  },
-  {
-    sticker: 'https://streamstickers.com/uploads/tiny-rick-sample-65020.gif',
-    amount: '$5.00',
-    badge: 'images/logo_badge.svg',
-    effects: ['Sound FX', 'Visual FX', 'Chat FX', 'Sticker']
-  }
+ 
+const BADGE_URLS = [
+  'images/badges/dev.png',
+  'images/badges/mod.png',
+  'images/badges/partner.png',
+  'images/badges/vip.png',
+  'images/badges/artist.png',
+  'images/badges/sub.png',
+  'images/badges/clipper.png',
+  'images/badges/trophy.svg',
+  'images/badges/gifter.png',
+  'images/badges/bot.png',
+  'images/badges/bugDCT.svg',
+  'images/badges/heart.svg'
 ];
+
+const RESONANCE_STICKERS = [
+  'images/resonances/001/catch_em.gif',
+  'images/resonances/002/pipe_smash.gif',
+  'images/resonances/003/wazzup.gif',
+  'images/resonances/004/erase_this_from_my_mind.gif',
+  'images/resonances/005/super_saiyan.gif',
+  'images/resonances/006/pat_pat.gif',
+  'images/resonances/007/repo_duck!.gif',
+  'images/resonances/008/bubble_pop.gif',
+  'images/resonances/009/water_balloon.gif',
+  'images/resonances/010/super_splasher.gif',
+  'images/resonances/011/we_have_a_problem.gif',
+  'images/resonances/012/up_to_11.gif',
+  'images/resonances/013/party_popper.gif',
+  'images/resonances/014/party_horn.gif',
+  'images/resonances/015/arctic_snowball.gif',
+  'images/resonances/016/tomato_toss.gif',
+  'images/resonances/017/ghostly_boo.gif',
+  'images/resonances/018/unidab.gif',
+  'images/resonances/019/play_puppet.gif',
+  'images/resonances/020/best_friend.gif',
+  'images/resonances/021/clown_around.gif',
+  'images/resonances/022/pyramid_head.gif',
+  'images/resonances/023/leather_man.gif',
+  'images/resonances/024/friday_slasher.gif',
+  'images/resonances/025/the_screamer.gif',
+  'images/resonances/026/halloween_treat.gif',
+  'images/resonances/027/nightmare.gif',
+  'images/resonances/028/easter_egg_splat.gif'
+];
+
+const RESONANCE_ITEMS = RESONANCE_STICKERS.map((sticker, i) => ({
+  sticker,
+  amount: `${(i + 1) * 100}`,
+  badge: BADGE_URLS[8 + (i % 4)],
+  effects: ['Sound FX', 'Visual FX', 'Chat FX', 'Sticker']
+}));
 
 const renderResonanceDrawer = () =>
   `<div class="resonance-grid">${RESONANCE_ITEMS.map(
@@ -130,7 +156,7 @@ const renderResonanceDrawer = () =>
       <button type="button" class="resonance-item" data-index="${i}" data-sticker="${item.sticker}">
         <img class="resonance-sticker" src="${item.sticker}" alt="sticker" />
         <div class="resonance-cost">
-          ${item.badge ? `<img class="resonance-badge" src="${item.badge}" alt="badge" />` : ''}
+          <img class="resonance-badge" src="${item.badge}" alt="badge" />
           <span class="amount">${item.amount}</span>
         </div>
       </button>
@@ -199,66 +225,51 @@ export default async function init({ root, utils }) {
     {
       time: '9:58 AM',
       user: 'Lena',
-      avatar: 'https://odindesignthemes.com/vikinger/img/avatar/01.jpg',
+      avatar: 'images/logo.png',
       color: '#07b',
       text: 'wow',
-      badges: [
-        'https://static-cdn.jtvnw.net/badges/v1/51f536c1-96ca-495b-bc11-150c857a6d54/2',
-        'https://static-cdn.jtvnw.net/badges/v1/a56ef091-e8cd-49bd-9de9-7b342c9a7e7e/2',
-        'https://static-cdn.jtvnw.net/badges/v1/ada84c7c-36d4-4bb3-b2d6-d601d468e6c7/2',
-        'https://static-cdn.jtvnw.net/badges/v1/098219cb-48d8-4945-96a6-80594c7a90dd/2',
-        'https://static-cdn.jtvnw.net/badges/v1/3ffa9565-c35b-4cad-800b-041e60659cf2/2'
-      ]
+      badges: [BADGE_URLS[0], BADGE_URLS[1], BADGE_URLS[2], BADGE_URLS[3], BADGE_URLS[4]]
     },
     {
       time: '9:58 AM',
       user: 'Ash',
-      avatar: 'https://odindesignthemes.com/vikinger/img/avatar/02.jpg',
+      avatar: 'images/logo.png',
       color: '#0a0',
       text: 'more pushups!',
-      badges: [
-        'https://static-cdn.jtvnw.net/badges/v1/8dbdfef5-0901-457f-a644-afa77ba176e5/2',
-        'https://static-cdn.jtvnw.net/badges/v1/cf91bbc0-0332-413a-a7f3-e36bac08b624/2'
-      ]
+      badges: [BADGE_URLS[5], BADGE_URLS[6]]
     },
     {
       time: '9:58 AM',
       user: 'IntroMeb',
-      avatar: 'https://odindesignthemes.com/vikinger/img/avatar/03.jpg',
+      avatar: 'images/logo.png',
       color: '#c00',
       text: 'great play!',
-      badges: [
-        'https://static-cdn.jtvnw.net/badges/v1/2cbc339f-34f4-488a-ae51-efdf74f4e323/2'
-      ]
+      badges: [BADGE_URLS[7]]
     },
     {
       time: '9:58 AM',
       user: 'Chankonabe',
-      avatar: 'https://odindesignthemes.com/vikinger/img/avatar/04.jpg',
+      avatar: 'images/logo.png',
       color: '#b80',
       text: "how's everyone on the eh team doing?",
-      badges: [
-        'https://static-cdn.jtvnw.net/badges/v1/3267646d-33f0-4b17-b3df-f923a41db1d0/2',
-        'https://static-cdn.jtvnw.net/badges/v1/d97c37bd-a6f5-4c38-8f57-4e4bef88af34/2',
-        'https://static-cdn.jtvnw.net/badges/v1/ccbbedaa-f4db-4d0b-9c2a-375de7ad947c/2'
-      ]
+      badges: [BADGE_URLS[8], BADGE_URLS[9], BADGE_URLS[10]]
     },
     {
       time: '9:58 AM',
       user: 'pexelwiz',
-      avatar: 'https://odindesignthemes.com/vikinger/img/avatar/05.jpg',
+      avatar: 'images/logo.png',
       color: '#609',
       text: 'awesome! 👏'
     },
     {
       time: '9:59 AM',
       user: 'StickerFan',
-      avatar: 'https://odindesignthemes.com/vikinger/img/avatar/06.jpg',
+      avatar: 'images/logo.png',
       color: '#333',
       type: 'sticker',
-      sticker: 'https://streamstickers.com/uploads/vader-sample-65017.gif',
-      amount: '$3.00',
-      badge: 'https://static-cdn.jtvnw.net/badges/v1/51f536c1-96ca-495b-bc11-150c857a6d54/2'
+      sticker: 'images/resonances/001/catch_em.gif',
+      amount: '100',
+      badge: BADGE_URLS[11]
     },
     { type: 'donation', user: 'Laura Ipsum', amount: '$5.00', text: 'BRAVO 🦊' }
   ];
