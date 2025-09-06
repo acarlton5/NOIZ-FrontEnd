@@ -55,18 +55,40 @@ module[data-module="profile-overlay"] .po-left-body {
 }
 
 module[data-module="profile-overlay"] .po-avatar {
+  position: relative;
   width: 96px;
   height: 96px;
   border-radius: 50%;
-  overflow: hidden;
-  box-shadow: 0 0 0 6px #ffffff;
-  background: var(--frame) center/cover no-repeat;
+  overflow: visible;
+  isolation: isolate;
+}
+
+module[data-module="profile-overlay"] .po-avatar::before {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  background: #ffffff;
+  z-index: 0;
 }
 
 module[data-module="profile-overlay"] .po-avatar img {
+  position: relative;
+  z-index: 1;
   width: 100%;
   height: 100%;
+  border-radius: 50%;
   object-fit: cover;
+  display: block;
+}
+
+module[data-module="profile-overlay"] .po-avatar::after {
+  content: "";
+  position: absolute;
+  inset: -18%;
+  background: var(--frame, none) center/contain no-repeat;
+  pointer-events: none;
+  z-index: 2;
 }
 
 module[data-module="profile-overlay"] .po-name {
@@ -127,7 +149,6 @@ module[data-module="profile-overlay"] .po-right {
   padding: 16px 24px;
   display: flex;
   flex-direction: column;
-  position: relative;
 }
 
 module[data-module="profile-overlay"] .po-tabs {
@@ -164,9 +185,18 @@ module[data-module="profile-overlay"] .po-close {
   color: #6b7280;
 }
 
-module[data-module="profile-overlay"] .po-panel {
+module[data-module="profile-overlay"] .po-panels {
   flex: 1;
   overflow-y: auto;
+}
+
+module[data-module="profile-overlay"] .po-panel {
+  display: none;
+  height: 100%;
+}
+
+module[data-module="profile-overlay"] .po-panel.active {
+  display: block;
 }
 
 module[data-module="profile-overlay"] .po-activity {

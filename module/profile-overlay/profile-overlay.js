@@ -2,6 +2,7 @@ export default async function init({ hub, root, utils }) {
   root.innerHTML = `
     <div class="profile-overlay hidden" role="dialog" aria-modal="true">
       <div class="po-card">
+        <button type="button" class="po-close" aria-label="Close">&times;</button>
         <div class="po-left">
           <div class="po-banner"></div>
           <div class="po-accent"></div>
@@ -22,20 +23,27 @@ export default async function init({ hub, root, utils }) {
         </div>
 
         <div class="po-right">
-          <button type="button" class="po-close" aria-label="Close">&times;</button>
           <div class="po-tabs">
             <button class="po-tab active" data-tab="activity">Activity</button>
             <button class="po-tab" data-tab="about">About</button>
             <button class="po-tab" data-tab="mutual">Mutual</button>
           </div>
-          <div class="po-panel">
-            <div class="po-activity">
-              <p class="po-activity-head">You don't have any activity here</p>
-              <p class="po-activity-sub">Connect accounts to show off your game status, see what friends are playing and more.</p>
-              <div class="po-activity-actions">
-                <button class="po-btn">Connect Accounts</button>
-                <button class="po-btn">Add Game</button>
+          <div class="po-panels">
+            <div class="po-panel active" data-panel="activity">
+              <div class="po-activity">
+                <p class="po-activity-head">You don't have any activity here</p>
+                <p class="po-activity-sub">Connect accounts to show off your game status, see what friends are playing and more.</p>
+                <div class="po-activity-actions">
+                  <button class="po-btn">Connect Accounts</button>
+                  <button class="po-btn">Add Game</button>
+                </div>
               </div>
+            </div>
+            <div class="po-panel" data-panel="about">
+              <p class="po-about-right"></p>
+            </div>
+            <div class="po-panel" data-panel="mutual">
+              <p class="po-empty">No mutuals to show.</p>
             </div>
           </div>
         </div>
@@ -51,6 +59,9 @@ export default async function init({ hub, root, utils }) {
   const memberDateEl = overlay.querySelector('.po-member-date');
   const connList = overlay.querySelector('.po-conn-list');
   const closeBtn = overlay.querySelector('.po-close');
+  const tabs = overlay.querySelectorAll('.po-tab');
+  const panels = overlay.querySelectorAll('.po-panel');
+  const aboutRight = overlay.querySelector('.po-about-right');
 
   function fill(user = {}) {
     overlay.style.setProperty('--accent', user.accent || '#5865f2');
@@ -61,6 +72,7 @@ export default async function init({ hub, root, utils }) {
     nameEl.textContent = user.name || '';
     aboutEl.textContent = user.about || '';
     aboutEl.style.display = user.about ? 'block' : 'none';
+    aboutRight.textContent = user.about || 'Nothing to see here';
     if (user.memberSince) {
       memberDateEl.textContent = user.memberSince;
       memberDateEl.closest('.po-member').style.display = 'block';
@@ -78,8 +90,18 @@ export default async function init({ hub, root, utils }) {
     }
   }
 
+  function switchTab(tabName) {
+    tabs.forEach((t) => t.classList.toggle('active', t.dataset.tab === tabName));
+    panels.forEach((p) => p.classList.toggle('active', p.dataset.panel === tabName));
+  }
+
+  tabs.forEach((tab) => {
+    utils.listen(tab, 'click', () => switchTab(tab.dataset.tab));
+  });
+
   function show(user) {
     fill(user);
+    switchTab('activity');
     overlay.classList.remove('hidden');
     overlay.classList.add('visible');
   }
