@@ -3,15 +3,23 @@ export default async function init({ hub, root, utils }) {
     <div class="profile-overlay hidden" role="dialog" aria-modal="true">
       <div class="po-card">
         <button type="button" class="po-close" aria-label="Close">&times;</button>
-        <div class="po-banner"></div>
-        <div class="po-content">
-          <div class="po-avatar"><img alt="" /></div>
-          <h2 class="po-name"></h2>
+
+        <div class="po-left">
+          <div class="po-banner"></div>
+          <div class="po-accent"></div>
+          <div class="po-left-body">
+            <div class="po-avatar"><img alt="" /></div>
+            <h2 class="po-name"></h2>
+          </div>
         </div>
-        <div class="po-tabs">
-          <button class="po-tab active">About</button>
-          <button class="po-tab">Posts</button>
-          <button class="po-tab">Stats</button>
+
+        <div class="po-right">
+          <div class="po-tabs">
+            <button class="po-tab active">Activity</button>
+            <button class="po-tab">About</button>
+            <button class="po-tab">Mutual</button>
+          </div>
+          <div class="po-panel"></div>
         </div>
       </div>
     </div>
