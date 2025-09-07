@@ -28,7 +28,7 @@ module[data-module="mini-profile"] .mini-profile.hidden {
 module[data-module="mini-profile"] .mini-profile .mp-banner {
   height: 120px;
   background-color: #f3f4f6;
-  background-position: center top;
+  background-position: right top;
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;

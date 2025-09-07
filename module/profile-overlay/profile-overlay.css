@@ -37,7 +37,7 @@ module[data-module="profile-overlay"] .po-left {
 module[data-module="profile-overlay"] .po-banner {
   height: 120px;
   background-color: #f3f4f6;
-  background-position: center top;
+  background-position: right top;
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
