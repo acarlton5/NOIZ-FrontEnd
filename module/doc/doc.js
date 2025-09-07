@@ -29,11 +29,22 @@ function renderDoc(doc) {
     <article class="post-open">
       <div class="post-open-body">
         <div class="post-open-heading">
-          <p class="post-open-timestamp">${formatDate(doc.created_at)}</p>
+          <p class="post-open-timestamp"><span class="highlighted">${formatDate(doc.created_at)}</span></p>
           <h2 class="post-open-title">${doc.title}</h2>
-          <p class="post-open-paragraph">${doc.author}</p>
+          ${doc.author ? `<p class="post-open-paragraph">${doc.author}</p>` : ''}
         </div>
         <div class="post-open-content">
+          <div class="post-open-content-sidebar">
+            <p class="post-open-sidebar-title">Share!</p>
+            <div class="social-links vertical">
+              <a class="social-link void facebook" href="#">
+                <svg class="icon-facebook"><use xlink:href="#svg-facebook"></use></svg>
+              </a>
+              <a class="social-link void twitter" href="#">
+                <svg class="icon-twitter"><use xlink:href="#svg-twitter"></use></svg>
+              </a>
+            </div>
+          </div>
           <div class="post-open-content-body">
             ${doc.sections.map(renderSection).join('')}
           </div>
