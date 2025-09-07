@@ -23,10 +23,22 @@ const navTpl = (doc) => `
   </nav>
 `;
 
+const defaultAvatar = 'https://odindesignthemes.com/vikinger/img/avatar/01.jpg';
+
 const authorTpl = (doc) => `
-  <div class="doc-author">
-    <p class="doc-author-label">Author</p>
-    <p class="doc-author-name">${doc.author}</p>
+  <div class="doc-author user-preview small">
+    <figure class="user-preview-cover" style="${doc.cover ? `background-image: url('${doc.cover}')` : ''}"></figure>
+    <div class="user-preview-info">
+      <div class="user-short-description small">
+        <div class="user-short-description-avatar">
+          <div class="avatar-wrap" style="--avi-width:60px; --avi-height:60px;">
+            <img src="${doc.author_avatar || defaultAvatar}" alt="${doc.author}">
+          </div>
+        </div>
+        <p class="user-short-description-title small">${doc.author}</p>
+        <p class="user-short-description-text">Author</p>
+      </div>
+    </div>
   </div>
 `;
 
@@ -35,14 +47,14 @@ const tpl = (doc) => `
     <div class="row g-4">
       <div class="col-12 col-lg-8">
         <article class="post-open doc-module">
-          <figure class="post-open-cover" style="${doc.cover ? `background-image: url('${doc.cover}')` : ''}">
+          <figure class="post-open-cover${doc.cover ? ' has-cover' : ''}" style="${doc.cover ? `background-image: url('${doc.cover}')` : ''}">
             ${doc.cover ? `<img src="${doc.cover}" alt="${doc.title || ''} cover" style="display:none;">` : ''}
-          </figure>
-          <div class="post-open-body">
             <div class="post-open-heading">
               <p class="post-open-timestamp">${doc.created_at ? new Date(doc.created_at).toLocaleDateString() : doc.date || ''}</p>
               <h2 class="post-open-title">${doc.title}</h2>
             </div>
+          </figure>
+          <div class="post-open-body">
             <div class="post-open-content-body">
               ${Array.isArray(doc.sections)
                 ? doc.sections.map(sectionTpl).join('')

@@ -3,12 +3,23 @@
 }
 
 .doc-module .post-open-cover {
+  position: relative;
   height: 180px;
   background-size: cover;
   background-position: center;
   background-color: #fff;
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.doc-module .post-open-cover.has-cover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
 }
 
 .doc-module .post-open-body {
@@ -24,20 +35,31 @@
   overflow: hidden;
 }
 
-.doc-module .post-open-body .post-open-heading {
-  margin: 0 -2rem 2rem;
+.doc-module .post-open-cover .post-open-heading {
+  position: relative;
+  width: 100%;
   padding: 2rem;
+  margin: 0;
 }
 
-.doc-module .post-open-heading .post-open-timestamp {
+.doc-module .post-open-cover .post-open-timestamp {
+  margin-bottom: 0.25rem;
   color: #8f91ac;
 }
 
-.doc-module .post-open-title {
+.doc-module .post-open-cover .post-open-title {
   margin-top: 0;
   font-weight: 600;
   margin-bottom: 1rem;
   color: #3e3f5e;
+}
+
+.doc-module .post-open-cover.has-cover .post-open-title {
+  color: #fff;
+}
+
+.doc-module .post-open-cover.has-cover .post-open-timestamp {
+  color: rgba(255, 255, 255, 0.8);
 }
 
 
@@ -71,26 +93,8 @@
   color: #3e3f5e;
 }
 
-.doc-author {
+.doc-author.user-preview {
   margin: 3rem 0;
-  padding: 1.5rem;
-  background-color: #fff;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.06);
-  color: #3e3f5e;
-}
-
-.doc-author-label {
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: #8f91ac;
-  margin-bottom: 0.5rem;
-}
-
-.doc-author-name {
-  margin: 0;
 }
 
 .doc-nav {
