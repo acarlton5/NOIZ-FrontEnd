@@ -23,6 +23,12 @@ const navTpl = (doc) => `
   </nav>
 `;
 
+const tagsTpl = (tags) => `
+  <div class="tag-list">
+    ${tags.map(t => `<a class="tag-item secondary" href="#">${t}</a>`).join('')}
+  </div>
+`;
+
 const defaultAvatar = 'https://odindesignthemes.com/vikinger/img/avatar/01.jpg';
 
 const authorTpl = (doc) => `
@@ -50,6 +56,7 @@ const tpl = (doc) => `
             </div>
           </figure>
           <div class="post-open-body">
+            ${Array.isArray(doc.tags) ? tagsTpl(doc.tags) : ''}
             <div class="post-open-content-body">
               ${Array.isArray(doc.sections)
                 ? doc.sections.map(sectionTpl).join('')

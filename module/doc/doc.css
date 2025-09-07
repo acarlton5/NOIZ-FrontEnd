@@ -35,6 +35,10 @@
   overflow: hidden;
 }
 
+.doc-module .tag-list {
+  margin-bottom: 1.5rem;
+}
+
 .doc-module .post-open-cover .post-open-heading {
   position: relative;
   width: 100%;
