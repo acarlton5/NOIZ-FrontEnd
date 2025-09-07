@@ -27,8 +27,8 @@ const tpl = (doc) => `
   <div class="container doc-container">
     <div class="row g-4">
       <div class="col-12 col-lg-8">
-        <article class="post-open doc-module">
-          <figure class="post-open-cover"></figure>
+        <article class="post-open doc-module${doc.cover ? ' has-cover' : ''}">
+          ${doc.cover ? `<figure class="post-open-cover" style="background-image: url('${doc.cover}')"><img src="${doc.cover}" alt="${doc.title || ''} cover" style="display:none;"></figure>` : ''}
           <div class="post-open-body">
             <div class="post-open-heading">
               <p class="post-open-timestamp">${doc.created_at ? new Date(doc.created_at).toLocaleDateString() : doc.date || ''}</p>

@@ -1,10 +1,22 @@
+.doc-module {
+  margin: 3rem 0;
+}
+
 .doc-module .post-open-cover {
   display: none;
 }
 
+.doc-module.has-cover .post-open-cover {
+  display: block;
+  height: 180px;
+  background-size: cover;
+  background-position: center;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
 .doc-module .post-open-body {
   width: 100%;
-  margin: 3rem 0;
   padding: 2rem;
   background-color: #fff;
   border-radius: 12px;
@@ -13,12 +25,22 @@
   overflow: hidden;
 }
 
+.doc-module.has-cover .post-open-body {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
 .doc-module .post-open-body .post-open-heading {
   margin: -2rem -2rem 2rem;
   padding: 2rem;
-  background-color: #f5f5f5;
+  background-color: #fff;
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
+}
+
+.doc-module.has-cover .post-open-body .post-open-heading {
+  margin: 0 -2rem 2rem;
+  background-color: transparent;
 }
 
 .doc-module .post-open-heading .post-open-timestamp {
