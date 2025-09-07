@@ -4,8 +4,7 @@
 
 .doc-module .post-open-body {
   width: 100%;
-  max-width: 784px;
-  margin: 3rem auto;
+  margin: 3rem 0;
   padding: 2rem;
   background-color: #fff;
   border-radius: 12px;
@@ -52,4 +51,37 @@
   display: block;
   margin-bottom: 0.5rem;
   color: #3e3f5e;
+}
+
+.doc-nav {
+  margin: 3rem 0;
+  padding: 1.5rem;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.06);
+  color: #3e3f5e;
+}
+
+.doc-nav-title {
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.doc-nav-list {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.doc-nav-list li {
+  margin-bottom: 0.5rem;
+}
+
+.doc-nav-list a {
+  color: #3e3f5e;
+  text-decoration: none;
+}
+
+.doc-nav-list a:hover {
+  text-decoration: underline;
 }

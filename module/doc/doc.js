@@ -1,5 +1,5 @@
-const sectionTpl = (section) => `
-  <section class="doc-section">
+const sectionTpl = (section, i) => `
+  <section id="section-${i}" class="doc-section">
     <h3>${section.heading}</h3>
     <p class="post-open-paragraph">${section.content}</p>
     ${(section.blurbs || []).map(b => `
@@ -11,35 +11,53 @@ const sectionTpl = (section) => `
   </section>
 `;
 
+const navTpl = (doc) => `
+  <nav class="doc-nav">
+    <h5 class="doc-nav-title">Contents</h5>
+    <ul class="doc-nav-list">
+      ${doc.sections.map((s, i) => `<li><a href="#section-${i}">${s.heading}</a></li>`).join('')}
+    </ul>
+  </nav>
+`;
+
 const tpl = (doc) => `
-  <article class="post-open doc-module">
-    <figure class="post-open-cover"></figure>
-    <div class="post-open-body">
-      <div class="post-open-heading">
-        <p class="post-open-timestamp">${doc.created_at ? new Date(doc.created_at).toLocaleDateString() : doc.date || ''}</p>
-        <h2 class="post-open-title">${doc.title}</h2>
-        ${doc.author ? `<p class="post-open-author">By ${doc.author}</p>` : ''}
-      </div>
-      <div class="post-open-content">
-        <div class="post-open-content-sidebar">
-          <p class="post-open-sidebar-title">Share!</p>
-          <div class="social-links vertical">
-            <a class="social-link void facebook" href="#">
-              <svg class="icon-facebook"><use xlink:href="#svg-facebook"></use></svg>
-            </a>
-            <a class="social-link void twitter" href="#">
-              <svg class="icon-twitter"><use xlink:href="#svg-twitter"></use></svg>
-            </a>
+  <div class="container doc-container">
+    <div class="row g-4">
+      <div class="col-12 col-lg-8">
+        <article class="post-open doc-module">
+          <figure class="post-open-cover"></figure>
+          <div class="post-open-body">
+            <div class="post-open-heading">
+              <p class="post-open-timestamp">${doc.created_at ? new Date(doc.created_at).toLocaleDateString() : doc.date || ''}</p>
+              <h2 class="post-open-title">${doc.title}</h2>
+              ${doc.author ? `<p class="post-open-author">By ${doc.author}</p>` : ''}
+            </div>
+            <div class="post-open-content">
+              <div class="post-open-content-sidebar">
+                <p class="post-open-sidebar-title">Share!</p>
+                <div class="social-links vertical">
+                  <a class="social-link void facebook" href="#">
+                    <svg class="icon-facebook"><use xlink:href="#svg-facebook"></use></svg>
+                  </a>
+                  <a class="social-link void twitter" href="#">
+                    <svg class="icon-twitter"><use xlink:href="#svg-twitter"></use></svg>
+                  </a>
+                </div>
+              </div>
+              <div class="post-open-content-body">
+                ${Array.isArray(doc.sections)
+                  ? doc.sections.map(sectionTpl).join('')
+                  : (doc.content ? `<p class="post-open-paragraph">${doc.content}</p>` : '')}
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="post-open-content-body">
-          ${Array.isArray(doc.sections)
-            ? doc.sections.map(sectionTpl).join('')
-            : (doc.content ? `<p class="post-open-paragraph">${doc.content}</p>` : '')}
-        </div>
+        </article>
+      </div>
+      <div class="col-12 col-lg-4">
+        ${Array.isArray(doc.sections) ? navTpl(doc) : ''}
       </div>
     </div>
-  </article>
+  </div>
 `;
 
 export default async function init({ root, props }) {
