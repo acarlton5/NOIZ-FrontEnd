@@ -1,12 +1,18 @@
 // module/chat/chat.js
 // Simple sidebar chat module with mock data and basic send capability
 
+import { getUserByToken } from '../users.js';
+
+const profileData = (u = {}) =>
+  `data-profile-name="${u.name || ''}" data-profile-token="${u.token || ''}" data-profile-avatar="${u.avatar || ''}" data-profile-banner="${u.banner || ''}" data-profile-accent="${u.accent || ''}" data-profile-frame="${u.frame || ''}" data-profile-bio="${u.bio || ''}" data-profile-since="${u.memberSince || ''}" data-profile-connections="${(u.connections || []).join(',')}" data-profile-badges="${(u.badges || []).join(',')}" data-profile-streaming="${u.streaming ? 'true' : 'false'}"`;
+
 const messageTpl = (m) => {
+  const u = m.user || {};
   if (m.type === 'donation') {
     return `
       <div class="chat-donation">
         <div class="donation-header">
-          <span class="name">${m.user}</span>
+          <span class="name" ${profileData(u)}>${u.name || ''}</span>
           <span class="amount">${m.amount}</span>
         </div>
         ${m.text ? `<div class="donation-text">${m.text}</div>` : ''}
@@ -16,12 +22,12 @@ const messageTpl = (m) => {
   if (m.type === 'sticker') {
     return `
       <div class="chat-message sticker">
-        <span class="msg-avatar avatar-wrap">
-          ${m.avatar ? `<img class="avatar-image" src="${m.avatar}" alt="${m.user}">` : `<span class="avatar-letter" style="background:${m.avatarColor || '#933'}">${(m.user || '?')[0]}</span>`}
+        <span class="msg-avatar avatar-wrap" ${profileData(u)}>
+          ${u.avatar ? `<img class="avatar-image" src="${u.avatar}" alt="${u.name || ''}">` : `<span class="avatar-letter" style="background:${u.accent || '#933'}">${(u.name || '?')[0]}</span>`}
         </span>
         <div class="msg-body">
         <div class="msg-header">
-          <span class="name" style="color:${m.color || '#333'}">${m.user}</span>
+          <span class="name" style="color:${m.color || u.accent || '#333'}" ${profileData(u)}>${u.name || ''}</span>
           <span class="time">${m.time}</span>
         </div>
           <div class="sticker-meta">
@@ -34,17 +40,17 @@ const messageTpl = (m) => {
     `;
   }
   return `
-    <div class="chat-message">
-      <span class="msg-avatar avatar-wrap">
-        ${m.avatar ? `<img class="avatar-image" src="${m.avatar}" alt="${m.user}">` : `<span class="avatar-letter" style="background:${m.avatarColor || '#933'}">${(m.user || '?')[0]}</span>`}
-      </span>
-      <div class="msg-body">
-        <div class="msg-header">
-          <div class="user-meta">
-            <span class="name" style="color:${m.color || '#333'}">${m.user}</span>
-            ${m.badges && m.badges.length ? `<span class="badges">${m.badges.slice(0,5).map((b) => `<img src="${b}" alt="badge" />`).join('')}</span>` : ''}
-          </div>
-          <span class="time">${m.time}</span>
+      <div class="chat-message">
+        <span class="msg-avatar avatar-wrap" ${profileData(u)}>
+          ${u.avatar ? `<img class="avatar-image" src="${u.avatar}" alt="${u.name || ''}">` : `<span class="avatar-letter" style="background:${u.accent || '#933'}">${(u.name || '?')[0]}</span>`}
+        </span>
+        <div class="msg-body">
+          <div class="msg-header">
+            <div class="user-meta">
+              <span class="name" style="color:${m.color || u.accent || '#333'}" ${profileData(u)}>${u.name || ''}</span>
+              ${m.badges && m.badges.length ? `<span class="badges">${m.badges.slice(0,5).map((b) => `<img src="${b}" alt="badge" />`).join('')}</span>` : ''}
+            </div>
+            <span class="time">${m.time}</span>
         </div>
         <div class="text">${m.text}</div>
       </div>
@@ -221,57 +227,60 @@ const tpl = (messages) => `
 `;
 
 export default async function init({ root, utils }) {
+  const tokens = ['john-viking', 'marina-valentine', 'neko-bebop', 'nick-grissom', 'sarah-diamond'];
+  const users = Object.fromEntries(await Promise.all(tokens.map(async (s) => [s, await getUserByToken(s)])));
+
   let messages = [
     {
       time: '9:58 AM',
-      user: 'Lena',
-      avatar: 'images/logo.png',
+      user: users['john-viking'],
       color: '#07b',
       text: 'wow',
       badges: [BADGE_URLS[0], BADGE_URLS[1], BADGE_URLS[2], BADGE_URLS[3], BADGE_URLS[4]]
     },
     {
       time: '9:58 AM',
-      user: 'Ash',
-      avatar: 'images/logo.png',
+      user: users['marina-valentine'],
       color: '#0a0',
       text: 'more pushups!',
       badges: [BADGE_URLS[5], BADGE_URLS[6]]
     },
     {
       time: '9:58 AM',
-      user: 'IntroMeb',
-      avatar: 'images/logo.png',
+      user: users['neko-bebop'],
       color: '#c00',
       text: 'great play!',
       badges: [BADGE_URLS[7]]
     },
     {
       time: '9:58 AM',
-      user: 'Chankonabe',
-      avatar: 'images/logo.png',
+      user: users['nick-grissom'],
       color: '#b80',
       text: "how's everyone on the eh team doing?",
       badges: [BADGE_URLS[8], BADGE_URLS[9], BADGE_URLS[10]]
     },
     {
       time: '9:58 AM',
-      user: 'pexelwiz',
-      avatar: 'images/logo.png',
+      user: users['sarah-diamond'],
       color: '#609',
       text: 'awesome! 👏'
     },
     {
       time: '9:59 AM',
-      user: 'StickerFan',
-      avatar: 'images/logo.png',
+      user: users['neko-bebop'],
       color: '#333',
       type: 'sticker',
       sticker: 'images/resonances/001/catch_em.gif',
       amount: '100',
       badge: BADGE_URLS[11]
     },
-    { type: 'donation', user: 'Laura Ipsum', amount: '$5.00', text: 'BRAVO 🦊' }
+    {
+      type: 'donation',
+      time: '9:59 AM',
+      user: users['marina-valentine'],
+      amount: '$5.00',
+      text: 'BRAVO 🦊'
+    }
   ];
 
   let donoScroller, emoteDrawer, resonanceDrawer, resonanceUseDrawer;
@@ -297,7 +306,7 @@ export default async function init({ root, utils }) {
     if (!text) return;
     messages.push({
       time: new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }),
-      user: 'Anon',
+      user: { name: 'Anon', token: 'anon', accent: '#333' },
       color: '#333',
       text
     });
@@ -350,14 +359,14 @@ export default async function init({ root, utils }) {
 
   utils.delegate(root, 'click', '.resonance-use-btn', () => {
     if (!selectedResonance) return;
-    messages.push({
-      time: new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }),
-      user: 'Anon',
-      type: 'sticker',
-      sticker: selectedResonance.sticker,
-      amount: selectedResonance.amount,
-      badge: selectedResonance.badge
-    });
+      messages.push({
+        time: new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }),
+        user: { name: 'Anon', token: 'anon', accent: '#333' },
+        type: 'sticker',
+        sticker: selectedResonance.sticker,
+        amount: selectedResonance.amount,
+        badge: selectedResonance.badge
+      });
     resonanceUseDrawer.classList.remove('open');
     render();
   });

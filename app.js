@@ -1,6 +1,6 @@
 // app.js
 // NOIZ Hub + Loader with lifecycle-safe modules and optional per-module CSS loading.
-import { getUserBySlug } from './module/users.js';
+import { getUserByToken } from './module/users.js';
 
 class ModuleHub {
   constructor() {
@@ -171,16 +171,19 @@ async function loadServices() {
 }
 await loadServices();
 
+// Determine the currently mounted main module, ignoring persistent overlays
 let activeMainModule =
-  document.querySelector('main module[data-module]')?.getAttribute('data-module') ||
+  document
+    .querySelector('main module[data-module]:not([data-module="profile-overlay"])')
+    ?.getAttribute('data-module') ||
   null;
 async function LoadMainModule(name, props = {}) {
   if (!name) return;
 
   let targetHash = `#/${name}`;
   if (name === 'profile') {
-    const slug = props?.user?.slug;
-    if (slug) targetHash = `#/profile/${slug}`;
+    const token = props?.user?.token;
+    if (token) targetHash = `#/profile/${token}`;
   }
   if (window.location.hash !== targetHash) {
     window.history.pushState(null, '', targetHash);
@@ -188,9 +191,9 @@ async function LoadMainModule(name, props = {}) {
   const main = document.querySelector('main');
   if (name === activeMainModule) {
     const existing = main.querySelector(`module[data-module="${name}"]`);
-    const currentSlug = parseProps(existing).user?.slug;
-    const nextSlug = props?.user?.slug;
-    if (currentSlug === nextSlug) return;
+    const currentToken = parseProps(existing).user?.token;
+    const nextToken = props?.user?.token;
+    if (currentToken === nextToken) return;
     await hub.destroy(name);
     existing?.remove();
   } else if (activeMainModule) {
@@ -334,15 +337,15 @@ async function handleRoute() {
   const match = route.match(/^\/([^/]+)(?:\/([^/]+))?/);
   if (match) {
     const mod = match[1];
-    const slug = match[2];
+    const token = match[2];
     if (mod === 'profile') {
-      if (slug) {
-        const user = await getUserBySlug(decodeURIComponent(slug));
+      if (token) {
+        const user = await getUserByToken(decodeURIComponent(token));
         LoadMainModule('profile', user ? { user } : {});
       } else {
         try {
-          const loggedSlug = await fetch('/data/logged-in.json').then(r => r.json());
-          const user = loggedSlug ? await getUserBySlug(loggedSlug) : null;
+          const loggedToken = await fetch('/data/logged-in.json').then(r => r.json());
+          const user = loggedToken ? await getUserByToken(loggedToken) : null;
           LoadMainModule('profile', user ? { user } : {});
         } catch {
           LoadMainModule('profile');

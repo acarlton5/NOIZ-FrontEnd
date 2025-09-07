@@ -253,7 +253,7 @@ export default async function init({ hub, root, utils }) {
       const memberItems = members
         .map(
           (u) => `
-    <a class="dropdown-item header-search-item" href="#/profile/${u.slug}">
+    <a class="dropdown-item header-search-item" href="#/profile/${u.token}">
       <img src="${u.avatar}" alt="${u.name}">
       <div class="info">
         <div class="name">${u.name}</div>
