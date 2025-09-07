@@ -13,10 +13,13 @@ const sectionTpl = (section, i) => `
 
 const navTpl = (doc) => `
   <nav class="doc-nav">
-    <h5 class="doc-nav-title">Contents</h5>
-    <ul class="doc-nav-list">
+    <div class="doc-nav-header">
+      <span>${doc.sections.length} Chapters</span>
+      <span>${doc.sections.length} Total</span>
+    </div>
+    <ol class="doc-nav-list">
       ${doc.sections.map((s, i) => `<li><a href="#section-${i}">${s.heading}</a></li>`).join('')}
-    </ul>
+    </ol>
   </nav>
 `;
 
