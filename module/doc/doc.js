@@ -69,6 +69,13 @@ export default async function init({ root, props }) {
   try {
     const doc = await fetch(`/data/doc/${slug}.json`).then(r => r.json());
     root.innerHTML = tpl(doc);
+    const navLinks = root.querySelectorAll('.doc-nav-list a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      });
+    });
   } catch (err) {
     root.innerHTML = '<p class="text-center p-4">Document not found.</p>';
   }
