@@ -10,6 +10,15 @@
   border-radius: 12px;
   box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.06);
   color: #3e3f5e;
+  overflow: hidden;
+}
+
+.doc-module .post-open-body .post-open-heading {
+  margin: -2rem -2rem 2rem;
+  padding: 2rem;
+  background-color: #f5f5f5;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
 }
 
 .doc-module .post-open-heading .post-open-timestamp {
