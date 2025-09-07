@@ -93,6 +93,30 @@ export default async function init({ hub, root, utils }) {
   const topicsPanel = overlay.querySelector('[data-panel="topics"]');
   const badgesPanel = overlay.querySelector('[data-panel="badges"]');
 
+  let tooltip;
+  function showTooltip(el) {
+    const title = el.getAttribute('aria-label');
+    if (!title) return;
+    tooltip = document.createElement('div');
+    tooltip.className = 'navigation-small-tooltip';
+    tooltip.textContent = title;
+    tooltip.style.zIndex = '2100';
+    document.body.appendChild(tooltip);
+    const rect = el.getBoundingClientRect();
+    tooltip.style.top = `${rect.top + rect.height / 2}px`;
+    tooltip.style.left = `${rect.right}px`;
+    requestAnimationFrame(() => tooltip.classList.add('visible'));
+  }
+  function hideTooltip() {
+    if (tooltip) {
+      tooltip.remove();
+      tooltip = null;
+    }
+  }
+
+  utils.delegate(actions, 'mouseover', '.po-action', (e, el) => showTooltip(el));
+  utils.delegate(actions, 'mouseout', '.po-action', hideTooltip);
+
   function activityCards(user = {}) {
     const cards = [];
     const status = user.status || {};
@@ -266,6 +290,7 @@ export default async function init({ hub, root, utils }) {
   }
 
   function hide() {
+    hideTooltip();
     overlay.classList.add('hidden');
     overlay.classList.remove('visible');
   }
