@@ -3,14 +3,10 @@
 }
 
 .doc-module .post-open-cover {
-  display: none;
-}
-
-.doc-module.has-cover .post-open-cover {
-  display: block;
   height: 180px;
   background-size: cover;
   background-position: center;
+  background-color: #fff;
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
 }
@@ -19,28 +15,16 @@
   width: 100%;
   padding: 2rem;
   background-color: #fff;
-  border-radius: 12px;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
   box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.06);
   color: #3e3f5e;
   overflow: hidden;
 }
 
-.doc-module.has-cover .post-open-body {
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
-
 .doc-module .post-open-body .post-open-heading {
-  margin: -2rem -2rem 2rem;
-  padding: 2rem;
-  background-color: #fff;
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
-}
-
-.doc-module.has-cover .post-open-body .post-open-heading {
   margin: 0 -2rem 2rem;
-  background-color: transparent;
+  padding: 2rem;
 }
 
 .doc-module .post-open-heading .post-open-timestamp {
