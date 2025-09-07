@@ -39,10 +39,6 @@ export default async function init({ hub, root, utils }) {
           <h3>Activity</h3>
           <ul class="mp-activity-list"></ul>
         </div>
-        <div class="mp-section mp-note">
-          <h3>Note</h3>
-          <p class="mp-note-text">Click to add a note</p>
-        </div>
       </div>
     </div>
   `;

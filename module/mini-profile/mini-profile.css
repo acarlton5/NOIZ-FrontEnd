@@ -179,10 +179,6 @@ module[data-module="mini-profile"] .mini-profile .mp-conn-list img {
   height: 24px;
 }
 
-module[data-module="mini-profile"] .mini-profile .mp-note-text {
-  font-size: 0.875rem;
-  color: #6b7280;
-}
 
 module[data-module="mini-profile"] .mini-profile .mp-activity-list {
   display: flex;

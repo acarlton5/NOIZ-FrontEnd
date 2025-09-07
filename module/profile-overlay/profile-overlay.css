@@ -189,10 +189,6 @@ module[data-module="profile-overlay"] .po-conn-list img {
   height: 24px;
 }
 
-module[data-module="profile-overlay"] .po-note-text {
-  font-size: 0.875rem;
-  color: #6b7280;
-}
 
 module[data-module="profile-overlay"] .po-activity-list {
   display: flex;
