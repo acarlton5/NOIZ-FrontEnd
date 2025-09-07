@@ -13,6 +13,8 @@
 
 .doc-module .post-open-body {
   width: 100%;
+  max-width: none;
+  margin: 0;
   padding: 2rem;
   background-color: #fff;
   border-bottom-left-radius: 12px;
@@ -38,8 +40,9 @@
   color: #3e3f5e;
 }
 
-.doc-module .post-open-content .post-open-content-sidebar .post-open-sidebar-title {
-  color: #8f91ac;
+
+.doc-module .post-open-content-body {
+  width: 100%;
 }
 
 .doc-module .post-open-content-body p {
@@ -66,6 +69,28 @@
   display: block;
   margin-bottom: 0.5rem;
   color: #3e3f5e;
+}
+
+.doc-author {
+  margin: 3rem 0;
+  padding: 1.5rem;
+  background-color: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.06);
+  color: #3e3f5e;
+}
+
+.doc-author-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #8f91ac;
+  margin-bottom: 0.5rem;
+}
+
+.doc-author-name {
+  margin: 0;
 }
 
 .doc-nav {

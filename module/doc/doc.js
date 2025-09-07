@@ -23,6 +23,13 @@ const navTpl = (doc) => `
   </nav>
 `;
 
+const authorTpl = (doc) => `
+  <div class="doc-author">
+    <p class="doc-author-label">Author</p>
+    <p class="doc-author-name">${doc.author}</p>
+  </div>
+`;
+
 const tpl = (doc) => `
   <div class="container doc-container">
     <div class="row g-4">
@@ -35,30 +42,17 @@ const tpl = (doc) => `
             <div class="post-open-heading">
               <p class="post-open-timestamp">${doc.created_at ? new Date(doc.created_at).toLocaleDateString() : doc.date || ''}</p>
               <h2 class="post-open-title">${doc.title}</h2>
-              ${doc.author ? `<p class="post-open-author">By ${doc.author}</p>` : ''}
             </div>
-            <div class="post-open-content">
-              <div class="post-open-content-sidebar">
-                <p class="post-open-sidebar-title">Share!</p>
-                <div class="social-links vertical">
-                  <a class="social-link void facebook" href="#">
-                    <svg class="icon-facebook"><use xlink:href="#svg-facebook"></use></svg>
-                  </a>
-                  <a class="social-link void twitter" href="#">
-                    <svg class="icon-twitter"><use xlink:href="#svg-twitter"></use></svg>
-                  </a>
-                </div>
-              </div>
-              <div class="post-open-content-body">
-                ${Array.isArray(doc.sections)
-                  ? doc.sections.map(sectionTpl).join('')
-                  : (doc.content ? `<p class="post-open-paragraph">${doc.content}</p>` : '')}
-              </div>
+            <div class="post-open-content-body">
+              ${Array.isArray(doc.sections)
+                ? doc.sections.map(sectionTpl).join('')
+                : (doc.content ? `<p class="post-open-paragraph">${doc.content}</p>` : '')}
             </div>
           </div>
         </article>
       </div>
       <div class="col-12 col-lg-4">
+        ${doc.author ? authorTpl(doc) : ''}
         ${Array.isArray(doc.sections) ? navTpl(doc) : ''}
       </div>
     </div>
