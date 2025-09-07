@@ -1,36 +1,40 @@
-.post-open .post-open-cover {
+.doc-module .post-open-cover {
   display: none;
 }
 
-.post-open .post-open-body {
+.doc-module .post-open-body {
   width: 100%;
   max-width: 784px;
   margin: 0 auto;
   padding: 2rem;
 }
 
-.post-open-title {
+.doc-module .post-open-title {
   margin-top: 0;
   font-weight: 600;
   margin-bottom: 1rem;
 }
 
-.post-open-content-inner p {
+.doc-module .post-open-content-body p {
   margin-bottom: 1rem;
 }
 
-.doc-section {
+.doc-module .doc-section {
   margin-bottom: 1.5rem;
 }
 
-.doc-blurb {
+.doc-module .doc-section h3 {
+  margin-bottom: 0.5rem;
+}
+
+.doc-module .doc-blurb {
   background: #f5f5f5;
   padding: 1rem;
   border-left: 4px solid #ccc;
   margin: 1rem 0;
 }
 
-.doc-blurb strong {
+.doc-module .doc-blurb strong {
   display: block;
   margin-bottom: 0.5rem;
 }
