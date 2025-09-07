@@ -13,7 +13,7 @@ const sectionTpl = (section) => `
 
 const tpl = (doc) => `
   <article class="post-open">
-    <div class="post-open-body container py-4">
+    <div class="post-open-body">
       <div class="post-open-heading">
         <p class="post-open-timestamp">${doc.created_at ? new Date(doc.created_at).toLocaleDateString() : doc.date || ''}</p>
         <h2 class="post-open-title">${doc.title}</h2>
