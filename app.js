@@ -184,6 +184,9 @@ async function LoadMainModule(name, props = {}) {
   if (name === 'profile') {
     const token = props?.user?.token;
     if (token) targetHash = `#/profile/${token}`;
+  } else if (name === 'doc') {
+    const slug = props?.slug;
+    if (slug) targetHash = `#/doc/${slug}`;
   }
   if (window.location.hash !== targetHash) {
     window.history.pushState(null, '', targetHash);
@@ -350,6 +353,12 @@ async function handleRoute() {
         } catch {
           LoadMainModule('profile');
         }
+      }
+    } else if (mod === 'doc') {
+      if (token) {
+        LoadMainModule('doc', { slug: decodeURIComponent(token) });
+      } else {
+        LoadMainModule('doc');
       }
     } else {
       LoadMainModule(mod);

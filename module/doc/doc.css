@@ -1,0 +1,16 @@
+.doc-section + .doc-section {
+  margin-top: 1.5rem;
+}
+
+.doc-blurb {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: var(--bs-light, #f8f9fa);
+  border-left: 4px solid var(--bs-primary, #0d6efd);
+}
+
+.doc-blurb-label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.25rem;
+}
