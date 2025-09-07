@@ -78,5 +78,13 @@
     "navigation": false,
     "header": false,
     "services": false
+  },
+  "doc": {
+    "name": "doc",
+    "icon": "document",
+    "status": "enabled",
+    "navigation": false,
+    "header": false,
+    "services": false
   }
 }
