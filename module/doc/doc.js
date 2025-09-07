@@ -26,18 +26,13 @@ const navTpl = (doc) => `
 const defaultAvatar = 'https://odindesignthemes.com/vikinger/img/avatar/01.jpg';
 
 const authorTpl = (doc) => `
-  <div class="doc-author user-preview small">
-    <figure class="user-preview-cover" style="${doc.cover ? `background-image: url('${doc.cover}')` : ''}"></figure>
-    <div class="user-preview-info">
-      <div class="user-short-description small">
-        <div class="user-short-description-avatar">
-          <div class="avatar-wrap" style="--avi-width:60px; --avi-height:60px;">
-            <img src="${doc.author_avatar || defaultAvatar}" alt="${doc.author}">
-          </div>
-        </div>
-        <p class="user-short-description-title small">${doc.author}</p>
-        <p class="user-short-description-text">Author</p>
+  <div class="doc-author-card">
+    <figure class="doc-author-banner" style="${doc.author_banner ? `background-image:url('${doc.author_banner}')` : ''}"></figure>
+    <div class="doc-author-body">
+      <div class="avatar-wrap doc-author-avatar" style="--avi-width:64px; --avi-height:64px; --frame:${doc.author_frame ? `url('${doc.author_frame}')` : 'none'};">
+        <img src="${doc.author_avatar || defaultAvatar}" alt="${doc.author}">
       </div>
+      <p class="doc-author-name">${doc.author}</p>
     </div>
   </div>
 `;
