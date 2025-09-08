@@ -35,8 +35,9 @@
   overflow: hidden;
 }
 
-.doc-module .tag-list {
-  margin-bottom: 1.5rem;
+
+.doc-module .post-open-cover .tag-list {
+  margin-top: 0;
 }
 
 .doc-module .post-open-cover .post-open-heading {

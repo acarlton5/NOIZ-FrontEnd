@@ -36,7 +36,7 @@ const authorTpl = (doc) => `
     <figure class="doc-author-banner" style="${doc.author_banner ? `background-image:url('${doc.author_banner}')` : ''}"></figure>
     <div class="doc-author-body">
       <div class="avatar-wrap doc-author-avatar" style="--avi-width:64px; --avi-height:64px; --frame:${doc.author_frame ? `url('${doc.author_frame}')` : 'none'};">
-        <img src="${doc.author_avatar || defaultAvatar}" alt="${doc.author}">
+        <img class="avatar-image" src="${doc.author_avatar || defaultAvatar}" alt="${doc.author}">
       </div>
       <p class="doc-author-name">${doc.author}</p>
     </div>
@@ -53,10 +53,10 @@ const tpl = (doc) => `
             <div class="post-open-heading">
               <p class="post-open-timestamp">${doc.created_at ? new Date(doc.created_at).toLocaleDateString() : doc.date || ''}</p>
               <h2 class="post-open-title">${doc.title}</h2>
+              ${Array.isArray(doc.tags) ? tagsTpl(doc.tags) : ''}
             </div>
           </figure>
           <div class="post-open-body">
-            ${Array.isArray(doc.tags) ? tagsTpl(doc.tags) : ''}
             <div class="post-open-content-body">
               ${Array.isArray(doc.sections)
                 ? doc.sections.map(sectionTpl).join('')
