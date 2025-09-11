@@ -185,14 +185,25 @@ async function LoadMainModule(name, props = {}) {
     const token = props?.user?.token;
     if (token) targetHash = `#/profile/${token}`;
   }
+  if (name === 'doc') {
+    const slug = props?.slug;
+    if (slug) targetHash = `#/doc/${slug}`;
+  }
   if (window.location.hash !== targetHash) {
     window.history.pushState(null, '', targetHash);
   }
   const main = document.querySelector('main');
   if (name === activeMainModule) {
     const existing = main.querySelector(`module[data-module="${name}"]`);
-    const currentToken = parseProps(existing).user?.token;
-    const nextToken = props?.user?.token;
+    let currentToken;
+    let nextToken;
+    if (name === 'profile') {
+      currentToken = parseProps(existing).user?.token;
+      nextToken = props?.user?.token;
+    } else if (name === 'doc') {
+      currentToken = parseProps(existing).slug;
+      nextToken = props?.slug;
+    }
     if (currentToken === nextToken) return;
     await hub.destroy(name);
     existing?.remove();
@@ -350,6 +361,12 @@ async function handleRoute() {
         } catch {
           LoadMainModule('profile');
         }
+      }
+    } else if (mod === 'doc') {
+      if (token) {
+        LoadMainModule('doc', { slug: decodeURIComponent(token) });
+      } else {
+        LoadMainModule('doc');
       }
     } else {
       LoadMainModule(mod);
