@@ -18,7 +18,7 @@ const navTpl = (doc) => `
       <span>${doc.sections.length} Total</span>
     </div>
     <ol class="doc-nav-list">
-      ${doc.sections.map((s, i) => `<li><a href="#section-${i}">${s.heading}</a></li>`).join('')}
+      ${doc.sections.map((s, i) => `<li><a href="#" data-target="section-${i}">${s.heading}</a></li>`).join('')}
     </ol>
   </nav>
 `;
@@ -84,7 +84,13 @@ export default async function init({ root, props }) {
     root.innerHTML = tpl(doc);
     const navLinks = root.querySelectorAll('.doc-nav-list a');
     navLinks.forEach(link => {
-      link.addEventListener('click', () => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('data-target');
+        const section = root.querySelector(`#${targetId}`);
+        if (section) {
+          section.scrollIntoView({ behavior: 'smooth' });
+        }
         navLinks.forEach(l => l.classList.remove('active'));
         link.classList.add('active');
       });
