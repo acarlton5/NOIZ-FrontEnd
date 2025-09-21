@@ -1,3 +1,5 @@
+import { getUserByToken } from '../users.js';
+
 const sectionTpl = (section, i) => `
   <section id="section-${i}" class="doc-section">
     <h3>${section.heading}</h3>
@@ -31,19 +33,32 @@ const tagsTpl = (tags) => `
 
 const defaultAvatar = 'https://odindesignthemes.com/vikinger/img/avatar/01.jpg';
 
-const authorTpl = (doc) => `
+const buildAuthor = (doc, user) => {
+  const name = doc.author || user?.name;
+  if (!name) {
+    return null;
+  }
+  return {
+    name,
+    avatar: doc.author_avatar || user?.avatar || defaultAvatar,
+    banner: doc.author_banner || user?.banner || '',
+    frame: doc.author_frame || user?.frame || ''
+  };
+};
+
+const authorTpl = (author) => `
   <div class="doc-author-card">
-    <figure class="doc-author-banner" style="${doc.author_banner ? `background-image:url('${doc.author_banner}')` : ''}"></figure>
+    <figure class="doc-author-banner" style="${author.banner ? `background-image:url('${author.banner}')` : ''}"></figure>
     <div class="doc-author-body">
-      <div class="avatar-wrap doc-author-avatar" style="--avi-width:64px; --avi-height:64px; --frame:${doc.author_frame ? `url('${doc.author_frame}')` : 'none'};">
-        <img class="avatar-image" src="${doc.author_avatar || defaultAvatar}" alt="${doc.author}">
+      <div class="avatar-wrap doc-author-avatar" style="--avi-width:64px; --avi-height:64px; --frame:${author.frame ? `url('${author.frame}')` : 'none'};">
+        <img class="avatar-image" src="${author.avatar || defaultAvatar}" alt="${author.name}">
       </div>
-      <p class="doc-author-name">${doc.author}</p>
+      <p class="doc-author-name">${author.name}</p>
     </div>
   </div>
 `;
 
-const tpl = (doc) => `
+const tpl = (doc, author) => `
   <div class="container doc-container">
     <div class="row g-4">
       <div class="col-12 col-lg-8">
@@ -66,7 +81,7 @@ const tpl = (doc) => `
         </article>
       </div>
       <div class="col-12 col-lg-4">
-        ${doc.author ? authorTpl(doc) : ''}
+        ${author ? authorTpl(author) : ''}
         ${Array.isArray(doc.sections) ? navTpl(doc) : ''}
       </div>
     </div>
@@ -81,7 +96,16 @@ export default async function init({ root, props }) {
   }
   try {
     const doc = await fetch(`/data/doc/${slug}.json`).then(r => r.json());
-    root.innerHTML = tpl(doc);
+    let user = null;
+    if (doc.author_token) {
+      try {
+        user = await getUserByToken(doc.author_token);
+      } catch (err) {
+        user = null;
+      }
+    }
+    const author = buildAuthor(doc, user);
+    root.innerHTML = tpl(doc, author);
     const navLinks = root.querySelectorAll('.doc-nav-list a');
     navLinks.forEach(link => {
       link.addEventListener('click', (e) => {
