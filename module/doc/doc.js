@@ -25,9 +25,11 @@ const navTpl = (doc) => `
   </nav>
 `;
 
-const tagsTpl = (tags) => `
+const tagsTpl = (tags, { asLinks = true } = {}) => `
   <div class="tag-list">
-    ${tags.map(t => `<a class="tag-item secondary" href="#">${t}</a>`).join('')}
+    ${tags.map(t => asLinks
+      ? `<a class="tag-item secondary" href="#">${t}</a>`
+      : `<span class="tag-item secondary">${t}</span>`).join('')}
   </div>
 `;
 
@@ -54,6 +56,41 @@ const authorTpl = (author) => `
         <img class="avatar-image" src="${author.avatar || defaultAvatar}" alt="${author.name}">
       </div>
       <p class="doc-author-name">${author.name}</p>
+    </div>
+  </div>
+`;
+
+const docCardTpl = (doc) => `
+  <div class="col-12 col-md-6 col-xl-4">
+    <a class="doc-card" href="#/doc/${doc.slug}">
+      <figure class="doc-card-cover${doc.cover ? ' has-cover' : ''}" style="${doc.cover ? `background-image:url('${doc.cover}')` : ''}">
+        ${doc.cover ? `<img src="${doc.cover}" alt="${doc.title || ''} cover" loading="lazy">` : ''}
+      </figure>
+      <div class="doc-card-body">
+        <h3 class="doc-card-title">${doc.title}</h3>
+        ${doc.summary ? `<p class="doc-card-summary">${doc.summary}</p>` : ''}
+        ${Array.isArray(doc.tags) && doc.tags.length ? tagsTpl(doc.tags, { asLinks: false }) : ''}
+      </div>
+      <div class="doc-card-meta">
+        ${doc.author ? `<span class="doc-card-author">${doc.author}</span>` : ''}
+        ${doc.created_at ? `<span class="doc-card-date">${new Date(doc.created_at).toLocaleDateString()}</span>` : (doc.date ? `<span class="doc-card-date">${doc.date}</span>` : '')}
+      </div>
+    </a>
+  </div>
+`;
+
+const docListTpl = (docs) => `
+  <div class="container doc-container doc-list">
+    <div class="row">
+      <div class="col-12">
+        <header class="doc-list-header">
+          <h2 class="doc-list-title">Documentation</h2>
+          <p class="doc-list-subtitle">Select a guide to dive deeper into the NOIZ platform.</p>
+        </header>
+      </div>
+    </div>
+    <div class="row g-4">
+      ${docs.map(docCardTpl).join('')}
     </div>
   </div>
 `;
@@ -91,7 +128,18 @@ const tpl = (doc, author) => `
 export default async function init({ root, props }) {
   const slug = props?.slug;
   if (!slug) {
-    root.innerHTML = '<p class="text-center p-4">No document specified.</p>';
+    try {
+      const response = await fetch('/data/doc/index.json');
+      const payload = await response.json();
+      const docs = Array.isArray(payload) ? payload : Array.isArray(payload?.documents) ? payload.documents : [];
+      if (!docs.length) {
+        root.innerHTML = '<p class="text-center p-4">No documents available yet. Check back soon!</p>';
+        return;
+      }
+      root.innerHTML = docListTpl(docs);
+    } catch (err) {
+      root.innerHTML = '<p class="text-center p-4">Unable to load documentation list.</p>';
+    }
     return;
   }
   try {
